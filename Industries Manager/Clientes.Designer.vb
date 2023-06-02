@@ -139,7 +139,7 @@ Partial Class Clientes
         'DDNLabel
         '
         DDNLabel.AutoSize = True
-        DDNLabel.Location = New System.Drawing.Point(21, 291)
+        DDNLabel.Location = New System.Drawing.Point(21, 290)
         DDNLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         DDNLabel.Name = "DDNLabel"
         DDNLabel.Size = New System.Drawing.Size(160, 20)
@@ -394,7 +394,7 @@ Partial Class Clientes
         '
         Me.DDNDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ClientesBindingSource, "DDN", True))
         Me.DDNDateTimePicker.Enabled = False
-        Me.DDNDateTimePicker.Location = New System.Drawing.Point(26, 315)
+        Me.DDNDateTimePicker.Location = New System.Drawing.Point(22, 315)
         Me.DDNDateTimePicker.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.DDNDateTimePicker.Name = "DDNDateTimePicker"
         Me.DDNDateTimePicker.Size = New System.Drawing.Size(446, 26)
