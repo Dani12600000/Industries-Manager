@@ -45,18 +45,20 @@ Partial Class Login
         'EmailLabel
         '
         EmailLabel.AutoSize = True
-        EmailLabel.Location = New System.Drawing.Point(46, 66)
+        EmailLabel.Location = New System.Drawing.Point(69, 102)
+        EmailLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         EmailLabel.Name = "EmailLabel"
-        EmailLabel.Size = New System.Drawing.Size(35, 13)
+        EmailLabel.Size = New System.Drawing.Size(52, 20)
         EmailLabel.TabIndex = 1
         EmailLabel.Text = "Email:"
         '
         'PassLabel
         '
         PassLabel.AutoSize = True
-        PassLabel.Location = New System.Drawing.Point(48, 92)
+        PassLabel.Location = New System.Drawing.Point(72, 142)
+        PassLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         PassLabel.Name = "PassLabel"
-        PassLabel.Size = New System.Drawing.Size(33, 13)
+        PassLabel.Size = New System.Drawing.Size(48, 20)
         PassLabel.TabIndex = 2
         PassLabel.Text = "Pass:"
         '
@@ -84,6 +86,7 @@ Partial Class Login
         Me.TableAdapterManager.FornecedoresTableAdapter = Nothing
         Me.TableAdapterManager.FornecimentosTableAdapter = Nothing
         Me.TableAdapterManager.FuncionariosTableAdapter = Me.FuncionariosTableAdapter
+        Me.TableAdapterManager.Leitura_de_avisosTableAdapter = Nothing
         Me.TableAdapterManager.Login_FuncionarioTableAdapter = Nothing
         Me.TableAdapterManager.ProdutosTableAdapter = Nothing
         Me.TableAdapterManager.ProfissõesTableAdapter = Nothing
@@ -93,9 +96,10 @@ Partial Class Login
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(163, 115)
+        Me.Button1.Location = New System.Drawing.Point(244, 177)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(64, 23)
+        Me.Button1.Size = New System.Drawing.Size(96, 35)
         Me.Button1.TabIndex = 4
         Me.Button1.Text = "Login"
         Me.Button1.UseVisualStyleBackColor = True
@@ -103,26 +107,29 @@ Partial Class Login
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(46, 120)
+        Me.LinkLabel1.Location = New System.Drawing.Point(69, 185)
+        Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(111, 13)
+        Me.LinkLabel1.Size = New System.Drawing.Size(165, 20)
         Me.LinkLabel1.TabIndex = 5
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "Ainda não tem conta?"
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(87, 63)
+        Me.TextBox1.Location = New System.Drawing.Point(130, 97)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(140, 20)
+        Me.TextBox1.Size = New System.Drawing.Size(208, 26)
         Me.TextBox1.TabIndex = 6
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(87, 89)
+        Me.TextBox2.Location = New System.Drawing.Point(130, 137)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
-        Me.TextBox2.Size = New System.Drawing.Size(140, 20)
+        Me.TextBox2.Size = New System.Drawing.Size(208, 26)
         Me.TextBox2.TabIndex = 7
         '
         'Login_FuncionarioBindingSource
@@ -136,15 +143,16 @@ Partial Class Login
         '
         'Login
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(296, 205)
+        Me.ClientSize = New System.Drawing.Size(444, 315)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(PassLabel)
         Me.Controls.Add(EmailLabel)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "Login"
         Me.Text = "Login"
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()

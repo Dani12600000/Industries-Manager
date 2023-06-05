@@ -65,8 +65,22 @@
                     strIPAddress = System.Net.Dns.GetHostByName(strHostName).AddressList(0).ToString()
 
                     Login_FuncionarioBindingSource.Current("ID_Funcionario") = FuncionariosBindingSource.Current("ID")
+                    Login_FuncionarioBindingSource.Current("LiOuLo") = "Login"
                     Login_FuncionarioBindingSource.Current("DeH") = Now()
                     Login_FuncionarioBindingSource.Current("Ip") = strIPAddress
+                    InfoUser.UserID = FuncionariosBindingSource.Current("ID")
+                    InfoUser.UserIp = strIPAddress
+                    InfoUser.UserName = FuncionariosBindingSource.Current("Nome")
+                    InfoUser.UserEmail = FuncionariosBindingSource.Current("Email")
+                    InfoUser.UserAdm = FuncionariosBindingSource.Current("Adm")
+
+                    'For debug
+                    Debug.WriteLine("Login form" & vbCrLf & "---------")
+                    Debug.WriteLine("ID : " & InfoUser.UserID)
+                    Debug.WriteLine("Ip : " & InfoUser.UserIp)
+                    Debug.WriteLine("Name : " & InfoUser.UserName)
+                    Debug.WriteLine("Email : " & InfoUser.UserEmail)
+                    Debug.WriteLine("Admin : " & InfoUser.UserAdm)
 
                     Login_FuncionarioBindingSource.EndEdit()
                     Login_FuncionarioTableAdapter.Update(Industries_DanDataSet.Login_Funcionario)

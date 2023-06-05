@@ -22,6 +22,7 @@ Partial Class PMenu
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -33,7 +34,13 @@ Partial Class PMenu
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
+        Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
+        Me.Login_FuncionarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Login_FuncionarioTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Login_FuncionarioTableAdapter()
+        Me.TableAdapterManager = New Industries_Manager.Industries_DanDataSetTableAdapters.TableAdapterManager()
         Me.MenuStrip1.SuspendLayout()
+        CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -49,7 +56,7 @@ Partial Class PMenu
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(32, 109)
+        Me.Button1.Location = New System.Drawing.Point(32, 86)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(572, 60)
@@ -59,7 +66,7 @@ Partial Class PMenu
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(32, 178)
+        Me.Button2.Location = New System.Drawing.Point(32, 155)
         Me.Button2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(572, 60)
@@ -93,7 +100,7 @@ Partial Class PMenu
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(32, 248)
+        Me.Button3.Location = New System.Drawing.Point(32, 225)
         Me.Button3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(572, 60)
@@ -103,7 +110,7 @@ Partial Class PMenu
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(32, 386)
+        Me.Button4.Location = New System.Drawing.Point(32, 363)
         Me.Button4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(572, 60)
@@ -113,7 +120,7 @@ Partial Class PMenu
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(32, 455)
+        Me.Button5.Location = New System.Drawing.Point(32, 432)
         Me.Button5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(572, 60)
@@ -123,7 +130,7 @@ Partial Class PMenu
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(32, 525)
+        Me.Button6.Location = New System.Drawing.Point(32, 502)
         Me.Button6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(572, 60)
@@ -133,13 +140,45 @@ Partial Class PMenu
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(32, 317)
+        Me.Button7.Location = New System.Drawing.Point(32, 294)
         Me.Button7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(572, 60)
         Me.Button7.TabIndex = 8
         Me.Button7.Text = "Fornecimentos"
         Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Industries_DanDataSet
+        '
+        Me.Industries_DanDataSet.DataSetName = "Industries_DanDataSet"
+        Me.Industries_DanDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Login_FuncionarioBindingSource
+        '
+        Me.Login_FuncionarioBindingSource.DataMember = "Login_Funcionario"
+        Me.Login_FuncionarioBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'Login_FuncionarioTableAdapter
+        '
+        Me.Login_FuncionarioTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.AvisosTableAdapter = Nothing
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.ClientesTableAdapter = Nothing
+        Me.TableAdapterManager.DepartamentosTableAdapter = Nothing
+        Me.TableAdapterManager.Diretores_de_DepartamentosTableAdapter = Nothing
+        Me.TableAdapterManager.FornecedoresTableAdapter = Nothing
+        Me.TableAdapterManager.FornecimentosTableAdapter = Nothing
+        Me.TableAdapterManager.FuncionariosTableAdapter = Nothing
+        Me.TableAdapterManager.Leitura_de_avisosTableAdapter = Nothing
+        Me.TableAdapterManager.Login_FuncionarioTableAdapter = Me.Login_FuncionarioTableAdapter
+        Me.TableAdapterManager.ProdutosTableAdapter = Nothing
+        Me.TableAdapterManager.ProfissõesTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = Industries_Manager.Industries_DanDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.Venda_de_produtoTableAdapter = Nothing
+        Me.TableAdapterManager.VendasTableAdapter = Nothing
         '
         'PMenu
         '
@@ -161,6 +200,8 @@ Partial Class PMenu
         Me.Text = "Menu"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -177,4 +218,10 @@ Partial Class PMenu
     Friend WithEvents Button6 As Button
     Friend WithEvents Button7 As Button
     Friend WithEvents LogoutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Industries_DanDataSet As Industries_DanDataSet
+    Friend WithEvents Login_FuncionarioBindingSource As BindingSource
+    Friend WithEvents Login_FuncionarioTableAdapter As Industries_DanDataSetTableAdapters.Login_FuncionarioTableAdapter
+    Friend WithEvents TableAdapterManager As Industries_DanDataSetTableAdapters.TableAdapterManager
+    Friend WithEvents Login_FuncionarioBindingNavigator As BindingNavigator
+    Friend WithEvents Login_FuncionarioBindingNavigatorSaveItem As ToolStripButton
 End Class
