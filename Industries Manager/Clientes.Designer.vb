@@ -343,7 +343,7 @@ Partial Class Clientes
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(522, 25)
         Me.Label2.TabIndex = 19
-        Me.Label2.Text = "Produtos"
+        Me.Label2.Text = "Produtos na compra"
         '
         'Venda_de_produtoBindingSource1
         '
