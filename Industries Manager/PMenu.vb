@@ -59,7 +59,15 @@
 
     End Sub
 
-    Private Sub Button7_Click(sender As Object, e As EventArgs)
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Funcionarios.Show()
+    End Sub
 
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Produtos.Show()
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        Profissões.Show()
     End Sub
 End Class
