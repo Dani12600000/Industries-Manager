@@ -33,7 +33,6 @@ Partial Class PMenu
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
         Me.Login_FuncionarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Login_FuncionarioTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Login_FuncionarioTableAdapter()
@@ -110,7 +109,7 @@ Partial Class PMenu
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(32, 363)
+        Me.Button4.Location = New System.Drawing.Point(32, 295)
         Me.Button4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(572, 60)
@@ -120,7 +119,7 @@ Partial Class PMenu
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(32, 432)
+        Me.Button5.Location = New System.Drawing.Point(32, 364)
         Me.Button5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(572, 60)
@@ -130,23 +129,13 @@ Partial Class PMenu
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(32, 502)
+        Me.Button6.Location = New System.Drawing.Point(32, 434)
         Me.Button6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(572, 60)
         Me.Button6.TabIndex = 7
         Me.Button6.Text = "Profissões"
         Me.Button6.UseVisualStyleBackColor = True
-        '
-        'Button7
-        '
-        Me.Button7.Location = New System.Drawing.Point(32, 294)
-        Me.Button7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(572, 60)
-        Me.Button7.TabIndex = 8
-        Me.Button7.Text = "Fornecimentos"
-        Me.Button7.UseVisualStyleBackColor = True
         '
         'Industries_DanDataSet
         '
@@ -184,8 +173,7 @@ Partial Class PMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(636, 625)
-        Me.Controls.Add(Me.Button7)
+        Me.ClientSize = New System.Drawing.Size(636, 551)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
@@ -216,7 +204,6 @@ Partial Class PMenu
     Friend WithEvents Button4 As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
-    Friend WithEvents Button7 As Button
     Friend WithEvents LogoutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Industries_DanDataSet As Industries_DanDataSet
     Friend WithEvents Login_FuncionarioBindingSource As BindingSource
