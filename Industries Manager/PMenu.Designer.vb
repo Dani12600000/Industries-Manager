@@ -46,15 +46,19 @@ Partial Class PMenu
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.White
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Label1.Location = New System.Drawing.Point(18, 8)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(207, 20)
+        Me.Label1.Size = New System.Drawing.Size(259, 25)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "[Bom dia/Boa tarde], [Nome]"
         '
         'Button1
         '
+        Me.Button1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Button1.Location = New System.Drawing.Point(32, 86)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button1.Name = "Button1"
@@ -65,6 +69,9 @@ Partial Class PMenu
         '
         'Button2
         '
+        Me.Button2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Button2.Location = New System.Drawing.Point(32, 155)
         Me.Button2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button2.Name = "Button2"
@@ -81,24 +88,29 @@ Partial Class PMenu
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(9, 3, 0, 3)
         Me.MenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.MenuStrip1.Size = New System.Drawing.Size(636, 35)
+        Me.MenuStrip1.Size = New System.Drawing.Size(636, 38)
         Me.MenuStrip1.TabIndex = 3
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'LogoutToolStripMenuItem
         '
+        Me.LogoutToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(81, 29)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(87, 32)
         Me.LogoutToolStripMenuItem.Text = "Logout"
         '
         'AvisosToolStripMenuItem
         '
+        Me.AvisosToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.AvisosToolStripMenuItem.Name = "AvisosToolStripMenuItem"
-        Me.AvisosToolStripMenuItem.Size = New System.Drawing.Size(76, 29)
+        Me.AvisosToolStripMenuItem.Size = New System.Drawing.Size(80, 32)
         Me.AvisosToolStripMenuItem.Text = "Avisos"
         '
         'Button3
         '
+        Me.Button3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Button3.Location = New System.Drawing.Point(32, 225)
         Me.Button3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button3.Name = "Button3"
@@ -109,6 +121,9 @@ Partial Class PMenu
         '
         'Button4
         '
+        Me.Button4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Button4.Location = New System.Drawing.Point(32, 295)
         Me.Button4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button4.Name = "Button4"
@@ -119,6 +134,9 @@ Partial Class PMenu
         '
         'Button5
         '
+        Me.Button5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Button5.Location = New System.Drawing.Point(32, 364)
         Me.Button5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button5.Name = "Button5"
@@ -129,6 +147,9 @@ Partial Class PMenu
         '
         'Button6
         '
+        Me.Button6.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Button6.Location = New System.Drawing.Point(32, 434)
         Me.Button6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button6.Name = "Button6"

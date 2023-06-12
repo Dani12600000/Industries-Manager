@@ -45,20 +45,22 @@ Partial Class Login
         'EmailLabel
         '
         EmailLabel.AutoSize = True
+        EmailLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         EmailLabel.Location = New System.Drawing.Point(69, 102)
         EmailLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         EmailLabel.Name = "EmailLabel"
-        EmailLabel.Size = New System.Drawing.Size(52, 20)
+        EmailLabel.Size = New System.Drawing.Size(59, 22)
         EmailLabel.TabIndex = 1
         EmailLabel.Text = "Email:"
         '
         'PassLabel
         '
         PassLabel.AutoSize = True
+        PassLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         PassLabel.Location = New System.Drawing.Point(72, 142)
         PassLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         PassLabel.Name = "PassLabel"
-        PassLabel.Size = New System.Drawing.Size(48, 20)
+        PassLabel.Size = New System.Drawing.Size(55, 22)
         PassLabel.TabIndex = 2
         PassLabel.Text = "Pass:"
         '
@@ -96,7 +98,8 @@ Partial Class Login
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(244, 177)
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.Button1.Location = New System.Drawing.Point(279, 180)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(96, 35)
@@ -107,29 +110,32 @@ Partial Class Login
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.LinkLabel1.Location = New System.Drawing.Point(69, 185)
         Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(165, 20)
+        Me.LinkLabel1.Size = New System.Drawing.Size(184, 22)
         Me.LinkLabel1.TabIndex = 5
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "Ainda não tem conta?"
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(130, 97)
+        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.TextBox1.Location = New System.Drawing.Point(130, 99)
         Me.TextBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(208, 26)
+        Me.TextBox1.Size = New System.Drawing.Size(245, 28)
         Me.TextBox1.TabIndex = 6
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(130, 137)
+        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.TextBox2.Location = New System.Drawing.Point(130, 139)
         Me.TextBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
-        Me.TextBox2.Size = New System.Drawing.Size(208, 26)
+        Me.TextBox2.Size = New System.Drawing.Size(245, 28)
         Me.TextBox2.TabIndex = 7
         '
         'Login_FuncionarioBindingSource
@@ -145,13 +151,14 @@ Partial Class Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(444, 315)
+        Me.ClientSize = New System.Drawing.Size(454, 315)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(PassLabel)
         Me.Controls.Add(EmailLabel)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "Login"
         Me.Text = "Login"
