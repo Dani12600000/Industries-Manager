@@ -4,5 +4,4 @@
     Public UserName As String
     Public UserEmail As String
     Public UserAdm As Boolean
-
 End Module

@@ -62,14 +62,14 @@
         If Button10.Text = "Novo" Then
             ClientesBindingSource.AddNew()
             iniciarAlteracoes()
-        ElseIf Button10.Text = "Salvar" Then
+        ElseIf Button10.Text = "Guardar" Then
             Try
                 ClientesBindingSource.EndEdit()
                 ClientesTableAdapter.Update(Industries_DanDataSet.Clientes)
                 acabarAlteracoes()
                 MessageBox.Show("Alterações salvas com sucesso.")
             Catch ex As Exception
-                MessageBox.Show("Ocorreu um erro ao salvar as alterações: " & ex.Message)
+                MessageBox.Show("Ocorreu um erro ao Guardar as alterações: " & ex.Message)
             End Try
         End If
     End Sub
@@ -98,7 +98,7 @@
         NomeTextBox.ReadOnly = False
         SobrenomeTextBox.ReadOnly = False
         DDNDateTimePicker.Enabled = True
-        Button10.Text = "Salvar"
+        Button10.Text = "Guardar"
         Button11.Text = "Cancelar"
         Button1.Enabled = False
         Button2.Enabled = False

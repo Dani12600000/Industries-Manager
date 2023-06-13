@@ -141,6 +141,7 @@ Partial Class Profissões
         Me.FuncionariosDataGridView.DataSource = Me.FuncionariosBindingSource
         Me.FuncionariosDataGridView.Location = New System.Drawing.Point(369, 65)
         Me.FuncionariosDataGridView.Name = "FuncionariosDataGridView"
+        Me.FuncionariosDataGridView.ReadOnly = True
         Me.FuncionariosDataGridView.RowTemplate.Height = 28
         Me.FuncionariosDataGridView.Size = New System.Drawing.Size(1087, 315)
         Me.FuncionariosDataGridView.TabIndex = 4
@@ -204,6 +205,7 @@ Partial Class Profissões
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
         Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn1.Width = 50
         '
@@ -212,6 +214,7 @@ Partial Class Profissões
         Me.DataGridViewCheckBoxColumn1.DataPropertyName = "Aprovacao"
         Me.DataGridViewCheckBoxColumn1.HeaderText = "Aprovacao"
         Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        Me.DataGridViewCheckBoxColumn1.ReadOnly = True
         Me.DataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewCheckBoxColumn1.Width = 65
         '
@@ -220,6 +223,7 @@ Partial Class Profissões
         Me.DataGridViewTextBoxColumn2.DataPropertyName = "Nome"
         Me.DataGridViewTextBoxColumn2.HeaderText = "Nome"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
         Me.DataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn2.Width = 85
         '
@@ -228,6 +232,7 @@ Partial Class Profissões
         Me.DataGridViewTextBoxColumn3.DataPropertyName = "Sobrenome"
         Me.DataGridViewTextBoxColumn3.HeaderText = "Sobrenome"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
         Me.DataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn3.Width = 85
         '
@@ -236,6 +241,7 @@ Partial Class Profissões
         Me.DataGridViewTextBoxColumn4.DataPropertyName = "Email"
         Me.DataGridViewTextBoxColumn4.HeaderText = "Email"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
         Me.DataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn4.Width = 120
         '
@@ -244,6 +250,7 @@ Partial Class Profissões
         Me.DataGridViewTextBoxColumn7.DataPropertyName = "ID_Departamento"
         Me.DataGridViewTextBoxColumn7.HeaderText = "ID_Departamento"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
         Me.DataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn7.Width = 95
         '
@@ -252,6 +259,7 @@ Partial Class Profissões
         Me.DataGridViewTextBoxColumn8.DataPropertyName = "SI"
         Me.DataGridViewTextBoxColumn8.HeaderText = "Salário inicial"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
         Me.DataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn8.Width = 65
         '
@@ -260,6 +268,7 @@ Partial Class Profissões
         Me.DataGridViewTextBoxColumn9.DataPropertyName = "DDEDE"
         Me.DataGridViewTextBoxColumn9.HeaderText = "Data entrada"
         Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
         Me.DataGridViewTextBoxColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn9.Width = 75
         '
@@ -268,6 +277,7 @@ Partial Class Profissões
         Me.DataGridViewTextBoxColumn10.DataPropertyName = "DDSDE"
         Me.DataGridViewTextBoxColumn10.HeaderText = "Data saída"
         Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.ReadOnly = True
         Me.DataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn10.Width = 75
         '
@@ -276,6 +286,7 @@ Partial Class Profissões
         Me.DataGridViewCheckBoxColumn2.DataPropertyName = "Adm"
         Me.DataGridViewCheckBoxColumn2.HeaderText = "Admin"
         Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
+        Me.DataGridViewCheckBoxColumn2.ReadOnly = True
         Me.DataGridViewCheckBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewCheckBoxColumn2.Width = 50
         '

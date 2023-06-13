@@ -41,4 +41,22 @@
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         ProdutosBindingSource.MoveFirst()
     End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        If Button8.Text = "Remover" Then
+            If MessageBox.Show("Tem certeza que deseja remover este produto?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                ProdutosBindingSource.RemoveCurrent()
+                ProdutosTableAdapter.Update(Industries_DanDataSet.Produtos)
+
+            End If
+        ElseIf Button8.Text = "Cancelar" Then
+                ProdutosBindingSource.EndEdit()
+        End If
+    End Sub
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        ProdutosBindingSource.AddNew()
+        Button9.Text = "Guardar"
+        Button8.Text = "Cancelar"
+    End Sub
 End Class
