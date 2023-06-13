@@ -15,7 +15,13 @@
 
         Me.Width = Me.ClientSize.Width * 1.22
 
-
+        Formulario = Me
+        ButtonNG = Button10
+        ButtonEC = Button11
+        ButtonF = Button1
+        ButtonP = Button2
+        ButtonN = Button3
+        ButtonL = Button4
     End Sub
 
     Private Sub SobrenomeLabel_Click(sender As Object, e As EventArgs)
@@ -88,36 +94,5 @@
 
             acabarAlteracoes()
         End If
-    End Sub
-
-
-    Sub iniciarAlteracoes()
-        MailTextBox.ReadOnly = False
-        NIFTextBox.ReadOnly = False
-        NIBTextBox.ReadOnly = False
-        NomeTextBox.ReadOnly = False
-        SobrenomeTextBox.ReadOnly = False
-        DDNDateTimePicker.Enabled = True
-        Button10.Text = "Guardar"
-        Button11.Text = "Cancelar"
-        Button1.Enabled = False
-        Button2.Enabled = False
-        Button3.Enabled = False
-        Button4.Enabled = False
-    End Sub
-
-    Sub acabarAlteracoes()
-        MailTextBox.ReadOnly = True
-        NIFTextBox.ReadOnly = True
-        NIBTextBox.ReadOnly = True
-        NomeTextBox.ReadOnly = True
-        SobrenomeTextBox.ReadOnly = True
-        DDNDateTimePicker.Enabled = False
-        Button10.Text = "Novo"
-        Button11.Text = "Remover"
-        Button1.Enabled = True
-        Button2.Enabled = True
-        Button3.Enabled = True
-        Button4.Enabled = True
     End Sub
 End Class

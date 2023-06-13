@@ -8,6 +8,13 @@
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Produtos'. Você pode movê-la ou removê-la conforme necessário.
         Me.ProdutosTableAdapter.Fill(Me.Industries_DanDataSet.Produtos)
 
+        Formulario = Me
+        ButtonNG = Button9
+        ButtonEC = Button8
+        ButtonF = Button1
+        ButtonP = Button2
+        ButtonN = Button3
+        ButtonL = Button4
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
