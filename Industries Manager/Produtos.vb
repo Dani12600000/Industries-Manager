@@ -54,16 +54,15 @@
             If MessageBox.Show("Tem certeza que deseja remover este produto?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 ProdutosBindingSource.RemoveCurrent()
                 ProdutosTableAdapter.Update(Industries_DanDataSet.Produtos)
-
             End If
         ElseIf Button8.Text = "Cancelar" Then
-                ProdutosBindingSource.EndEdit()
+            ProdutosBindingSource.EndEdit()
+            acabarAlteracoes()
         End If
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
         ProdutosBindingSource.AddNew()
-        Button9.Text = "Guardar"
-        Button8.Text = "Cancelar"
+        iniciarAlteracoes()
     End Sub
 End Class
