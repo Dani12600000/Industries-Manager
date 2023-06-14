@@ -467,7 +467,7 @@ Partial Class Clientes
         '
         'Button10
         '
-        Me.Button10.Location = New System.Drawing.Point(238, 362)
+        Me.Button10.Location = New System.Drawing.Point(85, 362)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(145, 47)
         Me.Button10.TabIndex = 26
@@ -476,7 +476,7 @@ Partial Class Clientes
         '
         'Button11
         '
-        Me.Button11.Location = New System.Drawing.Point(86, 362)
+        Me.Button11.Location = New System.Drawing.Point(239, 362)
         Me.Button11.Name = "Button11"
         Me.Button11.Size = New System.Drawing.Size(144, 47)
         Me.Button11.TabIndex = 27

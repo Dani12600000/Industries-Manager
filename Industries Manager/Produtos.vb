@@ -56,13 +56,42 @@
                 ProdutosTableAdapter.Update(Industries_DanDataSet.Produtos)
             End If
         ElseIf Button8.Text = "Cancelar" Then
-            ProdutosBindingSource.EndEdit()
+            TableAdapterManager.UpdateAll(Me.Industries_DanDataSet)
+            ProdutosBindingSource.CancelEdit()
             acabarAlteracoes()
         End If
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
-        ProdutosBindingSource.AddNew()
-        iniciarAlteracoes()
+        If Button9.Text = "Novo" Then
+            ProdutosBindingSource.AddNew()
+
+            Dim maxValue As Integer
+
+            If Industries_DanDataSet.Produtos.Rows.Count > 0 Then
+                maxValue = Industries_DanDataSet.Produtos.Compute("MAX(id)", "")
+            Else
+                ' Não há registros na tabela Produtos
+                ' Defina um valor padrão para maxValue ou trate a situação de acordo com sua lógica
+                maxValue = 0
+            End If
+
+            Debug.WriteLine(maxValue)
+
+            'IDTextBox.Text = maxValue  'Vai ter que ficar comentado por enquanto, quando for voltar a meter tirar a primeira apostrofe (')
+
+            iniciarAlteracoes()
+
+        ElseIf Button9.Text = "Guardar" Then
+            Try
+                ProdutosBindingSource.EndEdit()
+                ProdutosTableAdapter.Update(Industries_DanDataSet.Produtos)
+                acabarAlteracoes()
+                MessageBox.Show("Alterações salvas com sucesso.")
+            Catch ex As Exception
+                MessageBox.Show("Ocorreu um erro ao Guardar as alterações: " & ex.Message)
+            End Try
+
+        End If
     End Sub
 End Class

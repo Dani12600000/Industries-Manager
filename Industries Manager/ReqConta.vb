@@ -27,8 +27,10 @@
             Me.FuncionariosBindingSource.EndEdit()
             Me.TableAdapterManager.UpdateAll(Me.Industries_DanDataSet)
             MsgBox("Conta requesitada com sucesso!" & vbCrLf & "Espere para ser aceito", vbInformation, "Sucesso")
+            Debug.WriteLine("Nova requesição feita")
         Catch
-
+            MsgBox("Houve um erro a fazer a requesição da sua conta por favor tente mais tarde ou entre em contacto com o suporte", vbCritical, "Erro")
+            Debug.WriteLine("Erro ao fazer a requesição")
         End Try
     End Sub
 

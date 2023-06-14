@@ -148,7 +148,7 @@ Partial Class Profissões
         '
         'Button9
         '
-        Me.Button9.Location = New System.Drawing.Point(184, 258)
+        Me.Button9.Location = New System.Drawing.Point(12, 258)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(166, 47)
         Me.Button9.TabIndex = 31
@@ -157,7 +157,7 @@ Partial Class Profissões
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(12, 258)
+        Me.Button8.Location = New System.Drawing.Point(184, 258)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(166, 47)
         Me.Button8.TabIndex = 30

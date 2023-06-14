@@ -36,7 +36,6 @@ Partial Class Produtos
         Me.IDTextBox = New System.Windows.Forms.TextBox()
         Me.NomeTextBox = New System.Windows.Forms.TextBox()
         Me.DescricaoTextBox = New System.Windows.Forms.TextBox()
-        Me.LucroTextBox = New System.Windows.Forms.TextBox()
         Me.FornecimentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FornecimentosDataGridView = New System.Windows.Forms.DataGridView()
         Me.Venda_de_produtoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -59,6 +58,7 @@ Partial Class Produtos
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.LucroNumericUpDown = New System.Windows.Forms.NumericUpDown()
         IDLabel = New System.Windows.Forms.Label()
         NomeLabel = New System.Windows.Forms.Label()
         DescricaoLabel = New System.Windows.Forms.Label()
@@ -69,6 +69,7 @@ Partial Class Produtos
         CType(Me.FornecimentosDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Venda_de_produtoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Venda_de_produtoDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LucroNumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'IDLabel
@@ -172,15 +173,6 @@ Partial Class Produtos
         Me.DescricaoTextBox.Size = New System.Drawing.Size(276, 75)
         Me.DescricaoTextBox.TabIndex = 5
         '
-        'LucroTextBox
-        '
-        Me.LucroTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProdutosBindingSource, "Lucro", True))
-        Me.LucroTextBox.Location = New System.Drawing.Point(162, 176)
-        Me.LucroTextBox.Name = "LucroTextBox"
-        Me.LucroTextBox.Size = New System.Drawing.Size(143, 26)
-        Me.LucroTextBox.TabIndex = 7
-        Me.LucroTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
         'FornecimentosBindingSource
         '
         Me.FornecimentosBindingSource.DataMember = "ProdutosFornecimentos"
@@ -219,7 +211,7 @@ Partial Class Produtos
         '
         'Button9
         '
-        Me.Button9.Location = New System.Drawing.Point(199, 254)
+        Me.Button9.Location = New System.Drawing.Point(27, 254)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(166, 47)
         Me.Button9.TabIndex = 25
@@ -228,7 +220,7 @@ Partial Class Produtos
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(27, 254)
+        Me.Button8.Location = New System.Drawing.Point(199, 254)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(166, 47)
         Me.Button8.TabIndex = 24
@@ -379,11 +371,23 @@ Partial Class Produtos
         Me.Label1.TabIndex = 26
         Me.Label1.Text = "€"
         '
+        'LucroNumericUpDown
+        '
+        Me.LucroNumericUpDown.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ProdutosBindingSource, "Lucro", True))
+        Me.LucroNumericUpDown.DecimalPlaces = 2
+        Me.LucroNumericUpDown.Increment = New Decimal(New Integer() {10, 0, 0, 131072})
+        Me.LucroNumericUpDown.Location = New System.Drawing.Point(162, 178)
+        Me.LucroNumericUpDown.Name = "LucroNumericUpDown"
+        Me.LucroNumericUpDown.Size = New System.Drawing.Size(142, 26)
+        Me.LucroNumericUpDown.TabIndex = 27
+        Me.LucroNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'Produtos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1627, 388)
+        Me.ClientSize = New System.Drawing.Size(1637, 396)
+        Me.Controls.Add(Me.LucroNumericUpDown)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.Button8)
@@ -394,7 +398,6 @@ Partial Class Produtos
         Me.Controls.Add(Me.Venda_de_produtoDataGridView)
         Me.Controls.Add(Me.FornecimentosDataGridView)
         Me.Controls.Add(LucroLabel)
-        Me.Controls.Add(Me.LucroTextBox)
         Me.Controls.Add(DescricaoLabel)
         Me.Controls.Add(Me.DescricaoTextBox)
         Me.Controls.Add(NomeLabel)
@@ -409,6 +412,7 @@ Partial Class Produtos
         CType(Me.FornecimentosDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Venda_de_produtoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Venda_de_produtoDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LucroNumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -422,7 +426,6 @@ Partial Class Produtos
     Friend WithEvents FornecimentosTableAdapter As Industries_DanDataSetTableAdapters.FornecimentosTableAdapter
     Friend WithEvents NomeTextBox As TextBox
     Friend WithEvents DescricaoTextBox As TextBox
-    Friend WithEvents LucroTextBox As TextBox
     Friend WithEvents FornecimentosBindingSource As BindingSource
     Friend WithEvents FornecimentosDataGridView As DataGridView
     Friend WithEvents Venda_de_produtoTableAdapter As Industries_DanDataSetTableAdapters.Venda_de_produtoTableAdapter
@@ -446,4 +449,5 @@ Partial Class Produtos
     Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
     Friend WithEvents Label1 As Label
+    Friend WithEvents LucroNumericUpDown As NumericUpDown
 End Class
