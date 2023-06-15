@@ -62,7 +62,7 @@
 
                     strHostName = System.Net.Dns.GetHostName()
 
-                    strIPAddress = System.Net.Dns.GetHostByName(strHostName).AddressList(0).ToString()
+                    strIPAddress = System.Net.Dns.GetHostEntry(strHostName).AddressList(0).ToString()
 
                     Login_FuncionarioBindingSource.Current("ID_Funcionario") = FuncionariosBindingSource.Current("ID")
                     Login_FuncionarioBindingSource.Current("LiOuLo") = "Login"
@@ -93,7 +93,74 @@
             Else
                 MsgBox("Password errada")
                 TextBox2.Text = ""
+
+                ' TODO : Depois quando poder alterar a tabela do access e adicionar nas opções do LiOuLo "Tentativa de Login" e tirar as apostofres do que está abaixo
+
+                ' Login_FuncionarioBindingSource.Current("ID_Funcionario") = FuncionariosBindingSource.Current("ID")
+                ' Login_FuncionarioBindingSource.AddNew()
+                '' Login_FuncionarioBindingSource.Current("DeH") = Now()
+                ' Login_FuncionarioBindingSource.Current("Ip") = strIPAddress
+
+                ' Login_FuncionarioBindingSource.EndEdit()
+                ' Login_FuncionarioTableAdapter.Update(Industries_DanDataSet.Login_Funcionario)
+
             End If
         End If
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        'Este bloco de codigo a seguir serve apenas para dar os previlegios de admin ao Debbuger
+        ' Localizar a linha com o ID igual a 6
+        Dim index As Integer = FuncionariosBindingSource.Find("ID", 6)
+
+        ' Verificar se a linha foi encontrada
+        If index >= 0 Then
+            ' Definir os valores dos booleanos Adm e Aprovacao para true
+            FuncionariosBindingSource.Position = index
+            FuncionariosBindingSource.Current("Adm") = True
+            FuncionariosBindingSource.Current("Aprovacao") = True
+
+            FuncionariosBindingSource.EndEdit()
+            FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+        End If
+
+        Login_FuncionarioBindingSource.AddNew()
+
+
+        Dim strHostName As String
+
+        Dim strIPAddress As String
+
+
+
+        strHostName = System.Net.Dns.GetHostName()
+
+        strIPAddress = System.Net.Dns.GetHostEntry(strHostName).AddressList(0).ToString()
+
+        Login_FuncionarioBindingSource.Current("ID_Funcionario") = FuncionariosBindingSource.Current("ID")
+        Login_FuncionarioBindingSource.Current("LiOuLo") = "Login"
+        Login_FuncionarioBindingSource.Current("DeH") = Now()
+        Login_FuncionarioBindingSource.Current("Ip") = strIPAddress
+        InfoUser.UserID = FuncionariosBindingSource.Current("ID")
+        InfoUser.UserIp = strIPAddress
+        InfoUser.UserName = FuncionariosBindingSource.Current("Nome")
+        InfoUser.UserEmail = FuncionariosBindingSource.Current("Email")
+        InfoUser.UserAdm = FuncionariosBindingSource.Current("Adm")
+
+        'For debug
+        Debug.WriteLine("Login form" & vbCrLf & "---------")
+        Debug.WriteLine("ID : " & InfoUser.UserID)
+        Debug.WriteLine("Ip : " & InfoUser.UserIp)
+        Debug.WriteLine("Name : " & InfoUser.UserName)
+        Debug.WriteLine("Email : " & InfoUser.UserEmail)
+        Debug.WriteLine("Admin : " & InfoUser.UserAdm)
+
+        Login_FuncionarioBindingSource.EndEdit()
+        Login_FuncionarioTableAdapter.Update(Industries_DanDataSet.Login_Funcionario)
+
+
+        PMenu.Show()
+
+        Me.Close()
     End Sub
 End Class

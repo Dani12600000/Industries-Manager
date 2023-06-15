@@ -4,7 +4,7 @@
         Me.Login_FuncionarioTableAdapter.Fill(Me.Industries_DanDataSet.Login_Funcionario)
 
 
-        Dim IG As String
+        Dim IG As String = ""
         If Hour(Now) >= 5 And Hour(Now) < 12 Then
             IG = "Bom dia"
         ElseIf Hour(Now) >= 12 And Hour(Now) < 21 Then

@@ -35,6 +35,7 @@ Partial Class Login
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Login_FuncionarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Login_FuncionarioTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Login_FuncionarioTableAdapter()
+        Me.Button2 = New System.Windows.Forms.Button()
         EmailLabel = New System.Windows.Forms.Label()
         PassLabel = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -147,11 +148,23 @@ Partial Class Login
         '
         Me.Login_FuncionarioTableAdapter.ClearBeforeFill = True
         '
+        'Button2
+        '
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.Button2.Location = New System.Drawing.Point(303, 266)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(138, 35)
+        Me.Button2.TabIndex = 8
+        Me.Button2.Text = "Enter Debug"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(454, 315)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.LinkLabel1)
@@ -180,4 +193,5 @@ Partial Class Login
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Login_FuncionarioBindingSource As BindingSource
     Friend WithEvents Login_FuncionarioTableAdapter As Industries_DanDataSetTableAdapters.Login_FuncionarioTableAdapter
+    Friend WithEvents Button2 As Button
 End Class

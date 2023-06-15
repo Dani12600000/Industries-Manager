@@ -95,4 +95,15 @@
             acabarAlteracoes()
         End If
     End Sub
+
+    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
+        Vendas.Show()
+        Vendas.Nova_Venda(MailTextBox.Text)
+    End Sub
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        VendasBindingSource.RemoveCurrent()
+
+        VendasTableAdapter.Update(Industries_DanDataSet.Vendas)
+    End Sub
 End Class
