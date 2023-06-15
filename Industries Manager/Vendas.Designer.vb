@@ -131,7 +131,7 @@ Partial Class Vendas
         Me.Venda_de_produtoDataGridView.Name = "Venda_de_produtoDataGridView"
         Me.Venda_de_produtoDataGridView.RowHeadersWidth = 62
         Me.Venda_de_produtoDataGridView.RowTemplate.Height = 28
-        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(850, 220)
+        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(850, 328)
         Me.Venda_de_produtoDataGridView.TabIndex = 6
         '
         'DataGridViewTextBoxColumn3
