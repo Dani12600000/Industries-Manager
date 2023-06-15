@@ -158,6 +158,7 @@ Partial Class Login
         Me.Button2.TabIndex = 8
         Me.Button2.Text = "Enter Debug"
         Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.Visible = False
         '
         'Login
         '

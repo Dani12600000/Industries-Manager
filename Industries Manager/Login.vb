@@ -1,6 +1,8 @@
 ﻿Public Class Login
     Public Nome As String
     Dim ID As Integer
+    Dim strHostName As String
+    Dim strIPAddress As String
     Private Sub FuncionariosBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.FuncionariosBindingSource.EndEdit()
@@ -13,6 +15,28 @@
         Me.Login_FuncionarioTableAdapter.Fill(Me.Industries_DanDataSet.Login_Funcionario)
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Funcionarios'. Você pode movê-la ou removê-la conforme necessário.
         Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
+
+
+
+        strHostName = System.Net.Dns.GetHostName()
+
+        strIPAddress = System.Net.Dns.GetHostEntry(strHostName).AddressList(0).ToString()
+
+        Debug.WriteLine("IP : " & strIPAddress)
+
+        Dim index As Integer = Login_FuncionarioBindingSource.Find("Ip", strIPAddress)
+        If index >= 0 Then
+            Login_FuncionarioBindingSource.Position = index
+            Debug.WriteLine("Posição login : " & index)
+            Dim ID_Funcionario = Login_FuncionarioBindingSource.Current("ID_Funcionario")
+            index = FuncionariosBindingSource.Find("ID", ID_Funcionario)
+            FuncionariosBindingSource.Position = index
+            Debug.WriteLine("Posição utilizador : " & index)
+            If FuncionariosBindingSource.Current("Adm") Then
+                Button2.Visible = True
+            End If
+            Debug.WriteLine("Admin : " & FuncionariosBindingSource.Current("Adm"))
+        End If
 
     End Sub
 
@@ -53,16 +77,6 @@
                     Nome = FuncionariosBindingSource.Current("Nome")
                     ID = FuncionariosBindingSource.Current("ID")
                     Login_FuncionarioBindingSource.AddNew()
-
-                    Dim strHostName As String
-
-                    Dim strIPAddress As String
-
-
-
-                    strHostName = System.Net.Dns.GetHostName()
-
-                    strIPAddress = System.Net.Dns.GetHostEntry(strHostName).AddressList(0).ToString()
 
                     Login_FuncionarioBindingSource.Current("ID_Funcionario") = FuncionariosBindingSource.Current("ID")
                     Login_FuncionarioBindingSource.Current("LiOuLo") = "Login"
@@ -125,17 +139,6 @@
         End If
 
         Login_FuncionarioBindingSource.AddNew()
-
-
-        Dim strHostName As String
-
-        Dim strIPAddress As String
-
-
-
-        strHostName = System.Net.Dns.GetHostName()
-
-        strIPAddress = System.Net.Dns.GetHostEntry(strHostName).AddressList(0).ToString()
 
         Login_FuncionarioBindingSource.Current("ID_Funcionario") = FuncionariosBindingSource.Current("ID")
         Login_FuncionarioBindingSource.Current("LiOuLo") = "Login"
