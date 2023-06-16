@@ -1,4 +1,5 @@
 ﻿Public Class Vendas
+    Dim PrecoTotalCadaProd, SubTotal As Double
 
     Private Sub Vendas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Produtos'. Você pode movê-la ou removê-la conforme necessário.
@@ -8,8 +9,7 @@
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Vendas' table. You can move, or remove it, as needed.
         Me.VendasTableAdapter.Fill(Me.Industries_DanDataSet.Vendas)
 
-        Mail_ClienteTextBox.Enabled = False
-        TotalTextBox.ReadOnly = True
+        QuantidadeNumericUpDown.Value = 1
     End Sub
 
     Sub Nova_Venda(email As String)
@@ -21,5 +21,47 @@
 
     Private Sub ID_ProdutoComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ID_ProdutoComboBox.SelectedIndexChanged
 
+        Try
+
+            Debug.WriteLine("ID_ProdutoComboBox.Text: " & ID_ProdutoComboBox.Text)
+
+            ProdutosBindingSource.Position = ProdutosBindingSource.Find("Nome", ID_ProdutoComboBox.Text)
+
+            Debug.WriteLine("Current Produto name : " & ProdutosBindingSource.Current("Nome"))
+            Debug.WriteLine("Current Produto Dinheiro Gasto : " & ProdutosBindingSource.Current("DG"))
+            Debug.WriteLine("Current Produto Lucro : " & ProdutosBindingSource.Current("Lucro"))
+
+            PrecoTotalCadaProd = ProdutosBindingSource.Current("DG") + ProdutosBindingSource.Current("Lucro")
+
+            Debug.WriteLine("Current Produto soma Dinheiro Gasto e Lucro : " & PrecoTotalCadaProd & "€")
+
+
+
+            PCTextBox.Text = PrecoTotalCadaProd & "€"
+
+            SubTotal = PrecoTotalCadaProd * QuantidadeNumericUpDown.Value
+            SubtotalTextBox.Text = SubTotal & "€"
+        Catch
+
+        End Try
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Venda_de_produtoBindingSource.AddNew()
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        ID_ProdutoComboBox.SelectedIndex = -1
+        QuantidadeNumericUpDown.Value = 1
+        PCTextBox.Text = ""
+        SubtotalTextBox.Text = ""
+    End Sub
+
+    Private Sub QuantidadeNumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles QuantidadeNumericUpDown.ValueChanged
+        If PCTextBox.Text <> "" Then
+            SubTotal = PrecoTotalCadaProd * QuantidadeNumericUpDown.Value
+            SubtotalTextBox.Text = SubTotal & "€"
+        End If
     End Sub
 End Class
