@@ -108,15 +108,17 @@
                 MsgBox("Password errada")
                 TextBox2.Text = ""
 
-                ' TODO : Depois quando poder alterar a tabela do access e adicionar nas opções do LiOuLo "Tentativa de Login" e tirar as apostofres do que está abaixo
+                Debug.WriteLine("ID_Funcionario : " & FuncionariosBindingSource.Current("ID"))
+                Debug.WriteLine("LiOuLo : " & "Tentativa de Login")
 
-                ' Login_FuncionarioBindingSource.Current("ID_Funcionario") = FuncionariosBindingSource.Current("ID")
-                ' Login_FuncionarioBindingSource.AddNew()
-                '' Login_FuncionarioBindingSource.Current("DeH") = Now()
-                ' Login_FuncionarioBindingSource.Current("Ip") = strIPAddress
+                Login_FuncionarioBindingSource.AddNew()
+                Login_FuncionarioBindingSource.Current("ID_Funcionario") = FuncionariosBindingSource.Current("ID")
+                Login_FuncionarioBindingSource.Current("LiOuLo") = "Tentativa de Login"
+                Login_FuncionarioBindingSource.Current("DeH") = Now()
+                Login_FuncionarioBindingSource.Current("Ip") = strIPAddress
 
-                ' Login_FuncionarioBindingSource.EndEdit()
-                ' Login_FuncionarioTableAdapter.Update(Industries_DanDataSet.Login_Funcionario)
+                Login_FuncionarioBindingSource.EndEdit()
+                Login_FuncionarioTableAdapter.Update(Industries_DanDataSet.Login_Funcionario)
 
             End If
         End If

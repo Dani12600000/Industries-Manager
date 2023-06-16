@@ -189,7 +189,6 @@ Partial Class Vendas
         ID_ProdutoLabel.Size = New System.Drawing.Size(69, 20)
         ID_ProdutoLabel.TabIndex = 6
         ID_ProdutoLabel.Text = "Produto:"
-        AddHandler ID_ProdutoLabel.Click, AddressOf Me.ID_ProdutoLabel_Click
         '
         'ID_ProdutoComboBox
         '

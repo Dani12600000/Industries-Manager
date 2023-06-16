@@ -20,6 +20,6 @@
     End Sub
 
     Private Sub ID_ProdutoComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ID_ProdutoComboBox.SelectedIndexChanged
-        ProdutosBindingSource.Current("")
+
     End Sub
 End Class
