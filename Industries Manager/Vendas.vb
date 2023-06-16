@@ -1,6 +1,10 @@
 ﻿Imports Industries_Manager.Industries_DanDataSetTableAdapters
 
 Public Class Vendas
+    Dim ExIDVenda, ExIDProd, ExQuant As Integer
+    Dim ExPC, ExSubtotal As Double
+
+
     Dim PrecoTotalCadaProd, SubTotal As Double
 
     Private Sub Vendas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -64,6 +68,12 @@ Public Class Vendas
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
 
+        ExIDVenda = Venda_de_produtoBindingSource.Current("ID_Venda")
+        'CONTINUAR AQUI
+        ExIDProd =
+        ExQuant =
+        ExPC =
+        ExSubtotal =
 
 
         Venda_de_produtoBindingSource.AddNew()

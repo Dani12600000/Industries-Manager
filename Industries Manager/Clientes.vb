@@ -98,10 +98,7 @@
 
     Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
         Vendas.Show()
-        Vendas.VendasBindingSource.AddNew()
         Vendas.Nova_Venda(MailTextBox.Text)
-
-        Vendas.VendasBindingSource.Current("Mail_Cliente") = MailTextBox.Text
         Vendas.VendasBindingSource.Current("DDC") = Today()
         Vendas.VendasBindingSource.Current("Total") = 0
     End Sub
