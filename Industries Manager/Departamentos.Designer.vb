@@ -47,10 +47,6 @@ Partial Class Departamentos
         Me.Button5 = New System.Windows.Forms.Button()
         Me.FuncionariosBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.FuncionariosDataGridView = New System.Windows.Forms.DataGridView()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.Button9 = New System.Windows.Forms.Button()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -58,6 +54,10 @@ Partial Class Departamentos
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Button9 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.ID_FuncionarioTextBox = New System.Windows.Forms.TextBox()
         Me.DepartamentosDiretoresDeDepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -241,12 +241,13 @@ Partial Class Departamentos
         '
         'Button5
         '
+        Me.Button5.BackColor = System.Drawing.Color.RosyBrown
         Me.Button5.Location = New System.Drawing.Point(1166, 71)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(147, 32)
         Me.Button5.TabIndex = 15
         Me.Button5.Text = "Despedir"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.Button5.UseVisualStyleBackColor = False
         '
         'FuncionariosBindingSource1
         '
@@ -261,9 +262,73 @@ Partial Class Departamentos
         Me.FuncionariosDataGridView.DataSource = Me.FuncionariosBindingSource1
         Me.FuncionariosDataGridView.Location = New System.Drawing.Point(493, 134)
         Me.FuncionariosDataGridView.Name = "FuncionariosDataGridView"
+        Me.FuncionariosDataGridView.RowHeadersWidth = 62
         Me.FuncionariosDataGridView.RowTemplate.Height = 28
         Me.FuncionariosDataGridView.Size = New System.Drawing.Size(1042, 304)
         Me.FuncionariosDataGridView.TabIndex = 15
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 50
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Nome"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Nome"
+        Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Width = 150
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Sobrenome"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Sobrenome"
+        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Width = 150
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Email"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Email"
+        Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.DataGridViewTextBoxColumn4.Width = 150
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "SI"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Salario"
+        Me.DataGridViewTextBoxColumn8.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
+        Me.DataGridViewTextBoxColumn8.Width = 150
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "DDEDE"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "Entrada"
+        Me.DataGridViewTextBoxColumn9.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        Me.DataGridViewTextBoxColumn9.Width = 150
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "DDSDE"
+        Me.DataGridViewTextBoxColumn10.HeaderText = "Saida"
+        Me.DataGridViewTextBoxColumn10.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.ReadOnly = True
+        Me.DataGridViewTextBoxColumn10.Width = 150
         '
         'Button6
         '
@@ -286,71 +351,22 @@ Partial Class Departamentos
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(31, 316)
+        Me.Button8.BackColor = System.Drawing.Color.IndianRed
+        Me.Button8.Location = New System.Drawing.Point(203, 316)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(166, 47)
         Me.Button8.TabIndex = 18
         Me.Button8.Text = "Remover"
-        Me.Button8.UseVisualStyleBackColor = True
+        Me.Button8.UseVisualStyleBackColor = False
         '
         'Button9
         '
-        Me.Button9.Location = New System.Drawing.Point(203, 316)
+        Me.Button9.Location = New System.Drawing.Point(31, 316)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(166, 47)
         Me.Button9.TabIndex = 19
         Me.Button9.Text = "Novo"
         Me.Button9.UseVisualStyleBackColor = True
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 50
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Nome"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Nome"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Sobrenome"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Sobrenome"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Email"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Email"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "SI"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Salario"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "DDEDE"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "Entrada"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "DDSDE"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "Saida"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.ReadOnly = True
         '
         'Button10
         '

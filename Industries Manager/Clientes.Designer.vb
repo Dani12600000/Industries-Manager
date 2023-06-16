@@ -38,6 +38,9 @@ Partial Class Clientes
         Me.SobrenomeTextBox = New System.Windows.Forms.TextBox()
         Me.VendasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VendasDataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -65,9 +68,6 @@ Partial Class Clientes
         Me.Subtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button11 = New System.Windows.Forms.Button()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button12 = New System.Windows.Forms.Button()
         MailLabel = New System.Windows.Forms.Label()
@@ -230,6 +230,33 @@ Partial Class Clientes
         Me.VendasDataGridView.RowHeadersWidth = 62
         Me.VendasDataGridView.Size = New System.Drawing.Size(446, 335)
         Me.VendasDataGridView.TabIndex = 13
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 50
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "DDC"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Data da compra"
+        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Width = 95
+        '
+        'Total
+        '
+        Me.Total.DataPropertyName = "Total"
+        Me.Total.HeaderText = "Total"
+        Me.Total.MinimumWidth = 8
+        Me.Total.Name = "Total"
+        Me.Total.ReadOnly = True
+        Me.Total.Width = 85
         '
         'Button1
         '
@@ -461,48 +488,23 @@ Partial Class Clientes
         '
         'Button11
         '
+        Me.Button11.BackColor = System.Drawing.Color.IndianRed
         Me.Button11.Location = New System.Drawing.Point(240, 401)
         Me.Button11.Name = "Button11"
         Me.Button11.Size = New System.Drawing.Size(144, 47)
         Me.Button11.TabIndex = 27
         Me.Button11.Text = "Remover"
-        Me.Button11.UseVisualStyleBackColor = True
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 50
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "DDC"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Data da compra"
-        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 95
-        '
-        'Total
-        '
-        Me.Total.DataPropertyName = "Total"
-        Me.Total.HeaderText = "Total"
-        Me.Total.MinimumWidth = 8
-        Me.Total.Name = "Total"
-        Me.Total.ReadOnly = True
-        Me.Total.Width = 85
+        Me.Button11.UseVisualStyleBackColor = False
         '
         'Button9
         '
+        Me.Button9.BackColor = System.Drawing.Color.IndianRed
         Me.Button9.Location = New System.Drawing.Point(773, 401)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(144, 47)
         Me.Button9.TabIndex = 29
         Me.Button9.Text = "Remover"
-        Me.Button9.UseVisualStyleBackColor = True
+        Me.Button9.UseVisualStyleBackColor = False
         '
         'Button12
         '

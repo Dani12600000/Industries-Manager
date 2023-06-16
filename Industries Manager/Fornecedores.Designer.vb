@@ -234,6 +234,7 @@ Partial Class Fornecedores
         Me.FornecimentosDataGridView.DataSource = Me.FornecimentosBindingSource
         Me.FornecimentosDataGridView.Location = New System.Drawing.Point(503, 61)
         Me.FornecimentosDataGridView.Name = "FornecimentosDataGridView"
+        Me.FornecimentosDataGridView.RowHeadersWidth = 62
         Me.FornecimentosDataGridView.RowTemplate.Height = 28
         Me.FornecimentosDataGridView.Size = New System.Drawing.Size(774, 404)
         Me.FornecimentosDataGridView.TabIndex = 12
@@ -242,6 +243,7 @@ Partial Class Fornecedores
         '
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
         Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Width = 50
@@ -250,6 +252,7 @@ Partial Class Fornecedores
         '
         Me.DataGridViewTextBoxColumn2.DataPropertyName = "Data"
         Me.DataGridViewTextBoxColumn2.HeaderText = "Data"
+        Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
         Me.DataGridViewTextBoxColumn2.Width = 70
@@ -260,6 +263,7 @@ Partial Class Fornecedores
         Me.DataGridViewTextBoxColumn4.DataSource = Me.ProdutosBindingSource
         Me.DataGridViewTextBoxColumn4.DisplayMember = "Nome"
         Me.DataGridViewTextBoxColumn4.HeaderText = "Produto"
+        Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
         Me.DataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
@@ -276,6 +280,7 @@ Partial Class Fornecedores
         '
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "PCP"
         Me.DataGridViewTextBoxColumn5.HeaderText = "Preço un"
+        Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
         Me.DataGridViewTextBoxColumn5.Width = 60
@@ -284,6 +289,7 @@ Partial Class Fornecedores
         '
         Me.DataGridViewTextBoxColumn6.DataPropertyName = "Quantidade"
         Me.DataGridViewTextBoxColumn6.HeaderText = "Quantidade"
+        Me.DataGridViewTextBoxColumn6.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
         Me.DataGridViewTextBoxColumn6.Width = 70
@@ -292,6 +298,7 @@ Partial Class Fornecedores
         '
         Me.DataGridViewTextBoxColumn7.DataPropertyName = "TG"
         Me.DataGridViewTextBoxColumn7.HeaderText = "Total"
+        Me.DataGridViewTextBoxColumn7.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
         Me.DataGridViewTextBoxColumn7.Width = 75
@@ -347,16 +354,17 @@ Partial Class Fornecedores
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(96, 355)
+        Me.Button5.BackColor = System.Drawing.Color.IndianRed
+        Me.Button5.Location = New System.Drawing.Point(226, 355)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(124, 47)
         Me.Button5.TabIndex = 18
         Me.Button5.Text = "Remover"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.Button5.UseVisualStyleBackColor = False
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(226, 355)
+        Me.Button6.Location = New System.Drawing.Point(96, 355)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(124, 47)
         Me.Button6.TabIndex = 19

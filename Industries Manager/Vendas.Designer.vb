@@ -51,6 +51,8 @@ Partial Class Vendas
         Me.ProdAdGroupBox = New System.Windows.Forms.GroupBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button3 = New System.Windows.Forms.Button()
         Mail_ClienteLabel = New System.Windows.Forms.Label()
         TotalLabel = New System.Windows.Forms.Label()
         ID_ProdutoLabel = New System.Windows.Forms.Label()
@@ -306,18 +308,41 @@ Partial Class Vendas
         '
         'Button2
         '
+        Me.Button2.BackColor = System.Drawing.SystemColors.ScrollBar
         Me.Button2.Location = New System.Drawing.Point(196, 178)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(178, 37)
         Me.Button2.TabIndex = 15
         Me.Button2.Text = "Limpar produto"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'Label1
+        '
+        Me.Label1.Location = New System.Drawing.Point(12, 342)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(391, 65)
+        Me.Label1.TabIndex = 15
+        Me.Label1.Text = "A venda é guardada automaticamente sempre que adiciona ou remove um produto da ve" &
+    "nda"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.Color.IndianRed
+        Me.Button3.Location = New System.Drawing.Point(417, 342)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(251, 51)
+        Me.Button3.TabIndex = 16
+        Me.Button3.Text = "Remover produto selecionado"
+        Me.Button3.UseVisualStyleBackColor = False
         '
         'Vendas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1280, 416)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ProdAdGroupBox)
         Me.Controls.Add(Me.Venda_de_produtoDataGridView)
         Me.Controls.Add(TotalLabel)
@@ -361,4 +386,6 @@ Partial Class Vendas
     Friend WithEvents ProdAdGroupBox As GroupBox
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Button3 As Button
 End Class

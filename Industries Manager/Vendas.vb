@@ -58,6 +58,10 @@
         SubtotalTextBox.Text = ""
     End Sub
 
+    Private Sub Button3_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
     Private Sub QuantidadeNumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles QuantidadeNumericUpDown.ValueChanged
         If PCTextBox.Text <> "" Then
             SubTotal = PrecoTotalCadaProd * QuantidadeNumericUpDown.Value

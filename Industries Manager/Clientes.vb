@@ -99,6 +99,8 @@
     Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
         Vendas.Show()
         Vendas.Nova_Venda(MailTextBox.Text)
+        Vendas.VendasBindingSource.AddNew()
+
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
