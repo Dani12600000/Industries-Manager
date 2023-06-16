@@ -49,8 +49,8 @@ Partial Class Vendas
         Me.ProdutosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProdutosTableAdapter()
         Me.QuantidadeNumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.ProdAdGroupBox = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
         Mail_ClienteLabel = New System.Windows.Forms.Label()
@@ -297,15 +297,6 @@ Partial Class Vendas
         Me.ProdAdGroupBox.TabStop = False
         Me.ProdAdGroupBox.Text = "Adicionar Produtos a compra"
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(12, 178)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(178, 37)
-        Me.Button1.TabIndex = 14
-        Me.Button1.Text = "Adicionar produto"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'Button2
         '
         Me.Button2.BackColor = System.Drawing.SystemColors.ScrollBar
@@ -315,6 +306,15 @@ Partial Class Vendas
         Me.Button2.TabIndex = 15
         Me.Button2.Text = "Limpar produto"
         Me.Button2.UseVisualStyleBackColor = False
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(12, 178)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(178, 37)
+        Me.Button1.TabIndex = 14
+        Me.Button1.Text = "Adicionar produto"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Label1
         '

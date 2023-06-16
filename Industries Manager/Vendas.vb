@@ -1,4 +1,6 @@
-﻿Public Class Vendas
+﻿Imports Industries_Manager.Industries_DanDataSetTableAdapters
+
+Public Class Vendas
     Dim PrecoTotalCadaProd, SubTotal As Double
 
     Private Sub Vendas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -10,6 +12,8 @@
         Me.VendasTableAdapter.Fill(Me.Industries_DanDataSet.Vendas)
 
         QuantidadeNumericUpDown.Value = 1
+
+
     End Sub
 
     Sub Nova_Venda(email As String)
@@ -46,11 +50,6 @@
         End Try
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Venda_de_produtoBindingSource.AddNew()
-
-    End Sub
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         ID_ProdutoComboBox.SelectedIndex = -1
         QuantidadeNumericUpDown.Value = 1
@@ -60,6 +59,18 @@
 
     Private Sub Button3_Click(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+
+
+
+        Venda_de_produtoBindingSource.AddNew()
+
+
+        VendasBindingSource.EndEdit()
+        VendasTableAdapter.Update(Industries_DanDataSet.Vendas)
     End Sub
 
     Private Sub QuantidadeNumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles QuantidadeNumericUpDown.ValueChanged
