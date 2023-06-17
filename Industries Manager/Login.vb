@@ -10,6 +10,7 @@
 
     End Sub
 
+    <Obsolete>
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Login_Funcionario'. Você pode movê-la ou removê-la conforme necessário.
         Me.Login_FuncionarioTableAdapter.Fill(Me.Industries_DanDataSet.Login_Funcionario)
@@ -20,7 +21,7 @@
 
         strHostName = System.Net.Dns.GetHostName()
 
-        strIPAddress = System.Net.Dns.GetHostEntry(strHostName).AddressList(0).ToString()
+        strIPAddress = System.Net.Dns.GetHostByName(strHostName).AddressList(0).ToString()
 
         Debug.WriteLine("IP : " & strIPAddress)
 

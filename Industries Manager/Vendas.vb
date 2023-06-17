@@ -35,7 +35,8 @@ Public Class Vendas
 
             ProdutosBindingSource.Position = ProdutosBindingSource.Find("Nome", ID_ProdutoComboBox.Text)
 
-            Debug.WriteLine("Current Produto name : " & ProdutosBindingSource.Current("Nome"))
+            Debug.WriteLine("Current Produto ID : " & ProdutosBindingSource.Current("ID"))
+            Debug.WriteLine("Current Produto Nome : " & ProdutosBindingSource.Current("Nome"))
             Debug.WriteLine("Current Produto Dinheiro Gasto : " & ProdutosBindingSource.Current("DG"))
             Debug.WriteLine("Current Produto Lucro : " & ProdutosBindingSource.Current("Lucro"))
 
@@ -67,13 +68,22 @@ Public Class Vendas
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
+        'If VendasBindingSource.Current("ID") <= -1 Then
+        'VendasBindingSource.
+        'End If
 
-        ExIDVenda = Venda_de_produtoBindingSource.Current("ID_Venda")
+        Debug.Close()
+        Debug.WriteLine("Saida para introdução de um novo produto")
+        Debug.WriteLine("----------------------------------------")
+        Debug.WriteLine("VendasBindingSource.Current(""ID"") : " & VendasBindingSource.Current("ID"))
+
+
+        ExIDVenda = VendasBindingSource.Current("ID")
         'CONTINUAR AQUI
-        ExIDProd =
-        ExQuant =
-        ExPC =
-        ExSubtotal =
+        'ExIDProd = ID_ProdutoComboBox.Text
+        'ExQuant =
+        'ExPC =
+        'ExSubtotal = 
 
 
         Venda_de_produtoBindingSource.AddNew()
