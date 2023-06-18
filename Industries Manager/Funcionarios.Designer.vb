@@ -257,15 +257,20 @@ Partial Class Funcionarios
         '
         'Login_FuncionarioDataGridView
         '
+        Me.Login_FuncionarioDataGridView.AllowUserToAddRows = False
+        Me.Login_FuncionarioDataGridView.AllowUserToDeleteRows = False
+        Me.Login_FuncionarioDataGridView.AllowUserToResizeColumns = False
+        Me.Login_FuncionarioDataGridView.AllowUserToResizeRows = False
         Me.Login_FuncionarioDataGridView.AutoGenerateColumns = False
         Me.Login_FuncionarioDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Login_FuncionarioDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5})
         Me.Login_FuncionarioDataGridView.DataSource = Me.Login_FuncionarioBindingSource
         Me.Login_FuncionarioDataGridView.Location = New System.Drawing.Point(460, 51)
         Me.Login_FuncionarioDataGridView.Name = "Login_FuncionarioDataGridView"
+        Me.Login_FuncionarioDataGridView.ReadOnly = True
         Me.Login_FuncionarioDataGridView.RowHeadersWidth = 62
         Me.Login_FuncionarioDataGridView.RowTemplate.Height = 28
-        Me.Login_FuncionarioDataGridView.Size = New System.Drawing.Size(761, 561)
+        Me.Login_FuncionarioDataGridView.Size = New System.Drawing.Size(714, 561)
         Me.Login_FuncionarioDataGridView.TabIndex = 15
         '
         'Button5
@@ -422,7 +427,7 @@ Partial Class Funcionarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1241, 632)
+        Me.ClientSize = New System.Drawing.Size(1186, 632)
         Me.Controls.Add(Me.Button8)
         Me.Controls.Add(Me.DDSDELabel)
         Me.Controls.Add(Me.DDEDELabel)

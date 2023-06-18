@@ -339,6 +339,7 @@
             ArmazenarValoresEnabled()
             DefinirBotoesComoFalse()
 
+            Button8.Enabled = True
             SINumericUpDown.Enabled = True
             Button8.Text = "Guardar"
 
