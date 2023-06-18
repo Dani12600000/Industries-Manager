@@ -348,6 +348,10 @@
             FuncionariosBindingSource.EndEdit()
             FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
 
+            Button8.Text = "Editar"
+            SINumericUpDown.Enabled = False
+
+            RestaurarValoresEnabled()
 
         End If
     End Sub

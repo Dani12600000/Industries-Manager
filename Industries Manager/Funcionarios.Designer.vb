@@ -62,6 +62,8 @@ Partial Class Funcionarios
         Me.DDEDELabel = New System.Windows.Forms.Label()
         Me.DDSDELabel = New System.Windows.Forms.Label()
         Me.Button8 = New System.Windows.Forms.Button()
+        Me.Button9 = New System.Windows.Forms.Button()
+        Me.Button10 = New System.Windows.Forms.Button()
         NomeLabel = New System.Windows.Forms.Label()
         SobrenomeLabel = New System.Windows.Forms.Label()
         FotoLabel = New System.Windows.Forms.Label()
@@ -199,14 +201,14 @@ Partial Class Funcionarios
         Me.ID_ProfissãoComboBox.FormattingEnabled = True
         Me.ID_ProfissãoComboBox.Location = New System.Drawing.Point(97, 345)
         Me.ID_ProfissãoComboBox.Name = "ID_ProfissãoComboBox"
-        Me.ID_ProfissãoComboBox.Size = New System.Drawing.Size(328, 28)
+        Me.ID_ProfissãoComboBox.Size = New System.Drawing.Size(323, 28)
         Me.ID_ProfissãoComboBox.TabIndex = 9
         Me.ID_ProfissãoComboBox.ValueMember = "Profissao"
         '
         'SILabel
         '
         SILabel.AutoSize = True
-        SILabel.Location = New System.Drawing.Point(12, 384)
+        SILabel.Location = New System.Drawing.Point(12, 386)
         SILabel.Name = "SILabel"
         SILabel.Size = New System.Drawing.Size(104, 20)
         SILabel.TabIndex = 10
@@ -218,7 +220,7 @@ Partial Class Funcionarios
         Me.SINumericUpDown.DecimalPlaces = 2
         Me.SINumericUpDown.Enabled = False
         Me.SINumericUpDown.Increment = New Decimal(New Integer() {15, 0, 0, 0})
-        Me.SINumericUpDown.Location = New System.Drawing.Point(122, 382)
+        Me.SINumericUpDown.Location = New System.Drawing.Point(122, 384)
         Me.SINumericUpDown.Maximum = New Decimal(New Integer() {100000000, 0, 0, 0})
         Me.SINumericUpDown.Minimum = New Decimal(New Integer() {74083, 0, 0, 131072})
         Me.SINumericUpDown.Name = "SINumericUpDown"
@@ -232,15 +234,15 @@ Partial Class Funcionarios
         '
         Me.DDEDEDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FuncionariosBindingSource, "DDEDE", True))
         Me.DDEDEDateTimePicker.Enabled = False
-        Me.DDEDEDateTimePicker.Location = New System.Drawing.Point(125, 415)
+        Me.DDEDEDateTimePicker.Location = New System.Drawing.Point(125, 422)
         Me.DDEDEDateTimePicker.Name = "DDEDEDateTimePicker"
-        Me.DDEDEDateTimePicker.Size = New System.Drawing.Size(280, 26)
+        Me.DDEDEDateTimePicker.Size = New System.Drawing.Size(295, 26)
         Me.DDEDEDateTimePicker.TabIndex = 13
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(313, 384)
+        Me.Label1.Location = New System.Drawing.Point(313, 389)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(18, 20)
         Me.Label1.TabIndex = 14
@@ -270,7 +272,7 @@ Partial Class Funcionarios
         Me.Login_FuncionarioDataGridView.ReadOnly = True
         Me.Login_FuncionarioDataGridView.RowHeadersWidth = 62
         Me.Login_FuncionarioDataGridView.RowTemplate.Height = 28
-        Me.Login_FuncionarioDataGridView.Size = New System.Drawing.Size(714, 561)
+        Me.Login_FuncionarioDataGridView.Size = New System.Drawing.Size(714, 498)
         Me.Login_FuncionarioDataGridView.TabIndex = 15
         '
         'Button5
@@ -323,9 +325,9 @@ Partial Class Funcionarios
         '
         Me.DDSDEDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FuncionariosBindingSource, "DDSDE", True))
         Me.DDSDEDateTimePicker.Enabled = False
-        Me.DDSDEDateTimePicker.Location = New System.Drawing.Point(125, 447)
+        Me.DDSDEDateTimePicker.Location = New System.Drawing.Point(125, 454)
         Me.DDSDEDateTimePicker.Name = "DDSDEDateTimePicker"
-        Me.DDSDEDateTimePicker.Size = New System.Drawing.Size(280, 26)
+        Me.DDSDEDateTimePicker.Size = New System.Drawing.Size(295, 26)
         Me.DDSDEDateTimePicker.TabIndex = 26
         '
         'Button6
@@ -344,6 +346,7 @@ Partial Class Funcionarios
         Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Width = 45
         '
         'DataGridViewTextBoxColumn3
@@ -352,6 +355,7 @@ Partial Class Funcionarios
         Me.DataGridViewTextBoxColumn3.HeaderText = "Data e hora"
         Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
         Me.DataGridViewTextBoxColumn3.Width = 125
         '
         'DataGridViewTextBoxColumn4
@@ -360,6 +364,7 @@ Partial Class Funcionarios
         Me.DataGridViewTextBoxColumn4.HeaderText = "IP"
         Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
         '
         'DataGridViewTextBoxColumn5
         '
@@ -367,6 +372,7 @@ Partial Class Funcionarios
         Me.DataGridViewTextBoxColumn5.HeaderText = "Registo"
         Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
         Me.DataGridViewTextBoxColumn5.Width = 125
         '
         'ProfissõesBindingSource
@@ -382,7 +388,7 @@ Partial Class Funcionarios
         '
         Me.Button7.Location = New System.Drawing.Point(317, 301)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(108, 34)
+        Me.Button7.Size = New System.Drawing.Size(105, 34)
         Me.Button7.TabIndex = 28
         Me.Button7.Text = "Enviar mail"
         Me.Button7.UseVisualStyleBackColor = True
@@ -399,7 +405,7 @@ Partial Class Funcionarios
         'DDEDELabel
         '
         Me.DDEDELabel.AutoSize = True
-        Me.DDEDELabel.Location = New System.Drawing.Point(12, 420)
+        Me.DDEDELabel.Location = New System.Drawing.Point(12, 427)
         Me.DDEDELabel.Name = "DDEDELabel"
         Me.DDEDELabel.Size = New System.Drawing.Size(107, 20)
         Me.DDEDELabel.TabIndex = 30
@@ -408,7 +414,7 @@ Partial Class Funcionarios
         'DDSDELabel
         '
         Me.DDSDELabel.AutoSize = True
-        Me.DDSDELabel.Location = New System.Drawing.Point(26, 452)
+        Me.DDSDELabel.Location = New System.Drawing.Point(26, 459)
         Me.DDSDELabel.Name = "DDSDELabel"
         Me.DDSDELabel.Size = New System.Drawing.Size(90, 20)
         Me.DDSDELabel.TabIndex = 31
@@ -416,18 +422,40 @@ Partial Class Funcionarios
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(333, 378)
+        Me.Button8.Location = New System.Drawing.Point(333, 380)
         Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(92, 34)
+        Me.Button8.Size = New System.Drawing.Size(89, 34)
         Me.Button8.TabIndex = 32
         Me.Button8.Text = "Editar"
         Me.Button8.UseVisualStyleBackColor = True
+        '
+        'Button9
+        '
+        Me.Button9.Location = New System.Drawing.Point(552, 555)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(245, 57)
+        Me.Button9.TabIndex = 33
+        Me.Button9.Text = "Acessos hoje"
+        Me.Button9.UseVisualStyleBackColor = True
+        Me.Button9.Visible = False
+        '
+        'Button10
+        '
+        Me.Button10.Location = New System.Drawing.Point(803, 555)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(288, 57)
+        Me.Button10.TabIndex = 34
+        Me.Button10.Text = "Acessos de uma data especifica"
+        Me.Button10.UseVisualStyleBackColor = True
+        Me.Button10.Visible = False
         '
         'Funcionarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1186, 632)
+        Me.Controls.Add(Me.Button10)
+        Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.Button8)
         Me.Controls.Add(Me.DDSDELabel)
         Me.Controls.Add(Me.DDEDELabel)
@@ -504,4 +532,6 @@ Partial Class Funcionarios
     Friend WithEvents DDEDELabel As Label
     Friend WithEvents DDSDELabel As Label
     Friend WithEvents Button8 As Button
+    Friend WithEvents Button9 As Button
+    Friend WithEvents Button10 As Button
 End Class

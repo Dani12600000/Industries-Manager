@@ -104,8 +104,19 @@
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
-        VendasBindingSource.RemoveCurrent()
 
-        VendasTableAdapter.Update(Industries_DanDataSet.Vendas)
+        If MsgBox("Tem certeza que deseja remover essa venda?", vbYesNo, "Confirmação") = vbYes Then
+            Try
+                While Venda_de_produtoBindingSource.Find("ID_Venda", VendasBindingSource.Current("ID")) >= 0
+                    Venda_de_produtoBindingSource.RemoveAt(Venda_de_produtoBindingSource.Find("ID_Venda", VendasBindingSource.Current("ID")))
+                End While
+                Venda_de_produtoTableAdapter.Update(Industries_DanDataSet.Venda_de_produto)
+                VendasBindingSource.RemoveCurrent()
+                VendasTableAdapter.Update(Industries_DanDataSet.Vendas)
+                MsgBox("A venda foi removida com sucesso!", vbInformation, "Removido com sucesso")
+            Catch
+                MsgBox("Ocurreu um erro ao remover essa venda" & vbCrLf & "Tente novamente mais tarde, se o erro presistir entre em contacto com o administrador", vbCritical, "Erro")
+            End Try
+        End If
     End Sub
 End Class
