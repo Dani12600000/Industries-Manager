@@ -23,12 +23,18 @@
         If FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") Then
             Button5.Text = "Contratar"
             Button5.BackColor = ContColor
+            ID_ProfissãoComboBox.Enabled = True
+            SINumericUpDown.Enabled = True
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Despedir"
             Button5.BackColor = DespColor
+            ID_ProfissãoComboBox.Enabled = False
+            SINumericUpDown.Enabled = False
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And Not FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Recontratar"
             Button5.BackColor = ContColor
+            ID_ProfissãoComboBox.Enabled = True
+            SINumericUpDown.Enabled = True
         End If
     End Sub
 
@@ -90,20 +96,27 @@
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         If Button5.Text = "Contratar" Then
-
+            If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") Then
+                EnviarMensagemAutomaticaContratacao(InfoUser.UserName, EmailTextBox.Text, ID_ProfissãoComboBox.Text, SINumericUpDown.Value)
+            End If
         ElseIf Button5.Text = "Despedir" Then
             If MsgBox("Tem certeza que deseja despedir o funcionario nº" & FuncionariosBindingSource.Current("ID") & "?", vbYesNo, "Confirmação") = vbYes Then
-                If MsgBox("Deseja enviar um mail a informa-lo?", vbYesNo, "Enviar mail") Then
-
+                If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") Then
+                    EnviarMensagemAutomaticaDespedimento(InfoUser.UserName, EmailTextBox.Text, InputBox("Qual o motivo para o despedimento do mesmo? (opcional)"))
                 End If
 
 
             End If
+
+        ElseIf Button5.Text = "Recontratar" Then
+
         End If
     End Sub
 
-    Sub EnviarMensagemAutomaticaDespedimento(nomeRemetente As String, destinatario As String, assunto As String, motivo As String)
+    Sub EnviarMensagemAutomaticaDespedimento(nomeRemetente As String, destinatario As String, motivo As String)
         Try
+            Dim assunto As String = "Despedimento das Industries Dan"
+
             ' Criar uma instância do processo do Outlook
             Dim outlookProcess As New Process()
 
@@ -112,8 +125,40 @@
 
             ' Formatar a mensagem pré-definida
             Dim mensagemPredefinida As String = "Prezado(a), " & NomeTextBox.Text & " " & SobrenomeTextBox.Text & vbCrLf &
-                                            "É por este meio que o vimos informar que está a ser despedido com efeito imediato" & vbCrLf &
-                                            "Motivo : " & motivo & vbCrLf & vbCrLf & vbCrLf &
+                                            "É por este meio que o vimos informar que está a ser despedido com efeito imediato" & vbCrLf
+
+            ' Adicionar o motivo à mensagem pré-definida, se não estiver vazio
+            If Not String.IsNullOrEmpty(motivo) Then
+                mensagemPredefinida &= "Motivo: " & motivo & vbCrLf
+            End If
+
+            mensagemPredefinida &= vbCrLf & vbCrLf & "Atenciosamente," & vbCrLf & nomeRemetente
+
+            ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
+            outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & destinatario & "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
+
+            ' Iniciar o processo
+            outlookProcess.Start()
+        Catch ex As Exception
+            Console.WriteLine("Erro ao abrir o Outlook: " & ex.Message)
+        End Try
+    End Sub
+
+    Sub EnviarMensagemAutomaticaContratacao(nomeRemetente As String, destinatario As String, cargo As String, salario As Double)
+        Try
+            Dim assunto As String = "Contratação nas Industries Dan"
+
+            ' Criar uma instância do processo do Outlook
+            Dim outlookProcess As New Process()
+
+            ' Definir o nome do processo como "Outlook"
+            outlookProcess.StartInfo.FileName = "Outlook"
+
+            ' Formatar a mensagem pré-definida
+            Dim mensagemPredefinida As String = "Prezado(a) " & destinatario & "," & vbCrLf & vbCrLf &
+                                            "Temos o prazer de informar que você foi contratado(a) para o cargo de " & cargo & "." & vbCrLf &
+                                            "Seu salário será de " & salario.ToString & " por mês." & vbCrLf & vbCrLf &
+                                            "Estamos ansiosos para tê-lo(a) em nossa equipe!" & vbCrLf & vbCrLf &
                                             "Atenciosamente," & vbCrLf & nomeRemetente
 
             ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
@@ -126,8 +171,10 @@
         End Try
     End Sub
 
-    Sub EnviarMensagemAutomaticaContratacao(nomeRemetente As String, destinatario As String, assunto As String, cargo As String, salario As String)
+    Sub EnviarMensagemAutomaticaRecontratacao(nomeRemetente As String, destinatario As String, cargo As String, salario As Double)
         Try
+            Dim assunto As String = "Recontratação nas Industries Dan"
+
             ' Criar uma instância do processo do Outlook
             Dim outlookProcess As New Process()
 
@@ -136,9 +183,38 @@
 
             ' Formatar a mensagem pré-definida
             Dim mensagemPredefinida As String = "Prezado(a) " & destinatario & "," & vbCrLf & vbCrLf &
-                                            "Temos o prazer de informar que você foi contratado(a) para o cargo de " & cargo & "." & vbCrLf &
-                                            "Seu salário será de " & salario & " por mês." & vbCrLf & vbCrLf &
-                                            "Estamos ansiosos para tê-lo(a) em nossa equipe!" & vbCrLf & vbCrLf &
+                                            "Temos o prazer de informar que você foi recontratado(a) para o cargo de " & cargo & "." & vbCrLf &
+                                            "Seu salário será de " & salario.ToString & " por mês." & vbCrLf & vbCrLf &
+                                            "Bem-vindo(a) de volta à nossa equipe!" & vbCrLf & vbCrLf &
+                                            "Atenciosamente," & vbCrLf & nomeRemetente
+
+            ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
+            outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & destinatario & "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
+
+            ' Iniciar o processo
+            outlookProcess.Start()
+        Catch ex As Exception
+            Console.WriteLine("Erro ao abrir o Outlook: " & ex.Message)
+        End Try
+    End Sub
+
+
+    Sub EnviarMensagemAutomaticaAtualizacaoSalario(nomeRemetente As String, destinatario As String, novoSalario As Double)
+        Try
+
+            Dim assunto As String = "Alteração salarial"
+
+            ' Criar uma instância do processo do Outlook
+            Dim outlookProcess As New Process()
+
+            ' Definir o nome do processo como "Outlook"
+            outlookProcess.StartInfo.FileName = "Outlook"
+
+            ' Formatar a mensagem pré-definida
+            Dim mensagemPredefinida As String = "Prezado(a) " & destinatario & "," & vbCrLf & vbCrLf &
+                                            "Gostaríamos de informar que seu salário foi atualizado." & vbCrLf &
+                                            "O novo valor do seu salário é de " & novoSalario.ToString & " por mês." & vbCrLf & vbCrLf &
+                                            "Se tiver alguma dúvida, por favor, entre em contato conosco." & vbCrLf & vbCrLf &
                                             "Atenciosamente," & vbCrLf & nomeRemetente
 
             ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
