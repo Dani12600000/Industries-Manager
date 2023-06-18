@@ -29,8 +29,6 @@ Partial Class Funcionarios
         Dim EmailLabel As System.Windows.Forms.Label
         Dim ID_ProfissãoLabel As System.Windows.Forms.Label
         Dim SILabel As System.Windows.Forms.Label
-        Dim DDEDELabel As System.Windows.Forms.Label
-        Dim DDSDELabel As System.Windows.Forms.Label
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
         Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FuncionariosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FuncionariosTableAdapter()
@@ -61,14 +59,15 @@ Partial Class Funcionarios
         Me.ProfissõesTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProfissõesTableAdapter()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.DDEDELabel = New System.Windows.Forms.Label()
+        Me.DDSDELabel = New System.Windows.Forms.Label()
+        Me.Button8 = New System.Windows.Forms.Button()
         NomeLabel = New System.Windows.Forms.Label()
         SobrenomeLabel = New System.Windows.Forms.Label()
         FotoLabel = New System.Windows.Forms.Label()
         EmailLabel = New System.Windows.Forms.Label()
         ID_ProfissãoLabel = New System.Windows.Forms.Label()
         SILabel = New System.Windows.Forms.Label()
-        DDEDELabel = New System.Windows.Forms.Label()
-        DDSDELabel = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FotoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -216,22 +215,18 @@ Partial Class Funcionarios
         'SINumericUpDown
         '
         Me.SINumericUpDown.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FuncionariosBindingSource, "SI", True))
+        Me.SINumericUpDown.DecimalPlaces = 2
         Me.SINumericUpDown.Enabled = False
+        Me.SINumericUpDown.Increment = New Decimal(New Integer() {15, 0, 0, 0})
         Me.SINumericUpDown.Location = New System.Drawing.Point(122, 382)
+        Me.SINumericUpDown.Maximum = New Decimal(New Integer() {100000000, 0, 0, 0})
+        Me.SINumericUpDown.Minimum = New Decimal(New Integer() {74083, 0, 0, 131072})
         Me.SINumericUpDown.Name = "SINumericUpDown"
-        Me.SINumericUpDown.Size = New System.Drawing.Size(283, 26)
+        Me.SINumericUpDown.Size = New System.Drawing.Size(189, 26)
         Me.SINumericUpDown.TabIndex = 11
         Me.SINumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.SINumericUpDown.ThousandsSeparator = True
-        '
-        'DDEDELabel
-        '
-        DDEDELabel.AutoSize = True
-        DDEDELabel.Location = New System.Drawing.Point(12, 420)
-        DDEDELabel.Name = "DDEDELabel"
-        DDEDELabel.Size = New System.Drawing.Size(107, 20)
-        DDEDELabel.TabIndex = 12
-        DDEDELabel.Text = "Data entrada:"
+        Me.SINumericUpDown.Value = New Decimal(New Integer() {74083, 0, 0, 131072})
         '
         'DDEDEDateTimePicker
         '
@@ -245,7 +240,7 @@ Partial Class Funcionarios
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(411, 384)
+        Me.Label1.Location = New System.Drawing.Point(313, 384)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(18, 20)
         Me.Label1.TabIndex = 14
@@ -319,15 +314,6 @@ Partial Class Funcionarios
         Me.Button1.Text = "|<"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'DDSDELabel
-        '
-        DDSDELabel.AutoSize = True
-        DDSDELabel.Location = New System.Drawing.Point(29, 452)
-        DDSDELabel.Name = "DDSDELabel"
-        DDSDELabel.Size = New System.Drawing.Size(90, 20)
-        DDSDELabel.TabIndex = 25
-        DDSDELabel.Text = "Data saída:"
-        '
         'DDSDEDateTimePicker
         '
         Me.DDSDEDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FuncionariosBindingSource, "DDSDE", True))
@@ -391,7 +377,7 @@ Partial Class Funcionarios
         '
         Me.Button7.Location = New System.Drawing.Point(317, 301)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(108, 28)
+        Me.Button7.Size = New System.Drawing.Size(108, 34)
         Me.Button7.TabIndex = 28
         Me.Button7.Text = "Enviar mail"
         Me.Button7.UseVisualStyleBackColor = True
@@ -405,15 +391,44 @@ Partial Class Funcionarios
         Me.Label2.TabIndex = 29
         Me.Label2.Text = "Acessos ao sistema"
         '
+        'DDEDELabel
+        '
+        Me.DDEDELabel.AutoSize = True
+        Me.DDEDELabel.Location = New System.Drawing.Point(12, 420)
+        Me.DDEDELabel.Name = "DDEDELabel"
+        Me.DDEDELabel.Size = New System.Drawing.Size(107, 20)
+        Me.DDEDELabel.TabIndex = 30
+        Me.DDEDELabel.Text = "Data entrada:"
+        '
+        'DDSDELabel
+        '
+        Me.DDSDELabel.AutoSize = True
+        Me.DDSDELabel.Location = New System.Drawing.Point(26, 452)
+        Me.DDSDELabel.Name = "DDSDELabel"
+        Me.DDSDELabel.Size = New System.Drawing.Size(90, 20)
+        Me.DDSDELabel.TabIndex = 31
+        Me.DDSDELabel.Text = "Data saída:"
+        '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(333, 378)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(92, 34)
+        Me.Button8.TabIndex = 32
+        Me.Button8.Text = "Editar"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
         'Funcionarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1241, 632)
+        Me.Controls.Add(Me.Button8)
+        Me.Controls.Add(Me.DDSDELabel)
+        Me.Controls.Add(Me.DDEDELabel)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(DDSDELabel)
         Me.Controls.Add(Me.DDSDEDateTimePicker)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
@@ -422,7 +437,6 @@ Partial Class Funcionarios
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Login_FuncionarioDataGridView)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(DDEDELabel)
         Me.Controls.Add(Me.DDEDEDateTimePicker)
         Me.Controls.Add(SILabel)
         Me.Controls.Add(Me.SINumericUpDown)
@@ -482,4 +496,7 @@ Partial Class Funcionarios
     Friend WithEvents ProfissõesBindingSource As BindingSource
     Friend WithEvents Button7 As Button
     Friend WithEvents Label2 As Label
+    Friend WithEvents DDEDELabel As Label
+    Friend WithEvents DDSDELabel As Label
+    Friend WithEvents Button8 As Button
 End Class

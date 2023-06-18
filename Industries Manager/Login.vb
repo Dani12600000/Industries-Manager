@@ -100,6 +100,30 @@
                     Login_FuncionarioBindingSource.EndEdit()
                     Login_FuncionarioTableAdapter.Update(Industries_DanDataSet.Login_Funcionario)
 
+
+                    If FuncionariosBindingSource.Current("Pass") = "123456Ab" Then
+                        Dim senha As String = ""
+
+                        While FuncionariosBindingSource.Current("Pass") = "123456Ab"
+
+                            senha = InputBox("Escolha uma nova palavra-passe:", "Nova senha", "", -1, -1)
+
+                            ' Verificar se a senha está vazia ou se é igual à senha atual
+                            If String.IsNullOrWhiteSpace(senha) OrElse senha = FuncionariosBindingSource.Current("Pass") Then
+                                MessageBox.Show("A nova palavra-passe não é válida. Tente novamente.", "Erro de palavra-passe", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            Else
+                                ' Senha válida, sair do loop
+                                Exit While
+                            End If
+
+                        End While
+
+
+                        FuncionariosBindingSource.EndEdit()
+                        FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+                    End If
+
+
                     PMenu.Show()
                     Me.Close()
                 Else

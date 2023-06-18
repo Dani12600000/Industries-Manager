@@ -1,6 +1,8 @@
 ﻿Public Class Funcionarios
 
     Dim DespColor, ContColor As Color
+    Dim SM As Double 'Salario Minimo
+    Dim botaoEnabledArray As Boolean()
 
     Private Sub Funcionarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Profissões' table. You can move, or remove it, as needed.
@@ -25,16 +27,34 @@
             Button5.BackColor = ContColor
             ID_ProfissãoComboBox.Enabled = True
             SINumericUpDown.Enabled = True
+            Button8.Enabled = False
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Despedir"
             Button5.BackColor = DespColor
             ID_ProfissãoComboBox.Enabled = False
             SINumericUpDown.Enabled = False
+            Button8.Enabled = True
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And Not FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Recontratar"
             Button5.BackColor = ContColor
             ID_ProfissãoComboBox.Enabled = True
             SINumericUpDown.Enabled = True
+            Button8.Enabled = False
+        End If
+
+        If FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") Then
+            DDEDEDateTimePicker.Visible = False
+            DDEDELabel.Visible = False
+        Else
+            DDEDEDateTimePicker.Visible = True
+            DDEDELabel.Visible = True
+        End If
+        If FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
+            DDSDEDateTimePicker.Visible = False
+            DDSDELabel.Visible = False
+        Else
+            DDSDEDateTimePicker.Visible = True
+            DDSDELabel.Visible = True
         End If
     End Sub
 
@@ -95,22 +115,46 @@
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+
+        Debug.WriteLine("SINumericUpDown.Value : " & SINumericUpDown.Value)
+
         If Button5.Text = "Contratar" Then
-            If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") Then
+            If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") = vbYes Then
                 EnviarMensagemAutomaticaContratacao(InfoUser.UserName, EmailTextBox.Text, ID_ProfissãoComboBox.Text, SINumericUpDown.Value)
             End If
+
+            FuncionariosBindingSource.Current("Aprovacao") = True
+            FuncionariosBindingSource.Current("DDEDE") = Today()
+
+            FuncionariosBindingSource.EndEdit()
+            FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+
+            MsgBox("Contradado", vbInformation)
+
         ElseIf Button5.Text = "Despedir" Then
             If MsgBox("Tem certeza que deseja despedir o funcionario nº" & FuncionariosBindingSource.Current("ID") & "?", vbYesNo, "Confirmação") = vbYes Then
-                If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") Then
+                If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") = vbYes Then
                     EnviarMensagemAutomaticaDespedimento(InfoUser.UserName, EmailTextBox.Text, InputBox("Qual o motivo para o despedimento do mesmo? (opcional)"))
                 End If
 
+                FuncionariosBindingSource.Current("Aprovacao") = False
+                FuncionariosBindingSource.Current("DDSDE") = Today()
+
+                FuncionariosBindingSource.EndEdit()
+                FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+
+                MsgBox("Despedido", vbInformation)
 
             End If
 
         ElseIf Button5.Text = "Recontratar" Then
 
+
+            MsgBox("Recontratado", vbInformation)
+
         End If
+
+        VerificarContrartarDespedir()
     End Sub
 
     Sub EnviarMensagemAutomaticaDespedimento(nomeRemetente As String, destinatario As String, motivo As String)
@@ -159,7 +203,7 @@
             If salario = 0 Then
                 mensagemSalario = "Ainda estamos a ajustar o seu salário."
             Else
-                mensagemSalario = "Seu salário será de " & salario.ToString() & "€ por mês."
+                mensagemSalario = "Seu salário será de " & salario.ToString("#,##0.00") & "€ por mês."
             End If
 
             ' Obter o dia da semana próximo
@@ -211,7 +255,7 @@
             If salario = 0 Then
                 mensagemSalario = "Ainda estamos a ajustar o seu salário."
             Else
-                mensagemSalario = "Seu salário será de " & salario.ToString() & "€ por mês."
+                mensagemSalario = "Seu salário será de " & salario.ToString("#,##0.00") & "€ por mês."
             End If
 
             ' Obter o dia da semana próximo
@@ -233,7 +277,7 @@
             ' Formatar a mensagem pré-definida
             Dim mensagemPredefinida As String = "Prezado(a) " & destinatario & "," & vbCrLf & vbCrLf &
                                         "Temos o prazer de informar que você foi recontratado(a) para o cargo de " & cargo & "." & vbCrLf &
-                                        "Seu salário será de " & salario.ToString & "€ por mês." & vbCrLf & vbCrLf &
+                                        mensagemSalario & vbCrLf & vbCrLf &
                                         "Começa " & diaDaSemana & ", dia " & proximoDia.ToString("d") & "." & vbCrLf & vbCrLf &
                                         "Bem-vindo(a) de volta à nossa equipe!" & vbCrLf & vbCrLf &
                                         "Atenciosamente," & vbCrLf & nomeRemetente
@@ -262,7 +306,7 @@
             ' Formatar a mensagem pré-definida
             Dim mensagemPredefinida As String = "Prezado(a) " & destinatario & "," & vbCrLf & vbCrLf &
                                             "Gostaríamos de informar que seu salário foi atualizado." & vbCrLf &
-                                            "O novo valor do seu salário é de " & novoSalario.ToString & " por mês." & vbCrLf & vbCrLf &
+                                            "O novo valor do seu salário é de " & novoSalario.ToString("#,##0.00") & " por mês." & vbCrLf & vbCrLf &
                                             "Se tiver alguma dúvida, por favor, entre em contato conosco." & vbCrLf & vbCrLf &
                                             "Atenciosamente," & vbCrLf & nomeRemetente
 
@@ -276,6 +320,36 @@
         End Try
     End Sub
 
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        If MsgBox("Deseja mesmo resetar a palavra-passe desse funcionario?", vbYesNo, "Tem a certeza?") = vbYes Then
+
+            FuncionariosBindingSource.Current("Pass") = "123456Ab"
+            Clipboard.SetText(FuncionariosBindingSource.Current("Pass"))
+
+            MsgBox("Palavra-passe foi restaurada e copiada para a sua clipboard" & vbCrLf & "Pode entrar num chat com essa pessoa e clicar 'Ctrl+V' para colar a nova passe temporaria")
+
+            FuncionariosBindingSource.EndEdit()
+            FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+        End If
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        If Button8.Text = "Editar" Then
+
+            ArmazenarValoresEnabled()
+            DefinirBotoesComoFalse()
+
+            SINumericUpDown.Enabled = True
+            Button8.Text = "Guardar"
+
+        ElseIf Button8.Text = "Guardar" Then
+
+            FuncionariosBindingSource.EndEdit()
+            FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+
+
+        End If
+    End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         FuncionariosBindingSource.MoveFirst()
@@ -284,4 +358,49 @@
 
 
     End Sub
+
+    ' Função para armazenar os valores Enabled dos botões em uma matriz
+    Private Sub ArmazenarValoresEnabled()
+        Dim botoes As New List(Of Button)()
+
+        For Each control As Control In Me.Controls
+            If TypeOf control Is Button Then
+                Dim botao As Button = DirectCast(control, Button)
+                botoes.Add(botao)
+            End If
+        Next
+
+        ReDim botaoEnabledArray(botoes.Count - 1)
+
+        For i As Integer = 0 To botoes.Count - 1
+            botaoEnabledArray(i) = botoes(i).Enabled
+        Next
+    End Sub
+
+    ' Função para definir todos os botões como Enabled = False
+    Private Sub DefinirBotoesComoFalse()
+        For Each control As Control In Me.Controls
+            If TypeOf control Is Button Then
+                Dim botao As Button = DirectCast(control, Button)
+                botao.Enabled = False
+            End If
+        Next
+    End Sub
+
+    ' Função para restaurar os valores Enabled originais dos botões
+    Private Sub RestaurarValoresEnabled()
+        Dim botoes As New List(Of Button)()
+
+        For Each control As Control In Me.Controls
+            If TypeOf control Is Button Then
+                Dim botao As Button = DirectCast(control, Button)
+                botoes.Add(botao)
+            End If
+        Next
+
+        For i As Integer = 0 To botoes.Count - 1
+            botoes(i).Enabled = botaoEnabledArray(i)
+        Next
+    End Sub
+
 End Class
