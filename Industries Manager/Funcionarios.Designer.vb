@@ -46,10 +46,6 @@ Partial Class Funcionarios
         Me.Login_FuncionarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Login_FuncionarioTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Login_FuncionarioTableAdapter()
         Me.Login_FuncionarioDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -57,6 +53,14 @@ Partial Class Funcionarios
         Me.Button1 = New System.Windows.Forms.Button()
         Me.DDSDEDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProfissõesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ProfissõesTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProfissõesTableAdapter()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
         NomeLabel = New System.Windows.Forms.Label()
         SobrenomeLabel = New System.Windows.Forms.Label()
         FotoLabel = New System.Windows.Forms.Label()
@@ -71,6 +75,7 @@ Partial Class Funcionarios
         CType(Me.SINumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Login_FuncionarioDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ProfissõesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Industries_DanDataSet
@@ -100,7 +105,7 @@ Partial Class Funcionarios
         Me.TableAdapterManager.Leitura_de_avisosTableAdapter = Nothing
         Me.TableAdapterManager.Login_FuncionarioTableAdapter = Me.Login_FuncionarioTableAdapter
         Me.TableAdapterManager.ProdutosTableAdapter = Nothing
-        Me.TableAdapterManager.ProfissõesTableAdapter = Nothing
+        Me.TableAdapterManager.ProfissõesTableAdapter = Me.ProfissõesTableAdapter
         Me.TableAdapterManager.UpdateOrder = Industries_Manager.Industries_DanDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.Venda_de_produtoTableAdapter = Nothing
         Me.TableAdapterManager.VendasTableAdapter = Nothing
@@ -119,6 +124,7 @@ Partial Class Funcionarios
         Me.NomeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FuncionariosBindingSource, "Nome", True))
         Me.NomeTextBox.Location = New System.Drawing.Point(16, 51)
         Me.NomeTextBox.Name = "NomeTextBox"
+        Me.NomeTextBox.ReadOnly = True
         Me.NomeTextBox.Size = New System.Drawing.Size(153, 26)
         Me.NomeTextBox.TabIndex = 2
         '
@@ -136,7 +142,8 @@ Partial Class Funcionarios
         Me.SobrenomeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FuncionariosBindingSource, "Sobrenome", True))
         Me.SobrenomeTextBox.Location = New System.Drawing.Point(175, 51)
         Me.SobrenomeTextBox.Name = "SobrenomeTextBox"
-        Me.SobrenomeTextBox.Size = New System.Drawing.Size(205, 26)
+        Me.SobrenomeTextBox.ReadOnly = True
+        Me.SobrenomeTextBox.Size = New System.Drawing.Size(250, 26)
         Me.SobrenomeTextBox.TabIndex = 3
         '
         'FotoLabel
@@ -153,7 +160,7 @@ Partial Class Funcionarios
         Me.FotoPictureBox.DataBindings.Add(New System.Windows.Forms.Binding("Image", Me.FuncionariosBindingSource, "foto", True))
         Me.FotoPictureBox.Location = New System.Drawing.Point(64, 90)
         Me.FotoPictureBox.Name = "FotoPictureBox"
-        Me.FotoPictureBox.Size = New System.Drawing.Size(316, 187)
+        Me.FotoPictureBox.Size = New System.Drawing.Size(361, 187)
         Me.FotoPictureBox.TabIndex = 5
         Me.FotoPictureBox.TabStop = False
         '
@@ -171,7 +178,8 @@ Partial Class Funcionarios
         Me.EmailTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FuncionariosBindingSource, "Email", True))
         Me.EmailTextBox.Location = New System.Drawing.Point(70, 303)
         Me.EmailTextBox.Name = "EmailTextBox"
-        Me.EmailTextBox.Size = New System.Drawing.Size(310, 26)
+        Me.EmailTextBox.ReadOnly = True
+        Me.EmailTextBox.Size = New System.Drawing.Size(241, 26)
         Me.EmailTextBox.TabIndex = 7
         '
         'ID_ProfissãoLabel
@@ -186,11 +194,15 @@ Partial Class Funcionarios
         'ID_ProfissãoComboBox
         '
         Me.ID_ProfissãoComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FuncionariosBindingSource, "ID_Profissão", True))
+        Me.ID_ProfissãoComboBox.DataSource = Me.ProfissõesBindingSource
+        Me.ID_ProfissãoComboBox.DisplayMember = "Profissao"
+        Me.ID_ProfissãoComboBox.Enabled = False
         Me.ID_ProfissãoComboBox.FormattingEnabled = True
         Me.ID_ProfissãoComboBox.Location = New System.Drawing.Point(97, 345)
         Me.ID_ProfissãoComboBox.Name = "ID_ProfissãoComboBox"
-        Me.ID_ProfissãoComboBox.Size = New System.Drawing.Size(283, 28)
+        Me.ID_ProfissãoComboBox.Size = New System.Drawing.Size(328, 28)
         Me.ID_ProfissãoComboBox.TabIndex = 9
+        Me.ID_ProfissãoComboBox.ValueMember = "Profissao"
         '
         'SILabel
         '
@@ -204,9 +216,10 @@ Partial Class Funcionarios
         'SINumericUpDown
         '
         Me.SINumericUpDown.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FuncionariosBindingSource, "SI", True))
+        Me.SINumericUpDown.Enabled = False
         Me.SINumericUpDown.Location = New System.Drawing.Point(122, 382)
         Me.SINumericUpDown.Name = "SINumericUpDown"
-        Me.SINumericUpDown.Size = New System.Drawing.Size(232, 26)
+        Me.SINumericUpDown.Size = New System.Drawing.Size(283, 26)
         Me.SINumericUpDown.TabIndex = 11
         Me.SINumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.SINumericUpDown.ThousandsSeparator = True
@@ -223,15 +236,16 @@ Partial Class Funcionarios
         'DDEDEDateTimePicker
         '
         Me.DDEDEDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FuncionariosBindingSource, "DDEDE", True))
+        Me.DDEDEDateTimePicker.Enabled = False
         Me.DDEDEDateTimePicker.Location = New System.Drawing.Point(125, 415)
         Me.DDEDEDateTimePicker.Name = "DDEDEDateTimePicker"
-        Me.DDEDEDateTimePicker.Size = New System.Drawing.Size(255, 26)
+        Me.DDEDEDateTimePicker.Size = New System.Drawing.Size(280, 26)
         Me.DDEDEDateTimePicker.TabIndex = 13
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(360, 384)
+        Me.Label1.Location = New System.Drawing.Point(411, 384)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(18, 20)
         Me.Label1.TabIndex = 14
@@ -252,48 +266,17 @@ Partial Class Funcionarios
         Me.Login_FuncionarioDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Login_FuncionarioDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5})
         Me.Login_FuncionarioDataGridView.DataSource = Me.Login_FuncionarioBindingSource
-        Me.Login_FuncionarioDataGridView.Location = New System.Drawing.Point(439, 28)
+        Me.Login_FuncionarioDataGridView.Location = New System.Drawing.Point(460, 51)
         Me.Login_FuncionarioDataGridView.Name = "Login_FuncionarioDataGridView"
         Me.Login_FuncionarioDataGridView.RowHeadersWidth = 62
         Me.Login_FuncionarioDataGridView.RowTemplate.Height = 28
-        Me.Login_FuncionarioDataGridView.Size = New System.Drawing.Size(782, 469)
+        Me.Login_FuncionarioDataGridView.Size = New System.Drawing.Size(761, 561)
         Me.Login_FuncionarioDataGridView.TabIndex = 15
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.Width = 50
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "DEH"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Data e hora"
-        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Width = 150
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "IP"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "IP"
-        Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "LiouLo"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Registo"
-        Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.Width = 150
         '
         'Button5
         '
         Me.Button5.BackColor = System.Drawing.Color.LightGreen
-        Me.Button5.Location = New System.Drawing.Point(84, 502)
+        Me.Button5.Location = New System.Drawing.Point(103, 502)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(124, 47)
         Me.Button5.TabIndex = 24
@@ -302,7 +285,7 @@ Partial Class Funcionarios
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(279, 555)
+        Me.Button4.Location = New System.Drawing.Point(298, 555)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(59, 57)
         Me.Button4.TabIndex = 23
@@ -311,7 +294,7 @@ Partial Class Funcionarios
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(214, 555)
+        Me.Button3.Location = New System.Drawing.Point(233, 555)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(59, 57)
         Me.Button3.TabIndex = 22
@@ -320,7 +303,7 @@ Partial Class Funcionarios
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(149, 555)
+        Me.Button2.Location = New System.Drawing.Point(168, 555)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(59, 57)
         Me.Button2.TabIndex = 21
@@ -329,7 +312,7 @@ Partial Class Funcionarios
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(84, 555)
+        Me.Button1.Location = New System.Drawing.Point(103, 555)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(59, 57)
         Me.Button1.TabIndex = 20
@@ -348,26 +331,87 @@ Partial Class Funcionarios
         'DDSDEDateTimePicker
         '
         Me.DDSDEDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FuncionariosBindingSource, "DDSDE", True))
+        Me.DDSDEDateTimePicker.Enabled = False
         Me.DDSDEDateTimePicker.Location = New System.Drawing.Point(125, 447)
         Me.DDSDEDateTimePicker.Name = "DDSDEDateTimePicker"
-        Me.DDSDEDateTimePicker.Size = New System.Drawing.Size(253, 26)
+        Me.DDSDEDateTimePicker.Size = New System.Drawing.Size(280, 26)
         Me.DDSDEDateTimePicker.TabIndex = 26
         '
         'Button6
         '
         Me.Button6.BackColor = System.Drawing.Color.IndianRed
-        Me.Button6.Location = New System.Drawing.Point(214, 502)
+        Me.Button6.Location = New System.Drawing.Point(233, 502)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(124, 47)
         Me.Button6.TabIndex = 27
         Me.Button6.Text = "Resetar pass"
         Me.Button6.UseVisualStyleBackColor = False
         '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.Width = 45
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "DEH"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Data e hora"
+        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.Width = 125
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "IP"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "IP"
+        Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "LiouLo"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Registo"
+        Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 125
+        '
+        'ProfissõesBindingSource
+        '
+        Me.ProfissõesBindingSource.DataMember = "Profissões"
+        Me.ProfissõesBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'ProfissõesTableAdapter
+        '
+        Me.ProfissõesTableAdapter.ClearBeforeFill = True
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(317, 301)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(108, 28)
+        Me.Button7.TabIndex = 28
+        Me.Button7.Text = "Enviar mail"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(456, 28)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(151, 20)
+        Me.Label2.TabIndex = 29
+        Me.Label2.Text = "Acessos ao sistema"
+        '
         'Funcionarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1241, 632)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(DDSDELabel)
         Me.Controls.Add(Me.DDSDEDateTimePicker)
@@ -402,6 +446,7 @@ Partial Class Funcionarios
         CType(Me.SINumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Login_FuncionarioDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ProfissõesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -422,10 +467,6 @@ Partial Class Funcionarios
     Friend WithEvents Login_FuncionarioTableAdapter As Industries_DanDataSetTableAdapters.Login_FuncionarioTableAdapter
     Friend WithEvents Login_FuncionarioBindingSource As BindingSource
     Friend WithEvents Login_FuncionarioDataGridView As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents Button5 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents Button3 As Button
@@ -433,4 +474,12 @@ Partial Class Funcionarios
     Friend WithEvents Button1 As Button
     Friend WithEvents DDSDEDateTimePicker As DateTimePicker
     Friend WithEvents Button6 As Button
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents ProfissõesTableAdapter As Industries_DanDataSetTableAdapters.ProfissõesTableAdapter
+    Friend WithEvents ProfissõesBindingSource As BindingSource
+    Friend WithEvents Button7 As Button
+    Friend WithEvents Label2 As Label
 End Class
