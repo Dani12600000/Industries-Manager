@@ -92,7 +92,7 @@ Public Class Vendas
         ExIDVenda = penultimoID + 1
 
         Debug.WriteLine("Numer VendasBindingSource.Find(""ID"", ExIDVenda) : " & VendasBindingSource.Find("ID", ExIDVenda))
-        Debug.WriteLine("Numero de linhas : " & Industries_DanDataSet.Vendas.Count)
+
 
         If VendasBindingSource.Find("ID", ExIDVenda) < 0 Then
             While VendasBindingSource.Find("ID", ExIDVenda) < 0
