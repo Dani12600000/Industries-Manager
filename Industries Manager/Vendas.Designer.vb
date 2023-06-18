@@ -257,7 +257,7 @@ Partial Class Vendas
         'SubtotalTextBox
         '
         Me.SubtotalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Venda_de_produtoBindingSource, "Subtotal", True))
-        Me.SubtotalTextBox.Location = New System.Drawing.Point(108, 131)
+        Me.SubtotalTextBox.Location = New System.Drawing.Point(107, 131)
         Me.SubtotalTextBox.Name = "SubtotalTextBox"
         Me.SubtotalTextBox.ReadOnly = True
         Me.SubtotalTextBox.Size = New System.Drawing.Size(135, 26)
@@ -349,7 +349,11 @@ Partial Class Vendas
         Me.Controls.Add(Me.TotalTextBox)
         Me.Controls.Add(Mail_ClienteLabel)
         Me.Controls.Add(Me.Mail_ClienteTextBox)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "Vendas"
+        Me.ShowInTaskbar = False
         Me.Text = "Vendas"
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VendasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()

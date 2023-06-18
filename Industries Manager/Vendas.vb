@@ -1,4 +1,5 @@
-﻿Imports Industries_Manager.Industries_DanDataSetTableAdapters
+﻿Imports System.Globalization
+Imports Industries_Manager.Industries_DanDataSetTableAdapters
 
 Public Class Vendas
     Dim ExIDVenda, ExIDProd, ExQuant As Integer
@@ -16,8 +17,6 @@ Public Class Vendas
         Me.VendasTableAdapter.Fill(Me.Industries_DanDataSet.Vendas)
 
         QuantidadeNumericUpDown.Value = 1
-
-
     End Sub
 
     Sub Nova_Venda(email As String)
@@ -55,6 +54,19 @@ Public Class Vendas
         End Try
     End Sub
 
+    Private Sub Vendas_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        If Not IsDBNull(VendasBindingSource.Current("ID")) Then
+            VendasBindingSource.EndEdit()
+            VendasTableAdapter.Update(Industries_DanDataSet.Vendas)
+            Industries_DanDataSet.Vendas.AcceptChanges()
+        End If
+    End Sub
+
+    Private Sub Vendas_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Clientes.VendasDataGridView.Refresh()
+        Clientes.Venda_de_produtoDataGridView.Refresh()
+    End Sub
+
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         ID_ProdutoComboBox.SelectedIndex = -1
         QuantidadeNumericUpDown.Value = 1
@@ -68,29 +80,61 @@ Public Class Vendas
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        'If VendasBindingSource.Current("ID") <= -1 Then
-        'VendasBindingSource.
-        'End If
+        Dim penultimoRegistro As DataRowView = VendasBindingSource(VendasBindingSource.Count - 2)
+        Dim penultimoID As Integer = CInt(penultimoRegistro("ID"))
 
         Debug.Close()
         Debug.WriteLine("Saida para introdução de um novo produto")
         Debug.WriteLine("----------------------------------------")
         Debug.WriteLine("VendasBindingSource.Current(""ID"") : " & VendasBindingSource.Current("ID"))
+        Debug.WriteLine("penultimoRegistro : " & penultimoID)
+
+        ExIDVenda = penultimoID + 1
+
+        Debug.WriteLine("Numer VendasBindingSource.Find(""ID"", ExIDVenda) : " & VendasBindingSource.Find("ID", ExIDVenda))
+        Debug.WriteLine("Numero de linhas : " & Industries_DanDataSet.Vendas.Count)
+
+        If VendasBindingSource.Find("ID", ExIDVenda) < 0 Then
+            While VendasBindingSource.Find("ID", ExIDVenda) < 0
+                ExIDVenda += 1
+                Debug.WriteLine("Subi!, ID_Venda atual : " & ExIDVenda)
+                Debug.WriteLine("Numer VendasBindingSource.Find(""ID"", ExIDVenda) : " & VendasBindingSource.Find("ID", ExIDVenda))
+            End While
+        End If
 
 
-        ExIDVenda = VendasBindingSource.Current("ID")
-        'CONTINUAR AQUI
-        'ExIDProd = ID_ProdutoComboBox.Text
-        'ExQuant =
-        'ExPC =
-        'ExSubtotal = 
+        ExIDProd = ProdutosBindingSource.Current("ID")
+        ExQuant = QuantidadeNumericUpDown.Value
+        Dim culture As New CultureInfo("en-US") ' Define a cultura como inglês americano
+        ExPC = Double.Parse(PCTextBox.Text.Replace("€", "").Replace(".", "").Replace(",", "."), culture)
+        ExSubtotal = Double.Parse(SubtotalTextBox.Text.Replace("€", "").Replace(".", "").Replace(",", "."), culture)
 
+        Debug.WriteLine("ExIDProd : " & ExIDProd)
+        Debug.WriteLine("ExQuant : " & ExQuant)
+        Debug.WriteLine("ExPC : " & ExPC)
+        Debug.WriteLine("ExSubtotal : " & ExSubtotal)
 
         Venda_de_produtoBindingSource.AddNew()
 
+        Venda_de_produtoBindingSource.Current("ID_Venda") = ExIDVenda
+        Venda_de_produtoBindingSource.Current("ID_Produto") = ExIDProd
+        Venda_de_produtoBindingSource.Current("Quantidade") = ExQuant
+        Venda_de_produtoBindingSource.Current("PC") = ExPC
+        Venda_de_produtoBindingSource.Current("Subtotal") = ExSubtotal
 
-        VendasBindingSource.EndEdit()
-        VendasTableAdapter.Update(Industries_DanDataSet.Vendas)
+        Try
+
+            Venda_de_produtoBindingSource.EndEdit()
+            Venda_de_produtoTableAdapter.Update(Industries_DanDataSet.Venda_de_produto)
+
+            VendasBindingSource.EndEdit()
+            VendasTableAdapter.Update(Industries_DanDataSet.Vendas)
+
+            Venda_de_produtoDataGridView.Refresh()
+
+        Catch
+            Debug.WriteLine("ID_Venda : " & ExIDVenda)
+        End Try
     End Sub
 
     Private Sub QuantidadeNumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles QuantidadeNumericUpDown.ValueChanged
