@@ -5,7 +5,7 @@ Public Class ReqConta
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Funcionarios'. Você pode movê-la ou removê-la conforme necessário.
         Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
-        FotoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage
+        FotoPictureBox.SizeMode = PictureBoxSizeMode.Zoom
         Me.FuncionariosBindingSource.AddNew()
         DDEDEDateTimePicker.Value = Now
     End Sub
@@ -20,7 +20,7 @@ Public Class ReqConta
             FotoPictureBox.Image = System.Drawing.Bitmap.FromFile(img)
         End If
 
-        FotoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage
+        FotoPictureBox.SizeMode = PictureBoxSizeMode.Zoom
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click

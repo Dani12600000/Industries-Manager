@@ -169,6 +169,9 @@
     <EmbeddedResource Include="Fornecedores.resx">
       <DependentUpon>Fornecedores.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Funcionarios.resx">
+      <DependentUpon>Funcionarios.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
     </EmbeddedResource>
