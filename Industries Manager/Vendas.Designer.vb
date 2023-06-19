@@ -58,6 +58,7 @@ Partial Class Vendas
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
         Mail_ClienteLabel = New System.Windows.Forms.Label()
         TotalLabel = New System.Windows.Forms.Label()
         ID_ProdutoLabel = New System.Windows.Forms.Label()
@@ -196,11 +197,11 @@ Partial Class Vendas
         Me.Venda_de_produtoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Venda_de_produtoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID_Produto, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
         Me.Venda_de_produtoDataGridView.DataSource = Me.Venda_de_produtoBindingSource
-        Me.Venda_de_produtoDataGridView.Location = New System.Drawing.Point(417, 16)
+        Me.Venda_de_produtoDataGridView.Location = New System.Drawing.Point(417, 36)
         Me.Venda_de_produtoDataGridView.Name = "Venda_de_produtoDataGridView"
         Me.Venda_de_produtoDataGridView.RowHeadersWidth = 62
         Me.Venda_de_produtoDataGridView.RowTemplate.Height = 28
-        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(876, 313)
+        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(876, 293)
         Me.Venda_de_produtoDataGridView.TabIndex = 6
         '
         'ID_Produto
@@ -339,7 +340,7 @@ Partial Class Vendas
         'Button3
         '
         Me.Button3.BackColor = System.Drawing.Color.IndianRed
-        Me.Button3.Location = New System.Drawing.Point(702, 342)
+        Me.Button3.Location = New System.Drawing.Point(694, 342)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(251, 51)
         Me.Button3.TabIndex = 16
@@ -395,11 +396,21 @@ Partial Class Vendas
         Me.Button7.Text = "|<"
         Me.Button7.UseVisualStyleBackColor = False
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(413, 13)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(164, 20)
+        Me.Label3.TabIndex = 22
+        Me.Label3.Text = "Produtos nesta venda"
+        '
         'Vendas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1305, 416)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
@@ -459,4 +470,5 @@ Partial Class Vendas
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents Button7 As Button
+    Friend WithEvents Label3 As Label
 End Class
