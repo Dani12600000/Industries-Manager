@@ -98,6 +98,74 @@
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        Fornecimentos.ShowDialog()
+        Fornecimentos.Show()
+        Fornecimentos.FornecimentosBindingSource.AddNew()
+        Fornecimentos.ProdutosBindingSource.Position = ProdutosBindingSource.Position
+        Fornecimentos.ProdutoComboBox.Enabled = False
+        Fornecimentos.DataDateTimePicker.Value = Today
+
+        ' Cálculo da moda das quantidades
+        Dim produtoID As Integer = ProdutosBindingSource.Current("ID")
+        Dim quantidadeCounts As New Dictionary(Of Integer, Integer)()
+        Dim maxCount As Integer = 0
+        Dim modaQuantidade As Integer = 0
+
+        ' Verifica se existem registros de fornecimentos para o produto selecionado
+        Dim hasFornecimentos As Boolean = False
+        For i As Integer = 0 To Industries_DanDataSet.Fornecimentos.Rows.Count - 1
+            Dim fornecimentoIDProduto As Integer = Industries_DanDataSet.Fornecimentos.Rows(i)("ID_Produto")
+            If fornecimentoIDProduto = produtoID Then
+                hasFornecimentos = True
+                Exit For
+            End If
+        Next
+
+        If hasFornecimentos Then
+            For i As Integer = 0 To Industries_DanDataSet.Fornecimentos.Rows.Count - 1
+                Dim fornecimentoIDProduto As Integer = Industries_DanDataSet.Fornecimentos.Rows(i)("ID_Produto")
+                If fornecimentoIDProduto = produtoID Then
+                    Dim quantidade As Integer = Industries_DanDataSet.Fornecimentos.Rows(i)("Quantidade")
+                    If quantidadeCounts.ContainsKey(quantidade) Then
+                        quantidadeCounts(quantidade) += 1
+                    Else
+                        quantidadeCounts.Add(quantidade, 1)
+                    End If
+
+                    If quantidadeCounts(quantidade) > maxCount Then
+                        maxCount = quantidadeCounts(quantidade)
+                        modaQuantidade = quantidade
+                    End If
+                End If
+            Next
+        Else
+            modaQuantidade = 1 ' Define a quantidade como 1 se não houver fornecimentos
+        End If
+
+        Fornecimentos.QuantidadeNumericUpDown.Value = modaQuantidade
+
+        ' Cálculo da média dos PCP's
+        Dim totalPCP As Double = 0.0
+        Dim countPCP As Integer = 0
+
+        ' Verifica se existem registros de fornecimentos para o produto selecionado
+        If hasFornecimentos Then
+            For i As Integer = 0 To Industries_DanDataSet.Fornecimentos.Rows.Count - 1
+                Dim fornecimentoIDProduto As Integer = Industries_DanDataSet.Fornecimentos.Rows(i)("ID_Produto")
+                If fornecimentoIDProduto = produtoID Then
+                    Dim pcp As Double = Industries_DanDataSet.Fornecimentos.Rows(i)("PCP")
+                    totalPCP += pcp
+                    countPCP += 1
+                End If
+            Next
+        Else
+            totalPCP = 1.0 ' Define o preço como 1 se não houver fornecimentos
+            countPCP = 1
+        End If
+
+        Dim mediaPCP As Double = totalPCP / countPCP
+        Fornecimentos.PCPNumericUpDown.Value = CDec(mediaPCP)
+
+        Fornecimentos.AtualizarTG()
+
     End Sub
 End Class

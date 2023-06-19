@@ -23,7 +23,6 @@ Partial Class Fornecimentos
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim IDLabel As System.Windows.Forms.Label
         Dim DataLabel As System.Windows.Forms.Label
         Dim ID_FornecedorLabel As System.Windows.Forms.Label
         Dim ID_ProdutoLabel As System.Windows.Forms.Label
@@ -34,7 +33,6 @@ Partial Class Fornecimentos
         Me.FornecimentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FornecimentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FornecimentosTableAdapter()
         Me.TableAdapterManager = New Industries_Manager.Industries_DanDataSetTableAdapters.TableAdapterManager()
-        Me.IDTextBox = New System.Windows.Forms.TextBox()
         Me.DataDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.PCPNumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.QuantidadeNumericUpDown = New System.Windows.Forms.NumericUpDown()
@@ -44,9 +42,10 @@ Partial Class Fornecimentos
         Me.FornecedoresTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FornecedoresTableAdapter()
         Me.ProdutosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ProdutosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProdutosTableAdapter()
-        Me.ID_FornecedorComboBox = New System.Windows.Forms.ComboBox()
-        Me.ID_ProdutoComboBox = New System.Windows.Forms.ComboBox()
-        IDLabel = New System.Windows.Forms.Label()
+        Me.FornecedorComboBox = New System.Windows.Forms.ComboBox()
+        Me.ProdutoComboBox = New System.Windows.Forms.ComboBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         DataLabel = New System.Windows.Forms.Label()
         ID_FornecedorLabel = New System.Windows.Forms.Label()
         ID_ProdutoLabel = New System.Windows.Forms.Label()
@@ -93,27 +92,10 @@ Partial Class Fornecimentos
         Me.TableAdapterManager.Venda_de_produtoTableAdapter = Nothing
         Me.TableAdapterManager.VendasTableAdapter = Nothing
         '
-        'IDLabel
-        '
-        IDLabel.AutoSize = True
-        IDLabel.Location = New System.Drawing.Point(98, 42)
-        IDLabel.Name = "IDLabel"
-        IDLabel.Size = New System.Drawing.Size(30, 20)
-        IDLabel.TabIndex = 1
-        IDLabel.Text = "ID:"
-        '
-        'IDTextBox
-        '
-        Me.IDTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FornecimentosBindingSource, "ID", True))
-        Me.IDTextBox.Location = New System.Drawing.Point(134, 39)
-        Me.IDTextBox.Name = "IDTextBox"
-        Me.IDTextBox.Size = New System.Drawing.Size(100, 26)
-        Me.IDTextBox.TabIndex = 2
-        '
         'DataLabel
         '
         DataLabel.AutoSize = True
-        DataLabel.Location = New System.Drawing.Point(80, 75)
+        DataLabel.Location = New System.Drawing.Point(91, 52)
         DataLabel.Name = "DataLabel"
         DataLabel.Size = New System.Drawing.Size(48, 20)
         DataLabel.TabIndex = 2
@@ -122,7 +104,7 @@ Partial Class Fornecimentos
         'DataDateTimePicker
         '
         Me.DataDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FornecimentosBindingSource, "Data", True))
-        Me.DataDateTimePicker.Location = New System.Drawing.Point(134, 71)
+        Me.DataDateTimePicker.Location = New System.Drawing.Point(145, 48)
         Me.DataDateTimePicker.Name = "DataDateTimePicker"
         Me.DataDateTimePicker.Size = New System.Drawing.Size(265, 26)
         Me.DataDateTimePicker.TabIndex = 3
@@ -130,7 +112,7 @@ Partial Class Fornecimentos
         'ID_FornecedorLabel
         '
         ID_FornecedorLabel.AutoSize = True
-        ID_FornecedorLabel.Location = New System.Drawing.Point(33, 106)
+        ID_FornecedorLabel.Location = New System.Drawing.Point(44, 83)
         ID_FornecedorLabel.Name = "ID_FornecedorLabel"
         ID_FornecedorLabel.Size = New System.Drawing.Size(95, 20)
         ID_FornecedorLabel.TabIndex = 4
@@ -139,7 +121,7 @@ Partial Class Fornecimentos
         'ID_ProdutoLabel
         '
         ID_ProdutoLabel.AutoSize = True
-        ID_ProdutoLabel.Location = New System.Drawing.Point(59, 140)
+        ID_ProdutoLabel.Location = New System.Drawing.Point(70, 117)
         ID_ProdutoLabel.Name = "ID_ProdutoLabel"
         ID_ProdutoLabel.Size = New System.Drawing.Size(69, 20)
         ID_ProdutoLabel.TabIndex = 6
@@ -148,7 +130,7 @@ Partial Class Fornecimentos
         'PCPLabel
         '
         PCPLabel.AutoSize = True
-        PCPLabel.Location = New System.Drawing.Point(38, 173)
+        PCPLabel.Location = New System.Drawing.Point(49, 182)
         PCPLabel.Name = "PCPLabel"
         PCPLabel.Size = New System.Drawing.Size(93, 20)
         PCPLabel.TabIndex = 8
@@ -159,7 +141,7 @@ Partial Class Fornecimentos
         Me.PCPNumericUpDown.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FornecimentosBindingSource, "PCP", True))
         Me.PCPNumericUpDown.DecimalPlaces = 2
         Me.PCPNumericUpDown.Increment = New Decimal(New Integer() {5, 0, 0, 0})
-        Me.PCPNumericUpDown.Location = New System.Drawing.Point(134, 171)
+        Me.PCPNumericUpDown.Location = New System.Drawing.Point(145, 180)
         Me.PCPNumericUpDown.Maximum = New Decimal(New Integer() {100000, 0, 0, 0})
         Me.PCPNumericUpDown.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.PCPNumericUpDown.Name = "PCPNumericUpDown"
@@ -170,7 +152,7 @@ Partial Class Fornecimentos
         'QuantidadeLabel
         '
         QuantidadeLabel.AutoSize = True
-        QuantidadeLabel.Location = New System.Drawing.Point(32, 203)
+        QuantidadeLabel.Location = New System.Drawing.Point(43, 149)
         QuantidadeLabel.Name = "QuantidadeLabel"
         QuantidadeLabel.Size = New System.Drawing.Size(96, 20)
         QuantidadeLabel.TabIndex = 10
@@ -179,7 +161,7 @@ Partial Class Fornecimentos
         'QuantidadeNumericUpDown
         '
         Me.QuantidadeNumericUpDown.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FornecimentosBindingSource, "Quantidade", True))
-        Me.QuantidadeNumericUpDown.Location = New System.Drawing.Point(134, 203)
+        Me.QuantidadeNumericUpDown.Location = New System.Drawing.Point(145, 149)
         Me.QuantidadeNumericUpDown.Maximum = New Decimal(New Integer() {500, 0, 0, 0})
         Me.QuantidadeNumericUpDown.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.QuantidadeNumericUpDown.Name = "QuantidadeNumericUpDown"
@@ -190,7 +172,7 @@ Partial Class Fornecimentos
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(341, 177)
+        Me.Label1.Location = New System.Drawing.Point(352, 186)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(18, 20)
         Me.Label1.TabIndex = 12
@@ -199,7 +181,7 @@ Partial Class Fornecimentos
         'TGLabel
         '
         TGLabel.AutoSize = True
-        TGLabel.Location = New System.Drawing.Point(36, 238)
+        TGLabel.Location = New System.Drawing.Point(47, 215)
         TGLabel.Name = "TGLabel"
         TGLabel.Size = New System.Drawing.Size(92, 20)
         TGLabel.TabIndex = 13
@@ -208,7 +190,7 @@ Partial Class Fornecimentos
         'TGTextBox
         '
         Me.TGTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FornecimentosBindingSource, "TG", True))
-        Me.TGTextBox.Location = New System.Drawing.Point(134, 235)
+        Me.TGTextBox.Location = New System.Drawing.Point(145, 212)
         Me.TGTextBox.Name = "TGTextBox"
         Me.TGTextBox.Size = New System.Drawing.Size(207, 26)
         Me.TGTextBox.TabIndex = 14
@@ -231,33 +213,54 @@ Partial Class Fornecimentos
         '
         Me.ProdutosTableAdapter.ClearBeforeFill = True
         '
-        'ID_FornecedorComboBox
+        'FornecedorComboBox
         '
-        Me.ID_FornecedorComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FornecimentosBindingSource, "ID_Fornecedor", True))
-        Me.ID_FornecedorComboBox.DataSource = Me.FornecedoresBindingSource
-        Me.ID_FornecedorComboBox.DisplayMember = "NDE"
-        Me.ID_FornecedorComboBox.FormattingEnabled = True
-        Me.ID_FornecedorComboBox.Location = New System.Drawing.Point(134, 103)
-        Me.ID_FornecedorComboBox.Name = "ID_FornecedorComboBox"
-        Me.ID_FornecedorComboBox.Size = New System.Drawing.Size(265, 28)
-        Me.ID_FornecedorComboBox.TabIndex = 15
+        Me.FornecedorComboBox.DataSource = Me.FornecedoresBindingSource
+        Me.FornecedorComboBox.DisplayMember = "NDE"
+        Me.FornecedorComboBox.FormattingEnabled = True
+        Me.FornecedorComboBox.Location = New System.Drawing.Point(145, 80)
+        Me.FornecedorComboBox.Name = "FornecedorComboBox"
+        Me.FornecedorComboBox.Size = New System.Drawing.Size(265, 28)
+        Me.FornecedorComboBox.TabIndex = 17
         '
-        'ID_ProdutoComboBox
+        'ProdutoComboBox
         '
-        Me.ID_ProdutoComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FornecimentosBindingSource, "ID_Produto", True))
-        Me.ID_ProdutoComboBox.FormattingEnabled = True
-        Me.ID_ProdutoComboBox.Location = New System.Drawing.Point(134, 137)
-        Me.ID_ProdutoComboBox.Name = "ID_ProdutoComboBox"
-        Me.ID_ProdutoComboBox.Size = New System.Drawing.Size(265, 28)
-        Me.ID_ProdutoComboBox.TabIndex = 16
+        Me.ProdutoComboBox.DataSource = Me.ProdutosBindingSource
+        Me.ProdutoComboBox.DisplayMember = "Nome"
+        Me.ProdutoComboBox.FormattingEnabled = True
+        Me.ProdutoComboBox.Location = New System.Drawing.Point(146, 115)
+        Me.ProdutoComboBox.Name = "ProdutoComboBox"
+        Me.ProdutoComboBox.Size = New System.Drawing.Size(264, 28)
+        Me.ProdutoComboBox.TabIndex = 18
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(36, 308)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(184, 44)
+        Me.Button1.TabIndex = 19
+        Me.Button1.Text = "Guardar"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.RosyBrown
+        Me.Button2.Location = New System.Drawing.Point(226, 308)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(184, 44)
+        Me.Button2.TabIndex = 20
+        Me.Button2.Text = "Cancelar"
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'Fornecimentos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(461, 374)
-        Me.Controls.Add(Me.ID_ProdutoComboBox)
-        Me.Controls.Add(Me.ID_FornecedorComboBox)
+        Me.ClientSize = New System.Drawing.Size(452, 374)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.ProdutoComboBox)
+        Me.Controls.Add(Me.FornecedorComboBox)
         Me.Controls.Add(TGLabel)
         Me.Controls.Add(Me.TGTextBox)
         Me.Controls.Add(Me.Label1)
@@ -269,8 +272,7 @@ Partial Class Fornecimentos
         Me.Controls.Add(ID_FornecedorLabel)
         Me.Controls.Add(DataLabel)
         Me.Controls.Add(Me.DataDateTimePicker)
-        Me.Controls.Add(IDLabel)
-        Me.Controls.Add(Me.IDTextBox)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "Fornecimentos"
         Me.Text = "Fornecimentos"
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -288,7 +290,6 @@ Partial Class Fornecimentos
     Friend WithEvents FornecimentosBindingSource As BindingSource
     Friend WithEvents FornecimentosTableAdapter As Industries_DanDataSetTableAdapters.FornecimentosTableAdapter
     Friend WithEvents TableAdapterManager As Industries_DanDataSetTableAdapters.TableAdapterManager
-    Friend WithEvents IDTextBox As TextBox
     Friend WithEvents DataDateTimePicker As DateTimePicker
     Friend WithEvents PCPNumericUpDown As NumericUpDown
     Friend WithEvents QuantidadeNumericUpDown As NumericUpDown
@@ -298,6 +299,8 @@ Partial Class Fornecimentos
     Friend WithEvents FornecedoresBindingSource As BindingSource
     Friend WithEvents ProdutosTableAdapter As Industries_DanDataSetTableAdapters.ProdutosTableAdapter
     Friend WithEvents ProdutosBindingSource As BindingSource
-    Friend WithEvents ID_FornecedorComboBox As ComboBox
-    Friend WithEvents ID_ProdutoComboBox As ComboBox
+    Friend WithEvents FornecedorComboBox As ComboBox
+    Friend WithEvents ProdutoComboBox As ComboBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 End Class
