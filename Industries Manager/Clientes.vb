@@ -53,11 +53,11 @@
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        VendasBindingSource.MoveNext()
+        VendasBindingSource.MovePrevious()
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        VendasBindingSource.MovePrevious()
+        VendasBindingSource.MoveNext()
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click

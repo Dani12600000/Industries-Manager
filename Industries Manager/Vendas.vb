@@ -1,4 +1,5 @@
-﻿Imports System.Globalization
+﻿Imports System.ComponentModel
+Imports System.Globalization
 Imports Industries_Manager.Industries_DanDataSetTableAdapters
 Public Class Vendas
     Dim ExIDVenda, ExIDProd, ExQuant As Integer
@@ -19,22 +20,26 @@ Public Class Vendas
         Mail_ClienteTextBox.Text = email
         Debug.WriteLine("Email : " & email)
     End Sub
-    Private Sub ID_ProdutoComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ID_ProdutoComboBox.SelectedIndexChanged
-        Try
-            Debug.WriteLine("ID_ProdutoComboBox.Text: " & ID_ProdutoComboBox.Text)
-            ProdutosBindingSource.Position = ProdutosBindingSource.Find("Nome", ID_ProdutoComboBox.Text)
-            Debug.WriteLine("Current Produto ID : " & ProdutosBindingSource.Current("ID"))
-            Debug.WriteLine("Current Produto Nome : " & ProdutosBindingSource.Current("Nome"))
-            Debug.WriteLine("Current Produto Dinheiro Gasto : " & ProdutosBindingSource.Current("DG"))
-            Debug.WriteLine("Current Produto Lucro : " & ProdutosBindingSource.Current("Lucro"))
-            PrecoTotalCadaProd = ProdutosBindingSource.Current("DG") + ProdutosBindingSource.Current("Lucro")
-            Debug.WriteLine("Current Produto soma Dinheiro Gasto e Lucro : " & PrecoTotalCadaProd & "€")
-            PCTextBox.Text = PrecoTotalCadaProd & "€"
-            SubTotal = PrecoTotalCadaProd * QuantidadeNumericUpDown.Value
-            SubtotalTextBox.Text = SubTotal & "€"
-        Catch
-        End Try
+
+    Private Sub ProdutosBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles ProdutosBindingSource.CurrentChanged
+        ' Verifique se o ProdutosBindingSource.Current não é Nothing antes de acessá-lo
+        If ProdutosBindingSource IsNot Nothing AndAlso ProdutosBindingSource.Current IsNot Nothing Then
+            Try
+                Debug.WriteLine("Current Produto ID: " & ProdutosBindingSource.Current("ID"))
+                Debug.WriteLine("Current Produto Nome: " & ProdutosBindingSource.Current("Nome"))
+                Debug.WriteLine("Current Produto Dinheiro Gasto: " & ProdutosBindingSource.Current("DG"))
+                Debug.WriteLine("Current Produto Lucro: " & ProdutosBindingSource.Current("Lucro"))
+                PrecoTotalCadaProd = ProdutosBindingSource.Current("DG") + ProdutosBindingSource.Current("Lucro")
+                Debug.WriteLine("Current Produto soma Dinheiro Gasto e Lucro: " & PrecoTotalCadaProd & "€")
+                PCTextBox.Text = PrecoTotalCadaProd & "€"
+                SubTotal = PrecoTotalCadaProd * QuantidadeNumericUpDown.Value
+                SubtotalTextBox.Text = SubTotal & "€"
+            Catch
+            End Try
+        End If
     End Sub
+
+
     Private Sub Vendas_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         If Not IsDBNull(VendasBindingSource.Current("ID")) Then
             VendasBindingSource.EndEdit()
@@ -68,8 +73,9 @@ Public Class Vendas
         Clientes.VendasTableAdapter.Fill(Clientes.Industries_DanDataSet.Vendas)
         Clientes.Venda_de_produtoTableAdapter.Fill(Clientes.Industries_DanDataSet.Venda_de_produto)
     End Sub
+
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        ID_ProdutoComboBox.SelectedIndex = -1
+        ProdutoComboBox.SelectedIndex = -1
         QuantidadeNumericUpDown.Value = 1
         PCTextBox.Text = ""
         SubtotalTextBox.Text = ""

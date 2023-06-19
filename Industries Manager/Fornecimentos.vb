@@ -56,6 +56,13 @@
         FornecimentosTableAdapter.Update(Industries_DanDataSet.Fornecimentos)
 
         AtualizarTG()
+
+        MsgBox("Guardado com sucesso!", vbInformation, "Guardado")
+        If MsgBox("Deseja adiconar mais um fornecimento?", vbYesNo, "Adicionar mais") = vbYes Then
+
+        Else
+            Me.Close()
+        End If
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -63,6 +70,8 @@
     End Sub
 
     Private Sub Fornecimentos_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        Produtos.ProdutosTableAdapter.Fill(Industries_DanDataSet.Produtos)
+        Produtos.FornecimentosTableAdapter.Fill(Produtos.Industries_DanDataSet.Fornecimentos)
+
+        Debug.WriteLine("Fechado")
     End Sub
 End Class

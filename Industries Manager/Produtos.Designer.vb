@@ -62,6 +62,7 @@ Partial Class Produtos
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button6 = New System.Windows.Forms.Button()
         IDLabel = New System.Windows.Forms.Label()
         NomeLabel = New System.Windows.Forms.Label()
         DescricaoLabel = New System.Windows.Forms.Label()
@@ -197,7 +198,7 @@ Partial Class Produtos
         Me.FornecimentosDataGridView.ReadOnly = True
         Me.FornecimentosDataGridView.RowHeadersWidth = 62
         Me.FornecimentosDataGridView.RowTemplate.Height = 28
-        Me.FornecimentosDataGridView.Size = New System.Drawing.Size(698, 260)
+        Me.FornecimentosDataGridView.Size = New System.Drawing.Size(673, 260)
         Me.FornecimentosDataGridView.TabIndex = 8
         '
         'Venda_de_produtoBindingSource
@@ -213,12 +214,12 @@ Partial Class Produtos
         Me.Venda_de_produtoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Venda_de_produtoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12})
         Me.Venda_de_produtoDataGridView.DataSource = Me.Venda_de_produtoBindingSource
-        Me.Venda_de_produtoDataGridView.Location = New System.Drawing.Point(1182, 63)
+        Me.Venda_de_produtoDataGridView.Location = New System.Drawing.Point(1154, 63)
         Me.Venda_de_produtoDataGridView.Name = "Venda_de_produtoDataGridView"
         Me.Venda_de_produtoDataGridView.ReadOnly = True
         Me.Venda_de_produtoDataGridView.RowHeadersWidth = 62
         Me.Venda_de_produtoDataGridView.RowTemplate.Height = 28
-        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(590, 313)
+        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(611, 313)
         Me.Venda_de_produtoDataGridView.TabIndex = 9
         '
         'DataGridViewTextBoxColumn4
@@ -353,15 +354,15 @@ Partial Class Produtos
         '
         Me.Label2.Location = New System.Drawing.Point(461, 37)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(702, 23)
+        Me.Label2.Size = New System.Drawing.Size(677, 23)
         Me.Label2.TabIndex = 28
         Me.Label2.Text = "Fornecimentos"
         '
         'Label3
         '
-        Me.Label3.Location = New System.Drawing.Point(1182, 34)
+        Me.Label3.Location = New System.Drawing.Point(1154, 34)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(590, 23)
+        Me.Label3.Size = New System.Drawing.Size(611, 23)
         Me.Label3.TabIndex = 29
         Me.Label3.Text = "Vendas"
         '
@@ -369,7 +370,7 @@ Partial Class Produtos
         '
         Me.Button5.Location = New System.Drawing.Point(603, 329)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(301, 47)
+        Me.Button5.Size = New System.Drawing.Size(368, 47)
         Me.Button5.TabIndex = 30
         Me.Button5.Text = "Novo fornecimento"
         Me.Button5.UseVisualStyleBackColor = True
@@ -434,11 +435,21 @@ Partial Class Produtos
         Me.DataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn7.Width = 95
         '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(354, 178)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(84, 30)
+        Me.Button6.TabIndex = 31
+        Me.Button6.Text = "Editar"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
         'Produtos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1784, 396)
+        Me.ClientSize = New System.Drawing.Size(1777, 396)
+        Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -508,4 +519,5 @@ Partial Class Produtos
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents Button6 As Button
 End Class

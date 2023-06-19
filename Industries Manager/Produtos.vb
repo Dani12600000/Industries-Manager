@@ -168,4 +168,16 @@
         Fornecimentos.AtualizarTG()
 
     End Sub
+
+    Private Sub Button8_TextChanged(sender As Object, e As EventArgs) Handles Button8.TextChanged
+        If Button8.Text = "Remover" Then
+            Button8.Enabled = False
+        Else
+            Button8.Enabled = True
+        End If
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+
+    End Sub
 End Class
