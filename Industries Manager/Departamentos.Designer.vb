@@ -36,43 +36,33 @@ Partial Class Departamentos
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
-        Me.Diretores_de_DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.DepartamentosTableAdapter()
         Me.TableAdapterManager = New Industries_Manager.Industries_DanDataSetTableAdapters.TableAdapterManager()
-        Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
         Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FuncionariosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FuncionariosTableAdapter()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.DDCDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.Button5 = New System.Windows.Forms.Button()
-        Me.FuncionariosBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.FuncionariosDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
-        Me.ID_FuncionarioTextBox = New System.Windows.Forms.TextBox()
-        Me.DepartamentosDiretoresDeDepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.NomeDiretorTextBox = New System.Windows.Forms.TextBox()
+        Me.Diretores_de_DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
+        Me.FuncionariosBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DDCDateTimePicker = New System.Windows.Forms.DateTimePicker()
         IDLabel = New System.Windows.Forms.Label()
         NDDLabel = New System.Windows.Forms.Label()
         DEDDLabel = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
         CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.FuncionariosBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FuncionariosDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DepartamentosDiretoresDeDepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FuncionariosBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'IDLabel
@@ -185,11 +175,6 @@ Partial Class Departamentos
         Me.Button4.Text = ">|"
         Me.Button4.UseVisualStyleBackColor = True
         '
-        'Diretores_de_DepartamentosBindingSource
-        '
-        Me.Diretores_de_DepartamentosBindingSource.DataMember = "DepartamentosDiretores de Departamentos"
-        Me.Diretores_de_DepartamentosBindingSource.DataSource = Me.DepartamentosBindingSource
-        '
         'DepartamentosTableAdapter
         '
         Me.DepartamentosTableAdapter.ClearBeforeFill = True
@@ -200,7 +185,7 @@ Partial Class Departamentos
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.ClientesTableAdapter = Nothing
         Me.TableAdapterManager.DepartamentosTableAdapter = Me.DepartamentosTableAdapter
-        Me.TableAdapterManager.Diretores_de_DepartamentosTableAdapter = Me.Diretores_de_DepartamentosTableAdapter
+        Me.TableAdapterManager.Diretores_de_DepartamentosTableAdapter = Nothing
         Me.TableAdapterManager.FornecedoresTableAdapter = Nothing
         Me.TableAdapterManager.FornecimentosTableAdapter = Nothing
         Me.TableAdapterManager.FuncionariosTableAdapter = Nothing
@@ -211,10 +196,6 @@ Partial Class Departamentos
         Me.TableAdapterManager.UpdateOrder = Industries_Manager.Industries_DanDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.Venda_de_produtoTableAdapter = Nothing
         Me.TableAdapterManager.VendasTableAdapter = Nothing
-        '
-        'Diretores_de_DepartamentosTableAdapter
-        '
-        Me.Diretores_de_DepartamentosTableAdapter.ClearBeforeFill = True
         '
         'FuncionariosTableAdapter
         '
@@ -229,16 +210,6 @@ Partial Class Departamentos
         Me.Label2.TabIndex = 12
         Me.Label2.Text = "Desde"
         '
-        'DDCDateTimePicker
-        '
-        Me.DDCDateTimePicker.CustomFormat = ""
-        Me.DDCDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.Diretores_de_DepartamentosBindingSource, "DDC", True))
-        Me.DDCDateTimePicker.Enabled = False
-        Me.DDCDateTimePicker.Location = New System.Drawing.Point(975, 74)
-        Me.DDCDateTimePicker.Name = "DDCDateTimePicker"
-        Me.DDCDateTimePicker.Size = New System.Drawing.Size(128, 26)
-        Me.DDCDateTimePicker.TabIndex = 14
-        '
         'Button5
         '
         Me.Button5.BackColor = System.Drawing.Color.RosyBrown
@@ -248,87 +219,17 @@ Partial Class Departamentos
         Me.Button5.TabIndex = 15
         Me.Button5.Text = "Despedir"
         Me.Button5.UseVisualStyleBackColor = False
-        '
-        'FuncionariosBindingSource1
-        '
-        Me.FuncionariosBindingSource1.DataMember = "DepartamentosFuncionarios"
-        Me.FuncionariosBindingSource1.DataSource = Me.DepartamentosBindingSource
+        Me.Button5.Visible = False
         '
         'FuncionariosDataGridView
         '
-        Me.FuncionariosDataGridView.AutoGenerateColumns = False
         Me.FuncionariosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.FuncionariosDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10})
-        Me.FuncionariosDataGridView.DataSource = Me.FuncionariosBindingSource1
         Me.FuncionariosDataGridView.Location = New System.Drawing.Point(493, 134)
         Me.FuncionariosDataGridView.Name = "FuncionariosDataGridView"
         Me.FuncionariosDataGridView.RowHeadersWidth = 62
         Me.FuncionariosDataGridView.RowTemplate.Height = 28
         Me.FuncionariosDataGridView.Size = New System.Drawing.Size(1042, 304)
         Me.FuncionariosDataGridView.TabIndex = 15
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 50
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Nome"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Nome"
-        Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 150
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Sobrenome"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Sobrenome"
-        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 150
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Email"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Email"
-        Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        Me.DataGridViewTextBoxColumn4.Width = 150
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "SI"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Salario"
-        Me.DataGridViewTextBoxColumn8.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = True
-        Me.DataGridViewTextBoxColumn8.Width = 150
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "DDEDE"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "Entrada"
-        Me.DataGridViewTextBoxColumn9.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.ReadOnly = True
-        Me.DataGridViewTextBoxColumn9.Width = 150
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "DDSDE"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "Saida"
-        Me.DataGridViewTextBoxColumn10.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.ReadOnly = True
-        Me.DataGridViewTextBoxColumn10.Width = 150
         '
         'Button6
         '
@@ -379,33 +280,43 @@ Partial Class Departamentos
         Me.Button10.UseVisualStyleBackColor = True
         Me.Button10.Visible = False
         '
-        'ID_FuncionarioTextBox
-        '
-        Me.ID_FuncionarioTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Diretores_de_DepartamentosBindingSource, "ID_Funcionario", True))
-        Me.ID_FuncionarioTextBox.Location = New System.Drawing.Point(493, 74)
-        Me.ID_FuncionarioTextBox.Name = "ID_FuncionarioTextBox"
-        Me.ID_FuncionarioTextBox.ReadOnly = True
-        Me.ID_FuncionarioTextBox.Size = New System.Drawing.Size(43, 26)
-        Me.ID_FuncionarioTextBox.TabIndex = 21
-        '
-        'DepartamentosDiretoresDeDepartamentosBindingSource
-        '
-        Me.DepartamentosDiretoresDeDepartamentosBindingSource.DataMember = "DepartamentosDiretores de Departamentos"
-        Me.DepartamentosDiretoresDeDepartamentosBindingSource.DataSource = Me.DepartamentosBindingSource
-        '
         'NomeDiretorTextBox
         '
-        Me.NomeDiretorTextBox.Location = New System.Drawing.Point(542, 74)
+        Me.NomeDiretorTextBox.Location = New System.Drawing.Point(493, 74)
         Me.NomeDiretorTextBox.Name = "NomeDiretorTextBox"
         Me.NomeDiretorTextBox.ReadOnly = True
-        Me.NomeDiretorTextBox.Size = New System.Drawing.Size(407, 26)
+        Me.NomeDiretorTextBox.Size = New System.Drawing.Size(456, 26)
         Me.NomeDiretorTextBox.TabIndex = 22
+        '
+        'Diretores_de_DepartamentosBindingSource
+        '
+        Me.Diretores_de_DepartamentosBindingSource.DataMember = "Diretores de Departamentos"
+        Me.Diretores_de_DepartamentosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'Diretores_de_DepartamentosTableAdapter
+        '
+        Me.Diretores_de_DepartamentosTableAdapter.ClearBeforeFill = True
+        '
+        'FuncionariosBindingSource1
+        '
+        Me.FuncionariosBindingSource1.DataMember = "Funcionarios"
+        Me.FuncionariosBindingSource1.DataSource = Me.Industries_DanDataSet
+        '
+        'DDCDateTimePicker
+        '
+        Me.DDCDateTimePicker.Enabled = False
+        Me.DDCDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DDCDateTimePicker.Location = New System.Drawing.Point(975, 74)
+        Me.DDCDateTimePicker.Name = "DDCDateTimePicker"
+        Me.DDCDateTimePicker.Size = New System.Drawing.Size(153, 26)
+        Me.DDCDateTimePicker.TabIndex = 23
         '
         'Departamentos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1555, 458)
+        Me.Controls.Add(Me.DDCDateTimePicker)
         Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.Button8)
@@ -413,7 +324,6 @@ Partial Class Departamentos
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.FuncionariosDataGridView)
         Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.DDCDateTimePicker)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Label1)
         Me.Controls.Add(Me.Button4)
@@ -426,18 +336,16 @@ Partial Class Departamentos
         Me.Controls.Add(Me.NDDTextBox)
         Me.Controls.Add(IDLabel)
         Me.Controls.Add(Me.IDTextBox)
-        Me.Controls.Add(Me.ID_FuncionarioTextBox)
         Me.Controls.Add(Me.NomeDiretorTextBox)
         Me.Name = "Departamentos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Departamentos"
         CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.FuncionariosBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FuncionariosDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DepartamentosDiretoresDeDepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FuncionariosBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -454,29 +362,20 @@ Partial Class Departamentos
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
-    Friend WithEvents Diretores_de_DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter
-    Friend WithEvents Diretores_de_DepartamentosBindingSource As BindingSource
     Friend WithEvents FuncionariosBindingSource As BindingSource
     Friend WithEvents FuncionariosTableAdapter As Industries_DanDataSetTableAdapters.FuncionariosTableAdapter
     Friend WithEvents Label2 As Label
-    Friend WithEvents DDCDateTimePicker As DateTimePicker
     Friend WithEvents Button5 As Button
-    Friend WithEvents FuncionariosBindingSource1 As BindingSource
     Friend WithEvents FuncionariosDataGridView As DataGridView
     Friend WithEvents Button6 As Button
     Friend WithEvents Button7 As Button
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents Button8 As Button
     Friend WithEvents Button9 As Button
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
     Friend WithEvents Button10 As Button
-    Friend WithEvents ID_FuncionarioTextBox As TextBox
-    Friend WithEvents DepartamentosDiretoresDeDepartamentosBindingSource As BindingSource
     Friend WithEvents NomeDiretorTextBox As TextBox
+    Friend WithEvents Diretores_de_DepartamentosBindingSource As BindingSource
+    Friend WithEvents Diretores_de_DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter
+    Friend WithEvents FuncionariosBindingSource1 As BindingSource
+    Friend WithEvents DDCDateTimePicker As DateTimePicker
 End Class
