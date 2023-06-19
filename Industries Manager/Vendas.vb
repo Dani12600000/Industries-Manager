@@ -48,12 +48,25 @@ Public Class Vendas
 
             Debug.WriteLine("VendasBindingSource.Current(""ID"") : " & VendasBindingSource.Current("ID"))
             Debug.WriteLine("Passou o shown")
+
+
+            Dim valor As Double
+
+            If Double.TryParse(TotalTextBox.Text, valor) Then
+                TotalTextBox.Text = valor.ToString("#,##0.00")
+            End If
+
+            Debug.WriteLine("Val(TotalTextBox.Text) : " & Val(TotalTextBox.Text))
+
+            If Val(TotalTextBox.Text) = 0 Then
+                TotalTextBox.Text = "0,00"
+            End If
         End If
     End Sub
 
     Private Sub Vendas_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        Clientes.VendasDataGridView.Refresh()
-        Clientes.Venda_de_produtoDataGridView.Refresh()
+        Clientes.VendasTableAdapter.Fill(Clientes.Industries_DanDataSet.Vendas)
+        Clientes.Venda_de_produtoTableAdapter.Fill(Clientes.Industries_DanDataSet.Venda_de_produto)
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         ID_ProdutoComboBox.SelectedIndex = -1
@@ -114,10 +127,8 @@ Public Class Vendas
 
             VendasBindingSource.EndEdit()
             VendasTableAdapter.Update(Industries_DanDataSet.Vendas)
-            VendasTableAdapter.Fill(Industries_DanDataSet.Vendas)
 
-            Clientes.Venda_de_produtoTableAdapter.Fill(Industries_DanDataSet.Venda_de_produto)
-            Clientes.VendasTableAdapter.Fill(Industries_DanDataSet.Vendas)
+            VendasBindingSource.Find("ID", ExIDVenda)
         Catch
             Debug.WriteLine("ID_Venda : " & ExIDVenda)
         End Try

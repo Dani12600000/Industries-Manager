@@ -86,6 +86,8 @@
             Try
                 ProdutosBindingSource.EndEdit()
                 ProdutosTableAdapter.Update(Industries_DanDataSet.Produtos)
+                ProdutosTableAdapter.Fill(Industries_DanDataSet.Produtos)
+                ProdutosBindingSource.MoveLast()
                 acabarAlteracoes()
                 MessageBox.Show("Alterações salvas com sucesso.")
             Catch ex As Exception
@@ -93,5 +95,9 @@
             End Try
 
         End If
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Fornecimentos.ShowDialog()
     End Sub
 End Class

@@ -33,10 +33,23 @@
 
     Sub TrocarBooleans()
         For Each ctl As Control In Formulario.Controls
-            If TypeOf ctl Is TextBox Then
-                Dim textBox As TextBox = DirectCast(ctl, TextBox)
-                textBox.ReadOnly = TorF
+
+            If TypeOf ctl Is TextBox OrElse TypeOf ctl Is NumericUpDown Then
+
+                If TypeOf ctl Is TextBox Then
+
+                    Dim textBox As TextBox = DirectCast(ctl, TextBox)
+                    textBox.ReadOnly = TorF
+
+                ElseIf TypeOf ctl Is NumericUpDown Then
+
+                    Dim numericUpDown As NumericUpDown = DirectCast(ctl, NumericUpDown)
+                    numericUpDown.Enabled = Not TorF
+
+                End If
+
             End If
+
         Next
 
         ButtonF.Enabled = TorF
@@ -44,7 +57,9 @@
         ButtonN.Enabled = TorF
         ButtonL.Enabled = TorF
         Try
-            ButtonE.Enabled = TorF
+            If ButtonE IsNot Nothing Then
+                ButtonE.Enabled = TorF
+            End If
         Catch
         End Try
     End Sub

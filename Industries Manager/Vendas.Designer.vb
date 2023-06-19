@@ -38,10 +38,6 @@ Partial Class Vendas
         Me.TotalTextBox = New System.Windows.Forms.TextBox()
         Me.Venda_de_produtoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Venda_de_produtoDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ID_ProdutoComboBox = New System.Windows.Forms.ComboBox()
         Me.ProdutosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PCTextBox = New System.Windows.Forms.TextBox()
@@ -53,6 +49,11 @@ Partial Class Vendas
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.ID_Produto = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Mail_ClienteLabel = New System.Windows.Forms.Label()
         TotalLabel = New System.Windows.Forms.Label()
         ID_ProdutoLabel = New System.Windows.Forms.Label()
@@ -173,7 +174,7 @@ Partial Class Vendas
         Me.TotalTextBox.Location = New System.Drawing.Point(123, 45)
         Me.TotalTextBox.Name = "TotalTextBox"
         Me.TotalTextBox.ReadOnly = True
-        Me.TotalTextBox.Size = New System.Drawing.Size(173, 26)
+        Me.TotalTextBox.Size = New System.Drawing.Size(260, 26)
         Me.TotalTextBox.TabIndex = 5
         '
         'Venda_de_produtoBindingSource
@@ -183,48 +184,20 @@ Partial Class Vendas
         '
         'Venda_de_produtoDataGridView
         '
+        Me.Venda_de_produtoDataGridView.AllowUserToAddRows = False
+        Me.Venda_de_produtoDataGridView.AllowUserToDeleteRows = False
+        Me.Venda_de_produtoDataGridView.AllowUserToResizeColumns = False
+        Me.Venda_de_produtoDataGridView.AllowUserToResizeRows = False
         Me.Venda_de_produtoDataGridView.AutoGenerateColumns = False
         Me.Venda_de_produtoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.Venda_de_produtoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
+        Me.Venda_de_produtoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID_Produto, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
         Me.Venda_de_produtoDataGridView.DataSource = Me.Venda_de_produtoBindingSource
         Me.Venda_de_produtoDataGridView.Location = New System.Drawing.Point(417, 16)
         Me.Venda_de_produtoDataGridView.Name = "Venda_de_produtoDataGridView"
         Me.Venda_de_produtoDataGridView.RowHeadersWidth = 62
         Me.Venda_de_produtoDataGridView.RowTemplate.Height = 28
-        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(843, 313)
+        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(876, 313)
         Me.Venda_de_produtoDataGridView.TabIndex = 6
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "ID_Produto"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Produto"
-        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Width = 185
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Quantidade"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Quant"
-        Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.Width = 65
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "PC"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Preço Cada"
-        Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.Width = 115
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Subtotal"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Subtotal"
-        Me.DataGridViewTextBoxColumn6.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.Width = 115
         '
         'ID_ProdutoComboBox
         '
@@ -336,11 +309,58 @@ Partial Class Vendas
         Me.Button3.Text = "Remover produto selecionado"
         Me.Button3.UseVisualStyleBackColor = False
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(382, 51)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(18, 20)
+        Me.Label2.TabIndex = 17
+        Me.Label2.Text = "€"
+        '
+        'ID_Produto
+        '
+        Me.ID_Produto.DataPropertyName = "ID_Produto"
+        Me.ID_Produto.DataSource = Me.ProdutosBindingSource
+        Me.ID_Produto.DisplayMember = "Nome"
+        Me.ID_Produto.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.[Nothing]
+        Me.ID_Produto.HeaderText = "Produto"
+        Me.ID_Produto.MinimumWidth = 8
+        Me.ID_Produto.Name = "ID_Produto"
+        Me.ID_Produto.ReadOnly = True
+        Me.ID_Produto.ValueMember = "ID"
+        Me.ID_Produto.Width = 175
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Quantidade"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Quant"
+        Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.Width = 65
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "PC"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Preço Cada"
+        Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 115
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Subtotal"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Subtotal"
+        Me.DataGridViewTextBoxColumn6.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.Width = 115
+        '
         'Vendas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1280, 416)
+        Me.ClientSize = New System.Drawing.Size(1305, 416)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ProdAdGroupBox)
@@ -349,6 +369,8 @@ Partial Class Vendas
         Me.Controls.Add(Me.TotalTextBox)
         Me.Controls.Add(Mail_ClienteLabel)
         Me.Controls.Add(Me.Mail_ClienteTextBox)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
         Me.Name = "Vendas"
         Me.Text = "Vendas"
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -373,10 +395,6 @@ Partial Class Vendas
     Friend WithEvents Venda_de_produtoTableAdapter As Industries_DanDataSetTableAdapters.Venda_de_produtoTableAdapter
     Friend WithEvents Venda_de_produtoBindingSource As BindingSource
     Friend WithEvents Venda_de_produtoDataGridView As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents ID_ProdutoComboBox As ComboBox
     Friend WithEvents PCTextBox As TextBox
     Friend WithEvents SubtotalTextBox As TextBox
@@ -388,4 +406,9 @@ Partial Class Vendas
     Friend WithEvents Button1 As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Button3 As Button
+    Friend WithEvents Label2 As Label
+    Friend WithEvents ID_Produto As DataGridViewComboBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
 End Class

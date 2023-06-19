@@ -62,14 +62,14 @@ Partial Class Clientes
         Me.IndustriesDanDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ProdutosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProdutosTableAdapter()
         Me.Venda_de_produtoDataGridView = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PC = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Subtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button11 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button12 = New System.Windows.Forms.Button()
+        Me.Column1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PC = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Subtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         MailLabel = New System.Windows.Forms.Label()
         NIFLabel = New System.Windows.Forms.Label()
         NIBLabel = New System.Windows.Forms.Label()
@@ -438,45 +438,6 @@ Partial Class Clientes
         Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(547, 464)
         Me.Venda_de_produtoDataGridView.TabIndex = 24
         '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "ID_Produto"
-        Me.Column1.DataSource = Me.ProdutosBindingSource
-        Me.Column1.DisplayMember = "Nome"
-        Me.Column1.HeaderText = "Produtos"
-        Me.Column1.MinimumWidth = 8
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.ValueMember = "ID"
-        Me.Column1.Width = 150
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Quantidade"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Quant"
-        Me.DataGridViewTextBoxColumn6.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Width = 50
-        '
-        'PC
-        '
-        Me.PC.DataPropertyName = "PC"
-        Me.PC.HeaderText = "Preço cada"
-        Me.PC.MinimumWidth = 8
-        Me.PC.Name = "PC"
-        Me.PC.ReadOnly = True
-        Me.PC.Width = 75
-        '
-        'Subtotal
-        '
-        Me.Subtotal.DataPropertyName = "Subtotal"
-        Me.Subtotal.HeaderText = "Subtotal"
-        Me.Subtotal.MinimumWidth = 8
-        Me.Subtotal.Name = "Subtotal"
-        Me.Subtotal.ReadOnly = True
-        Me.Subtotal.Width = 85
-        '
         'Button10
         '
         Me.Button10.Location = New System.Drawing.Point(86, 401)
@@ -514,6 +475,46 @@ Partial Class Clientes
         Me.Button12.TabIndex = 28
         Me.Button12.Text = "Novo"
         Me.Button12.UseVisualStyleBackColor = True
+        '
+        'Column1
+        '
+        Me.Column1.DataPropertyName = "ID_Produto"
+        Me.Column1.DataSource = Me.ProdutosBindingSource
+        Me.Column1.DisplayMember = "Nome"
+        Me.Column1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.[Nothing]
+        Me.Column1.HeaderText = "Produtos"
+        Me.Column1.MinimumWidth = 8
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.ValueMember = "ID"
+        Me.Column1.Width = 150
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Quantidade"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Quant"
+        Me.DataGridViewTextBoxColumn6.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Width = 50
+        '
+        'PC
+        '
+        Me.PC.DataPropertyName = "PC"
+        Me.PC.HeaderText = "Preço cada"
+        Me.PC.MinimumWidth = 8
+        Me.PC.Name = "PC"
+        Me.PC.ReadOnly = True
+        Me.PC.Width = 75
+        '
+        'Subtotal
+        '
+        Me.Subtotal.DataPropertyName = "Subtotal"
+        Me.Subtotal.HeaderText = "Subtotal"
+        Me.Subtotal.MinimumWidth = 8
+        Me.Subtotal.Name = "Subtotal"
+        Me.Subtotal.ReadOnly = True
+        Me.Subtotal.Width = 85
         '
         'Clientes
         '
@@ -599,10 +600,6 @@ Partial Class Clientes
     Friend WithEvents ProdutosTableAdapter As Industries_DanDataSetTableAdapters.ProdutosTableAdapter
     Friend WithEvents Venda_de_produtoDataGridView As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As DataGridViewComboBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents PC As DataGridViewTextBoxColumn
-    Friend WithEvents Subtotal As DataGridViewTextBoxColumn
     Friend WithEvents Button10 As Button
     Friend WithEvents Button11 As Button
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
@@ -610,4 +607,8 @@ Partial Class Clientes
     Friend WithEvents Total As DataGridViewTextBoxColumn
     Friend WithEvents Button9 As Button
     Friend WithEvents Button12 As Button
+    Friend WithEvents Column1 As DataGridViewComboBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents PC As DataGridViewTextBoxColumn
+    Friend WithEvents Subtotal As DataGridViewTextBoxColumn
 End Class

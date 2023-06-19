@@ -59,6 +59,9 @@ Partial Class Produtos
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.LucroNumericUpDown = New System.Windows.Forms.NumericUpDown()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Button5 = New System.Windows.Forms.Button()
         IDLabel = New System.Windows.Forms.Label()
         NomeLabel = New System.Windows.Forms.Label()
         DescricaoLabel = New System.Windows.Forms.Label()
@@ -151,6 +154,7 @@ Partial Class Produtos
         'IDTextBox
         '
         Me.IDTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProdutosBindingSource, "ID", True))
+        Me.IDTextBox.Enabled = False
         Me.IDTextBox.Location = New System.Drawing.Point(162, 31)
         Me.IDTextBox.Name = "IDTextBox"
         Me.IDTextBox.Size = New System.Drawing.Size(100, 26)
@@ -161,6 +165,7 @@ Partial Class Produtos
         Me.NomeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProdutosBindingSource, "Nome", True))
         Me.NomeTextBox.Location = New System.Drawing.Point(162, 63)
         Me.NomeTextBox.Name = "NomeTextBox"
+        Me.NomeTextBox.ReadOnly = True
         Me.NomeTextBox.Size = New System.Drawing.Size(276, 26)
         Me.NomeTextBox.TabIndex = 3
         '
@@ -170,6 +175,7 @@ Partial Class Produtos
         Me.DescricaoTextBox.Location = New System.Drawing.Point(162, 95)
         Me.DescricaoTextBox.Multiline = True
         Me.DescricaoTextBox.Name = "DescricaoTextBox"
+        Me.DescricaoTextBox.ReadOnly = True
         Me.DescricaoTextBox.Size = New System.Drawing.Size(276, 75)
         Me.DescricaoTextBox.TabIndex = 5
         '
@@ -180,16 +186,18 @@ Partial Class Produtos
         '
         'FornecimentosDataGridView
         '
+        Me.FornecimentosDataGridView.AllowUserToAddRows = False
+        Me.FornecimentosDataGridView.AllowUserToDeleteRows = False
         Me.FornecimentosDataGridView.AutoGenerateColumns = False
         Me.FornecimentosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.FornecimentosDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7})
         Me.FornecimentosDataGridView.DataSource = Me.FornecimentosBindingSource
-        Me.FornecimentosDataGridView.Location = New System.Drawing.Point(465, 31)
+        Me.FornecimentosDataGridView.Location = New System.Drawing.Point(465, 63)
         Me.FornecimentosDataGridView.Name = "FornecimentosDataGridView"
         Me.FornecimentosDataGridView.ReadOnly = True
         Me.FornecimentosDataGridView.RowHeadersWidth = 62
         Me.FornecimentosDataGridView.RowTemplate.Height = 28
-        Me.FornecimentosDataGridView.Size = New System.Drawing.Size(582, 345)
+        Me.FornecimentosDataGridView.Size = New System.Drawing.Size(582, 260)
         Me.FornecimentosDataGridView.TabIndex = 8
         '
         'DataGridViewTextBoxColumn1
@@ -259,16 +267,18 @@ Partial Class Produtos
         '
         'Venda_de_produtoDataGridView
         '
+        Me.Venda_de_produtoDataGridView.AllowUserToAddRows = False
+        Me.Venda_de_produtoDataGridView.AllowUserToDeleteRows = False
         Me.Venda_de_produtoDataGridView.AutoGenerateColumns = False
         Me.Venda_de_produtoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Venda_de_produtoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12})
         Me.Venda_de_produtoDataGridView.DataSource = Me.Venda_de_produtoBindingSource
-        Me.Venda_de_produtoDataGridView.Location = New System.Drawing.Point(1057, 31)
+        Me.Venda_de_produtoDataGridView.Location = New System.Drawing.Point(1057, 63)
         Me.Venda_de_produtoDataGridView.Name = "Venda_de_produtoDataGridView"
         Me.Venda_de_produtoDataGridView.ReadOnly = True
         Me.Venda_de_produtoDataGridView.RowHeadersWidth = 62
         Me.Venda_de_produtoDataGridView.RowTemplate.Height = 28
-        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(560, 345)
+        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(560, 313)
         Me.Venda_de_produtoDataGridView.TabIndex = 9
         '
         'DataGridViewTextBoxColumn4
@@ -389,18 +399,49 @@ Partial Class Produtos
         '
         Me.LucroNumericUpDown.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ProdutosBindingSource, "Lucro", True))
         Me.LucroNumericUpDown.DecimalPlaces = 2
+        Me.LucroNumericUpDown.Enabled = False
         Me.LucroNumericUpDown.Increment = New Decimal(New Integer() {10, 0, 0, 131072})
         Me.LucroNumericUpDown.Location = New System.Drawing.Point(162, 178)
+        Me.LucroNumericUpDown.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.LucroNumericUpDown.Name = "LucroNumericUpDown"
         Me.LucroNumericUpDown.Size = New System.Drawing.Size(142, 26)
         Me.LucroNumericUpDown.TabIndex = 27
         Me.LucroNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.LucroNumericUpDown.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'Label2
+        '
+        Me.Label2.Location = New System.Drawing.Point(461, 37)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(586, 23)
+        Me.Label2.TabIndex = 28
+        Me.Label2.Text = "Fornecimentos"
+        '
+        'Label3
+        '
+        Me.Label3.Location = New System.Drawing.Point(1053, 34)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(564, 23)
+        Me.Label3.TabIndex = 29
+        Me.Label3.Text = "Vendas"
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(603, 329)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(301, 47)
+        Me.Button5.TabIndex = 30
+        Me.Button5.Text = "Novo fornecimento"
+        Me.Button5.UseVisualStyleBackColor = True
         '
         'Produtos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1637, 396)
+        Me.Controls.Add(Me.Button5)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.LucroNumericUpDown)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button9)
@@ -464,4 +505,7 @@ Partial Class Produtos
     Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
     Friend WithEvents Label1 As Label
     Friend WithEvents LucroNumericUpDown As NumericUpDown
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Button5 As Button
 End Class
