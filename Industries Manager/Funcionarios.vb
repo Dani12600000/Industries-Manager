@@ -26,18 +26,21 @@
             Button5.Text = "Contratar"
             Button5.BackColor = ContColor
             ID_ProfissãoComboBox.Enabled = True
+            ID_DepartamentoComboBox.Enabled = True
             SINumericUpDown.Enabled = True
             Button8.Enabled = False
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Despedir"
             Button5.BackColor = DespColor
             ID_ProfissãoComboBox.Enabled = False
+            ID_DepartamentoComboBox.Enabled = False
             SINumericUpDown.Enabled = False
             Button8.Enabled = True
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And Not FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Recontratar"
             Button5.BackColor = ContColor
             ID_ProfissãoComboBox.Enabled = True
+            ID_DepartamentoComboBox.Enabled = True
             SINumericUpDown.Enabled = True
             Button8.Enabled = False
         End If

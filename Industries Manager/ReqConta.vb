@@ -7,7 +7,6 @@ Public Class ReqConta
         Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
         FotoPictureBox.SizeMode = PictureBoxSizeMode.Zoom
         Me.FuncionariosBindingSource.AddNew()
-        DDEDEDateTimePicker.Value = Now
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

@@ -30,7 +30,6 @@ Partial Class ReqConta
         Dim PassLabel As System.Windows.Forms.Label
         Dim ID_ProfissãoLabel As System.Windows.Forms.Label
         Dim ID_DepartamentoLabel As System.Windows.Forms.Label
-        Dim DDEDELabel As System.Windows.Forms.Label
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
         Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FuncionariosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FuncionariosTableAdapter()
@@ -42,7 +41,6 @@ Partial Class ReqConta
         Me.PassTextBox = New System.Windows.Forms.TextBox()
         Me.ID_ProfissãoTextBox = New System.Windows.Forms.TextBox()
         Me.ID_DepartamentoTextBox = New System.Windows.Forms.TextBox()
-        Me.DDEDEDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -61,7 +59,6 @@ Partial Class ReqConta
         PassLabel = New System.Windows.Forms.Label()
         ID_ProfissãoLabel = New System.Windows.Forms.Label()
         ID_DepartamentoLabel = New System.Windows.Forms.Label()
-        DDEDELabel = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FotoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -136,17 +133,6 @@ Partial Class ReqConta
         ID_DepartamentoLabel.Size = New System.Drawing.Size(137, 20)
         ID_DepartamentoLabel.TabIndex = 12
         ID_DepartamentoLabel.Text = "ID Departamento:"
-        '
-        'DDEDELabel
-        '
-        DDEDELabel.AutoSize = True
-        DDEDELabel.Location = New System.Drawing.Point(102, 559)
-        DDEDELabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        DDEDELabel.Name = "DDEDELabel"
-        DDEDELabel.Size = New System.Drawing.Size(71, 20)
-        DDEDELabel.TabIndex = 16
-        DDEDELabel.Text = "DDEDE:"
-        DDEDELabel.Visible = False
         '
         'Industries_DanDataSet
         '
@@ -244,16 +230,6 @@ Partial Class ReqConta
         Me.ID_DepartamentoTextBox.Name = "ID_DepartamentoTextBox"
         Me.ID_DepartamentoTextBox.Size = New System.Drawing.Size(230, 26)
         Me.ID_DepartamentoTextBox.TabIndex = 13
-        '
-        'DDEDEDateTimePicker
-        '
-        Me.DDEDEDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FuncionariosBindingSource, "DDEDE", True))
-        Me.DDEDEDateTimePicker.Location = New System.Drawing.Point(183, 553)
-        Me.DDEDEDateTimePicker.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.DDEDEDateTimePicker.Name = "DDEDEDateTimePicker"
-        Me.DDEDEDateTimePicker.Size = New System.Drawing.Size(230, 26)
-        Me.DDEDEDateTimePicker.TabIndex = 17
-        Me.DDEDEDateTimePicker.Visible = False
         '
         'Button1
         '
@@ -368,8 +344,6 @@ Partial Class ReqConta
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(DDEDELabel)
-        Me.Controls.Add(Me.DDEDEDateTimePicker)
         Me.Controls.Add(ID_DepartamentoLabel)
         Me.Controls.Add(Me.ID_DepartamentoTextBox)
         Me.Controls.Add(ID_ProfissãoLabel)
@@ -406,7 +380,6 @@ Partial Class ReqConta
     Friend WithEvents PassTextBox As TextBox
     Friend WithEvents ID_ProfissãoTextBox As TextBox
     Friend WithEvents ID_DepartamentoTextBox As TextBox
-    Friend WithEvents DDEDEDateTimePicker As DateTimePicker
     Friend WithEvents Button1 As Button
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents Button2 As Button
