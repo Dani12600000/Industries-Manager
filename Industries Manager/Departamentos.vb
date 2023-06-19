@@ -112,4 +112,8 @@
             End Try
         End If
     End Sub
+
+    Private Sub DepartamentosBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles DepartamentosBindingSource.CurrentChanged
+        'ACABAR QUANDO CHEGAR A CASA
+    End Sub
 End Class

@@ -339,7 +339,7 @@ Partial Class Vendas
         '
         'Button4
         '
-        Me.Button4.BackColor = System.Drawing.SystemColors.Control
+        Me.Button4.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.Button4.Location = New System.Drawing.Point(606, 342)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(57, 51)
@@ -349,7 +349,7 @@ Partial Class Vendas
         '
         'Button5
         '
-        Me.Button5.BackColor = System.Drawing.SystemColors.Control
+        Me.Button5.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.Button5.Location = New System.Drawing.Point(543, 342)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(57, 51)
@@ -359,7 +359,7 @@ Partial Class Vendas
         '
         'Button6
         '
-        Me.Button6.BackColor = System.Drawing.SystemColors.Control
+        Me.Button6.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.Button6.Location = New System.Drawing.Point(480, 342)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(57, 51)
@@ -369,7 +369,7 @@ Partial Class Vendas
         '
         'Button7
         '
-        Me.Button7.BackColor = System.Drawing.SystemColors.Control
+        Me.Button7.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.Button7.Location = New System.Drawing.Point(417, 342)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(57, 51)

@@ -61,7 +61,7 @@ Partial Class Departamentos
         Me.Button10 = New System.Windows.Forms.Button()
         Me.ID_FuncionarioTextBox = New System.Windows.Forms.TextBox()
         Me.DepartamentosDiretoresDeDepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.NomeDiretorTextBox = New System.Windows.Forms.TextBox()
         IDLabel = New System.Windows.Forms.Label()
         NDDLabel = New System.Windows.Forms.Label()
         DEDDLabel = New System.Windows.Forms.Label()
@@ -338,6 +338,7 @@ Partial Class Departamentos
         Me.Button6.TabIndex = 16
         Me.Button6.Text = "Historico"
         Me.Button6.UseVisualStyleBackColor = True
+        Me.Button6.Visible = False
         '
         'Button7
         '
@@ -392,13 +393,13 @@ Partial Class Departamentos
         Me.DepartamentosDiretoresDeDepartamentosBindingSource.DataMember = "DepartamentosDiretores de Departamentos"
         Me.DepartamentosDiretoresDeDepartamentosBindingSource.DataSource = Me.DepartamentosBindingSource
         '
-        'TextBox1
+        'NomeDiretorTextBox
         '
-        Me.TextBox1.Location = New System.Drawing.Point(542, 74)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(407, 26)
-        Me.TextBox1.TabIndex = 22
+        Me.NomeDiretorTextBox.Location = New System.Drawing.Point(542, 74)
+        Me.NomeDiretorTextBox.Name = "NomeDiretorTextBox"
+        Me.NomeDiretorTextBox.ReadOnly = True
+        Me.NomeDiretorTextBox.Size = New System.Drawing.Size(407, 26)
+        Me.NomeDiretorTextBox.TabIndex = 22
         '
         'Departamentos
         '
@@ -426,7 +427,7 @@ Partial Class Departamentos
         Me.Controls.Add(IDLabel)
         Me.Controls.Add(Me.IDTextBox)
         Me.Controls.Add(Me.ID_FuncionarioTextBox)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.NomeDiretorTextBox)
         Me.Name = "Departamentos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Departamentos"
@@ -477,5 +478,5 @@ Partial Class Departamentos
     Friend WithEvents Button10 As Button
     Friend WithEvents ID_FuncionarioTextBox As TextBox
     Friend WithEvents DepartamentosDiretoresDeDepartamentosBindingSource As BindingSource
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents NomeDiretorTextBox As TextBox
 End Class
