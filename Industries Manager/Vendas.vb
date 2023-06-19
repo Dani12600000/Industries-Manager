@@ -114,6 +114,10 @@ Public Class Vendas
 
             VendasBindingSource.EndEdit()
             VendasTableAdapter.Update(Industries_DanDataSet.Vendas)
+            VendasTableAdapter.Fill(Industries_DanDataSet.Vendas)
+
+            Clientes.Venda_de_produtoTableAdapter.Fill(Industries_DanDataSet.Venda_de_produto)
+            Clientes.VendasTableAdapter.Fill(Industries_DanDataSet.Vendas)
         Catch
             Debug.WriteLine("ID_Venda : " & ExIDVenda)
         End Try
