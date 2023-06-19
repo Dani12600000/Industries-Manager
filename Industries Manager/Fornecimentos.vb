@@ -63,6 +63,6 @@
     End Sub
 
     Private Sub Fornecimentos_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        Produtos.FornecimentosTableAdapter.Fill(Industries_DanDataSet.Fornecimentos)
+        Produtos.ProdutosTableAdapter.Fill(Industries_DanDataSet.Produtos)
     End Sub
 End Class
