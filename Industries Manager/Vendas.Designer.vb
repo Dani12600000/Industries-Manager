@@ -43,11 +43,9 @@ Partial Class Vendas
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PCTextBox = New System.Windows.Forms.TextBox()
-        Me.SubtotalTextBox = New System.Windows.Forms.TextBox()
         Me.ProdutosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProdutosTableAdapter()
-        Me.QuantidadeNumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.ProdAdGroupBox = New System.Windows.Forms.GroupBox()
+        Me.QuantidadeNumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.ProdutoComboBox = New System.Windows.Forms.ComboBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -59,6 +57,8 @@ Partial Class Vendas
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.PCTextBox = New System.Windows.Forms.TextBox()
+        Me.SubtotalTextBox = New System.Windows.Forms.TextBox()
         Mail_ClienteLabel = New System.Windows.Forms.Label()
         TotalLabel = New System.Windows.Forms.Label()
         ID_ProdutoLabel = New System.Windows.Forms.Label()
@@ -70,8 +70,8 @@ Partial Class Vendas
         CType(Me.Venda_de_produtoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Venda_de_produtoDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProdutosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.QuantidadeNumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ProdAdGroupBox.SuspendLayout()
+        CType(Me.QuantidadeNumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Mail_ClienteLabel
@@ -113,7 +113,7 @@ Partial Class Vendas
         'PCLabel
         '
         PCLabel.AutoSize = True
-        PCLabel.Location = New System.Drawing.Point(6, 102)
+        PCLabel.Location = New System.Drawing.Point(6, 106)
         PCLabel.Name = "PCLabel"
         PCLabel.Size = New System.Drawing.Size(96, 20)
         PCLabel.TabIndex = 9
@@ -122,7 +122,7 @@ Partial Class Vendas
         'SubtotalLabel
         '
         SubtotalLabel.AutoSize = True
-        SubtotalLabel.Location = New System.Drawing.Point(29, 134)
+        SubtotalLabel.Location = New System.Drawing.Point(29, 138)
         SubtotalLabel.Name = "SubtotalLabel"
         SubtotalLabel.Size = New System.Drawing.Size(73, 20)
         SubtotalLabel.TabIndex = 11
@@ -246,48 +246,19 @@ Partial Class Vendas
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.Width = 115
         '
-        'PCTextBox
-        '
-        Me.PCTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Venda_de_produtoBindingSource, "PC", True))
-        Me.PCTextBox.Location = New System.Drawing.Point(107, 99)
-        Me.PCTextBox.Name = "PCTextBox"
-        Me.PCTextBox.ReadOnly = True
-        Me.PCTextBox.Size = New System.Drawing.Size(135, 26)
-        Me.PCTextBox.TabIndex = 10
-        '
-        'SubtotalTextBox
-        '
-        Me.SubtotalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Venda_de_produtoBindingSource, "Subtotal", True))
-        Me.SubtotalTextBox.Location = New System.Drawing.Point(108, 131)
-        Me.SubtotalTextBox.Name = "SubtotalTextBox"
-        Me.SubtotalTextBox.ReadOnly = True
-        Me.SubtotalTextBox.Size = New System.Drawing.Size(135, 26)
-        Me.SubtotalTextBox.TabIndex = 12
-        '
         'ProdutosTableAdapter
         '
         Me.ProdutosTableAdapter.ClearBeforeFill = True
         '
-        'QuantidadeNumericUpDown
-        '
-        Me.QuantidadeNumericUpDown.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.Venda_de_produtoBindingSource, "Quantidade", True))
-        Me.QuantidadeNumericUpDown.Location = New System.Drawing.Point(108, 70)
-        Me.QuantidadeNumericUpDown.Maximum = New Decimal(New Integer() {150, 0, 0, 0})
-        Me.QuantidadeNumericUpDown.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.QuantidadeNumericUpDown.Name = "QuantidadeNumericUpDown"
-        Me.QuantidadeNumericUpDown.Size = New System.Drawing.Size(135, 26)
-        Me.QuantidadeNumericUpDown.TabIndex = 13
-        Me.QuantidadeNumericUpDown.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
         'ProdAdGroupBox
         '
+        Me.ProdAdGroupBox.Controls.Add(Me.SubtotalTextBox)
+        Me.ProdAdGroupBox.Controls.Add(Me.PCTextBox)
+        Me.ProdAdGroupBox.Controls.Add(Me.QuantidadeNumericUpDown)
         Me.ProdAdGroupBox.Controls.Add(Me.ProdutoComboBox)
         Me.ProdAdGroupBox.Controls.Add(Me.Button2)
         Me.ProdAdGroupBox.Controls.Add(Me.Button1)
         Me.ProdAdGroupBox.Controls.Add(ID_ProdutoLabel)
-        Me.ProdAdGroupBox.Controls.Add(Me.SubtotalTextBox)
-        Me.ProdAdGroupBox.Controls.Add(Me.QuantidadeNumericUpDown)
-        Me.ProdAdGroupBox.Controls.Add(Me.PCTextBox)
         Me.ProdAdGroupBox.Controls.Add(QuantidadeLabel)
         Me.ProdAdGroupBox.Controls.Add(SubtotalLabel)
         Me.ProdAdGroupBox.Controls.Add(PCLabel)
@@ -297,6 +268,16 @@ Partial Class Vendas
         Me.ProdAdGroupBox.TabIndex = 14
         Me.ProdAdGroupBox.TabStop = False
         Me.ProdAdGroupBox.Text = "Adicionar Produtos a compra"
+        '
+        'QuantidadeNumericUpDown
+        '
+        Me.QuantidadeNumericUpDown.Location = New System.Drawing.Point(109, 70)
+        Me.QuantidadeNumericUpDown.Maximum = New Decimal(New Integer() {500, 0, 0, 0})
+        Me.QuantidadeNumericUpDown.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.QuantidadeNumericUpDown.Name = "QuantidadeNumericUpDown"
+        Me.QuantidadeNumericUpDown.Size = New System.Drawing.Size(134, 26)
+        Me.QuantidadeNumericUpDown.TabIndex = 17
+        Me.QuantidadeNumericUpDown.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'ProdutoComboBox
         '
@@ -405,6 +386,22 @@ Partial Class Vendas
         Me.Label3.TabIndex = 22
         Me.Label3.Text = "Produtos nesta venda"
         '
+        'PCTextBox
+        '
+        Me.PCTextBox.Location = New System.Drawing.Point(109, 103)
+        Me.PCTextBox.Name = "PCTextBox"
+        Me.PCTextBox.ReadOnly = True
+        Me.PCTextBox.Size = New System.Drawing.Size(134, 26)
+        Me.PCTextBox.TabIndex = 18
+        '
+        'SubtotalTextBox
+        '
+        Me.SubtotalTextBox.Location = New System.Drawing.Point(109, 135)
+        Me.SubtotalTextBox.Name = "SubtotalTextBox"
+        Me.SubtotalTextBox.ReadOnly = True
+        Me.SubtotalTextBox.Size = New System.Drawing.Size(134, 26)
+        Me.SubtotalTextBox.TabIndex = 19
+        '
         'Vendas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -433,9 +430,9 @@ Partial Class Vendas
         CType(Me.Venda_de_produtoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Venda_de_produtoDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ProdutosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.QuantidadeNumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ProdAdGroupBox.ResumeLayout(False)
         Me.ProdAdGroupBox.PerformLayout()
+        CType(Me.QuantidadeNumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -450,11 +447,8 @@ Partial Class Vendas
     Friend WithEvents Venda_de_produtoTableAdapter As Industries_DanDataSetTableAdapters.Venda_de_produtoTableAdapter
     Friend WithEvents Venda_de_produtoBindingSource As BindingSource
     Friend WithEvents Venda_de_produtoDataGridView As DataGridView
-    Friend WithEvents PCTextBox As TextBox
-    Friend WithEvents SubtotalTextBox As TextBox
     Friend WithEvents ProdutosBindingSource As BindingSource
     Friend WithEvents ProdutosTableAdapter As Industries_DanDataSetTableAdapters.ProdutosTableAdapter
-    Friend WithEvents QuantidadeNumericUpDown As NumericUpDown
     Friend WithEvents ProdAdGroupBox As GroupBox
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
@@ -471,4 +465,7 @@ Partial Class Vendas
     Friend WithEvents Button6 As Button
     Friend WithEvents Button7 As Button
     Friend WithEvents Label3 As Label
+    Friend WithEvents QuantidadeNumericUpDown As NumericUpDown
+    Friend WithEvents PCTextBox As TextBox
+    Friend WithEvents SubtotalTextBox As TextBox
 End Class

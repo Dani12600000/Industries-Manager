@@ -73,6 +73,11 @@ Public Class Vendas
     End Sub
 
     Private Sub Vendas_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If Val(TotalTextBox.Text) = 0 Then
+            VendasBindingSource.RemoveCurrent()
+            VendasTableAdapter.Update(Industries_DanDataSet.Vendas)
+        End If
+
         Clientes.VendasTableAdapter.Fill(Clientes.Industries_DanDataSet.Vendas)
         Clientes.Venda_de_produtoTableAdapter.Fill(Clientes.Industries_DanDataSet.Venda_de_produto)
     End Sub
@@ -117,14 +122,23 @@ Public Class Vendas
             Dim ExPC As Double = Double.Parse(PCTextBox.Text.Replace("€", "").Replace(".", "").Replace(",", "."), culture)
             Dim ExSubtotal As Double = Double.Parse(SubtotalTextBox.Text.Replace("€", "").Replace(".", "").Replace(",", "."), culture)
 
-            ' Adicionar um novo produto à tabela Venda_de_produto
-            Dim novaLinha As DataRow = Industries_DanDataSet.Venda_de_produto.NewRow()
-            novaLinha("ID_Venda") = ExIDVenda
-            novaLinha("ID_Produto") = ExIDProd
-            novaLinha("Quantidade") = ExQuant
-            novaLinha("PC") = ExPC
-            novaLinha("Subtotal") = ExSubtotal
-            Industries_DanDataSet.Venda_de_produto.Rows.Add(novaLinha)
+            ' Verificar se já existe um registro com os mesmos IDs na tabela Venda_de_produto
+            Dim registroExistente As DataRow = Industries_DanDataSet.Venda_de_produto.FirstOrDefault(Function(row) CInt(row("ID_Venda")) = ExIDVenda AndAlso CInt(row("ID_Produto")) = ExIDProd)
+
+            If registroExistente IsNot Nothing Then
+                ' Se existir, atualizar a quantidade e o subtotal do registro existente
+                registroExistente("Quantidade") = CInt(registroExistente("Quantidade")) + ExQuant
+                registroExistente("Subtotal") = CDbl(registroExistente("Subtotal")) + ExSubtotal
+            Else
+                ' Se não existir, adicionar um novo produto à tabela Venda_de_produto
+                Dim novaLinha As DataRow = Industries_DanDataSet.Venda_de_produto.NewRow()
+                novaLinha("ID_Venda") = ExIDVenda
+                novaLinha("ID_Produto") = ExIDProd
+                novaLinha("Quantidade") = ExQuant
+                novaLinha("PC") = ExPC
+                novaLinha("Subtotal") = ExSubtotal
+                Industries_DanDataSet.Venda_de_produto.Rows.Add(novaLinha)
+            End If
 
             ' Salvar as alterações no banco de dados
             Venda_de_produtoTableAdapter.Update(Industries_DanDataSet.Venda_de_produto)
@@ -143,6 +157,13 @@ Public Class Vendas
             SubTotal = PrecoTotalCadaProd * QuantidadeNumericUpDown.Value
             SubtotalTextBox.Text = SubTotal & "€"
         End If
+    End Sub
+
+    Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
+        Venda_de_produtoBindingSource.RemoveCurrent()
+        Venda_de_produtoTableAdapter.Update(Industries_DanDataSet.Venda_de_produto)
+
+        AtualizarValorTotalVenda()
     End Sub
 
     Sub AtualizarValorTotalVenda()
