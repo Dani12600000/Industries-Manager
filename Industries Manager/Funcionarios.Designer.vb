@@ -136,6 +136,15 @@ Partial Class Funcionarios
         SILabel.TabIndex = 10
         SILabel.Text = "Salário inicial:"
         '
+        'ID_DepartamentoLabel
+        '
+        ID_DepartamentoLabel.AutoSize = True
+        ID_DepartamentoLabel.Location = New System.Drawing.Point(12, 384)
+        ID_DepartamentoLabel.Name = "ID_DepartamentoLabel"
+        ID_DepartamentoLabel.Size = New System.Drawing.Size(116, 20)
+        ID_DepartamentoLabel.TabIndex = 34
+        ID_DepartamentoLabel.Text = "Departamento:"
+        '
         'Industries_DanDataSet
         '
         Me.Industries_DanDataSet.DataSetName = "Industries_DanDataSet"
@@ -284,7 +293,7 @@ Partial Class Funcionarios
         Me.Login_FuncionarioDataGridView.ReadOnly = True
         Me.Login_FuncionarioDataGridView.RowHeadersWidth = 62
         Me.Login_FuncionarioDataGridView.RowTemplate.Height = 28
-        Me.Login_FuncionarioDataGridView.Size = New System.Drawing.Size(714, 549)
+        Me.Login_FuncionarioDataGridView.Size = New System.Drawing.Size(763, 549)
         Me.Login_FuncionarioDataGridView.TabIndex = 15
         '
         'DataGridViewTextBoxColumn1
@@ -303,7 +312,7 @@ Partial Class Funcionarios
         Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 125
+        Me.DataGridViewTextBoxColumn3.Width = 120
         '
         'DataGridViewTextBoxColumn4
         '
@@ -312,16 +321,16 @@ Partial Class Funcionarios
         Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        Me.DataGridViewTextBoxColumn4.Width = 150
+        Me.DataGridViewTextBoxColumn4.Width = 135
         '
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "LiouLo"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Registo"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Tipo de registo"
         Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Width = 125
+        Me.DataGridViewTextBoxColumn5.Width = 120
         '
         'Button5
         '
@@ -441,7 +450,6 @@ Partial Class Funcionarios
         Me.Button9.TabIndex = 33
         Me.Button9.Text = "Acessos hoje"
         Me.Button9.UseVisualStyleBackColor = True
-        Me.Button9.Visible = False
         '
         'Button10
         '
@@ -451,16 +459,6 @@ Partial Class Funcionarios
         Me.Button10.TabIndex = 34
         Me.Button10.Text = "Acessos de uma data especifica"
         Me.Button10.UseVisualStyleBackColor = True
-        Me.Button10.Visible = False
-        '
-        'ID_DepartamentoLabel
-        '
-        ID_DepartamentoLabel.AutoSize = True
-        ID_DepartamentoLabel.Location = New System.Drawing.Point(12, 384)
-        ID_DepartamentoLabel.Name = "ID_DepartamentoLabel"
-        ID_DepartamentoLabel.Size = New System.Drawing.Size(116, 20)
-        ID_DepartamentoLabel.TabIndex = 34
-        ID_DepartamentoLabel.Text = "Departamento:"
         '
         'ID_DepartamentoComboBox
         '
@@ -475,7 +473,7 @@ Partial Class Funcionarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1194, 683)
+        Me.ClientSize = New System.Drawing.Size(1235, 683)
         Me.Controls.Add(ID_DepartamentoLabel)
         Me.Controls.Add(Me.ID_DepartamentoComboBox)
         Me.Controls.Add(Me.Button10)
@@ -545,10 +543,6 @@ Partial Class Funcionarios
     Friend WithEvents Button1 As Button
     Friend WithEvents DDSDEDateTimePicker As DateTimePicker
     Friend WithEvents Button6 As Button
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents ProfissõesTableAdapter As Industries_DanDataSetTableAdapters.ProfissõesTableAdapter
     Friend WithEvents ProfissõesBindingSource As BindingSource
     Friend WithEvents Button7 As Button
@@ -559,4 +553,8 @@ Partial Class Funcionarios
     Friend WithEvents Button9 As Button
     Friend WithEvents Button10 As Button
     Friend WithEvents ID_DepartamentoComboBox As ComboBox
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
 End Class

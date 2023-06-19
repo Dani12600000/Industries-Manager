@@ -1,4 +1,6 @@
-﻿Public Class Funcionarios
+﻿Imports System.Globalization
+
+Public Class Funcionarios
 
     Dim DespColor, ContColor As Color
     Dim SM As Double 'Salario Minimo
@@ -393,6 +395,80 @@
                 botao.Enabled = False
             End If
         Next
+    End Sub
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        If String.IsNullOrEmpty(Login_FuncionarioBindingSource.Filter) Then
+            Dim filtro As String = "DEH >= #" & DateTime.Today.ToString("MM/dd/yyyy") & " 00:00:00# AND DEH <= #" & DateTime.Today.ToString("MM/dd/yyyy") & " 23:59:59#"
+            Login_FuncionarioBindingSource.Filter = filtro
+            Button9.Text = "Todos os acessos"
+        ElseIf Button9.Text = "Todos os acessos" Then
+            Login_FuncionarioBindingSource.RemoveFilter()
+            Button9.Text = "Acessos hoje"
+        End If
+    End Sub
+
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+        ' Solicitar a data ao usuário
+        Dim dataSelecionada As String = InputBox("Insira a data:")
+
+        ' Verificar se apenas o número do dia foi fornecido
+        Dim dataCompleta As Date
+        If DateTime.TryParseExact(dataSelecionada, "d", CultureInfo.InvariantCulture, DateTimeStyles.None, dataCompleta) Then
+            ' Apenas o dia foi fornecido
+            dataSelecionada = dataCompleta.ToString("dd/MM/yyyy")
+        ElseIf DateTime.TryParseExact(dataSelecionada, "d/M", CultureInfo.InvariantCulture, DateTimeStyles.None, dataCompleta) Then
+            ' Dia e mês foram fornecidos
+            dataSelecionada = dataCompleta.ToString("dd/MM/yyyy")
+        ElseIf DateTime.TryParseExact(dataSelecionada, "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, dataCompleta) Then
+            ' Dia, mês e ano foram fornecidos
+            dataSelecionada = dataCompleta.ToString("dd/MM/yyyy")
+        End If
+
+        Debug.WriteLine("dataCompleta: " & dataCompleta)
+
+        ' Verificar se a data foi inserida corretamente
+        If Not String.IsNullOrEmpty(dataCompleta) Then
+            Dim data As Date
+            If Date.TryParseExact(dataCompleta, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, data) Then
+                ' Data inserida corretamente
+
+                ' Verificar se o intervalo de horas foi selecionado
+                Dim intervaloHoras As MsgBoxResult = MsgBox("Deseja especificar um intervalo de horas?", vbYesNo)
+                If intervaloHoras = vbYes Then
+                    ' Intervalo de horas selecionado
+
+                    ' Solicitar a hora inicial ao utilizador
+                    Dim horaInicial As String = InputBox("Insira a hora inicial (formato: HH:mm:ss):")
+
+                    ' Solicitar a hora final ao utilizador
+                    Dim horaFinal As String = InputBox("Insira a hora final (formato: HH:mm:ss):")
+
+                    ' Verificar se as horas foram inseridas corretamente
+                    Dim horaInicialValida As DateTime
+                    Dim horaFinalValida As DateTime
+                    If DateTime.TryParseExact(horaInicial, "HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, horaInicialValida) AndAlso
+               DateTime.TryParseExact(horaFinal, "HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, horaFinalValida) Then
+                        ' Horas inseridas corretamente
+
+                        Dim filtro As String = "DEH >= #" & data.ToString("MM/dd/yyyy") & " " & horaInicial & "# AND DEH <= #" & data.ToString("MM/dd/yyyy") & " " & horaFinal & "#"
+                        Login_FuncionarioBindingSource.Filter = filtro
+                    Else
+                        MessageBox.Show("Horas inválidas.")
+                    End If
+                Else
+                    ' Intervalo de horas não selecionado (considerar o dia todo)
+                    Dim filtro As String = "DEH >= #" & data.ToString("MM/dd/yyyy") & " 00:00:00# AND DEH <= #" & data.ToString("MM/dd/yyyy") & " 23:59:59#"
+                    Login_FuncionarioBindingSource.Filter = filtro
+                End If
+                Button9.Text = "Todos os acessos"
+            Else
+                MessageBox.Show("Data inválida.")
+            End If
+        Else
+            MessageBox.Show("Data não inserida.")
+        End If
+
     End Sub
 
     ' Função para restaurar os valores Enabled originais dos botões
