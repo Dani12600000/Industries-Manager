@@ -1,6 +1,8 @@
 ﻿Public Class Produtos
 
     Private Sub Produtos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Fornecedores' table. You can move, or remove it, as needed.
+        Me.FornecedoresTableAdapter.Fill(Me.Industries_DanDataSet.Fornecedores)
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Venda_de_produto'. Você pode movê-la ou removê-la conforme necessário.
         Me.Venda_de_produtoTableAdapter.Fill(Me.Industries_DanDataSet.Venda_de_produto)
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Fornecimentos'. Você pode movê-la ou removê-la conforme necessário.
@@ -82,8 +84,11 @@
 
             iniciarAlteracoes()
 
+            DGTextBox.ReadOnly = True
+
         ElseIf Button9.Text = "Guardar" Then
             Try
+                ProdutosBindingSource.Current("DG") = 0
                 ProdutosBindingSource.EndEdit()
                 ProdutosTableAdapter.Update(Industries_DanDataSet.Produtos)
                 ProdutosTableAdapter.Fill(Industries_DanDataSet.Produtos)
@@ -178,6 +183,36 @@
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        If Button6.Text = "Editar" Then
+
+            LucroNumericUpDown.Enabled = True
+            Button6.Text = "Guardar"
+
+        ElseIf Button6.Text = "Guardar" Then
+
+            Dim posicaoAtualProd As Integer
+
+            Try
+                posicaoAtualProd = ProdutosBindingSource.Position
+                LucroNumericUpDown.Enabled = False
+                Button6.Text = "Editar"
+                ProdutosBindingSource.EndEdit()
+                ProdutosTableAdapter.Update(Industries_DanDataSet.Produtos)
+                ProdutosTableAdapter.Fill(Industries_DanDataSet.Produtos)
+                ProdutosBindingSource.Position = posicaoAtualProd
+                MsgBox("Guardado novo lucro pretendido com sucesso", vbInformation, "Guardado")
+            Catch
+            End Try
+
+        End If
+    End Sub
+
+    Sub AtualizarProdutoAoMudarPosition() Handles ProdutosBindingSource.PositionChanged
+
+        If ProdutosBindingSource.Current IsNot Nothing Then
+            DGTextBox.Text = Double.Parse(ProdutosBindingSource.Current("DG")).ToString("#,##0.00€")
+            PFTextBox.Text = (Double.Parse(ProdutosBindingSource.Current("DG")) + Double.Parse(ProdutosBindingSource.Current("Lucro"))).ToString("#,##0.00€")
+        End If
 
     End Sub
 End Class

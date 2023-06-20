@@ -43,8 +43,13 @@
         Debug.WriteLine("FornecimentosBindingSource.Current(""PCP"") : " & FornecimentosBindingSource.Current("PCP"))
         Debug.WriteLine("FornecimentosBindingSource.Current(""TG"") : " & FornecimentosBindingSource.Current("TG"))
 
+        ProdutosBindingSource.Current("DG") = FornecimentosBindingSource.Current("PCP")
+
         FornecimentosBindingSource.EndEdit()
         FornecimentosTableAdapter.Update(Industries_DanDataSet.Fornecimentos)
+
+        ProdutosBindingSource.EndEdit()
+        ProdutosTableAdapter.Update(Industries_DanDataSet.Produtos)
 
         AtualizarTG()
 
@@ -62,6 +67,10 @@
 
     Private Sub Fornecimentos_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Produtos.FornecimentosTableAdapter.Fill(Produtos.Industries_DanDataSet.Fornecimentos)
+        Dim posicaoAtualProd As Integer
+        posicaoAtualProd = Produtos.ProdutosBindingSource.Position
+        Produtos.ProdutosTableAdapter.Fill(Produtos.Industries_DanDataSet.Produtos)
+        Produtos.ProdutosBindingSource.Position = posicaoAtualProd
 
         Debug.WriteLine("Fechado")
     End Sub
