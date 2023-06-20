@@ -50,6 +50,11 @@ Partial Class Profissões
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button10 = New System.Windows.Forms.Button()
         IDLabel = New System.Windows.Forms.Label()
         ProfissaoLabel = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,7 +66,7 @@ Partial Class Profissões
         'IDLabel
         '
         IDLabel.AutoSize = True
-        IDLabel.Location = New System.Drawing.Point(76, 68)
+        IDLabel.Location = New System.Drawing.Point(76, 45)
         IDLabel.Name = "IDLabel"
         IDLabel.Size = New System.Drawing.Size(30, 20)
         IDLabel.TabIndex = 1
@@ -70,7 +75,7 @@ Partial Class Profissões
         'ProfissaoLabel
         '
         ProfissaoLabel.AutoSize = True
-        ProfissaoLabel.Location = New System.Drawing.Point(27, 100)
+        ProfissaoLabel.Location = New System.Drawing.Point(27, 77)
         ProfissaoLabel.Name = "ProfissaoLabel"
         ProfissaoLabel.Size = New System.Drawing.Size(79, 20)
         ProfissaoLabel.TabIndex = 2
@@ -115,16 +120,18 @@ Partial Class Profissões
         'IDTextBox
         '
         Me.IDTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProfissõesBindingSource, "ID", True))
-        Me.IDTextBox.Location = New System.Drawing.Point(112, 65)
+        Me.IDTextBox.Location = New System.Drawing.Point(112, 42)
         Me.IDTextBox.Name = "IDTextBox"
+        Me.IDTextBox.ReadOnly = True
         Me.IDTextBox.Size = New System.Drawing.Size(100, 26)
         Me.IDTextBox.TabIndex = 2
         '
         'ProfissaoTextBox
         '
         Me.ProfissaoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProfissõesBindingSource, "Profissao", True))
-        Me.ProfissaoTextBox.Location = New System.Drawing.Point(112, 97)
+        Me.ProfissaoTextBox.Location = New System.Drawing.Point(112, 74)
         Me.ProfissaoTextBox.Name = "ProfissaoTextBox"
+        Me.ProfissaoTextBox.ReadOnly = True
         Me.ProfissaoTextBox.Size = New System.Drawing.Size(238, 26)
         Me.ProfissaoTextBox.TabIndex = 3
         '
@@ -144,7 +151,7 @@ Partial Class Profissões
         Me.FuncionariosDataGridView.ReadOnly = True
         Me.FuncionariosDataGridView.RowHeadersWidth = 62
         Me.FuncionariosDataGridView.RowTemplate.Height = 28
-        Me.FuncionariosDataGridView.Size = New System.Drawing.Size(1087, 315)
+        Me.FuncionariosDataGridView.Size = New System.Drawing.Size(1222, 326)
         Me.FuncionariosDataGridView.TabIndex = 4
         '
         'DataGridViewTextBoxColumn1
@@ -249,7 +256,7 @@ Partial Class Profissões
         '
         'Button9
         '
-        Me.Button9.Location = New System.Drawing.Point(12, 258)
+        Me.Button9.Location = New System.Drawing.Point(12, 322)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(166, 47)
         Me.Button9.TabIndex = 31
@@ -259,7 +266,7 @@ Partial Class Profissões
         'Button8
         '
         Me.Button8.BackColor = System.Drawing.Color.IndianRed
-        Me.Button8.Location = New System.Drawing.Point(184, 258)
+        Me.Button8.Location = New System.Drawing.Point(184, 322)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(166, 47)
         Me.Button8.TabIndex = 30
@@ -268,7 +275,7 @@ Partial Class Profissões
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(270, 311)
+        Me.Button4.Location = New System.Drawing.Point(270, 375)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(80, 69)
         Me.Button4.TabIndex = 29
@@ -277,7 +284,7 @@ Partial Class Profissões
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(184, 311)
+        Me.Button3.Location = New System.Drawing.Point(184, 375)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(80, 69)
         Me.Button3.TabIndex = 28
@@ -286,7 +293,7 @@ Partial Class Profissões
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(98, 311)
+        Me.Button2.Location = New System.Drawing.Point(98, 375)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(80, 69)
         Me.Button2.TabIndex = 27
@@ -295,18 +302,68 @@ Partial Class Profissões
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 311)
+        Me.Button1.Location = New System.Drawing.Point(12, 375)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(80, 69)
         Me.Button1.TabIndex = 26
         Me.Button1.Text = "|<"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(365, 42)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(241, 20)
+        Me.Label1.TabIndex = 32
+        Me.Label1.Text = "Funcionarios com essa profissão"
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(481, 397)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(225, 47)
+        Me.Button5.TabIndex = 33
+        Me.Button5.Text = "Todos com este emprego"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(712, 397)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(225, 47)
+        Me.Button6.TabIndex = 34
+        Me.Button6.Text = "Apenas contratados"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(943, 397)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(225, 47)
+        Me.Button7.TabIndex = 35
+        Me.Button7.Text = "Apenas não contratados"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Button10
+        '
+        Me.Button10.Location = New System.Drawing.Point(1174, 397)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(225, 47)
+        Me.Button10.TabIndex = 36
+        Me.Button10.Text = "Apenas despedidos"
+        Me.Button10.UseVisualStyleBackColor = True
+        '
         'Profissões
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1468, 456)
+        Me.ClientSize = New System.Drawing.Size(1642, 456)
+        Me.Controls.Add(Me.Button10)
+        Me.Controls.Add(Me.Button7)
+        Me.Controls.Add(Me.Button6)
+        Me.Controls.Add(Me.Button5)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.Button8)
         Me.Controls.Add(Me.Button4)
@@ -354,4 +411,9 @@ Partial Class Profissões
     Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewCheckBoxColumn2 As DataGridViewCheckBoxColumn
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents Button7 As Button
+    Friend WithEvents Button10 As Button
 End Class

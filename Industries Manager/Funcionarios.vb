@@ -16,6 +16,12 @@ Public Class Funcionarios
         Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
 
         FotoPictureBox.SizeMode = PictureBoxSizeMode.Zoom
+
+        SortLogins()
+    End Sub
+
+    Sub SortLogins()
+        Login_FuncionarioDataGridView.Sort(Login_FuncionarioDataGridView.Columns(1), System.ComponentModel.ListSortDirection.Descending)
     End Sub
 
     Sub VerificarContrartarDespedir()
@@ -67,7 +73,7 @@ Public Class Funcionarios
         FuncionariosBindingSource.MoveNext()
 
         VerificarContrartarDespedir()
-
+        SortLogins()
 
     End Sub
 
@@ -75,7 +81,7 @@ Public Class Funcionarios
         FuncionariosBindingSource.MoveLast()
 
         VerificarContrartarDespedir()
-
+        SortLogins()
 
     End Sub
 
@@ -83,7 +89,7 @@ Public Class Funcionarios
         FuncionariosBindingSource.MovePrevious()
 
         VerificarContrartarDespedir()
-
+        SortLogins()
 
     End Sub
 
@@ -375,7 +381,7 @@ Public Class Funcionarios
         FuncionariosBindingSource.MoveFirst()
 
         VerificarContrartarDespedir()
-
+        SortLogins()
 
     End Sub
 

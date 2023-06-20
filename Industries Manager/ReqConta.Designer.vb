@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ReqConta
     Inherits System.Windows.Forms.Form
 
     'Descartar substituições de formulário para limpar a lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class ReqConta
     'OBSERVAÇÃO: o procedimento a seguir é exigido pelo Windows Form Designer
     'Pode ser modificado usando o Windows Form Designer.  
     'Não o modifique usando o editor de códigos.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim NomeLabel As System.Windows.Forms.Label
@@ -28,8 +28,7 @@ Partial Class ReqConta
         Dim FotoLabel As System.Windows.Forms.Label
         Dim EmailLabel As System.Windows.Forms.Label
         Dim PassLabel As System.Windows.Forms.Label
-        Dim ID_ProfissãoLabel As System.Windows.Forms.Label
-        Dim ID_DepartamentoLabel As System.Windows.Forms.Label
+        Dim SILabel As System.Windows.Forms.Label
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
         Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FuncionariosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FuncionariosTableAdapter()
@@ -39,8 +38,6 @@ Partial Class ReqConta
         Me.FotoPictureBox = New System.Windows.Forms.PictureBox()
         Me.EmailTextBox = New System.Windows.Forms.TextBox()
         Me.PassTextBox = New System.Windows.Forms.TextBox()
-        Me.ID_ProfissãoTextBox = New System.Windows.Forms.TextBox()
-        Me.ID_DepartamentoTextBox = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -50,18 +47,24 @@ Partial Class ReqConta
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.ProfissãoComboBox = New System.Windows.Forms.ComboBox()
+        Me.ProfissõesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.ProfissõesTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProfissõesTableAdapter()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.SINumericUpDown = New System.Windows.Forms.NumericUpDown()
         NomeLabel = New System.Windows.Forms.Label()
         SobrenomeLabel = New System.Windows.Forms.Label()
         FotoLabel = New System.Windows.Forms.Label()
         EmailLabel = New System.Windows.Forms.Label()
         PassLabel = New System.Windows.Forms.Label()
-        ID_ProfissãoLabel = New System.Windows.Forms.Label()
-        ID_DepartamentoLabel = New System.Windows.Forms.Label()
+        SILabel = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FotoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ProfissõesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SINumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NomeLabel
@@ -114,25 +117,14 @@ Partial Class ReqConta
         PassLabel.TabIndex = 8
         PassLabel.Text = "Pass:"
         '
-        'ID_ProfissãoLabel
+        'SILabel
         '
-        ID_ProfissãoLabel.AutoSize = True
-        ID_ProfissãoLabel.Location = New System.Drawing.Point(74, 471)
-        ID_ProfissãoLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        ID_ProfissãoLabel.Name = "ID_ProfissãoLabel"
-        ID_ProfissãoLabel.Size = New System.Drawing.Size(100, 20)
-        ID_ProfissãoLabel.TabIndex = 10
-        ID_ProfissãoLabel.Text = "ID Profissão:"
-        '
-        'ID_DepartamentoLabel
-        '
-        ID_DepartamentoLabel.AutoSize = True
-        ID_DepartamentoLabel.Location = New System.Drawing.Point(38, 511)
-        ID_DepartamentoLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        ID_DepartamentoLabel.Name = "ID_DepartamentoLabel"
-        ID_DepartamentoLabel.Size = New System.Drawing.Size(137, 20)
-        ID_DepartamentoLabel.TabIndex = 12
-        ID_DepartamentoLabel.Text = "ID Departamento:"
+        SILabel.AutoSize = True
+        SILabel.Location = New System.Drawing.Point(40, 511)
+        SILabel.Name = "SILabel"
+        SILabel.Size = New System.Drawing.Size(142, 20)
+        SILabel.TabIndex = 30
+        SILabel.Text = "Salário pretendido:"
         '
         'Industries_DanDataSet
         '
@@ -213,24 +205,6 @@ Partial Class ReqConta
         Me.PassTextBox.Size = New System.Drawing.Size(230, 26)
         Me.PassTextBox.TabIndex = 9
         '
-        'ID_ProfissãoTextBox
-        '
-        Me.ID_ProfissãoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FuncionariosBindingSource, "ID_Profissão", True))
-        Me.ID_ProfissãoTextBox.Location = New System.Drawing.Point(183, 466)
-        Me.ID_ProfissãoTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.ID_ProfissãoTextBox.Name = "ID_ProfissãoTextBox"
-        Me.ID_ProfissãoTextBox.Size = New System.Drawing.Size(230, 26)
-        Me.ID_ProfissãoTextBox.TabIndex = 11
-        '
-        'ID_DepartamentoTextBox
-        '
-        Me.ID_DepartamentoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FuncionariosBindingSource, "ID_Departamento", True))
-        Me.ID_DepartamentoTextBox.Location = New System.Drawing.Point(183, 506)
-        Me.ID_DepartamentoTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.ID_DepartamentoTextBox.Name = "ID_DepartamentoTextBox"
-        Me.ID_DepartamentoTextBox.Size = New System.Drawing.Size(230, 26)
-        Me.ID_DepartamentoTextBox.TabIndex = 13
-        '
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(424, 138)
@@ -247,7 +221,7 @@ Partial Class ReqConta
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(303, 559)
+        Me.Button2.Location = New System.Drawing.Point(303, 557)
         Me.Button2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(112, 35)
@@ -258,7 +232,7 @@ Partial Class ReqConta
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(144, 567)
+        Me.LinkLabel1.Location = New System.Drawing.Point(144, 565)
         Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(110, 20)
@@ -311,31 +285,75 @@ Partial Class ReqConta
         Me.Label5.TabIndex = 26
         Me.Label5.Text = "*"
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(414, 511)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(15, 20)
-        Me.Label6.TabIndex = 27
-        Me.Label6.Text = "*"
-        '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(477, 566)
+        Me.Label7.Location = New System.Drawing.Point(467, 572)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(184, 20)
         Me.Label7.TabIndex = 28
         Me.Label7.Text = "(*) - Campos obrigatorios"
         '
+        'ProfissãoComboBox
+        '
+        Me.ProfissãoComboBox.DataSource = Me.ProfissõesBindingSource
+        Me.ProfissãoComboBox.DisplayMember = "Profissao"
+        Me.ProfissãoComboBox.FormattingEnabled = True
+        Me.ProfissãoComboBox.Location = New System.Drawing.Point(183, 466)
+        Me.ProfissãoComboBox.Name = "ProfissãoComboBox"
+        Me.ProfissãoComboBox.Size = New System.Drawing.Size(230, 28)
+        Me.ProfissãoComboBox.TabIndex = 29
+        '
+        'ProfissõesBindingSource
+        '
+        Me.ProfissõesBindingSource.DataMember = "Profissões"
+        Me.ProfissõesBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(99, 469)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(79, 20)
+        Me.Label6.TabIndex = 30
+        Me.Label6.Text = "Profissão:"
+        '
+        'ProfissõesTableAdapter
+        '
+        Me.ProfissõesTableAdapter.ClearBeforeFill = True
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(396, 515)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(18, 20)
+        Me.Label8.TabIndex = 32
+        Me.Label8.Text = "€"
+        '
+        'SINumericUpDown
+        '
+        Me.SINumericUpDown.DecimalPlaces = 2
+        Me.SINumericUpDown.Increment = New Decimal(New Integer() {15, 0, 0, 0})
+        Me.SINumericUpDown.Location = New System.Drawing.Point(183, 509)
+        Me.SINumericUpDown.Maximum = New Decimal(New Integer() {100000000, 0, 0, 0})
+        Me.SINumericUpDown.Name = "SINumericUpDown"
+        Me.SINumericUpDown.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.SINumericUpDown.Size = New System.Drawing.Size(213, 26)
+        Me.SINumericUpDown.TabIndex = 33
+        Me.SINumericUpDown.ThousandsSeparator = True
+        '
         'ReqConta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(663, 593)
-        Me.Controls.Add(Me.Label7)
+        Me.ClientSize = New System.Drawing.Size(663, 601)
+        Me.Controls.Add(Me.SINumericUpDown)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(SILabel)
         Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.ProfissãoComboBox)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -344,10 +362,6 @@ Partial Class ReqConta
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(ID_DepartamentoLabel)
-        Me.Controls.Add(Me.ID_DepartamentoTextBox)
-        Me.Controls.Add(ID_ProfissãoLabel)
-        Me.Controls.Add(Me.ID_ProfissãoTextBox)
         Me.Controls.Add(PassLabel)
         Me.Controls.Add(Me.PassTextBox)
         Me.Controls.Add(EmailLabel)
@@ -364,6 +378,8 @@ Partial Class ReqConta
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FotoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ProfissõesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SINumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -378,8 +394,6 @@ Partial Class ReqConta
     Friend WithEvents FotoPictureBox As PictureBox
     Friend WithEvents EmailTextBox As TextBox
     Friend WithEvents PassTextBox As TextBox
-    Friend WithEvents ID_ProfissãoTextBox As TextBox
-    Friend WithEvents ID_DepartamentoTextBox As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents Button2 As Button
@@ -389,6 +403,11 @@ Partial Class ReqConta
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
+    Friend WithEvents ProfissãoComboBox As ComboBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents ProfissõesBindingSource As BindingSource
+    Friend WithEvents ProfissõesTableAdapter As Industries_DanDataSetTableAdapters.ProfissõesTableAdapter
+    Friend WithEvents Label8 As Label
+    Friend WithEvents SINumericUpDown As NumericUpDown
 End Class

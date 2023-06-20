@@ -247,7 +247,7 @@ Partial Class Funcionarios
         Me.SINumericUpDown.Increment = New Decimal(New Integer() {15, 0, 0, 0})
         Me.SINumericUpDown.Location = New System.Drawing.Point(122, 429)
         Me.SINumericUpDown.Maximum = New Decimal(New Integer() {100000000, 0, 0, 0})
-        Me.SINumericUpDown.Minimum = New Decimal(New Integer() {74083, 0, 0, 131072})
+        Me.SINumericUpDown.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
         Me.SINumericUpDown.Name = "SINumericUpDown"
         Me.SINumericUpDown.Size = New System.Drawing.Size(189, 26)
         Me.SINumericUpDown.TabIndex = 11
@@ -303,6 +303,7 @@ Partial Class Funcionarios
         Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
         Me.DataGridViewTextBoxColumn1.Width = 45
         '
         'DataGridViewTextBoxColumn3
@@ -312,6 +313,7 @@ Partial Class Funcionarios
         Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
         Me.DataGridViewTextBoxColumn3.Width = 120
         '
         'DataGridViewTextBoxColumn4
@@ -321,6 +323,7 @@ Partial Class Funcionarios
         Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.DataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
         Me.DataGridViewTextBoxColumn4.Width = 135
         '
         'DataGridViewTextBoxColumn5
@@ -330,6 +333,7 @@ Partial Class Funcionarios
         Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.DataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
         Me.DataGridViewTextBoxColumn5.Width = 120
         '
         'Button5
