@@ -337,11 +337,13 @@ Partial Class ReqConta
         Me.SINumericUpDown.Increment = New Decimal(New Integer() {15, 0, 0, 0})
         Me.SINumericUpDown.Location = New System.Drawing.Point(183, 509)
         Me.SINumericUpDown.Maximum = New Decimal(New Integer() {100000000, 0, 0, 0})
+        Me.SINumericUpDown.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
         Me.SINumericUpDown.Name = "SINumericUpDown"
         Me.SINumericUpDown.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.SINumericUpDown.Size = New System.Drawing.Size(213, 26)
         Me.SINumericUpDown.TabIndex = 33
         Me.SINumericUpDown.ThousandsSeparator = True
+        Me.SINumericUpDown.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
         'ReqConta
         '

@@ -25,6 +25,12 @@ Public Class Funcionarios
     End Sub
 
     Sub VerificarContrartarDespedir()
+        If IsDBNull(FuncionariosBindingSource.Current("SI")) OrElse FuncionariosBindingSource.Current("SI") < 10 Then
+            SINumericUpDown.Value = Double.Parse(740.83)
+            Debug.WriteLine("Teste")
+        End If
+
+
         Debug.WriteLine("DDEDE : " & FuncionariosBindingSource.Current("DDEDE").ToString)
         Debug.WriteLine("DDSDE : " & FuncionariosBindingSource.Current("DDSDE").ToString)
         Debug.WriteLine("DDEDE Vazio : " & FuncionariosBindingSource.Current("DDEDE").ToString.Equals(""))
