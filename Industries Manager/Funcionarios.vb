@@ -25,6 +25,7 @@ Public Class Funcionarios
     End Sub
 
     Sub VerificarContrartarDespedir()
+        Debug.WriteLine("FuncionariosBindingSource.Current(""SI""): " & FuncionariosBindingSource.Current("SI"))
         If IsDBNull(FuncionariosBindingSource.Current("SI")) OrElse FuncionariosBindingSource.Current("SI") < 10 Then
             SINumericUpDown.Value = Double.Parse(740.83)
             Debug.WriteLine("Teste")
@@ -73,6 +74,8 @@ Public Class Funcionarios
             DDSDEDateTimePicker.Visible = True
             DDSDELabel.Visible = True
         End If
+
+        FuncionariosBindingSource.Dispose()
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
