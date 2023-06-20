@@ -457,7 +457,7 @@ Partial Class Funcionarios
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(288, 57)
         Me.Button10.TabIndex = 34
-        Me.Button10.Text = "Acessos de uma data especifica"
+        Me.Button10.Text = "Acessos numa data especifica"
         Me.Button10.UseVisualStyleBackColor = True
         '
         'ID_DepartamentoComboBox

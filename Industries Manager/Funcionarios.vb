@@ -154,6 +154,16 @@ Public Class Funcionarios
 
         ElseIf Button5.Text = "Recontratar" Then
 
+            If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") = vbYes Then
+                EnviarMensagemAutomaticaRecontratacao(InfoUser.UserName, EmailTextBox.Text, ID_ProfissãoComboBox.Text, SINumericUpDown.Value)
+            End If
+
+            FuncionariosBindingSource.Current("Aprovacao") = True
+            FuncionariosBindingSource.Current("DDEDE") = Today()
+            FuncionariosBindingSource.Current("DDSDE") = DBNull.Value
+
+            FuncionariosBindingSource.EndEdit()
+            FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
 
             MsgBox("Recontratado", vbInformation)
 
@@ -414,10 +424,7 @@ Public Class Funcionarios
 
         ' Verificar se apenas o número do dia foi fornecido
         Dim dataCompleta As Date
-        If DateTime.TryParseExact(dataSelecionada, "d", CultureInfo.InvariantCulture, DateTimeStyles.None, dataCompleta) Then
-            ' Apenas o dia foi fornecido
-            dataSelecionada = dataCompleta.ToString("dd/MM/yyyy")
-        ElseIf DateTime.TryParseExact(dataSelecionada, "d/M", CultureInfo.InvariantCulture, DateTimeStyles.None, dataCompleta) Then
+        If DateTime.TryParseExact(dataSelecionada, "d/M", CultureInfo.InvariantCulture, DateTimeStyles.None, dataCompleta) Then
             ' Dia e mês foram fornecidos
             dataSelecionada = dataCompleta.ToString("dd/MM/yyyy")
         ElseIf DateTime.TryParseExact(dataSelecionada, "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, dataCompleta) Then
@@ -436,23 +443,22 @@ Public Class Funcionarios
                 ' Verificar se o intervalo de horas foi selecionado
                 Dim intervaloHoras As MsgBoxResult = MsgBox("Deseja especificar um intervalo de horas?", vbYesNo)
                 If intervaloHoras = vbYes Then
-                    ' Intervalo de horas selecionado
+                    ' Solicitar a hora inicial ao usuário
+                    Dim horaInicial As String = InputBox("Insira a hora inicial (formato: HH:mm):")
 
-                    ' Solicitar a hora inicial ao utilizador
-                    Dim horaInicial As String = InputBox("Insira a hora inicial (formato: HH:mm:ss):")
-
-                    ' Solicitar a hora final ao utilizador
-                    Dim horaFinal As String = InputBox("Insira a hora final (formato: HH:mm:ss):")
+                    ' Solicitar a hora final ao usuário
+                    Dim horaFinal As String = InputBox("Insira a hora final (formato: HH:mm):")
 
                     ' Verificar se as horas foram inseridas corretamente
                     Dim horaInicialValida As DateTime
                     Dim horaFinalValida As DateTime
-                    If DateTime.TryParseExact(horaInicial, "HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, horaInicialValida) AndAlso
-               DateTime.TryParseExact(horaFinal, "HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, horaFinalValida) Then
+                    If DateTime.TryParseExact(horaInicial, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, horaInicialValida) AndAlso
+                       DateTime.TryParseExact(horaFinal, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, horaFinalValida) Then
                         ' Horas inseridas corretamente
 
-                        Dim filtro As String = "DEH >= #" & data.ToString("MM/dd/yyyy") & " " & horaInicial & "# AND DEH <= #" & data.ToString("MM/dd/yyyy") & " " & horaFinal & "#"
+                        Dim filtro As String = "DEH >= #" & data.ToString("MM/dd/yyyy") & " " & horaInicialValida.ToString("HH:mm:ss") & "# AND DEH <= #" & data.ToString("MM/dd/yyyy") & " " & horaFinalValida.ToString("HH:mm:ss") & "#"
                         Login_FuncionarioBindingSource.Filter = filtro
+                        Button9.Text = "Todos os acessos"
                     Else
                         MessageBox.Show("Horas inválidas.")
                     End If
@@ -460,8 +466,9 @@ Public Class Funcionarios
                     ' Intervalo de horas não selecionado (considerar o dia todo)
                     Dim filtro As String = "DEH >= #" & data.ToString("MM/dd/yyyy") & " 00:00:00# AND DEH <= #" & data.ToString("MM/dd/yyyy") & " 23:59:59#"
                     Login_FuncionarioBindingSource.Filter = filtro
+                    Button9.Text = "Todos os acessos"
                 End If
-                Button9.Text = "Todos os acessos"
+
             Else
                 MessageBox.Show("Data inválida.")
             End If

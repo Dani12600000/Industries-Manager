@@ -27,6 +27,7 @@ Partial Class Produtos
         Dim NomeLabel As System.Windows.Forms.Label
         Dim DescricaoLabel As System.Windows.Forms.Label
         Dim LucroLabel As System.Windows.Forms.Label
+        Dim DGLabel As System.Windows.Forms.Label
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
         Me.ProdutosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ProdutosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProdutosTableAdapter()
@@ -38,6 +39,12 @@ Partial Class Produtos
         Me.DescricaoTextBox = New System.Windows.Forms.TextBox()
         Me.FornecimentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FornecimentosDataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Venda_de_produtoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Venda_de_produtoDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -56,17 +63,13 @@ Partial Class Produtos
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.DGTextBox = New System.Windows.Forms.TextBox()
         IDLabel = New System.Windows.Forms.Label()
         NomeLabel = New System.Windows.Forms.Label()
         DescricaoLabel = New System.Windows.Forms.Label()
         LucroLabel = New System.Windows.Forms.Label()
+        DGLabel = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProdutosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FornecimentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -106,7 +109,7 @@ Partial Class Produtos
         'LucroLabel
         '
         LucroLabel.AutoSize = True
-        LucroLabel.Location = New System.Drawing.Point(23, 179)
+        LucroLabel.Location = New System.Drawing.Point(23, 223)
         LucroLabel.Name = "LucroLabel"
         LucroLabel.Size = New System.Drawing.Size(133, 20)
         LucroLabel.TabIndex = 6
@@ -198,182 +201,8 @@ Partial Class Produtos
         Me.FornecimentosDataGridView.ReadOnly = True
         Me.FornecimentosDataGridView.RowHeadersWidth = 62
         Me.FornecimentosDataGridView.RowTemplate.Height = 28
-        Me.FornecimentosDataGridView.Size = New System.Drawing.Size(673, 260)
+        Me.FornecimentosDataGridView.Size = New System.Drawing.Size(673, 289)
         Me.FornecimentosDataGridView.TabIndex = 8
-        '
-        'Venda_de_produtoBindingSource
-        '
-        Me.Venda_de_produtoBindingSource.DataMember = "ProdutosVendas"
-        Me.Venda_de_produtoBindingSource.DataSource = Me.ProdutosBindingSource
-        '
-        'Venda_de_produtoDataGridView
-        '
-        Me.Venda_de_produtoDataGridView.AllowUserToAddRows = False
-        Me.Venda_de_produtoDataGridView.AllowUserToDeleteRows = False
-        Me.Venda_de_produtoDataGridView.AutoGenerateColumns = False
-        Me.Venda_de_produtoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.Venda_de_produtoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12})
-        Me.Venda_de_produtoDataGridView.DataSource = Me.Venda_de_produtoBindingSource
-        Me.Venda_de_produtoDataGridView.Location = New System.Drawing.Point(1154, 63)
-        Me.Venda_de_produtoDataGridView.Name = "Venda_de_produtoDataGridView"
-        Me.Venda_de_produtoDataGridView.ReadOnly = True
-        Me.Venda_de_produtoDataGridView.RowHeadersWidth = 62
-        Me.Venda_de_produtoDataGridView.RowTemplate.Height = 28
-        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(611, 313)
-        Me.Venda_de_produtoDataGridView.TabIndex = 9
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "ID"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        Me.DataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn4.Width = 25
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "ID_Venda"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Venda"
-        Me.DataGridViewTextBoxColumn8.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = True
-        Me.DataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn8.Width = 75
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "Quantidade"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "Quant."
-        Me.DataGridViewTextBoxColumn10.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.ReadOnly = True
-        Me.DataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn10.Width = 50
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "PC"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "Preço cada"
-        Me.DataGridViewTextBoxColumn11.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.ReadOnly = True
-        Me.DataGridViewTextBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn11.Width = 85
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.DataPropertyName = "Subtotal"
-        Me.DataGridViewTextBoxColumn12.HeaderText = "Subtotal"
-        Me.DataGridViewTextBoxColumn12.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        Me.DataGridViewTextBoxColumn12.ReadOnly = True
-        Me.DataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn12.Width = 95
-        '
-        'Button9
-        '
-        Me.Button9.Location = New System.Drawing.Point(27, 254)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(166, 47)
-        Me.Button9.TabIndex = 25
-        Me.Button9.Text = "Novo"
-        Me.Button9.UseVisualStyleBackColor = True
-        '
-        'Button8
-        '
-        Me.Button8.BackColor = System.Drawing.Color.IndianRed
-        Me.Button8.Location = New System.Drawing.Point(199, 254)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(166, 47)
-        Me.Button8.TabIndex = 24
-        Me.Button8.Text = "Remover"
-        Me.Button8.UseVisualStyleBackColor = False
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(285, 307)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(80, 69)
-        Me.Button4.TabIndex = 23
-        Me.Button4.Text = ">|"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(199, 307)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(80, 69)
-        Me.Button3.TabIndex = 22
-        Me.Button3.Text = ">"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(113, 307)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(80, 69)
-        Me.Button2.TabIndex = 21
-        Me.Button2.Text = "<"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(27, 307)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(80, 69)
-        Me.Button1.TabIndex = 20
-        Me.Button1.Text = "|<"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(310, 180)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(18, 20)
-        Me.Label1.TabIndex = 26
-        Me.Label1.Text = "€"
-        '
-        'LucroNumericUpDown
-        '
-        Me.LucroNumericUpDown.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ProdutosBindingSource, "Lucro", True))
-        Me.LucroNumericUpDown.DecimalPlaces = 2
-        Me.LucroNumericUpDown.Enabled = False
-        Me.LucroNumericUpDown.Increment = New Decimal(New Integer() {10, 0, 0, 131072})
-        Me.LucroNumericUpDown.Location = New System.Drawing.Point(162, 178)
-        Me.LucroNumericUpDown.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.LucroNumericUpDown.Name = "LucroNumericUpDown"
-        Me.LucroNumericUpDown.Size = New System.Drawing.Size(142, 26)
-        Me.LucroNumericUpDown.TabIndex = 27
-        Me.LucroNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.LucroNumericUpDown.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'Label2
-        '
-        Me.Label2.Location = New System.Drawing.Point(461, 37)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(677, 23)
-        Me.Label2.TabIndex = 28
-        Me.Label2.Text = "Fornecimentos"
-        '
-        'Label3
-        '
-        Me.Label3.Location = New System.Drawing.Point(1154, 34)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(611, 23)
-        Me.Label3.TabIndex = 29
-        Me.Label3.Text = "Vendas"
-        '
-        'Button5
-        '
-        Me.Button5.Location = New System.Drawing.Point(603, 329)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(368, 47)
-        Me.Button5.TabIndex = 30
-        Me.Button5.Text = "Novo fornecimento"
-        Me.Button5.UseVisualStyleBackColor = True
         '
         'DataGridViewTextBoxColumn1
         '
@@ -435,20 +264,214 @@ Partial Class Produtos
         Me.DataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn7.Width = 95
         '
+        'Venda_de_produtoBindingSource
+        '
+        Me.Venda_de_produtoBindingSource.DataMember = "ProdutosVendas"
+        Me.Venda_de_produtoBindingSource.DataSource = Me.ProdutosBindingSource
+        '
+        'Venda_de_produtoDataGridView
+        '
+        Me.Venda_de_produtoDataGridView.AllowUserToAddRows = False
+        Me.Venda_de_produtoDataGridView.AllowUserToDeleteRows = False
+        Me.Venda_de_produtoDataGridView.AutoGenerateColumns = False
+        Me.Venda_de_produtoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.Venda_de_produtoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12})
+        Me.Venda_de_produtoDataGridView.DataSource = Me.Venda_de_produtoBindingSource
+        Me.Venda_de_produtoDataGridView.Location = New System.Drawing.Point(1154, 63)
+        Me.Venda_de_produtoDataGridView.Name = "Venda_de_produtoDataGridView"
+        Me.Venda_de_produtoDataGridView.ReadOnly = True
+        Me.Venda_de_produtoDataGridView.RowHeadersWidth = 62
+        Me.Venda_de_produtoDataGridView.RowTemplate.Height = 28
+        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(611, 353)
+        Me.Venda_de_produtoDataGridView.TabIndex = 9
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "ID"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.DataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn4.Width = 25
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "ID_Venda"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Venda"
+        Me.DataGridViewTextBoxColumn8.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
+        Me.DataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn8.Width = 75
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "Quantidade"
+        Me.DataGridViewTextBoxColumn10.HeaderText = "Quant."
+        Me.DataGridViewTextBoxColumn10.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.ReadOnly = True
+        Me.DataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn10.Width = 50
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "PC"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "Preço cada"
+        Me.DataGridViewTextBoxColumn11.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.DataGridViewTextBoxColumn11.ReadOnly = True
+        Me.DataGridViewTextBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn11.Width = 85
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        Me.DataGridViewTextBoxColumn12.DataPropertyName = "Subtotal"
+        Me.DataGridViewTextBoxColumn12.HeaderText = "Subtotal"
+        Me.DataGridViewTextBoxColumn12.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        Me.DataGridViewTextBoxColumn12.ReadOnly = True
+        Me.DataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn12.Width = 95
+        '
+        'Button9
+        '
+        Me.Button9.Location = New System.Drawing.Point(56, 305)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(166, 47)
+        Me.Button9.TabIndex = 25
+        Me.Button9.Text = "Novo"
+        Me.Button9.UseVisualStyleBackColor = True
+        '
+        'Button8
+        '
+        Me.Button8.BackColor = System.Drawing.Color.IndianRed
+        Me.Button8.Location = New System.Drawing.Point(228, 305)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(166, 47)
+        Me.Button8.TabIndex = 24
+        Me.Button8.Text = "Remover"
+        Me.Button8.UseVisualStyleBackColor = False
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(314, 358)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(80, 69)
+        Me.Button4.TabIndex = 23
+        Me.Button4.Text = ">|"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(228, 358)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(80, 69)
+        Me.Button3.TabIndex = 22
+        Me.Button3.Text = ">"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(142, 358)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(80, 69)
+        Me.Button2.TabIndex = 21
+        Me.Button2.Text = "<"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(56, 358)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(80, 69)
+        Me.Button1.TabIndex = 20
+        Me.Button1.Text = "|<"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(310, 224)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(18, 20)
+        Me.Label1.TabIndex = 26
+        Me.Label1.Text = "€"
+        '
+        'LucroNumericUpDown
+        '
+        Me.LucroNumericUpDown.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ProdutosBindingSource, "Lucro", True))
+        Me.LucroNumericUpDown.DecimalPlaces = 2
+        Me.LucroNumericUpDown.Enabled = False
+        Me.LucroNumericUpDown.Increment = New Decimal(New Integer() {10, 0, 0, 131072})
+        Me.LucroNumericUpDown.Location = New System.Drawing.Point(162, 222)
+        Me.LucroNumericUpDown.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.LucroNumericUpDown.Name = "LucroNumericUpDown"
+        Me.LucroNumericUpDown.Size = New System.Drawing.Size(142, 26)
+        Me.LucroNumericUpDown.TabIndex = 27
+        Me.LucroNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.LucroNumericUpDown.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'Label2
+        '
+        Me.Label2.Location = New System.Drawing.Point(461, 37)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(677, 23)
+        Me.Label2.TabIndex = 28
+        Me.Label2.Text = "Fornecimentos"
+        '
+        'Label3
+        '
+        Me.Label3.Location = New System.Drawing.Point(1154, 34)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(611, 23)
+        Me.Label3.TabIndex = 29
+        Me.Label3.Text = "Vendas"
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(605, 369)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(368, 47)
+        Me.Button5.TabIndex = 30
+        Me.Button5.Text = "Novo fornecimento"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(354, 178)
+        Me.Button6.Location = New System.Drawing.Point(354, 222)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(84, 30)
         Me.Button6.TabIndex = 31
         Me.Button6.Text = "Editar"
         Me.Button6.UseVisualStyleBackColor = True
         '
+        'DGLabel
+        '
+        DGLabel.AutoSize = True
+        DGLabel.Location = New System.Drawing.Point(27, 188)
+        DGLabel.Name = "DGLabel"
+        DGLabel.Size = New System.Drawing.Size(129, 20)
+        DGLabel.TabIndex = 31
+        DGLabel.Text = "Dineheiro Gasto:"
+        '
+        'DGTextBox
+        '
+        Me.DGTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProdutosBindingSource, "DG", True))
+        Me.DGTextBox.Location = New System.Drawing.Point(162, 185)
+        Me.DGTextBox.Name = "DGTextBox"
+        Me.DGTextBox.ReadOnly = True
+        Me.DGTextBox.Size = New System.Drawing.Size(276, 26)
+        Me.DGTextBox.TabIndex = 32
+        '
         'Produtos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1777, 396)
+        Me.ClientSize = New System.Drawing.Size(1785, 447)
+        Me.Controls.Add(DGLabel)
+        Me.Controls.Add(Me.DGTextBox)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Label3)
@@ -520,4 +543,5 @@ Partial Class Produtos
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
     Friend WithEvents Button6 As Button
+    Friend WithEvents DGTextBox As TextBox
 End Class
