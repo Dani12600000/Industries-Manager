@@ -17,6 +17,11 @@
         ButtonP = Button2
         ButtonN = Button3
         ButtonL = Button4
+
+        FornecimentosDataGridView.Columns(3).DefaultCellStyle.Format = "#,##0.00€"
+        FornecimentosDataGridView.Columns(5).DefaultCellStyle.Format = "#,##0.00€"
+        Venda_de_produtoDataGridView.Columns(3).DefaultCellStyle.Format = "#,##0.00€"
+        Venda_de_produtoDataGridView.Columns(4).DefaultCellStyle.Format = "#,##0.00€"
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)

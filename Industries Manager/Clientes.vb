@@ -9,9 +9,9 @@
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Clientes'. Você pode movê-la ou removê-la conforme necessário.
         Me.ClientesTableAdapter.Fill(Me.Industries_DanDataSet.Clientes)
 
-        VendasDataGridView.Columns(2).DefaultCellStyle.Format = "#0.00€"
-        Venda_de_produtoDataGridView.Columns(2).DefaultCellStyle.Format = "#0.00€"
-        Venda_de_produtoDataGridView.Columns(3).DefaultCellStyle.Format = "#0.00€"
+        VendasDataGridView.Columns(2).DefaultCellStyle.Format = "#,##0.00€"
+        Venda_de_produtoDataGridView.Columns(2).DefaultCellStyle.Format = "#,##0.00€"
+        Venda_de_produtoDataGridView.Columns(3).DefaultCellStyle.Format = "#,##0.00€"
 
         Me.Width = Me.ClientSize.Width * 1.22
 

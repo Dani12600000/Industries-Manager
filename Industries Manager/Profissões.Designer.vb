@@ -55,6 +55,7 @@ Partial Class Profissões
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
+        Me.Button11 = New System.Windows.Forms.Button()
         IDLabel = New System.Windows.Forms.Label()
         ProfissaoLabel = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -354,11 +355,21 @@ Partial Class Profissões
         Me.Button10.Text = "Apenas despedidos"
         Me.Button10.UseVisualStyleBackColor = True
         '
+        'Button11
+        '
+        Me.Button11.Location = New System.Drawing.Point(12, 277)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(338, 39)
+        Me.Button11.TabIndex = 37
+        Me.Button11.Text = "Editar"
+        Me.Button11.UseVisualStyleBackColor = True
+        '
         'Profissões
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1642, 456)
+        Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
@@ -416,4 +427,5 @@ Partial Class Profissões
     Friend WithEvents Button6 As Button
     Friend WithEvents Button7 As Button
     Friend WithEvents Button10 As Button
+    Friend WithEvents Button11 As Button
 End Class

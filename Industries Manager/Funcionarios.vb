@@ -7,6 +7,8 @@ Public Class Funcionarios
     Dim botaoEnabledArray As Boolean()
 
     Private Sub Funcionarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Departamentos' table. You can move, or remove it, as needed.
+        Me.DepartamentosTableAdapter.Fill(Me.Industries_DanDataSet.Departamentos)
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Profissões' table. You can move, or remove it, as needed.
         Me.ProfissõesTableAdapter.Fill(Me.Industries_DanDataSet.Profissões)
 
@@ -25,6 +27,19 @@ Public Class Funcionarios
     End Sub
 
     Sub VerificarContrartarDespedir()
+
+        Debug.WriteLine("FuncionariosBindingSource.Current(""ID_Departamento""): " & FuncionariosBindingSource.Current("ID_Departamento"))
+        Debug.WriteLine("FuncionariosBindingSource.Current(""ID_Profissão""): " & FuncionariosBindingSource.Current("ID_Profissão"))
+
+        DepartamentosBindingSource.Position = DepartamentosBindingSource.Find("ID", FuncionariosBindingSource.Current("ID_Departamento"))
+        ProfissõesBindingSource.Position = ProfissõesBindingSource.Find("ID", FuncionariosBindingSource.Current("ID_Profissão"))
+
+        Debug.WriteLine("DepartamentosBindingSource.Position: " & DepartamentosBindingSource.Position)
+        Debug.WriteLine("ProfissõesBindingSource.Position: " & ProfissõesBindingSource.Position)
+
+        ID_DepartamentoComboBox.SelectedIndex = DepartamentosBindingSource.Position
+        ID_ProfissãoComboBox.SelectedIndex = ProfissõesBindingSource.Position
+
         Debug.WriteLine("FuncionariosBindingSource.Current(""SI""): " & FuncionariosBindingSource.Current("SI"))
         If IsDBNull(FuncionariosBindingSource.Current("SI")) OrElse FuncionariosBindingSource.Current("SI") < 10 Then
             SINumericUpDown.Value = Double.Parse(740.83)
@@ -138,9 +153,11 @@ Public Class Funcionarios
 
         If Button5.Text = "Contratar" Then
             If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") = vbYes Then
-                EnviarMensagemAutomaticaContratacao(InfoUser.UserName, EmailTextBox.Text, ID_ProfissãoComboBox.Text, SINumericUpDown.Value)
+                EnviarMensagemAutomaticaContratacao(InfoUser.UserName, EmailTextBox.Text, ProfissõesBindingSource.Current("Profissao"), SINumericUpDown.Value)
             End If
 
+            FuncionariosBindingSource.Current("ID_Profissão") = ProfissõesBindingSource.Current("ID")
+            FuncionariosBindingSource.Current("ID_Departamento") = DepartamentosBindingSource.Current("ID")
             FuncionariosBindingSource.Current("Aprovacao") = True
             FuncionariosBindingSource.Current("DDEDE") = Today()
 

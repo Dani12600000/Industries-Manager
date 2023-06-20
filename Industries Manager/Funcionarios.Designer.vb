@@ -40,7 +40,6 @@ Partial Class Funcionarios
         Me.SobrenomeTextBox = New System.Windows.Forms.TextBox()
         Me.FotoPictureBox = New System.Windows.Forms.PictureBox()
         Me.EmailTextBox = New System.Windows.Forms.TextBox()
-        Me.ID_ProfissãoComboBox = New System.Windows.Forms.ComboBox()
         Me.ProfissõesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SINumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.DDEDEDateTimePicker = New System.Windows.Forms.DateTimePicker()
@@ -65,7 +64,10 @@ Partial Class Funcionarios
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
+        Me.ID_ProfissãoComboBox = New System.Windows.Forms.ComboBox()
         Me.ID_DepartamentoComboBox = New System.Windows.Forms.ComboBox()
+        Me.DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.DepartamentosTableAdapter()
         NomeLabel = New System.Windows.Forms.Label()
         SobrenomeLabel = New System.Windows.Forms.Label()
         FotoLabel = New System.Windows.Forms.Label()
@@ -80,6 +82,7 @@ Partial Class Funcionarios
         CType(Me.SINumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Login_FuncionarioDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NomeLabel
@@ -220,19 +223,6 @@ Partial Class Funcionarios
         Me.EmailTextBox.ReadOnly = True
         Me.EmailTextBox.Size = New System.Drawing.Size(241, 26)
         Me.EmailTextBox.TabIndex = 7
-        '
-        'ID_ProfissãoComboBox
-        '
-        Me.ID_ProfissãoComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FuncionariosBindingSource, "ID_Profissão", True))
-        Me.ID_ProfissãoComboBox.DataSource = Me.ProfissõesBindingSource
-        Me.ID_ProfissãoComboBox.DisplayMember = "Profissao"
-        Me.ID_ProfissãoComboBox.Enabled = False
-        Me.ID_ProfissãoComboBox.FormattingEnabled = True
-        Me.ID_ProfissãoComboBox.Location = New System.Drawing.Point(97, 345)
-        Me.ID_ProfissãoComboBox.Name = "ID_ProfissãoComboBox"
-        Me.ID_ProfissãoComboBox.Size = New System.Drawing.Size(323, 28)
-        Me.ID_ProfissãoComboBox.TabIndex = 9
-        Me.ID_ProfissãoComboBox.ValueMember = "Profissao"
         '
         'ProfissõesBindingSource
         '
@@ -464,22 +454,45 @@ Partial Class Funcionarios
         Me.Button10.Text = "Acessos numa data especifica"
         Me.Button10.UseVisualStyleBackColor = True
         '
+        'ID_ProfissãoComboBox
+        '
+        Me.ID_ProfissãoComboBox.DataSource = Me.ProfissõesBindingSource
+        Me.ID_ProfissãoComboBox.DisplayMember = "Profissao"
+        Me.ID_ProfissãoComboBox.FormattingEnabled = True
+        Me.ID_ProfissãoComboBox.Location = New System.Drawing.Point(97, 345)
+        Me.ID_ProfissãoComboBox.Name = "ID_ProfissãoComboBox"
+        Me.ID_ProfissãoComboBox.Size = New System.Drawing.Size(323, 28)
+        Me.ID_ProfissãoComboBox.TabIndex = 36
+        Me.ID_ProfissãoComboBox.ValueMember = "ID"
+        '
         'ID_DepartamentoComboBox
         '
-        Me.ID_DepartamentoComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FuncionariosBindingSource, "ID_Departamento", True))
+        Me.ID_DepartamentoComboBox.DataSource = Me.DepartamentosBindingSource
+        Me.ID_DepartamentoComboBox.DisplayMember = "NDD"
         Me.ID_DepartamentoComboBox.FormattingEnabled = True
         Me.ID_DepartamentoComboBox.Location = New System.Drawing.Point(134, 381)
         Me.ID_DepartamentoComboBox.Name = "ID_DepartamentoComboBox"
         Me.ID_DepartamentoComboBox.Size = New System.Drawing.Size(286, 28)
-        Me.ID_DepartamentoComboBox.TabIndex = 35
+        Me.ID_DepartamentoComboBox.TabIndex = 37
+        Me.ID_DepartamentoComboBox.ValueMember = "ID"
+        '
+        'DepartamentosBindingSource
+        '
+        Me.DepartamentosBindingSource.DataMember = "Departamentos"
+        Me.DepartamentosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'DepartamentosTableAdapter
+        '
+        Me.DepartamentosTableAdapter.ClearBeforeFill = True
         '
         'Funcionarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1235, 683)
-        Me.Controls.Add(ID_DepartamentoLabel)
         Me.Controls.Add(Me.ID_DepartamentoComboBox)
+        Me.Controls.Add(Me.ID_ProfissãoComboBox)
+        Me.Controls.Add(ID_DepartamentoLabel)
         Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.Button8)
@@ -500,7 +513,6 @@ Partial Class Funcionarios
         Me.Controls.Add(SILabel)
         Me.Controls.Add(Me.SINumericUpDown)
         Me.Controls.Add(ID_ProfissãoLabel)
-        Me.Controls.Add(Me.ID_ProfissãoComboBox)
         Me.Controls.Add(EmailLabel)
         Me.Controls.Add(Me.EmailTextBox)
         Me.Controls.Add(FotoLabel)
@@ -520,6 +532,7 @@ Partial Class Funcionarios
         CType(Me.SINumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Login_FuncionarioDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -533,7 +546,6 @@ Partial Class Funcionarios
     Friend WithEvents SobrenomeTextBox As TextBox
     Friend WithEvents FotoPictureBox As PictureBox
     Friend WithEvents EmailTextBox As TextBox
-    Friend WithEvents ID_ProfissãoComboBox As ComboBox
     Friend WithEvents SINumericUpDown As NumericUpDown
     Friend WithEvents DDEDEDateTimePicker As DateTimePicker
     Friend WithEvents Label1 As Label
@@ -556,9 +568,12 @@ Partial Class Funcionarios
     Friend WithEvents Button8 As Button
     Friend WithEvents Button9 As Button
     Friend WithEvents Button10 As Button
-    Friend WithEvents ID_DepartamentoComboBox As ComboBox
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents ID_ProfissãoComboBox As ComboBox
+    Friend WithEvents ID_DepartamentoComboBox As ComboBox
+    Friend WithEvents DepartamentosBindingSource As BindingSource
+    Friend WithEvents DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.DepartamentosTableAdapter
 End Class
