@@ -15,6 +15,15 @@
         FornecimentosDataGridView.Columns(5).DefaultCellStyle.Format = "#0.00€"
 
         Me.Width = Me.ClientSize.Width * 1.025
+
+
+        ControleAlteracoes.Formulario = Me
+        ControleAlteracoes.ButtonNandG = Button6
+        ControleAlteracoes.ButtonRorEandC = Button5
+        ControleAlteracoes.ButtonF = Button1
+        ControleAlteracoes.ButtonP = Button2
+        ControleAlteracoes.ButtonN = Button3
+        ControleAlteracoes.ButtonL = Button4
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -41,7 +50,7 @@
         HQADateTimePicker.Enabled = True
         HQFDateTimePicker.Enabled = True
         Button5.Text = "Cancelar"
-        Button6.Text = "Salvar"
+        Button6.Text = "Guardar"
         Button1.Enabled = False
         Button2.Enabled = False
         Button3.Enabled = False
@@ -56,7 +65,7 @@
         HQADateTimePicker.Enabled = False
         HQFDateTimePicker.Enabled = False
         Button5.Text = "Cancelar"
-        Button6.Text = "Salvar"
+        Button6.Text = "Guardar"
         Button1.Enabled = True
         Button2.Enabled = True
         Button3.Enabled = True
@@ -66,12 +75,12 @@
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         If Button6.Text = "Novo" Then
             FornecedoresBindingSource.AddNew()
-            iniciarAteracoes()
-        ElseIf Button6.Text = "Salvar" Then
+            iniciarAlteracoes()
+        ElseIf Button6.Text = "Guardar" Then
             Try
                 FornecedoresBindingSource.EndEdit()
                 FornecedoresTableAdapter.Update(Industries_DanDataSet.Fornecedores)
-                acabarAlteracoes()
+                ControleAlteracoes.acabarAlteracoes()
                 MessageBox.Show("Alterações salvas com sucesso.")
             Catch ex As Exception
                 MessageBox.Show("Ocorreu um erro ao salvar as alterações: " & ex.Message)
@@ -80,18 +89,13 @@
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        If Button5.Text = "Remover" Then
-            If MessageBox.Show("Tem certeza que deseja remover este cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                FornecedoresBindingSource.RemoveCurrent()
-                FornecedoresTableAdapter.Update(Industries_DanDataSet.Fornecedores)
-
-                acabarAlteracoes()
-            End If
+        If Button5.Text = "Editar" Then
+            iniciarAlteracoes()
         ElseIf Button5.Text = "Cancelar" Then
             TableAdapterManager.UpdateAll(Me.Industries_DanDataSet)
             FornecedoresBindingSource.CancelEdit()
 
-            acabarAlteracoes()
+            ControleAlteracoes.acabarAlteracoes()
         End If
     End Sub
 End Class

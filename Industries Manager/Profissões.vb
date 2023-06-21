@@ -6,8 +6,8 @@
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Profissões'. Você pode movê-la ou removê-la conforme necessário.
         Me.ProfissõesTableAdapter.Fill(Me.Industries_DanDataSet.Profissões)
 
-        ButtonNG = Button9
-        ButtonEC = Button8
+        ButtonNandG = Button9
+        ButtonRorEandC = Button8
         ButtonF = Button1
         ButtonP = Button2
         ButtonN = Button3
@@ -41,6 +41,10 @@
     End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
-        acabarAlteracoes()
+        If Button8.Text = "Eliminar" Then
+            ProfissõesBindingSource.RemoveCurrent()
+        Else
+            acabarAlteracoes()
+        End If
     End Sub
 End Class

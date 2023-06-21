@@ -11,8 +11,8 @@
         Me.ProdutosTableAdapter.Fill(Me.Industries_DanDataSet.Produtos)
 
         Formulario = Me
-        ButtonNG = Button9
-        ButtonEC = Button8
+        ButtonNandG = Button9
+        ButtonRorEandC = Button8
         ButtonF = Button1
         ButtonP = Button2
         ButtonN = Button3

@@ -12,6 +12,13 @@
 
         Me.Width = Me.ClientSize.Width * 1.23
 
+        Formulario = Me
+        ButtonNandG = Button9
+        ButtonRorEandC = Button8
+        ButtonF = Button1
+        ButtonP = Button2
+        ButtonN = Button3
+        ButtonL = Button4
 
     End Sub
 
@@ -82,7 +89,7 @@
         IDTextBox.ReadOnly = False
         NDDTextBox.ReadOnly = False
         DEDDTextBox.ReadOnly = False
-        Button9.Text = "Salvar"
+        Button9.Text = "Guardar"
         Button8.Text = "Cancelar"
         Button1.Enabled = False
         Button2.Enabled = False
@@ -106,7 +113,7 @@
         If Button9.Text = "Novo" Then
             DepartamentosBindingSource.AddNew()
             iniciarAlteracoes()
-        ElseIf Button9.Text = "Salvar" Then
+        ElseIf Button9.Text = "Guardar" Then
             Try
                 DepartamentosBindingSource.EndEdit()
                 DepartamentosTableAdapter.Update(Industries_DanDataSet.Departamentos)

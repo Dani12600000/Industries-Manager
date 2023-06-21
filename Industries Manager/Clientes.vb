@@ -16,8 +16,8 @@
         Me.Width = Me.ClientSize.Width * 1.22
 
         Formulario = Me
-        ButtonNG = Button10
-        ButtonEC = Button11
+        ButtonNandG = Button10
+        ButtonRorEandC = Button11
         ButtonF = Button1
         ButtonP = Button2
         ButtonN = Button3

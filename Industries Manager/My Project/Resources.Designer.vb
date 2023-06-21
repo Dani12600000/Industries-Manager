@@ -14,7 +14,7 @@ Option Explicit On
 Imports System
 
 Namespace My.Resources
-    
+
     'Essa classe foi gerada automaticamente pela classe StronglyTypedResourceBuilder
     'através de uma ferramenta como ResGen ou Visual Studio.
     'Para adicionar ou remover um associado, edite o arquivo .ResX e execute ResGen novamente

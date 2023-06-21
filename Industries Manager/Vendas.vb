@@ -140,7 +140,7 @@ Public Class Vendas
                 Industries_DanDataSet.Venda_de_produto.Rows.Add(novaLinha)
             End If
 
-            ' Salvar as alterações no banco de dados
+            ' Guardar as alterações no banco de dados
             Venda_de_produtoTableAdapter.Update(Industries_DanDataSet.Venda_de_produto)
             Venda_de_produtoTableAdapter.Fill(Industries_DanDataSet.Venda_de_produto)
 
