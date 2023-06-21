@@ -16,7 +16,7 @@
     ' 
     ' Depois de definir todos os botões ás respetivas variaveis pode usar nos varios formularios os seguintes procedimentos
     ' iniciarAlteracoes() - Quando chamado utiliza as variaveis para defenir a propriedade Enabled dos botões de navegação como false, a propriedade ReadOnly das TextBox's tambem como false, o Enabled dos NumericUpDown como true e guarda os atributos Text's dos botões ButtonNG, ButtonRC e ButtonEC nas respetivas variaveis TextButNG, TextButRC e TextButEC fazendo depois alteração do texto nas propriades Text dos mesmo botões.
-    ' acabarAlteracos() - Quando chamado utiliza as variaveis para defenir o contrario do iniciar e depois buscar o texto guardado nas variaveis TextButNG, TextButRC e TextButEC para as colocar nas respetivas propriedades Text dos botões ButtonNG, ButtonRC, ButtonEC
+    ' acabarAlteracoes() - Quando chamado utiliza as variaveis para defenir o contrario do iniciar e depois buscar o texto guardado nas variaveis TextButNG, TextButRC e TextButEC para as colocar nas respetivas propriedades Text dos botões ButtonNG, ButtonRC, ButtonEC
     ' 
     ' Procedimentos internos
     ' trocarBooleans() - Este procedimento visa auxiliar o iniciarAlterações e o acabarAlterações a colocar as propriedade Enabled e ReadOnly em todos os botões e TextBox's respetivamente como verdadeiro/falso

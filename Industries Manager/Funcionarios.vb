@@ -20,6 +20,12 @@ Public Class Funcionarios
         FotoPictureBox.SizeMode = PictureBoxSizeMode.Zoom
 
         SortLogins()
+
+        If UserAdm Then
+            Button11.Visible = True
+        Else
+            Button11.Visible = False
+        End If
     End Sub
 
     Sub SortLogins()

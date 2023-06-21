@@ -68,6 +68,7 @@ Partial Class Funcionarios
         Me.ID_DepartamentoComboBox = New System.Windows.Forms.ComboBox()
         Me.DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.DepartamentosTableAdapter()
+        Me.Button11 = New System.Windows.Forms.Button()
         NomeLabel = New System.Windows.Forms.Label()
         SobrenomeLabel = New System.Windows.Forms.Label()
         FotoLabel = New System.Windows.Forms.Label()
@@ -283,7 +284,7 @@ Partial Class Funcionarios
         Me.Login_FuncionarioDataGridView.ReadOnly = True
         Me.Login_FuncionarioDataGridView.RowHeadersWidth = 62
         Me.Login_FuncionarioDataGridView.RowTemplate.Height = 28
-        Me.Login_FuncionarioDataGridView.Size = New System.Drawing.Size(763, 549)
+        Me.Login_FuncionarioDataGridView.Size = New System.Drawing.Size(763, 592)
         Me.Login_FuncionarioDataGridView.TabIndex = 15
         '
         'DataGridViewTextBoxColumn1
@@ -329,7 +330,7 @@ Partial Class Funcionarios
         'Button5
         '
         Me.Button5.BackColor = System.Drawing.Color.LightGreen
-        Me.Button5.Location = New System.Drawing.Point(97, 553)
+        Me.Button5.Location = New System.Drawing.Point(97, 597)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(124, 47)
         Me.Button5.TabIndex = 24
@@ -338,7 +339,7 @@ Partial Class Funcionarios
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(292, 606)
+        Me.Button4.Location = New System.Drawing.Point(292, 649)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(59, 57)
         Me.Button4.TabIndex = 23
@@ -347,7 +348,7 @@ Partial Class Funcionarios
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(227, 606)
+        Me.Button3.Location = New System.Drawing.Point(227, 649)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(59, 57)
         Me.Button3.TabIndex = 22
@@ -356,7 +357,7 @@ Partial Class Funcionarios
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(162, 606)
+        Me.Button2.Location = New System.Drawing.Point(162, 649)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(59, 57)
         Me.Button2.TabIndex = 21
@@ -365,7 +366,7 @@ Partial Class Funcionarios
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(97, 606)
+        Me.Button1.Location = New System.Drawing.Point(97, 649)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(59, 57)
         Me.Button1.TabIndex = 20
@@ -384,7 +385,7 @@ Partial Class Funcionarios
         'Button6
         '
         Me.Button6.BackColor = System.Drawing.Color.IndianRed
-        Me.Button6.Location = New System.Drawing.Point(227, 553)
+        Me.Button6.Location = New System.Drawing.Point(227, 597)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(124, 47)
         Me.Button6.TabIndex = 27
@@ -438,7 +439,7 @@ Partial Class Funcionarios
         '
         'Button9
         '
-        Me.Button9.Location = New System.Drawing.Point(552, 606)
+        Me.Button9.Location = New System.Drawing.Point(552, 649)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(245, 57)
         Me.Button9.TabIndex = 33
@@ -447,7 +448,7 @@ Partial Class Funcionarios
         '
         'Button10
         '
-        Me.Button10.Location = New System.Drawing.Point(803, 606)
+        Me.Button10.Location = New System.Drawing.Point(803, 649)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(288, 57)
         Me.Button10.TabIndex = 34
@@ -485,11 +486,23 @@ Partial Class Funcionarios
         '
         Me.DepartamentosTableAdapter.ClearBeforeFill = True
         '
+        'Button11
+        '
+        Me.Button11.BackColor = System.Drawing.Color.Firebrick
+        Me.Button11.Enabled = False
+        Me.Button11.Location = New System.Drawing.Point(97, 552)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(254, 41)
+        Me.Button11.TabIndex = 38
+        Me.Button11.Text = "Apagar conta"
+        Me.Button11.UseVisualStyleBackColor = False
+        '
         'Funcionarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1235, 683)
+        Me.ClientSize = New System.Drawing.Size(1235, 718)
+        Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.ID_DepartamentoComboBox)
         Me.Controls.Add(Me.ID_ProfissãoComboBox)
         Me.Controls.Add(ID_DepartamentoLabel)
@@ -576,4 +589,5 @@ Partial Class Funcionarios
     Friend WithEvents ID_DepartamentoComboBox As ComboBox
     Friend WithEvents DepartamentosBindingSource As BindingSource
     Friend WithEvents DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.DepartamentosTableAdapter
+    Friend WithEvents Button11 As Button
 End Class

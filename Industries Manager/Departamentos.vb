@@ -85,30 +85,6 @@
         End If
     End Sub
 
-    Sub iniciarAlteracoes()
-        IDTextBox.ReadOnly = False
-        NDDTextBox.ReadOnly = False
-        DEDDTextBox.ReadOnly = False
-        Button9.Text = "Guardar"
-        Button8.Text = "Cancelar"
-        Button1.Enabled = False
-        Button2.Enabled = False
-        Button3.Enabled = False
-        Button4.Enabled = False
-    End Sub
-
-    Sub acabarAlteracoes()
-        IDTextBox.ReadOnly = True
-        NDDTextBox.ReadOnly = True
-        DEDDTextBox.ReadOnly = True
-        Button9.Text = "Novo"
-        Button8.Text = "Remover"
-        Button1.Enabled = True
-        Button2.Enabled = True
-        Button3.Enabled = True
-        Button4.Enabled = True
-    End Sub
-
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
         If Button9.Text = "Novo" Then
             DepartamentosBindingSource.AddNew()
