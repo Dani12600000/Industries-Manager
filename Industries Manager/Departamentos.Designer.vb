@@ -104,6 +104,7 @@ Partial Class Departamentos
         'IDTextBox
         '
         Me.IDTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DepartamentosBindingSource, "ID", True))
+        Me.IDTextBox.Enabled = False
         Me.IDTextBox.Location = New System.Drawing.Point(220, 51)
         Me.IDTextBox.Name = "IDTextBox"
         Me.IDTextBox.ReadOnly = True
@@ -213,11 +214,11 @@ Partial Class Departamentos
         'Button5
         '
         Me.Button5.BackColor = System.Drawing.Color.RosyBrown
-        Me.Button5.Location = New System.Drawing.Point(1166, 71)
+        Me.Button5.Location = New System.Drawing.Point(1293, 448)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(147, 32)
+        Me.Button5.Size = New System.Drawing.Size(242, 32)
         Me.Button5.TabIndex = 15
-        Me.Button5.Text = "Despedir"
+        Me.Button5.Text = "Despedir funcionario"
         Me.Button5.UseVisualStyleBackColor = False
         Me.Button5.Visible = False
         '
@@ -315,7 +316,7 @@ Partial Class Departamentos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1555, 458)
+        Me.ClientSize = New System.Drawing.Size(1555, 492)
         Me.Controls.Add(Me.DDCDateTimePicker)
         Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.Button9)

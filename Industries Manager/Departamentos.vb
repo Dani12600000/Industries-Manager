@@ -20,6 +20,9 @@
         ButtonN = Button3
         ButtonL = Button4
 
+        IgnoreTextBoxs.Add(NomeDiretorTextBox)
+        IgnoreDateTimePickers.Add(DDCDateTimePicker)
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -74,13 +77,13 @@
             If MessageBox.Show("Tem certeza que deseja remover este cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 DepartamentosBindingSource.RemoveCurrent()
                 DepartamentosTableAdapter.Update(Industries_DanDataSet.Departamentos)
-
+                AtualizarNomeDiretor()
                 acabarAlteracoes()
             End If
         ElseIf Button8.Text = "Cancelar" Then
             TableAdapterManager.UpdateAll(Me.Industries_DanDataSet)
             DepartamentosBindingSource.CancelEdit()
-
+            AtualizarNomeDiretor()
             acabarAlteracoes()
         End If
     End Sub
@@ -88,6 +91,7 @@
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
         If Button9.Text = "Novo" Then
             DepartamentosBindingSource.AddNew()
+            AtualizarNomeDiretor()
             iniciarAlteracoes()
         ElseIf Button9.Text = "Guardar" Then
             Try

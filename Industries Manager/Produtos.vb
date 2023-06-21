@@ -190,8 +190,7 @@
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         If Button6.Text = "Editar" Then
 
-            LucroNumericUpDown.Enabled = True
-            Button6.Text = "Guardar"
+            iniciarAlteracaoUnica(Button6, LucroNumericUpDown)
 
         ElseIf Button6.Text = "Guardar" Then
 
@@ -199,8 +198,7 @@
 
             Try
                 posicaoAtualProd = ProdutosBindingSource.Position
-                LucroNumericUpDown.Enabled = False
-                Button6.Text = "Editar"
+                acabarAlteracaoUnica()
                 ProdutosBindingSource.EndEdit()
                 ProdutosTableAdapter.Update(Industries_DanDataSet.Produtos)
                 ProdutosTableAdapter.Fill(Industries_DanDataSet.Produtos)

@@ -1,8 +1,14 @@
 ﻿Module ControleAlteracoes
     Public Formulario As Form
     Public ButtonNandG, ButtonRorEandC, ButtonF, ButtonP, ButtonN, ButtonL, ButtonE As Button
-    Dim TextButNandG, TextButRorEandC As String
+    Public IgnoreTextBoxs As List(Of TextBox) = New List(Of TextBox)()
+    Public IgnoreDateTimePickers As List(Of DateTimePicker) = New List(Of DateTimePicker)()
+    Public IgnoreNumericUpDowns As List(Of NumericUpDown) = New List(Of NumericUpDown)()
+    Public IgnoreButtons As List(Of Button) = New List(Of Button)()
+    Dim TextButNandG, TextButRorEandC, TextButAltUnic As String
     Dim TorF As Boolean
+    Dim buttonAltUnicTemp As Button
+    Dim componenteAltUnicTemp As Control
 
     ' Para usar este metodo tenho que declarar as seguintes variaveis primeiro:
     ' Formulario - Fomulario atual
@@ -17,15 +23,17 @@
     ' Depois de definir todos os botões ás respetivas variaveis pode usar nos varios formularios os seguintes procedimentos
     ' iniciarAlteracoes() - Quando chamado utiliza as variaveis para defenir a propriedade Enabled dos botões de navegação como false, a propriedade ReadOnly das TextBox's tambem como false, o Enabled dos NumericUpDown como true e guarda os atributos Text's dos botões ButtonNG, ButtonRC e ButtonEC nas respetivas variaveis TextButNG, TextButRC e TextButEC fazendo depois alteração do texto nas propriades Text dos mesmo botões.
     ' acabarAlteracoes() - Quando chamado utiliza as variaveis para defenir o contrario do iniciar e depois buscar o texto guardado nas variaveis TextButNG, TextButRC e TextButEC para as colocar nas respetivas propriedades Text dos botões ButtonNG, ButtonRC, ButtonEC
+    ' iniciarAlteracaoUnica(button, componente) - Quando chamado utiliza as duas unicas variaveis dele para dar acesso ao utilizador para fazer as alterações num campo especifico 
+    ' acabarAlteracaoUnica() - Quando chamado utiliza as duas unicas variaveis dele para retirar o acesso ao utilizador para fazer as alterações num campo especifico
     ' 
     ' Procedimentos internos
-    ' trocarBooleans() - Este procedimento visa auxiliar o iniciarAlterações e o acabarAlterações a colocar as propriedade Enabled e ReadOnly em todos os botões e TextBox's respetivamente como verdadeiro/falso
+    ' trocarBooleansParaAlteracoes() - Este procedimento visa auxiliar o iniciarAlterações e o acabarAlterações a colocar as propriedade Enabled e ReadOnly em todos os botões e TextBox's respetivamente como verdadeiro/falso
 
     Sub iniciarAlteracoes()
         TorF = False
         Debug.WriteLine("iniciando alterações - começo")
 
-        trocarBooleans()
+        trocarBooleansParaAlteracoes()
 
         TextButNandG = ButtonNandG.Text
 
@@ -48,7 +56,7 @@
 
         TorF = True
 
-        trocarBooleans()
+        trocarBooleansParaAlteracoes()
 
         Debug.WriteLine("TextButNandG: " & TextButNandG)
         Debug.WriteLine("TextButRorEandC: " & TextButRorEandC)
@@ -61,32 +69,41 @@
 
     End Sub
 
-    Private Sub trocarBooleans()
+    Private Sub trocarBooleansParaAlteracoes()
+
         For Each ctl As Control In Formulario.Controls
 
             If TypeOf ctl Is TextBox Then
 
                 Dim textBox As TextBox = DirectCast(ctl, TextBox)
+                Debug.WriteLine("Name: " & textBox.Name & "  »Enabled: " & textBox.ReadOnly)
+                If IgnoreTextBoxs.Contains(textBox) Then Continue For
                 textBox.ReadOnly = TorF
-                Debug.WriteLine("Name: " & textBox.Name & "  Enabled: " & textBox.ReadOnly)
+                Debug.WriteLine("Name: " & textBox.Name & "  «Enabled: " & textBox.ReadOnly)
 
             ElseIf TypeOf ctl Is NumericUpDown Then
 
                 Dim numericUpDown As NumericUpDown = DirectCast(ctl, NumericUpDown)
+                Debug.WriteLine("Name: " & numericUpDown.Name & "  »Enabled: " & numericUpDown.Enabled)
+                If IgnoreNumericUpDowns.Contains(numericUpDown) Then Continue For
                 numericUpDown.Enabled = Not TorF
-                Debug.WriteLine("Name: " & numericUpDown.Name & "  Enabled: " & numericUpDown.Enabled)
+                Debug.WriteLine("Name: " & numericUpDown.Name & "  «Enabled: " & numericUpDown.Enabled)
 
             ElseIf TypeOf ctl Is DateTimePicker Then
 
                 Dim dateTimePicker As DateTimePicker = DirectCast(ctl, DateTimePicker)
+                Debug.WriteLine("Name: " & dateTimePicker.Name & "  »Enabled: " & dateTimePicker.Enabled)
+                If IgnoreDateTimePickers.Contains(dateTimePicker) Then Continue For
                 dateTimePicker.Enabled = Not TorF
-                Debug.WriteLine("Name: " & dateTimePicker.Name & "  Enabled: " & dateTimePicker.Enabled)
+                Debug.WriteLine("Name: " & dateTimePicker.Name & "  «Enabled: " & dateTimePicker.Enabled)
 
             ElseIf TypeOf ctl Is Button Then
 
                 Dim button As Button = DirectCast(ctl, Button)
+                Debug.WriteLine("Name: " & button.Name & "  »Enabled: " & button.Enabled)
+                If IgnoreButtons.Contains(button) Then Continue For
                 button.Enabled = TorF
-                Debug.WriteLine("Name: " & button.Name & "  Enabled: " & button.Enabled)
+                Debug.WriteLine("Name: " & button.Name & "  «Enabled: " & button.Enabled)
 
             End If
 
@@ -107,5 +124,47 @@
             End If
         Catch
         End Try
+    End Sub
+
+    Sub iniciarAlteracaoUnica(buttonAltUnic As Button, componenteAltUnic As Control)
+        TorF = False
+
+        TextButAltUnic = buttonAltUnic.Text
+        buttonAltUnic.Text = "Guardar"
+
+        buttonAltUnicTemp = buttonAltUnic
+        componenteAltUnicTemp = componenteAltUnic
+
+        trocarBooleansParaAlteracaoUnica()
+    End Sub
+
+    Sub acabarAlteracaoUnica()
+        TorF = True
+
+        buttonAltUnicTemp.Text = TextButAltUnic
+
+        trocarBooleansParaAlteracaoUnica()
+    End Sub
+
+    Sub trocarBooleansParaAlteracaoUnica()
+
+
+
+        If TypeOf componenteAltUnicTemp Is TextBox Then
+            Dim CTextBoxAltUnic As TextBox = DirectCast(componenteAltUnicTemp, TextBox)
+            CTextBoxAltUnic.ReadOnly = TorF
+        ElseIf TypeOf componenteAltUnicTemp Is NumericUpDown Then
+            Dim CNumericUpDownAltUnic As NumericUpDown = DirectCast(componenteAltUnicTemp, NumericUpDown)
+            CNumericUpDownAltUnic.Enabled = Not TorF
+        End If
+
+        ButtonNandG.Enabled = TorF
+
+        ButtonRorEandC.Enabled = TorF
+
+        ButtonF.Enabled = TorF
+        ButtonP.Enabled = TorF
+        ButtonN.Enabled = TorF
+        ButtonL.Enabled = TorF
     End Sub
 End Module
