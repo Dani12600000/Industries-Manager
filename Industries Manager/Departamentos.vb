@@ -1,8 +1,8 @@
 ﻿Public Class Departamentos
 
     Private Sub Departamentos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'Industries_DanDataSet.Diretores_de_Departamentos' table. You can move, or remove it, as needed.
-        Me.Diretores_de_DepartamentosTableAdapter.Fill(Me.Industries_DanDataSet.Diretores_de_Departamentos)
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Profissões' table. You can move, or remove it, as needed.
+        Me.ProfissõesTableAdapter.Fill(Me.Industries_DanDataSet.Profissões)
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Diretores_de_Departamentos'. Você pode movê-la ou removê-la conforme necessário.
         Me.Diretores_de_DepartamentosTableAdapter.Fill(Me.Industries_DanDataSet.Diretores_de_Departamentos)
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Departamentos'. Você pode movê-la ou removê-la conforme necessário.
@@ -10,7 +10,9 @@
 
         Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
 
-        Me.Width = Me.ClientSize.Width * 1.23
+        Me.Width = Me.ClientSize.Width * 1.24
+
+        FuncionariosDataGridView.Columns(4).DefaultCellStyle.Format = "#,##0.00€"
 
         Formulario = Me
         ButtonNandG = Button9

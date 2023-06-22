@@ -170,7 +170,7 @@ Public Class Funcionarios
 
         If Button5.Text = "Contratar" Then
             If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") = vbYes Then
-                EnviarMensagemAutomaticaContratacao(InfoUser.UserName, EmailTextBox.Text, NomeTextBox.Text, SobrenomeTextBox.Text, ProfissõesBindingSource.Current("Profissao"), SINumericUpDown.Value)
+                EnviarMensagemAutomaticaContratacao(InfoUser.UserName, EmailTextBox.Text, NomeTextBox.Text, SobrenomeTextBox.Text, ProfissõesBindingSource.Current("Profissao"), DepartamentosBindingSource.Current("NDD"), SINumericUpDown.Value)
             End If
 
             FuncionariosBindingSource.Current("ID_Profissão") = ProfissõesBindingSource.Current("ID")
@@ -202,7 +202,7 @@ Public Class Funcionarios
         ElseIf Button5.Text = "Recontratar" Then
 
             If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") = vbYes Then
-                EnviarMensagemAutomaticaRecontratacao(InfoUser.UserName, EmailTextBox.Text, ID_ProfissãoComboBox.Text, SINumericUpDown.Value)
+                EnviarMensagemAutomaticaRecontratacao(InfoUser.UserName, EmailTextBox.Text, ProfissõesBindingSource.Current("Profissao"), DepartamentosBindingSource.Current("NDD"), SINumericUpDown.Value)
             End If
 
             FuncionariosBindingSource.Current("Aprovacao") = True

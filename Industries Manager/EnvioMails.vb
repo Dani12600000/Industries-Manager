@@ -1,5 +1,5 @@
 ﻿Module EnvioMails
-    Sub EnviarMensagemAutomaticaContratacao(nomeRemetente As String, emailDestinatario As String, nomeDestinatario As String, sobrenomeDestinario As String, cargo As String, salario As Double)
+    Sub EnviarMensagemAutomaticaContratacao(nomeRemetente As String, emailDestinatario As String, nomeDestinatario As String, sobrenomeDestinario As String, cargo As String, departamento As String, salario As Double)
         Try
             Dim assunto As String = "Contratação nas Industries Dan"
 
@@ -35,7 +35,7 @@
 
             ' Formatar a mensagem pré-definida
             Dim mensagemPredefinida As String = "Prezado(a) " & nomeDestinatario & " " & sobrenomeDestinario & "," & vbCrLf & vbCrLf &
-                                        "Temos o prazer de informar que você foi contratado(a) para o cargo de " & cargo & "." & vbCrLf &
+                                        "Temos o prazer de informar que você foi contratado(a) para o cargo de " & cargo & " no departamento de " & departamento & "." & vbCrLf &
                                         mensagemSalario & vbCrLf & vbCrLf &
                                         "Começa " & diaDaSemana & ", dia " & proximoDia.ToString("d") & "." & vbCrLf & vbCrLf &
                                         "Estamos ansiosos para tê-lo(a) em nossa equipe!" & vbCrLf & vbCrLf &
@@ -51,7 +51,7 @@
         End Try
     End Sub
 
-    Sub EnviarMensagemAutomaticaRecontratacao(nomeRemetente As String, destinatario As String, cargo As String, salario As Double)
+    Sub EnviarMensagemAutomaticaRecontratacao(nomeRemetente As String, destinatario As String, cargo As String, departamento As String, salario As Double)
         Try
             Dim assunto As String = "Recontratação nas Industries Dan"
 
@@ -87,7 +87,7 @@
 
             ' Formatar a mensagem pré-definida
             Dim mensagemPredefinida As String = "Prezado(a) " & destinatario & "," & vbCrLf & vbCrLf &
-                                        "Temos o prazer de informar que você foi recontratado(a) para o cargo de " & cargo & "." & vbCrLf &
+                                        "Temos o prazer de informar que você foi recontratado(a) para o cargo de " & cargo & " no departamento de " & departamento & "." & vbCrLf &
                                         mensagemSalario & vbCrLf & vbCrLf &
                                         "Começa " & diaDaSemana & ", dia " & proximoDia.ToString("d") & "." & vbCrLf & vbCrLf &
                                         "Bem-vindo(a) de volta à nossa equipe!" & vbCrLf & vbCrLf &

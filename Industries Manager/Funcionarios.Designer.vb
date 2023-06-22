@@ -65,12 +65,12 @@ Partial Class Funcionarios
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.ID_ProfissãoComboBox = New System.Windows.Forms.ComboBox()
-        Me.ID_DepartamentoComboBox = New System.Windows.Forms.ComboBox()
         Me.DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.DepartamentosTableAdapter()
         Me.Button11 = New System.Windows.Forms.Button()
         Me.Diretores_de_DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
+        Me.ID_DepartamentoComboBox = New System.Windows.Forms.ComboBox()
         NomeLabel = New System.Windows.Forms.Label()
         SobrenomeLabel = New System.Windows.Forms.Label()
         FotoLabel = New System.Windows.Forms.Label()
@@ -469,16 +469,6 @@ Partial Class Funcionarios
         Me.ID_ProfissãoComboBox.TabIndex = 36
         Me.ID_ProfissãoComboBox.ValueMember = "ID"
         '
-        'ID_DepartamentoComboBox
-        '
-        Me.ID_DepartamentoComboBox.DataSource = Me.DepartamentosBindingSource
-        Me.ID_DepartamentoComboBox.FormattingEnabled = True
-        Me.ID_DepartamentoComboBox.Location = New System.Drawing.Point(134, 381)
-        Me.ID_DepartamentoComboBox.Name = "ID_DepartamentoComboBox"
-        Me.ID_DepartamentoComboBox.Size = New System.Drawing.Size(286, 28)
-        Me.ID_DepartamentoComboBox.TabIndex = 37
-        Me.ID_DepartamentoComboBox.ValueMember = "ID"
-        '
         'DepartamentosBindingSource
         '
         Me.DepartamentosBindingSource.DataMember = "Departamentos"
@@ -507,13 +497,23 @@ Partial Class Funcionarios
         '
         Me.Diretores_de_DepartamentosTableAdapter.ClearBeforeFill = True
         '
+        'ID_DepartamentoComboBox
+        '
+        Me.ID_DepartamentoComboBox.DataSource = Me.DepartamentosBindingSource
+        Me.ID_DepartamentoComboBox.DisplayMember = "NDD"
+        Me.ID_DepartamentoComboBox.FormattingEnabled = True
+        Me.ID_DepartamentoComboBox.Location = New System.Drawing.Point(134, 384)
+        Me.ID_DepartamentoComboBox.Name = "ID_DepartamentoComboBox"
+        Me.ID_DepartamentoComboBox.Size = New System.Drawing.Size(285, 28)
+        Me.ID_DepartamentoComboBox.TabIndex = 39
+        '
         'Funcionarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1243, 726)
-        Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.ID_DepartamentoComboBox)
+        Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.ID_ProfissãoComboBox)
         Me.Controls.Add(ID_DepartamentoLabel)
         Me.Controls.Add(Me.Button10)
@@ -597,10 +597,10 @@ Partial Class Funcionarios
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents ID_ProfissãoComboBox As ComboBox
-    Friend WithEvents ID_DepartamentoComboBox As ComboBox
     Friend WithEvents DepartamentosBindingSource As BindingSource
     Friend WithEvents DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.DepartamentosTableAdapter
     Friend WithEvents Button11 As Button
     Friend WithEvents Diretores_de_DepartamentosBindingSource As BindingSource
     Friend WithEvents Diretores_de_DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter
+    Friend WithEvents ID_DepartamentoComboBox As ComboBox
 End Class
