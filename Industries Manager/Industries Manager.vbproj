@@ -102,6 +102,7 @@
     <Compile Include="Departamentos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="EnvioMails.vb" />
     <Compile Include="Fornecedores.Designer.vb">
       <DependentUpon>Fornecedores.vb</DependentUpon>
     </Compile>

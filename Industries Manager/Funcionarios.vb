@@ -186,7 +186,7 @@ Public Class Funcionarios
         ElseIf Button5.Text = "Despedir" Then
             If MsgBox("Tem certeza que deseja despedir o funcionario nº" & FuncionariosBindingSource.Current("ID") & "?", vbYesNo, "Confirmação") = vbYes Then
                 If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") = vbYes Then
-                    EnviarMensagemAutomaticaDespedimento(InfoUser.UserName, EmailTextBox.Text, InputBox("Qual o motivo para o despedimento do mesmo? (opcional)"))
+                    EnviarMensagemAutomaticaDespedimento(InfoUser.UserName, EmailTextBox.Text, NomeTextBox.Text, SobrenomeTextBox.Text, InputBox("Qual o motivo para o despedimento do mesmo? (opcional)"))
                 End If
 
                 FuncionariosBindingSource.Current("Aprovacao") = False
@@ -219,169 +219,6 @@ Public Class Funcionarios
         VerificarContrartarDespedir()
     End Sub
 
-    Sub EnviarMensagemAutomaticaDespedimento(nomeRemetente As String, destinatario As String, motivo As String)
-        Try
-            Dim assunto As String = "Despedimento das Industries Dan"
-
-            ' Criar uma instância do processo do Outlook
-            Dim outlookProcess As New Process()
-
-            ' Definir o nome do processo como "Outlook"
-            outlookProcess.StartInfo.FileName = "Outlook"
-
-            ' Formatar a mensagem pré-definida
-            Dim mensagemPredefinida As String = "Prezado(a) " & NomeTextBox.Text & " " & SobrenomeTextBox.Text & "," & vbCrLf & vbCrLf &
-                                            "É por este meio que o vimos informar que está a ser despedido com efeito imediato" & vbCrLf
-
-            ' Adicionar o motivo à mensagem pré-definida, se não estiver vazio
-            If Not String.IsNullOrEmpty(motivo) Then
-                mensagemPredefinida &= "Motivo: " & motivo & vbCrLf
-            End If
-
-            mensagemPredefinida &= vbCrLf & vbCrLf & "Atenciosamente," & vbCrLf & nomeRemetente
-
-            ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
-            outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & destinatario & "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
-
-            ' Iniciar o processo
-            outlookProcess.Start()
-        Catch ex As Exception
-            Console.WriteLine("Erro ao abrir o Outlook: " & ex.Message)
-        End Try
-    End Sub
-
-    Sub EnviarMensagemAutomaticaContratacao(nomeRemetente As String, emailDestinatario As String, nomeDestinatario As String, sobrenomeDestinario As String, cargo As String, salario As Double)
-        Try
-            Dim assunto As String = "Contratação nas Industries Dan"
-
-            ' Criar uma instância do processo do Outlook
-            Dim outlookProcess As New Process()
-
-            ' Definir o nome do processo como "Outlook"
-            outlookProcess.StartInfo.FileName = "Outlook"
-
-            ' Verificar se o salário é igual a zero
-            Dim mensagemSalario As String
-            If salario = 0 Then
-                mensagemSalario = "Ainda estamos a ajustar o seu salário."
-            Else
-                mensagemSalario = "Seu salário será de " & salario.ToString("#,##0.00") & "€ por mês."
-            End If
-
-            ' Obter o dia da semana próximo
-            Dim hoje As DateTime = DateTime.Today
-            Dim proximoDia As DateTime = hoje.AddDays(1)
-
-            While proximoDia.DayOfWeek = DayOfWeek.Saturday Or proximoDia.DayOfWeek = DayOfWeek.Sunday
-                proximoDia = proximoDia.AddDays(1)
-            End While
-
-            Dim diaDaSemana As String
-
-            If proximoDia = hoje.AddDays(1) Then
-                diaDaSemana = "amanhã"
-            Else
-                diaDaSemana = "próxima " & proximoDia.ToString("dddd")
-            End If
-
-            ' Formatar a mensagem pré-definida
-            Dim mensagemPredefinida As String = "Prezado(a) " & nomeDestinatario & " " & sobrenomeDestinario.Text & "," & vbCrLf & vbCrLf &
-                                        "Temos o prazer de informar que você foi contratado(a) para o cargo de " & cargo & "." & vbCrLf &
-                                        mensagemSalario & vbCrLf & vbCrLf &
-                                        "Começa " & diaDaSemana & ", dia " & proximoDia.ToString("d") & "." & vbCrLf & vbCrLf &
-                                        "Estamos ansiosos para tê-lo(a) em nossa equipe!" & vbCrLf & vbCrLf &
-                                        "Atenciosamente," & vbCrLf & nomeRemetente
-
-            ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
-            outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & emailDestinatario & "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
-
-            ' Iniciar o processo
-            outlookProcess.Start()
-        Catch ex As Exception
-            Console.WriteLine("Erro ao abrir o Outlook: " & ex.Message)
-        End Try
-    End Sub
-
-    Sub EnviarMensagemAutomaticaRecontratacao(nomeRemetente As String, destinatario As String, cargo As String, salario As Double)
-        Try
-            Dim assunto As String = "Recontratação nas Industries Dan"
-
-            ' Criar uma instância do processo do Outlook
-            Dim outlookProcess As New Process()
-
-            ' Definir o nome do processo como "Outlook"
-            outlookProcess.StartInfo.FileName = "Outlook"
-
-            ' Verificar se o salário é igual a zero
-            Dim mensagemSalario As String
-            If salario = 0 Then
-                mensagemSalario = "Ainda estamos a ajustar o seu salário."
-            Else
-                mensagemSalario = "Seu salário será de " & salario.ToString("#,##0.00") & "€ por mês."
-            End If
-
-            ' Obter o dia da semana próximo
-            Dim hoje As DateTime = DateTime.Today
-            Dim proximoDia As DateTime = hoje.AddDays(1)
-
-            While proximoDia.DayOfWeek = DayOfWeek.Saturday Or proximoDia.DayOfWeek = DayOfWeek.Sunday
-                proximoDia = proximoDia.AddDays(1)
-            End While
-
-            Dim diaDaSemana As String
-
-            If proximoDia = hoje.AddDays(1) Then
-                diaDaSemana = "amanhã"
-            Else
-                diaDaSemana = "próxima " & proximoDia.ToString("dddd")
-            End If
-
-            ' Formatar a mensagem pré-definida
-            Dim mensagemPredefinida As String = "Prezado(a) " & destinatario & "," & vbCrLf & vbCrLf &
-                                        "Temos o prazer de informar que você foi recontratado(a) para o cargo de " & cargo & "." & vbCrLf &
-                                        mensagemSalario & vbCrLf & vbCrLf &
-                                        "Começa " & diaDaSemana & ", dia " & proximoDia.ToString("d") & "." & vbCrLf & vbCrLf &
-                                        "Bem-vindo(a) de volta à nossa equipe!" & vbCrLf & vbCrLf &
-                                        "Atenciosamente," & vbCrLf & nomeRemetente
-
-            ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
-            outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & destinatario & "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
-
-            ' Iniciar o processo
-            outlookProcess.Start()
-        Catch ex As Exception
-            Console.WriteLine("Erro ao abrir o Outlook: " & ex.Message)
-        End Try
-    End Sub
-
-    Sub EnviarMensagemAutomaticaAtualizacaoSalario(nomeRemetente As String, destinatario As String, novoSalario As Double)
-        Try
-
-            Dim assunto As String = "Alteração salarial"
-
-            ' Criar uma instância do processo do Outlook
-            Dim outlookProcess As New Process()
-
-            ' Definir o nome do processo como "Outlook"
-            outlookProcess.StartInfo.FileName = "Outlook"
-
-            ' Formatar a mensagem pré-definida
-            Dim mensagemPredefinida As String = "Prezado(a) " & destinatario & "," & vbCrLf & vbCrLf &
-                                            "Gostaríamos de informar que seu salário foi atualizado." & vbCrLf &
-                                            "O novo valor do seu salário é de " & novoSalario.ToString("#,##0.00") & " por mês." & vbCrLf & vbCrLf &
-                                            "Se tiver alguma dúvida, por favor, entre em contato conosco." & vbCrLf & vbCrLf &
-                                            "Atenciosamente," & vbCrLf & nomeRemetente
-
-            ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
-            outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & destinatario & "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
-
-            ' Iniciar o processo
-            outlookProcess.Start()
-        Catch ex As Exception
-            Console.WriteLine("Erro ao abrir o Outlook: " & ex.Message)
-        End Try
-    End Sub
-
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         If MsgBox("Deseja mesmo resetar a palavra-passe desse funcionario?", vbYesNo, "Tem a certeza?") = vbYes Then
 
@@ -406,7 +243,7 @@ Public Class Funcionarios
             FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
 
             If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") = vbYes Then
-                EnviarMensagemAutomaticaAtualizacaoSalario(InfoUser.UserName, FuncionariosBindingSource.Current("Email"), SINumericUpDown.Value.ToString("#,##0.00€"))
+                EnviarMensagemAutomaticaAtualizacaoSalario(InfoUser.UserName, FuncionariosBindingSource.Current("Email"), FuncionariosBindingSource.Current("Nome"), FuncionariosBindingSource.Current("Sobrenome"), SINumericUpDown.Value.ToString("#,##0.00€"))
             End If
 
             MsgBox("Salário atualizado", vbInformation, "Atualização")
