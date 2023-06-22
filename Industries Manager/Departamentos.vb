@@ -21,28 +21,30 @@
         ButtonL = Button4
 
         IgnoreTextBoxs.Add(NomeDiretorTextBox)
+        IgnoreTextBoxs.Add(IDTextBox)
+        IgnoreTextBoxs.Add(TextBox1)
         IgnoreDateTimePickers.Add(DDCDateTimePicker)
 
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         DepartamentosBindingSource.MoveFirst()
-        AtualizarNomeDiretor()
+        AtualizarInfosDiretor()
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         DepartamentosBindingSource.MovePrevious()
-        AtualizarNomeDiretor()
+        AtualizarInfosDiretor()
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         DepartamentosBindingSource.MoveNext()
-        AtualizarNomeDiretor()
+        AtualizarInfosDiretor()
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         DepartamentosBindingSource.MoveLast()
-        AtualizarNomeDiretor()
+        AtualizarInfosDiretor()
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
@@ -74,16 +76,15 @@
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
         If Button8.Text = "Remover" Then
-            If MessageBox.Show("Tem certeza que deseja remover este cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            If MessageBox.Show("Tem certeza que deseja remover este departamento?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 DepartamentosBindingSource.RemoveCurrent()
                 DepartamentosTableAdapter.Update(Industries_DanDataSet.Departamentos)
-                AtualizarNomeDiretor()
-                acabarAlteracoes()
+                AtualizarInfosDiretor()
             End If
         ElseIf Button8.Text = "Cancelar" Then
             TableAdapterManager.UpdateAll(Me.Industries_DanDataSet)
             DepartamentosBindingSource.CancelEdit()
-            AtualizarNomeDiretor()
+            AtualizarInfosDiretor()
             acabarAlteracoes()
         End If
     End Sub
@@ -91,7 +92,7 @@
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
         If Button9.Text = "Novo" Then
             DepartamentosBindingSource.AddNew()
-            AtualizarNomeDiretor()
+            AtualizarInfosDiretor()
             iniciarAlteracoes()
         ElseIf Button9.Text = "Guardar" Then
             Try
@@ -105,7 +106,7 @@
         End If
     End Sub
 
-    Sub AtualizarNomeDiretor()
+    Sub AtualizarInfosDiretor()
         Dim idDepartamento As Integer = CInt(DepartamentosBindingSource.Current("ID"))
 
         Dim ultimoRegistro As DataRowView = Nothing
@@ -138,6 +139,68 @@
 
                 NomeDiretorTextBox.Text = FuncionariosBindingSource1.Current("Nome") & " " & FuncionariosBindingSource1.Current("Sobrenome")
                 DDCDateTimePicker.Value = Date.Parse(Diretores_de_DepartamentosBindingSource.Current("DDC"))
+
+
+                Dim dataAtual As Date = Today()
+                Dim dataAnterior As Date = CDate(Diretores_de_DepartamentosBindingSource.Current("DDC"))
+
+                Dim noCargoJaHaDateInterval As TimeSpan = dataAtual - dataAnterior
+
+                Dim noCargoJaHaString As String = ""
+
+                Dim anos As Integer = noCargoJaHaDateInterval.Days \ 365
+                Dim meses As Integer = (noCargoJaHaDateInterval.Days Mod 365) \ 30
+                Dim dias As Integer = (noCargoJaHaDateInterval.Days Mod 365) Mod 30
+
+                If anos > 0 Then
+                    noCargoJaHaString = anos.ToString() & " ano"
+                    If anos > 1 Then
+                        noCargoJaHaString &= "s"
+                    End If
+                End If
+
+                If meses > 0 Then
+                    If noCargoJaHaString <> "" Then
+                        noCargoJaHaString &= ", "
+                    End If
+                    noCargoJaHaString &= meses.ToString() & " mês"
+                    If meses > 1 Then
+                        noCargoJaHaString &= "es"
+                    End If
+                End If
+
+                If dias > 0 Then
+                    Dim semanas As Integer = dias \ 7
+                    Dim diasRestantes As Integer = dias Mod 7
+
+                    If noCargoJaHaString <> "" Then
+                        noCargoJaHaString &= " e "
+                    End If
+
+                    If semanas > 0 Then
+                        noCargoJaHaString &= semanas.ToString() & " semana"
+                        If semanas > 1 Then
+                            noCargoJaHaString &= "s"
+                        End If
+                        If diasRestantes > 0 And meses = 0 Then
+                            noCargoJaHaString &= " e " & diasRestantes.ToString() & " dia"
+                            If diasRestantes > 1 Then
+                                noCargoJaHaString &= "s"
+                            End If
+                        End If
+                    Else
+                        noCargoJaHaString &= dias.ToString() & " dia"
+                        If dias > 1 Then
+                            noCargoJaHaString &= "s"
+                        End If
+                    End If
+                End If
+
+                TextBox1.Text = noCargoJaHaString
+                Debug.WriteLine("No cargo já há: " & noCargoJaHaString)
+
+
+
             End If
 
             Debug.WriteLine("Acabou")
@@ -146,7 +209,11 @@
             Debug.WriteLine("Nenhum registro encontrado que atenda ao critério.")
             NomeDiretorTextBox.Text = ""
             DDCDateTimePicker.Value = Today
+            TextBox1.Text = ""
         End If
+    End Sub
+
+    Sub ElegerNovoDiretorDeNovoImediatamente()
 
     End Sub
 End Class

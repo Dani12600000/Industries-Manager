@@ -158,9 +158,12 @@
             CNumericUpDownAltUnic.Enabled = Not TorF
         End If
 
-        ButtonNandG.Enabled = TorF
-
-        ButtonRorEandC.Enabled = TorF
+        If ButtonNandG IsNot Nothing Then
+            ButtonNandG.Enabled = TorF
+        End If
+        If ButtonRorEandC IsNot Nothing Then
+            ButtonRorEandC.Enabled = TorF
+        End If
 
         ButtonF.Enabled = TorF
         ButtonP.Enabled = TorF

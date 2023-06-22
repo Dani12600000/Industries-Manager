@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Funcionarios
     Inherits System.Windows.Forms.Form
 
     'Descartar substituições de formulário para limpar a lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Funcionarios
     'OBSERVAÇÃO: o procedimento a seguir é exigido pelo Windows Form Designer
     'Pode ser modificado usando o Windows Form Designer.  
     'Não o modifique usando o editor de códigos.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim NomeLabel As System.Windows.Forms.Label
@@ -69,6 +69,8 @@ Partial Class Funcionarios
         Me.DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.DepartamentosTableAdapter()
         Me.Button11 = New System.Windows.Forms.Button()
+        Me.Diretores_de_DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
         NomeLabel = New System.Windows.Forms.Label()
         SobrenomeLabel = New System.Windows.Forms.Label()
         FotoLabel = New System.Windows.Forms.Label()
@@ -84,6 +86,7 @@ Partial Class Funcionarios
         CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Login_FuncionarioDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NomeLabel
@@ -469,7 +472,6 @@ Partial Class Funcionarios
         'ID_DepartamentoComboBox
         '
         Me.ID_DepartamentoComboBox.DataSource = Me.DepartamentosBindingSource
-        Me.ID_DepartamentoComboBox.DisplayMember = "NDD"
         Me.ID_DepartamentoComboBox.FormattingEnabled = True
         Me.ID_DepartamentoComboBox.Location = New System.Drawing.Point(134, 381)
         Me.ID_DepartamentoComboBox.Name = "ID_DepartamentoComboBox"
@@ -489,7 +491,6 @@ Partial Class Funcionarios
         'Button11
         '
         Me.Button11.BackColor = System.Drawing.Color.Firebrick
-        Me.Button11.Enabled = False
         Me.Button11.Location = New System.Drawing.Point(97, 552)
         Me.Button11.Name = "Button11"
         Me.Button11.Size = New System.Drawing.Size(254, 41)
@@ -497,11 +498,20 @@ Partial Class Funcionarios
         Me.Button11.Text = "Apagar conta"
         Me.Button11.UseVisualStyleBackColor = False
         '
+        'Diretores_de_DepartamentosBindingSource
+        '
+        Me.Diretores_de_DepartamentosBindingSource.DataMember = "Diretores de Departamentos"
+        Me.Diretores_de_DepartamentosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'Diretores_de_DepartamentosTableAdapter
+        '
+        Me.Diretores_de_DepartamentosTableAdapter.ClearBeforeFill = True
+        '
         'Funcionarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1235, 718)
+        Me.ClientSize = New System.Drawing.Size(1243, 726)
         Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.ID_DepartamentoComboBox)
         Me.Controls.Add(Me.ID_ProfissãoComboBox)
@@ -546,6 +556,7 @@ Partial Class Funcionarios
         CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Login_FuncionarioDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -590,4 +601,6 @@ Partial Class Funcionarios
     Friend WithEvents DepartamentosBindingSource As BindingSource
     Friend WithEvents DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.DepartamentosTableAdapter
     Friend WithEvents Button11 As Button
+    Friend WithEvents Diretores_de_DepartamentosBindingSource As BindingSource
+    Friend WithEvents Diretores_de_DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter
 End Class

@@ -1,4 +1,6 @@
 ﻿Imports System.Globalization
+Imports System.Reflection
+Imports Industries_Manager.Industries_DanDataSetTableAdapters
 
 Public Class Funcionarios
 
@@ -7,6 +9,8 @@ Public Class Funcionarios
     Dim botaoEnabledArray As Boolean()
 
     Private Sub Funcionarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Diretores_de_Departamentos' table. You can move, or remove it, as needed.
+        Me.Diretores_de_DepartamentosTableAdapter.Fill(Me.Industries_DanDataSet.Diretores_de_Departamentos)
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Departamentos' table. You can move, or remove it, as needed.
         Me.DepartamentosTableAdapter.Fill(Me.Industries_DanDataSet.Departamentos)
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Profissões' table. You can move, or remove it, as needed.
@@ -26,6 +30,11 @@ Public Class Funcionarios
         Else
             Button11.Visible = False
         End If
+
+        ButtonF = Button1
+        ButtonP = Button2
+        ButtonN = Button3
+        ButtonL = Button4
     End Sub
 
     Sub SortLogins()
@@ -95,6 +104,8 @@ Public Class Funcionarios
             DDSDEDateTimePicker.Visible = True
             DDSDELabel.Visible = True
         End If
+
+
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -159,7 +170,7 @@ Public Class Funcionarios
 
         If Button5.Text = "Contratar" Then
             If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") = vbYes Then
-                EnviarMensagemAutomaticaContratacao(InfoUser.UserName, EmailTextBox.Text, ProfissõesBindingSource.Current("Profissao"), SINumericUpDown.Value)
+                EnviarMensagemAutomaticaContratacao(InfoUser.UserName, EmailTextBox.Text, NomeTextBox.Text, SobrenomeTextBox.Text, ProfissõesBindingSource.Current("Profissao"), SINumericUpDown.Value)
             End If
 
             FuncionariosBindingSource.Current("ID_Profissão") = ProfissõesBindingSource.Current("ID")
@@ -239,7 +250,7 @@ Public Class Funcionarios
         End Try
     End Sub
 
-    Sub EnviarMensagemAutomaticaContratacao(nomeRemetente As String, destinatario As String, cargo As String, salario As Double)
+    Sub EnviarMensagemAutomaticaContratacao(nomeRemetente As String, emailDestinatario As String, nomeDestinatario As String, sobrenomeDestinario As String, cargo As String, salario As Double)
         Try
             Dim assunto As String = "Contratação nas Industries Dan"
 
@@ -274,7 +285,7 @@ Public Class Funcionarios
             End If
 
             ' Formatar a mensagem pré-definida
-            Dim mensagemPredefinida As String = "Prezado(a) " & NomeTextBox.Text & " " & SobrenomeTextBox.Text & "," & vbCrLf & vbCrLf &
+            Dim mensagemPredefinida As String = "Prezado(a) " & nomeDestinatario & " " & sobrenomeDestinario.Text & "," & vbCrLf & vbCrLf &
                                         "Temos o prazer de informar que você foi contratado(a) para o cargo de " & cargo & "." & vbCrLf &
                                         mensagemSalario & vbCrLf & vbCrLf &
                                         "Começa " & diaDaSemana & ", dia " & proximoDia.ToString("d") & "." & vbCrLf & vbCrLf &
@@ -282,7 +293,7 @@ Public Class Funcionarios
                                         "Atenciosamente," & vbCrLf & nomeRemetente
 
             ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
-            outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & destinatario & "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
+            outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & emailDestinatario & "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
 
             ' Iniciar o processo
             outlookProcess.Start()
@@ -387,23 +398,21 @@ Public Class Funcionarios
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
         If Button8.Text = "Editar" Then
 
-            ArmazenarValoresEnabled()
-            DefinirBotoesComoFalse()
-
-            Button8.Enabled = True
-            SINumericUpDown.Enabled = True
-            Button8.Text = "Guardar"
+            iniciarAlteracaoUnica(Button8, SINumericUpDown)
 
         ElseIf Button8.Text = "Guardar" Then
 
             FuncionariosBindingSource.EndEdit()
             FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
 
-            Button8.Text = "Editar"
-            SINumericUpDown.Enabled = False
+            If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") = vbYes Then
+                EnviarMensagemAutomaticaAtualizacaoSalario(InfoUser.UserName, FuncionariosBindingSource.Current("Email"), SINumericUpDown.Value.ToString("#,##0.00€"))
+            End If
 
-            RestaurarValoresEnabled()
+            MsgBox("Salário atualizado", vbInformation, "Atualização")
+            acabarAlteracaoUnica()
 
+            SortLogins()
         End If
     End Sub
 
@@ -413,34 +422,6 @@ Public Class Funcionarios
         VerificarContrartarDespedir()
         SortLogins()
 
-    End Sub
-
-    ' Função para armazenar os valores Enabled dos botões em uma matriz
-    Private Sub ArmazenarValoresEnabled()
-        Dim botoes As New List(Of Button)()
-
-        For Each control As Control In Me.Controls
-            If TypeOf control Is Button Then
-                Dim botao As Button = DirectCast(control, Button)
-                botoes.Add(botao)
-            End If
-        Next
-
-        ReDim botaoEnabledArray(botoes.Count - 1)
-
-        For i As Integer = 0 To botoes.Count - 1
-            botaoEnabledArray(i) = botoes(i).Enabled
-        Next
-    End Sub
-
-    ' Função para definir todos os botões como Enabled = False
-    Private Sub DefinirBotoesComoFalse()
-        For Each control As Control In Me.Controls
-            If TypeOf control Is Button Then
-                Dim botao As Button = DirectCast(control, Button)
-                botao.Enabled = False
-            End If
-        Next
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
@@ -512,6 +493,38 @@ Public Class Funcionarios
             MessageBox.Show("Data não inserida.")
         End If
 
+    End Sub
+
+    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
+        If MsgBox("Tem certeza que deseja apagar esta conta?", vbYesNo, "Confirmação") = vbYes Then
+            Try
+                If Login_FuncionarioBindingSource.Position >= 0 Then
+                    While Login_FuncionarioBindingSource.Position >= 0
+                        Login_FuncionarioBindingSource.RemoveCurrent()
+                    End While
+
+                    Login_FuncionarioTableAdapter.Update(Industries_DanDataSet)
+
+                End If
+
+                If Diretores_de_DepartamentosBindingSource.Find("ID_Funcionario", FuncionariosBindingSource.Current("ID")) >= 0 Then
+                    Debug.WriteLine("É/Foi Diretor")
+
+                    While Diretores_de_DepartamentosBindingSource.Find("ID_Funcionario", FuncionariosBindingSource.Current("ID")) >= 0
+                        Diretores_de_DepartamentosBindingSource.RemoveAt(Diretores_de_DepartamentosBindingSource.Find("ID_Funcionario", FuncionariosBindingSource.Current("ID")))
+                    End While
+
+                    Diretores_de_DepartamentosTableAdapter.Update(Industries_DanDataSet)
+                End If
+
+                FuncionariosBindingSource.RemoveCurrent()
+                FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+                MsgBox("A conta foi apagada com sucesso!", vbInformation, "Apagado com sucesso")
+            Catch erro As Exception
+                MsgBox("Ocorreu o erro: " & erro.ToString & vbCrLf & "Tente novamente mais tarde, se o erro presistir entre em contacto com o administrador", vbCritical, "Erro")
+                Debug.WriteLine(erro)
+            End Try
+        End If
     End Sub
 
     ' Função para restaurar os valores Enabled originais dos botões

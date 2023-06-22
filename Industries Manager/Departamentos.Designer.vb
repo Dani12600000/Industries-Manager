@@ -53,6 +53,8 @@ Partial Class Departamentos
         Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
         Me.FuncionariosBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.DDCDateTimePicker = New System.Windows.Forms.DateTimePicker()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         IDLabel = New System.Windows.Forms.Label()
         NDDLabel = New System.Windows.Forms.Label()
         DEDDLabel = New System.Windows.Forms.Label()
@@ -205,11 +207,11 @@ Partial Class Departamentos
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(971, 51)
+        Me.Label2.Location = New System.Drawing.Point(959, 51)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(56, 20)
+        Me.Label2.Size = New System.Drawing.Size(121, 20)
         Me.Label2.TabIndex = 12
-        Me.Label2.Text = "Desde"
+        Me.Label2.Text = "No cargo desde"
         '
         'Button5
         '
@@ -307,16 +309,35 @@ Partial Class Departamentos
         '
         Me.DDCDateTimePicker.Enabled = False
         Me.DDCDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DDCDateTimePicker.Location = New System.Drawing.Point(975, 74)
+        Me.DDCDateTimePicker.Location = New System.Drawing.Point(963, 74)
         Me.DDCDateTimePicker.Name = "DDCDateTimePicker"
         Me.DDCDateTimePicker.Size = New System.Drawing.Size(153, 26)
         Me.DDCDateTimePicker.TabIndex = 23
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(1127, 51)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(111, 20)
+        Me.Label3.TabIndex = 24
+        Me.Label3.Text = "No cargo já há"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(1131, 74)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(215, 26)
+        Me.TextBox1.TabIndex = 25
         '
         'Departamentos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1555, 492)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.DDCDateTimePicker)
         Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.Button9)
@@ -379,4 +400,6 @@ Partial Class Departamentos
     Friend WithEvents Diretores_de_DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter
     Friend WithEvents FuncionariosBindingSource1 As BindingSource
     Friend WithEvents DDCDateTimePicker As DateTimePicker
+    Friend WithEvents Label3 As Label
+    Friend WithEvents TextBox1 As TextBox
 End Class

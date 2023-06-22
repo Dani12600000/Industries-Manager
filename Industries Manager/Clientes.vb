@@ -115,7 +115,7 @@
                 VendasTableAdapter.Update(Industries_DanDataSet.Vendas)
                 MsgBox("A venda foi removida com sucesso!", vbInformation, "Removido com sucesso")
             Catch
-                MsgBox("Ocurreu um erro ao remover essa venda" & vbCrLf & "Tente novamente mais tarde, se o erro presistir entre em contacto com o administrador", vbCritical, "Erro")
+                MsgBox("Ocorreu um erro ao remover essa venda" & vbCrLf & "Tente novamente mais tarde, se o erro presistir entre em contacto com o administrador", vbCritical, "Erro")
             End Try
         End If
     End Sub
