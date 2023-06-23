@@ -109,6 +109,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EnvioMails.vb" />
+    <Compile Include="FormSenha.Designer.vb">
+      <DependentUpon>FormSenha.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormSenha.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Fornecedores.Designer.vb">
       <DependentUpon>Fornecedores.vb</DependentUpon>
     </Compile>
@@ -197,6 +203,9 @@
     <EmbeddedResource Include="Departamentos.resx">
       <DependentUpon>Departamentos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormSenha.resx">
+      <DependentUpon>FormSenha.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fornecedores.resx">
       <DependentUpon>Fornecedores.vb</DependentUpon>
     </EmbeddedResource>
@@ -254,9 +263,7 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>
@@ -268,6 +275,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hide password eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\show password eye.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

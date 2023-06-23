@@ -40,6 +40,7 @@ Partial Class Login
         Me.DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.DepartamentosTableAdapter()
         Me.Diretores_de_DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
+        Me.Button3 = New System.Windows.Forms.Button()
         EmailLabel = New System.Windows.Forms.Label()
         PassLabel = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -142,7 +143,7 @@ Partial Class Login
         Me.TextBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
-        Me.TextBox2.Size = New System.Drawing.Size(245, 28)
+        Me.TextBox2.Size = New System.Drawing.Size(214, 28)
         Me.TextBox2.TabIndex = 7
         '
         'Login_FuncionarioBindingSource
@@ -184,13 +185,27 @@ Partial Class Login
         '
         Me.Diretores_de_DepartamentosTableAdapter.ClearBeforeFill = True
         '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.Button3.BackgroundImage = Global.Industries_Manager.My.Resources.Resources.show_password_eye
+        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button3.FlatAppearance.BorderSize = 0
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Location = New System.Drawing.Point(343, 139)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(32, 31)
+        Me.Button3.TabIndex = 9
+        Me.Button3.UseVisualStyleBackColor = False
+        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(461, 321)
-        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Button1)
@@ -225,4 +240,5 @@ Partial Class Login
     Friend WithEvents DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.DepartamentosTableAdapter
     Friend WithEvents Diretores_de_DepartamentosBindingSource As BindingSource
     Friend WithEvents Diretores_de_DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter
+    Friend WithEvents Button3 As Button
 End Class

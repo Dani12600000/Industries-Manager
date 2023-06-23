@@ -154,12 +154,22 @@
             Dim senha As String = ""
 
             While FuncionariosBindingSource.Current("Pass") = "123456Ab"
+                Dim bol As Boolean
 
-                senha = InputBox("Escolha uma nova palavra-passe:", "Nova senha", "", -1, -1)
+                Dim formSenha As New FormSenha()
+                If bol = True Then
+                    formSenha.ReceberDados(bol)
+                End If
+                Dim resultado As DialogResult = FormSenha.ShowDialog()
+
+                If resultado = DialogResult.OK Then
+                    senha = formSenha.TextBoxSenha.Text
+                End If
 
                 ' Verificar se a senha está vazia ou se é igual à senha atual
                 If String.IsNullOrWhiteSpace(senha) OrElse senha = FuncionariosBindingSource.Current("Pass") Then
                     MessageBox.Show("A nova palavra-passe não é válida. Tente novamente.", "Erro de palavra-passe", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    bol = True
                 Else
                     ' Senha válida, sair do loop
                     Exit While
@@ -194,5 +204,15 @@
         End If
 
         FazerLogin()
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        If TextBox2.PasswordChar = "" Then
+            TextBox2.PasswordChar = "●"
+            Button3.BackgroundImage = My.Resources.show_password_eye
+        Else
+            TextBox2.PasswordChar = ""
+            Button3.BackgroundImage = My.Resources.hide_password_eye
+        End If
     End Sub
 End Class
