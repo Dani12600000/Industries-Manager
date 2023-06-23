@@ -37,9 +37,15 @@ Partial Class PMenu
         Me.Login_FuncionarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Login_FuncionarioTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Login_FuncionarioTableAdapter()
         Me.TableAdapterManager = New Industries_Manager.Industries_DanDataSetTableAdapters.TableAdapterManager()
+        Me.AvisosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AvisosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.AvisosTableAdapter()
+        Me.Leitura_de_avisosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Leitura_de_avisosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Leitura_de_avisosTableAdapter()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AvisosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Leitura_de_avisosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -82,13 +88,12 @@ Partial Class PMenu
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogoutToolStripMenuItem, Me.AvisosToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.MenuStrip1.Size = New System.Drawing.Size(636, 38)
+        Me.MenuStrip1.Size = New System.Drawing.Size(636, 36)
         Me.MenuStrip1.TabIndex = 3
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -101,6 +106,7 @@ Partial Class PMenu
         '
         'AvisosToolStripMenuItem
         '
+        Me.AvisosToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.AvisosToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.AvisosToolStripMenuItem.Name = "AvisosToolStripMenuItem"
         Me.AvisosToolStripMenuItem.Size = New System.Drawing.Size(84, 32)
@@ -190,6 +196,24 @@ Partial Class PMenu
         Me.TableAdapterManager.Venda_de_produtoTableAdapter = Nothing
         Me.TableAdapterManager.VendasTableAdapter = Nothing
         '
+        'AvisosBindingSource
+        '
+        Me.AvisosBindingSource.DataMember = "Avisos"
+        Me.AvisosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'AvisosTableAdapter
+        '
+        Me.AvisosTableAdapter.ClearBeforeFill = True
+        '
+        'Leitura_de_avisosBindingSource
+        '
+        Me.Leitura_de_avisosBindingSource.DataMember = "Leitura de avisos"
+        Me.Leitura_de_avisosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'Leitura_de_avisosTableAdapter
+        '
+        Me.Leitura_de_avisosTableAdapter.ClearBeforeFill = True
+        '
         'PMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -211,6 +235,8 @@ Partial Class PMenu
         Me.MenuStrip1.PerformLayout()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AvisosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Leitura_de_avisosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -232,4 +258,8 @@ Partial Class PMenu
     Friend WithEvents TableAdapterManager As Industries_DanDataSetTableAdapters.TableAdapterManager
     Friend WithEvents Login_FuncionarioBindingNavigator As BindingNavigator
     Friend WithEvents Login_FuncionarioBindingNavigatorSaveItem As ToolStripButton
+    Friend WithEvents AvisosBindingSource As BindingSource
+    Friend WithEvents AvisosTableAdapter As Industries_DanDataSetTableAdapters.AvisosTableAdapter
+    Friend WithEvents Leitura_de_avisosBindingSource As BindingSource
+    Friend WithEvents Leitura_de_avisosTableAdapter As Industries_DanDataSetTableAdapters.Leitura_de_avisosTableAdapter
 End Class

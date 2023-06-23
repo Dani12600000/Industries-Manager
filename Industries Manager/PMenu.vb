@@ -1,5 +1,9 @@
 ﻿Public Class PMenu
     Private Sub PMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Leitura_de_avisos' table. You can move, or remove it, as needed.
+        Me.Leitura_de_avisosTableAdapter.Fill(Me.Industries_DanDataSet.Leitura_de_avisos)
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Avisos' table. You can move, or remove it, as needed.
+        Me.AvisosTableAdapter.Fill(Me.Industries_DanDataSet.Avisos)
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Login_Funcionario'. Você pode movê-la ou removê-la conforme necessário.
         Me.Login_FuncionarioTableAdapter.Fill(Me.Industries_DanDataSet.Login_Funcionario)
 
@@ -43,10 +47,25 @@
 
         End If
 
+
+
+        ' AvisosBindingSource.Filter = "ID_Funcionario = " & InfoUser.UserID
+
+        ' Fazer loop para buscar todos os Avisos não lidos e lidos pelo diretor do departamento
+
+        ' AvisosBindingSource.Filter = "ID_Departamento = " & InfoUser.UserDepID
+
+        ' Fazer loop para buscar todos os Avisos não lidos e lidos do Departamento
+
+
+
         Dim nenhumAvisoLabel As New ToolStripLabel("Nenhum aviso novo por agora") With {
             .ForeColor = Color.DimGray
         }
         nenhumAvisoLabel.Font = New Font(nenhumAvisoLabel.Font, FontStyle.Italic)
+
+
+
         AvisosToolStripMenuItem.DropDownItems.Insert(0, nenhumAvisoLabel)
 
 
