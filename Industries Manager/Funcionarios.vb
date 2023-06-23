@@ -23,6 +23,8 @@ Public Class Funcionarios
 
         FotoPictureBox.SizeMode = PictureBoxSizeMode.Zoom
 
+        Me.Height = Me.ClientSize.Height * 1.14
+
         SortLogins()
 
         If UserAdm Then

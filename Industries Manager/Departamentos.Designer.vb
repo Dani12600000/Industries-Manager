@@ -58,14 +58,15 @@ Partial Class Departamentos
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.FuncionariosBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.FuncionariosDataGridView = New System.Windows.Forms.DataGridView()
-        Me.ProfissõesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ProfissõesTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProfissõesTableAdapter()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.ProfissõesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProfissõesTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProfissõesTableAdapter()
+        Me.DDDTextBox = New System.Windows.Forms.TextBox()
         IDLabel = New System.Windows.Forms.Label()
         NDDLabel = New System.Windows.Forms.Label()
         DEDDLabel = New System.Windows.Forms.Label()
@@ -288,10 +289,10 @@ Partial Class Departamentos
         '
         'NomeDiretorTextBox
         '
-        Me.NomeDiretorTextBox.Location = New System.Drawing.Point(493, 74)
+        Me.NomeDiretorTextBox.Location = New System.Drawing.Point(614, 74)
         Me.NomeDiretorTextBox.Name = "NomeDiretorTextBox"
         Me.NomeDiretorTextBox.ReadOnly = True
-        Me.NomeDiretorTextBox.Size = New System.Drawing.Size(442, 26)
+        Me.NomeDiretorTextBox.Size = New System.Drawing.Size(321, 26)
         Me.NomeDiretorTextBox.TabIndex = 22
         '
         'Diretores_de_DepartamentosBindingSource
@@ -369,15 +370,6 @@ Partial Class Departamentos
         Me.FuncionariosDataGridView.Size = New System.Drawing.Size(1014, 282)
         Me.FuncionariosDataGridView.TabIndex = 27
         '
-        'ProfissõesBindingSource
-        '
-        Me.ProfissõesBindingSource.DataMember = "Profissões"
-        Me.ProfissõesBindingSource.DataSource = Me.Industries_DanDataSet
-        '
-        'ProfissõesTableAdapter
-        '
-        Me.ProfissõesTableAdapter.ClearBeforeFill = True
-        '
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
@@ -418,6 +410,11 @@ Partial Class Departamentos
         Me.Column1.ValueMember = "ID"
         Me.Column1.Width = 95
         '
+        'ProfissõesBindingSource
+        '
+        Me.ProfissõesBindingSource.DataMember = "Profissões"
+        Me.ProfissõesBindingSource.DataSource = Me.Industries_DanDataSet
+        '
         'DataGridViewTextBoxColumn8
         '
         Me.DataGridViewTextBoxColumn8.DataPropertyName = "SI"
@@ -434,12 +431,27 @@ Partial Class Departamentos
         Me.DataGridViewTextBoxColumn9.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
         Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        Me.DataGridViewTextBoxColumn9.Width = 150
+        '
+        'ProfissõesTableAdapter
+        '
+        Me.ProfissõesTableAdapter.ClearBeforeFill = True
+        '
+        'DDDTextBox
+        '
+        Me.DDDTextBox.Location = New System.Drawing.Point(493, 74)
+        Me.DDDTextBox.Name = "DDDTextBox"
+        Me.DDDTextBox.ReadOnly = True
+        Me.DDDTextBox.Size = New System.Drawing.Size(115, 26)
+        Me.DDDTextBox.TabIndex = 28
+        Me.DDDTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Departamentos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1555, 500)
+        Me.Controls.Add(Me.DDDTextBox)
         Me.Controls.Add(Me.FuncionariosDataGridView)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Label4)
@@ -521,4 +533,5 @@ Partial Class Departamentos
     Friend WithEvents Column1 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
+    Friend WithEvents DDDTextBox As TextBox
 End Class

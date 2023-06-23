@@ -34,16 +34,6 @@ Partial Class Profissões
         Me.ProfissaoTextBox = New System.Windows.Forms.TextBox()
         Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FuncionariosDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
@@ -56,12 +46,23 @@ Partial Class Profissões
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button11 = New System.Windows.Forms.Button()
+        Me.DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.DepartamentosTableAdapter()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Departamento = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         IDLabel = New System.Windows.Forms.Label()
         ProfissaoLabel = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProfissõesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FuncionariosDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'IDLabel
@@ -143,117 +144,19 @@ Partial Class Profissões
         '
         'FuncionariosDataGridView
         '
+        Me.FuncionariosDataGridView.AllowUserToAddRows = False
+        Me.FuncionariosDataGridView.AllowUserToDeleteRows = False
         Me.FuncionariosDataGridView.AutoGenerateColumns = False
         Me.FuncionariosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.FuncionariosDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewCheckBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewCheckBoxColumn2})
+        Me.FuncionariosDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.Departamento, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10})
         Me.FuncionariosDataGridView.DataSource = Me.FuncionariosBindingSource
         Me.FuncionariosDataGridView.Location = New System.Drawing.Point(369, 65)
         Me.FuncionariosDataGridView.Name = "FuncionariosDataGridView"
         Me.FuncionariosDataGridView.ReadOnly = True
         Me.FuncionariosDataGridView.RowHeadersWidth = 62
         Me.FuncionariosDataGridView.RowTemplate.Height = 28
-        Me.FuncionariosDataGridView.Size = New System.Drawing.Size(1222, 326)
+        Me.FuncionariosDataGridView.Size = New System.Drawing.Size(1220, 326)
         Me.FuncionariosDataGridView.TabIndex = 4
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn1.Width = 50
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "Aprovacao"
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "Aprovacao"
-        Me.DataGridViewCheckBoxColumn1.MinimumWidth = 8
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.ReadOnly = True
-        Me.DataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn1.Width = 65
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Nome"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Nome"
-        Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn2.Width = 85
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Sobrenome"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Sobrenome"
-        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn3.Width = 85
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Email"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Email"
-        Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        Me.DataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn4.Width = 120
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "ID_Departamento"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "ID_Departamento"
-        Me.DataGridViewTextBoxColumn7.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        Me.DataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn7.Width = 95
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "SI"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Salário inicial"
-        Me.DataGridViewTextBoxColumn8.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = True
-        Me.DataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn8.Width = 65
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "DDEDE"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "Data entrada"
-        Me.DataGridViewTextBoxColumn9.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.ReadOnly = True
-        Me.DataGridViewTextBoxColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn9.Width = 75
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "DDSDE"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "Data saída"
-        Me.DataGridViewTextBoxColumn10.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.ReadOnly = True
-        Me.DataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn10.Width = 75
-        '
-        'DataGridViewCheckBoxColumn2
-        '
-        Me.DataGridViewCheckBoxColumn2.DataPropertyName = "Adm"
-        Me.DataGridViewCheckBoxColumn2.HeaderText = "Admin"
-        Me.DataGridViewCheckBoxColumn2.MinimumWidth = 8
-        Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
-        Me.DataGridViewCheckBoxColumn2.ReadOnly = True
-        Me.DataGridViewCheckBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn2.Width = 50
         '
         'Button9
         '
@@ -261,7 +164,7 @@ Partial Class Profissões
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(166, 47)
         Me.Button9.TabIndex = 31
-        Me.Button9.Text = "Novo"
+        Me.Button9.Text = "Nova profissão"
         Me.Button9.UseVisualStyleBackColor = True
         '
         'Button8
@@ -271,7 +174,7 @@ Partial Class Profissões
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(166, 47)
         Me.Button8.TabIndex = 30
-        Me.Button8.Text = "Remover"
+        Me.Button8.Text = "Remover profissão"
         Me.Button8.UseVisualStyleBackColor = False
         '
         'Button4
@@ -321,38 +224,39 @@ Partial Class Profissões
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(481, 397)
+        Me.Button5.Enabled = False
+        Me.Button5.Location = New System.Drawing.Point(487, 397)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(225, 47)
         Me.Button5.TabIndex = 33
-        Me.Button5.Text = "Todos com este emprego"
+        Me.Button5.Text = "Todos com esta profissão"
         Me.Button5.UseVisualStyleBackColor = True
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(712, 397)
+        Me.Button6.Location = New System.Drawing.Point(718, 397)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(225, 47)
         Me.Button6.TabIndex = 34
-        Me.Button6.Text = "Apenas contratados"
+        Me.Button6.Text = "Apenas funcionarios"
         Me.Button6.UseVisualStyleBackColor = True
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(943, 397)
+        Me.Button7.Location = New System.Drawing.Point(949, 397)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(225, 47)
         Me.Button7.TabIndex = 35
-        Me.Button7.Text = "Apenas não contratados"
+        Me.Button7.Text = "Apenas novos candidatos"
         Me.Button7.UseVisualStyleBackColor = True
         '
         'Button10
         '
-        Me.Button10.Location = New System.Drawing.Point(1174, 397)
+        Me.Button10.Location = New System.Drawing.Point(1180, 397)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(225, 47)
         Me.Button10.TabIndex = 36
-        Me.Button10.Text = "Apenas despedidos"
+        Me.Button10.Text = "Apenas ex-funcionarios"
         Me.Button10.UseVisualStyleBackColor = True
         '
         'Button11
@@ -361,14 +265,105 @@ Partial Class Profissões
         Me.Button11.Name = "Button11"
         Me.Button11.Size = New System.Drawing.Size(338, 39)
         Me.Button11.TabIndex = 37
-        Me.Button11.Text = "Editar"
+        Me.Button11.Text = "Editar profissão"
         Me.Button11.UseVisualStyleBackColor = True
+        '
+        'DepartamentosBindingSource
+        '
+        Me.DepartamentosBindingSource.DataMember = "Departamentos"
+        Me.DepartamentosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'DepartamentosTableAdapter
+        '
+        Me.DepartamentosTableAdapter.ClearBeforeFill = True
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn1.Width = 50
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Nome"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Nome"
+        Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn2.Width = 85
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Sobrenome"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Sobrenome"
+        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn3.Width = 85
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Email"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Email"
+        Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.DataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn4.Width = 120
+        '
+        'Departamento
+        '
+        Me.Departamento.DataPropertyName = "ID_Departamento"
+        Me.Departamento.DataSource = Me.DepartamentosBindingSource
+        Me.Departamento.DisplayMember = "NDD"
+        Me.Departamento.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.[Nothing]
+        Me.Departamento.HeaderText = "Departamento"
+        Me.Departamento.MinimumWidth = 8
+        Me.Departamento.Name = "Departamento"
+        Me.Departamento.ReadOnly = True
+        Me.Departamento.ValueMember = "ID"
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "SI"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Salário atual/pretendido"
+        Me.DataGridViewTextBoxColumn8.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
+        Me.DataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn8.Width = 145
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "DDEDE"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "Data entrada"
+        Me.DataGridViewTextBoxColumn9.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        Me.DataGridViewTextBoxColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn9.Width = 75
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "DDSDE"
+        Me.DataGridViewTextBoxColumn10.HeaderText = "Data saída"
+        Me.DataGridViewTextBoxColumn10.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.ReadOnly = True
+        Me.DataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn10.Width = 75
         '
         'Profissões
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1642, 456)
+        Me.ClientSize = New System.Drawing.Size(1632, 456)
         Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.Button7)
@@ -392,6 +387,7 @@ Partial Class Profissões
         CType(Me.ProfissõesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FuncionariosDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -412,20 +408,20 @@ Partial Class Profissões
     Friend WithEvents Button3 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn2 As DataGridViewCheckBoxColumn
     Friend WithEvents Label1 As Label
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents Button7 As Button
     Friend WithEvents Button10 As Button
     Friend WithEvents Button11 As Button
+    Friend WithEvents DepartamentosBindingSource As BindingSource
+    Friend WithEvents DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.DepartamentosTableAdapter
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents Departamento As DataGridViewComboBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
 End Class

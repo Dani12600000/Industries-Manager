@@ -138,7 +138,7 @@
             If FuncionariosBindingSource1.Position <> -1 Then
                 Debug.WriteLine("ID: " & FuncionariosBindingSource1.Current("ID"))
 
-
+                DDDTextBox.Text = Diretores_de_DepartamentosBindingSource.Current("DDD")
                 NomeDiretorTextBox.Text = FuncionariosBindingSource1.Current("Nome") & " " & FuncionariosBindingSource1.Current("Sobrenome")
                 DDCDateTimePicker.Value = Date.Parse(Diretores_de_DepartamentosBindingSource.Current("DDC"))
 
@@ -209,6 +209,7 @@
         Else
             ' Nenhum registro encontrado que atenda ao critério
             Debug.WriteLine("Nenhum registro encontrado que atenda ao critério.")
+            DDDTextBox.Text = ""
             NomeDiretorTextBox.Text = ""
             DDCDateTimePicker.Value = Today
             TextBox1.Text = ""

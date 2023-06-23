@@ -1,10 +1,15 @@
 ﻿Public Class Profissões
 
     Private Sub Profissões_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Departamentos' table. You can move, or remove it, as needed.
+        Me.DepartamentosTableAdapter.Fill(Me.Industries_DanDataSet.Departamentos)
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Funcionarios'. Você pode movê-la ou removê-la conforme necessário.
         Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Profissões'. Você pode movê-la ou removê-la conforme necessário.
         Me.ProfissõesTableAdapter.Fill(Me.Industries_DanDataSet.Profissões)
+
+        Me.Width = Me.ClientSize.Width * 1.29
+        FuncionariosDataGridView.Columns(5).DefaultCellStyle.Format = "#,##0.00€"
 
         ButtonNandG = Button9
         ButtonRorEandC = Button8
@@ -12,6 +17,7 @@
         ButtonP = Button2
         ButtonN = Button3
         ButtonL = Button4
+        ButtonE = Button11
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -46,5 +52,35 @@
         Else
             acabarAlteracoes()
         End If
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        FuncionariosBindingSource.RemoveFilter()
+        ResetarBotões_DeixarApenasEste(Button5)
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        FuncionariosBindingSource.Filter = "DDEDE <= #" & Date.Today.ToString("MM/dd/yyyy") & "# AND (DDSDE IS NULL OR DDSDE >= #" & Date.Today.ToString("MM/dd/yyyy") & "#)"
+        ResetarBotões_DeixarApenasEste(Button6)
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+
+    End Sub
+
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+
+    End Sub
+
+    Private Sub ResetarBotões_DeixarApenasEste(botao As Button)
+        Button5.Enabled = True
+        Button6.Enabled = True
+        Button7.Enabled = True
+        Button10.Enabled = True
+        botao.Enabled = False
+    End Sub
+
+    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
+
     End Sub
 End Class

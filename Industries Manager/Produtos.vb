@@ -18,6 +18,8 @@
         ButtonN = Button3
         ButtonL = Button4
 
+        Me.Width = Me.ClientSize.Width * 1.435
+
         FornecimentosDataGridView.Columns(3).DefaultCellStyle.Format = "#,##0.00€"
         FornecimentosDataGridView.Columns(5).DefaultCellStyle.Format = "#,##0.00€"
         Venda_de_produtoDataGridView.Columns(3).DefaultCellStyle.Format = "#,##0.00€"
