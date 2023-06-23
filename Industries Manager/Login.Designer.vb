@@ -36,11 +36,17 @@ Partial Class Login
         Me.Login_FuncionarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Login_FuncionarioTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Login_FuncionarioTableAdapter()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.DepartamentosTableAdapter()
+        Me.Diretores_de_DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
         EmailLabel = New System.Windows.Forms.Label()
         PassLabel = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'EmailLabel
@@ -160,11 +166,29 @@ Partial Class Login
         Me.Button2.UseVisualStyleBackColor = True
         Me.Button2.Visible = False
         '
+        'DepartamentosBindingSource
+        '
+        Me.DepartamentosBindingSource.DataMember = "Departamentos"
+        Me.DepartamentosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'DepartamentosTableAdapter
+        '
+        Me.DepartamentosTableAdapter.ClearBeforeFill = True
+        '
+        'Diretores_de_DepartamentosBindingSource
+        '
+        Me.Diretores_de_DepartamentosBindingSource.DataMember = "Diretores de Departamentos"
+        Me.Diretores_de_DepartamentosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'Diretores_de_DepartamentosTableAdapter
+        '
+        Me.Diretores_de_DepartamentosTableAdapter.ClearBeforeFill = True
+        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(454, 315)
+        Me.ClientSize = New System.Drawing.Size(461, 321)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
@@ -179,6 +203,8 @@ Partial Class Login
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -195,4 +221,8 @@ Partial Class Login
     Friend WithEvents Login_FuncionarioBindingSource As BindingSource
     Friend WithEvents Login_FuncionarioTableAdapter As Industries_DanDataSetTableAdapters.Login_FuncionarioTableAdapter
     Friend WithEvents Button2 As Button
+    Friend WithEvents DepartamentosBindingSource As BindingSource
+    Friend WithEvents DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.DepartamentosTableAdapter
+    Friend WithEvents Diretores_de_DepartamentosBindingSource As BindingSource
+    Friend WithEvents Diretores_de_DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter
 End Class

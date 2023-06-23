@@ -21,8 +21,45 @@
         Debug.WriteLine("Name : " & InfoUser.UserName)
         Debug.WriteLine("Email : " & InfoUser.UserEmail)
         Debug.WriteLine("Admin : " & InfoUser.UserAdm)
+        Debug.WriteLine("Departamento : " & InfoUser.UserDepName)
+        Debug.Write("Diretor (Sim/Não) : ")
+        Debug.WriteLineIf(Not InfoUser.UserDepDirectorYN, "Não")
+        Debug.WriteLineIf(InfoUser.UserDepDirectorYN, "Sim")
+        Debug.WriteLineIf(InfoUser.UserDepDirectorYN, "ID Diretor : " & InfoUser.UserDepDirectorID)
+        Debug.WriteLine("Estas são todas as infos do user carregadas")
+
+
+        If InfoUser.UserDepDirectorYN Then
+            AvisosToolStripMenuItem.DropDownItems.Add(New ToolStripSeparator)
+
+            Dim botaoVerAvisosMandados As New ToolStripButton("Ver Avisos Enviados")
+            Dim botaoNovoAviso As New ToolStripButton("Enviar Novo Aviso")
+
+            AddHandler botaoVerAvisosMandados.Click, AddressOf VerAvisosMandados_Click
+            AddHandler botaoNovoAviso.Click, AddressOf NovoAviso_Click
+
+            AvisosToolStripMenuItem.DropDownItems.Add(botaoVerAvisosMandados)
+            AvisosToolStripMenuItem.DropDownItems.Add(botaoNovoAviso)
+
+        End If
+
+        Dim nenhumAvisoLabel As New ToolStripLabel("Nenhum aviso novo por agora") With {
+            .ForeColor = Color.DimGray
+        }
+        nenhumAvisoLabel.Font = New Font(nenhumAvisoLabel.Font, FontStyle.Italic)
+        AvisosToolStripMenuItem.DropDownItems.Insert(0, nenhumAvisoLabel)
+
 
     End Sub
+
+    Private Sub VerAvisosMandados_Click(sender As Object, e As EventArgs)
+        Avisos.Show()
+    End Sub
+
+    Private Sub NovoAviso_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
 
     Private Sub PMenu_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Login_FuncionarioBindingSource.AddNew()

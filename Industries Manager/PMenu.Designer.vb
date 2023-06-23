@@ -82,11 +82,11 @@ Partial Class PMenu
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogoutToolStripMenuItem, Me.AvisosToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(9, 3, 0, 3)
         Me.MenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.MenuStrip1.Size = New System.Drawing.Size(636, 38)
         Me.MenuStrip1.TabIndex = 3
@@ -96,14 +96,14 @@ Partial Class PMenu
         '
         Me.LogoutToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(87, 32)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(91, 32)
         Me.LogoutToolStripMenuItem.Text = "Logout"
         '
         'AvisosToolStripMenuItem
         '
         Me.AvisosToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.AvisosToolStripMenuItem.Name = "AvisosToolStripMenuItem"
-        Me.AvisosToolStripMenuItem.Size = New System.Drawing.Size(80, 32)
+        Me.AvisosToolStripMenuItem.Size = New System.Drawing.Size(84, 32)
         Me.AvisosToolStripMenuItem.Text = "Avisos"
         '
         'Button3

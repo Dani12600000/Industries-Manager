@@ -89,6 +89,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Avisos.Designer.vb">
+      <DependentUpon>Avisos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Avisos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Clientes.Designer.vb">
       <DependentUpon>Clientes.vb</DependentUpon>
     </Compile>
@@ -182,6 +188,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Avisos.resx">
+      <DependentUpon>Avisos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clientes.resx">
       <DependentUpon>Clientes.vb</DependentUpon>
     </EmbeddedResource>
