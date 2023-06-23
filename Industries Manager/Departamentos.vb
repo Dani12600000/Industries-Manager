@@ -22,6 +22,7 @@
         ButtonN = Button3
         ButtonL = Button4
 
+        IgnoreTextBoxs.Add(DDDTextBox)
         IgnoreTextBoxs.Add(NomeDiretorTextBox)
         IgnoreTextBoxs.Add(IDTextBox)
         IgnoreTextBoxs.Add(TextBox1)
@@ -69,7 +70,7 @@
 
     Private Sub FillByToolStripButton_Click(sender As Object, e As EventArgs)
         Try
-            Me.FuncionariosTableAdapter.FillBy(Me.Industries_DanDataSet.Funcionarios)
+            Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try

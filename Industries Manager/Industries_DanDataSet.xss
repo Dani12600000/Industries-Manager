@@ -8,7 +8,7 @@
   <Shapes>
     <Shape ID="DesignTable:Avisos" ZOrder="26" X="728" Y="70" Height="172" Width="182" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
     <Shape ID="DesignTable:Clientes" ZOrder="25" X="1236" Y="350" Height="191" Width="190" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
-    <Shape ID="DesignTable:Departamentos" ZOrder="24" X="358" Y="312" Height="134" Width="234" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
+    <Shape ID="DesignTable:Departamentos" ZOrder="24" X="358" Y="312" Height="209" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="142" />
     <Shape ID="DesignTable:Diretores de Departamentos" ZOrder="23" X="358" Y="70" Height="290" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="223" />
     <Shape ID="DesignTable:Fornecedores" ZOrder="22" X="2123" Y="70" Height="191" Width="222" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
     <Shape ID="DesignTable:Fornecimentos" ZOrder="21" X="1823" Y="70" Height="210" Width="230" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
@@ -36,16 +36,20 @@
     <Connector ID="DesignRelation:DepartamentosDiretores de Departamentos" ZOrder="13" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>592</X>
-          <Y>377</Y>
+          <X>658</X>
+          <Y>320</Y>
         </Point>
         <Point>
-          <X>609</X>
-          <Y>377</Y>
+          <X>688</X>
+          <Y>320</Y>
         </Point>
         <Point>
-          <X>609</X>
-          <Y>360</Y>
+          <X>688</X>
+          <Y>352</Y>
+        </Point>
+        <Point>
+          <X>658</X>
+          <Y>352</Y>
         </Point>
       </RoutePoints>
     </Connector>
@@ -101,15 +105,15 @@
       <RoutePoints>
         <Point>
           <X>395</X>
-          <Y>446</Y>
+          <Y>312</Y>
         </Point>
         <Point>
           <X>395</X>
-          <Y>463</Y>
+          <Y>295</Y>
         </Point>
         <Point>
           <X>370</X>
-          <Y>463</Y>
+          <Y>295</Y>
         </Point>
       </RoutePoints>
     </Connector>
