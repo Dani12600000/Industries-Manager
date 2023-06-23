@@ -30,6 +30,31 @@
 
     End Sub
 
+    'TODO: Acabar este sub
+    Sub AtualizarBotoesDiretor()
+
+        If InfoUser.UserDepID = 1 Or InfoUser.UserDepDirectorYN Then
+
+            If Diretores_de_DepartamentosBindingSource.Current("DDC") <= Today Then
+                Button7.Text = "Eleger diretor"
+            ElseIf Diretores_de_DepartamentosBindingSource.Current("DDF") <= Today Then
+                Button7.Text = "Demitir diretor"
+            End If
+
+            Button7.Enabled = True
+
+                If InfoUser.UserDepDirectorID Then
+
+
+
+
+                End If
+            End If
+
+
+
+    End Sub
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         DepartamentosBindingSource.MoveFirst()
         AtualizarInfosDiretor()
@@ -218,6 +243,18 @@
     End Sub
 
     Sub ElegerNovoDiretorDeNovoImediatamente()
+
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        If Button7.Text = "Eleger diretor" Then
+
+        ElseIf Button7.Text = "Despedir diretor" Then
+            Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
+        End If
+    End Sub
+
+    Private Sub Button10_Click(sender As Object, e As EventArgs)
 
     End Sub
 End Class
