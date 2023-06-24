@@ -22,10 +22,36 @@
         ButtonN = Button3
         ButtonL = Button4
 
+        IgnoreTextBoxs.Add(DDDTextBox)
         IgnoreTextBoxs.Add(NomeDiretorTextBox)
         IgnoreTextBoxs.Add(IDTextBox)
         IgnoreTextBoxs.Add(TextBox1)
         IgnoreDateTimePickers.Add(DDCDateTimePicker)
+
+    End Sub
+
+    'TODO: Acabar este sub
+    Sub AtualizarBotoesDiretor()
+
+        If InfoUser.UserDepID = 1 Or InfoUser.UserDepDirectorYN Then
+
+            If Diretores_de_DepartamentosBindingSource.Current("DDC") <= Today Then
+                Button7.Text = "Eleger diretor"
+            ElseIf Diretores_de_DepartamentosBindingSource.Current("DDF") <= Today Then
+                Button7.Text = "Demitir diretor"
+            End If
+
+            Button7.Enabled = True
+
+                If InfoUser.UserDepDirectorID Then
+
+
+
+
+                End If
+            End If
+
+
 
     End Sub
 
@@ -69,7 +95,7 @@
 
     Private Sub FillByToolStripButton_Click(sender As Object, e As EventArgs)
         Try
-            Me.FuncionariosTableAdapter.FillBy(Me.Industries_DanDataSet.Funcionarios)
+            Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try
@@ -217,6 +243,18 @@
     End Sub
 
     Sub ElegerNovoDiretorDeNovoImediatamente()
+
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        If Button7.Text = "Eleger diretor" Then
+
+        ElseIf Button7.Text = "Despedir diretor" Then
+            Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
+        End If
+    End Sub
+
+    Private Sub Button10_Click(sender As Object, e As EventArgs)
 
     End Sub
 End Class

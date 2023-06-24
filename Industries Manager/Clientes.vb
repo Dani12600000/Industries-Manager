@@ -13,7 +13,7 @@
         Venda_de_produtoDataGridView.Columns(2).DefaultCellStyle.Format = "#,##0.00€"
         Venda_de_produtoDataGridView.Columns(3).DefaultCellStyle.Format = "#,##0.00€"
 
-        Me.Width = Me.ClientSize.Width * 1.22
+        Me.Width = Me.ClientSize.Width * 1.24
 
         Formulario = Me
         ButtonNandG = Button10

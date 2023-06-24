@@ -27,6 +27,7 @@ Partial Class Departamentos
         Dim NDDLabel As System.Windows.Forms.Label
         Dim DEDDLabel As System.Windows.Forms.Label
         Dim Label1 As System.Windows.Forms.Label
+        Dim Label5 As System.Windows.Forms.Label
         Me.IDTextBox = New System.Windows.Forms.TextBox()
         Me.DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
@@ -46,7 +47,6 @@ Partial Class Departamentos
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
-        Me.Button10 = New System.Windows.Forms.Button()
         Me.NomeDiretorTextBox = New System.Windows.Forms.TextBox()
         Me.Diretores_de_DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
@@ -55,7 +55,6 @@ Partial Class Departamentos
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.FuncionariosBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.FuncionariosDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -67,10 +66,12 @@ Partial Class Departamentos
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProfissõesTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProfissõesTableAdapter()
         Me.DDDTextBox = New System.Windows.Forms.TextBox()
+        Me.ADDTextBox = New System.Windows.Forms.TextBox()
         IDLabel = New System.Windows.Forms.Label()
         NDDLabel = New System.Windows.Forms.Label()
         DEDDLabel = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
+        Label5 = New System.Windows.Forms.Label()
         CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,7 +85,7 @@ Partial Class Departamentos
         'IDLabel
         '
         IDLabel.AutoSize = True
-        IDLabel.Location = New System.Drawing.Point(184, 54)
+        IDLabel.Location = New System.Drawing.Point(217, 49)
         IDLabel.Name = "IDLabel"
         IDLabel.Size = New System.Drawing.Size(30, 20)
         IDLabel.TabIndex = 1
@@ -93,7 +94,7 @@ Partial Class Departamentos
         'NDDLabel
         '
         NDDLabel.AutoSize = True
-        NDDLabel.Location = New System.Drawing.Point(27, 86)
+        NDDLabel.Location = New System.Drawing.Point(27, 117)
         NDDLabel.Name = "NDDLabel"
         NDDLabel.Size = New System.Drawing.Size(187, 20)
         NDDLabel.TabIndex = 2
@@ -102,7 +103,7 @@ Partial Class Departamentos
         'DEDDLabel
         '
         DEDDLabel.AutoSize = True
-        DEDDLabel.Location = New System.Drawing.Point(27, 171)
+        DEDDLabel.Location = New System.Drawing.Point(27, 178)
         DEDDLabel.Name = "DEDDLabel"
         DEDDLabel.Size = New System.Drawing.Size(288, 20)
         DEDDLabel.TabIndex = 4
@@ -111,17 +112,26 @@ Partial Class Departamentos
         'Label1
         '
         Label1.AutoSize = True
-        Label1.Location = New System.Drawing.Point(489, 51)
+        Label1.Location = New System.Drawing.Point(489, 46)
         Label1.Name = "Label1"
         Label1.Size = New System.Drawing.Size(119, 20)
         Label1.TabIndex = 11
         Label1.Text = "Diretor(a) atual:"
         '
+        'Label5
+        '
+        Label5.AutoSize = True
+        Label5.Location = New System.Drawing.Point(489, 137)
+        Label5.Name = "Label5"
+        Label5.Size = New System.Drawing.Size(236, 20)
+        Label5.TabIndex = 30
+        Label5.Text = "Funcionarios Do Departamento:"
+        '
         'IDTextBox
         '
         Me.IDTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DepartamentosBindingSource, "ID", True))
         Me.IDTextBox.Enabled = False
-        Me.IDTextBox.Location = New System.Drawing.Point(220, 51)
+        Me.IDTextBox.Location = New System.Drawing.Point(253, 46)
         Me.IDTextBox.Name = "IDTextBox"
         Me.IDTextBox.ReadOnly = True
         Me.IDTextBox.Size = New System.Drawing.Size(124, 26)
@@ -140,20 +150,21 @@ Partial Class Departamentos
         'NDDTextBox
         '
         Me.NDDTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DepartamentosBindingSource, "NDD", True))
-        Me.NDDTextBox.Location = New System.Drawing.Point(220, 83)
+        Me.NDDTextBox.Location = New System.Drawing.Point(31, 140)
         Me.NDDTextBox.Name = "NDDTextBox"
         Me.NDDTextBox.ReadOnly = True
-        Me.NDDTextBox.Size = New System.Drawing.Size(227, 26)
+        Me.NDDTextBox.Size = New System.Drawing.Size(416, 26)
         Me.NDDTextBox.TabIndex = 3
         '
         'DEDDTextBox
         '
         Me.DEDDTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DepartamentosBindingSource, "DEDD", True))
-        Me.DEDDTextBox.Location = New System.Drawing.Point(31, 194)
+        Me.DEDDTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DEDDTextBox.Location = New System.Drawing.Point(31, 201)
         Me.DEDDTextBox.Multiline = True
         Me.DEDDTextBox.Name = "DEDDTextBox"
         Me.DEDDTextBox.ReadOnly = True
-        Me.DEDDTextBox.Size = New System.Drawing.Size(416, 92)
+        Me.DEDDTextBox.Size = New System.Drawing.Size(416, 146)
         Me.DEDDTextBox.TabIndex = 5
         '
         'Button1
@@ -221,7 +232,7 @@ Partial Class Departamentos
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(946, 51)
+        Me.Label2.Location = New System.Drawing.Point(946, 46)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(121, 20)
         Me.Label2.TabIndex = 12
@@ -240,7 +251,7 @@ Partial Class Departamentos
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(1350, 71)
+        Me.Button6.Location = New System.Drawing.Point(1350, 63)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(157, 32)
         Me.Button6.TabIndex = 16
@@ -250,11 +261,11 @@ Partial Class Departamentos
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(614, 49)
+        Me.Button7.Location = New System.Drawing.Point(614, 44)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(146, 30)
         Me.Button7.TabIndex = 17
-        Me.Button7.Text = "Eleger diretor"
+        Me.Button7.Text = "Eleger diretor / Despedir diretor"
         Me.Button7.UseVisualStyleBackColor = True
         Me.Button7.Visible = False
         '
@@ -277,19 +288,9 @@ Partial Class Departamentos
         Me.Button9.Text = "Novo"
         Me.Button9.UseVisualStyleBackColor = True
         '
-        'Button10
-        '
-        Me.Button10.Location = New System.Drawing.Point(766, 49)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(146, 30)
-        Me.Button10.TabIndex = 20
-        Me.Button10.Text = "Despedir diretor"
-        Me.Button10.UseVisualStyleBackColor = True
-        Me.Button10.Visible = False
-        '
         'NomeDiretorTextBox
         '
-        Me.NomeDiretorTextBox.Location = New System.Drawing.Point(614, 74)
+        Me.NomeDiretorTextBox.Location = New System.Drawing.Point(614, 69)
         Me.NomeDiretorTextBox.Name = "NomeDiretorTextBox"
         Me.NomeDiretorTextBox.ReadOnly = True
         Me.NomeDiretorTextBox.Size = New System.Drawing.Size(321, 26)
@@ -313,7 +314,7 @@ Partial Class Departamentos
         '
         Me.DDCDateTimePicker.Enabled = False
         Me.DDCDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DDCDateTimePicker.Location = New System.Drawing.Point(950, 74)
+        Me.DDCDateTimePicker.Location = New System.Drawing.Point(950, 69)
         Me.DDCDateTimePicker.Name = "DDCDateTimePicker"
         Me.DDCDateTimePicker.Size = New System.Drawing.Size(153, 26)
         Me.DDCDateTimePicker.TabIndex = 23
@@ -321,7 +322,7 @@ Partial Class Departamentos
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(1114, 51)
+        Me.Label3.Location = New System.Drawing.Point(1114, 46)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(111, 20)
         Me.Label3.TabIndex = 24
@@ -329,7 +330,7 @@ Partial Class Departamentos
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(1118, 74)
+        Me.TextBox1.Location = New System.Drawing.Point(1118, 69)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.Size = New System.Drawing.Size(215, 26)
@@ -338,19 +339,11 @@ Partial Class Departamentos
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(27, 125)
+        Me.Label4.Location = New System.Drawing.Point(27, 78)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(220, 20)
+        Me.Label4.Size = New System.Drawing.Size(226, 20)
         Me.Label4.TabIndex = 26
-        Me.Label4.Text = "Abreviatura do departamento:"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(253, 122)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.ReadOnly = True
-        Me.TextBox2.Size = New System.Drawing.Size(194, 26)
-        Me.TextBox2.TabIndex = 27
+        Me.Label4.Text = "Abreviatura Do Departamento:"
         '
         'FuncionariosBindingSource2
         '
@@ -359,7 +352,12 @@ Partial Class Departamentos
         '
         'FuncionariosDataGridView
         '
+        Me.FuncionariosDataGridView.AllowUserToAddRows = False
+        Me.FuncionariosDataGridView.AllowUserToDeleteRows = False
+        Me.FuncionariosDataGridView.AllowUserToResizeRows = False
         Me.FuncionariosDataGridView.AutoGenerateColumns = False
+        Me.FuncionariosDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLight
+        Me.FuncionariosDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.FuncionariosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.FuncionariosDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column1, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9})
         Me.FuncionariosDataGridView.DataSource = Me.FuncionariosBindingSource2
@@ -377,7 +375,7 @@ Partial Class Departamentos
         Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 50
+        Me.DataGridViewTextBoxColumn1.Width = 45
         '
         'DataGridViewTextBoxColumn2
         '
@@ -386,7 +384,7 @@ Partial Class Departamentos
         Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 85
+        Me.DataGridViewTextBoxColumn2.Width = 90
         '
         'DataGridViewTextBoxColumn3
         '
@@ -395,7 +393,7 @@ Partial Class Departamentos
         Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 175
+        Me.DataGridViewTextBoxColumn3.Width = 180
         '
         'Column1
         '
@@ -408,7 +406,7 @@ Partial Class Departamentos
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
         Me.Column1.ValueMember = "ID"
-        Me.Column1.Width = 95
+        Me.Column1.Width = 105
         '
         'ProfissõesBindingSource
         '
@@ -422,7 +420,7 @@ Partial Class Departamentos
         Me.DataGridViewTextBoxColumn8.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.ReadOnly = True
-        Me.DataGridViewTextBoxColumn8.Width = 75
+        Me.DataGridViewTextBoxColumn8.Width = 95
         '
         'DataGridViewTextBoxColumn9
         '
@@ -431,7 +429,7 @@ Partial Class Departamentos
         Me.DataGridViewTextBoxColumn9.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
         Me.DataGridViewTextBoxColumn9.ReadOnly = True
-        Me.DataGridViewTextBoxColumn9.Width = 150
+        Me.DataGridViewTextBoxColumn9.Width = 90
         '
         'ProfissõesTableAdapter
         '
@@ -439,26 +437,35 @@ Partial Class Departamentos
         '
         'DDDTextBox
         '
-        Me.DDDTextBox.Location = New System.Drawing.Point(493, 74)
+        Me.DDDTextBox.Location = New System.Drawing.Point(493, 69)
         Me.DDDTextBox.Name = "DDDTextBox"
         Me.DDDTextBox.ReadOnly = True
         Me.DDDTextBox.Size = New System.Drawing.Size(115, 26)
         Me.DDDTextBox.TabIndex = 28
         Me.DDDTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'ADDTextBox
+        '
+        Me.ADDTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DepartamentosBindingSource, "ADD", True))
+        Me.ADDTextBox.Location = New System.Drawing.Point(253, 78)
+        Me.ADDTextBox.Name = "ADDTextBox"
+        Me.ADDTextBox.ReadOnly = True
+        Me.ADDTextBox.Size = New System.Drawing.Size(194, 26)
+        Me.ADDTextBox.TabIndex = 29
+        '
         'Departamentos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1555, 500)
+        Me.Controls.Add(Label5)
+        Me.Controls.Add(Me.ADDTextBox)
         Me.Controls.Add(Me.DDDTextBox)
         Me.Controls.Add(Me.FuncionariosDataGridView)
-        Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.DDCDateTimePicker)
-        Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.Button8)
         Me.Controls.Add(Me.Button7)
@@ -513,7 +520,6 @@ Partial Class Departamentos
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents Button8 As Button
     Friend WithEvents Button9 As Button
-    Friend WithEvents Button10 As Button
     Friend WithEvents NomeDiretorTextBox As TextBox
     Friend WithEvents Diretores_de_DepartamentosBindingSource As BindingSource
     Friend WithEvents Diretores_de_DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter
@@ -522,16 +528,16 @@ Partial Class Departamentos
     Friend WithEvents Label3 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents TextBox2 As TextBox
     Friend WithEvents FuncionariosBindingSource2 As BindingSource
     Friend WithEvents FuncionariosDataGridView As DataGridView
     Friend WithEvents ProfissõesBindingSource As BindingSource
     Friend WithEvents ProfissõesTableAdapter As Industries_DanDataSetTableAdapters.ProfissõesTableAdapter
+    Friend WithEvents DDDTextBox As TextBox
+    Friend WithEvents ADDTextBox As TextBox
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents Column1 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
-    Friend WithEvents DDDTextBox As TextBox
 End Class
