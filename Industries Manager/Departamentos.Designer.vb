@@ -169,6 +169,7 @@ Partial Class Departamentos
         '
         'Button1
         '
+        Me.Button1.Enabled = False
         Me.Button1.Location = New System.Drawing.Point(72, 411)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(80, 69)
@@ -178,6 +179,7 @@ Partial Class Departamentos
         '
         'Button2
         '
+        Me.Button2.Enabled = False
         Me.Button2.Location = New System.Drawing.Point(158, 411)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(80, 69)
@@ -187,6 +189,7 @@ Partial Class Departamentos
         '
         'Button3
         '
+        Me.Button3.Enabled = False
         Me.Button3.Location = New System.Drawing.Point(244, 411)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(80, 69)
@@ -196,6 +199,7 @@ Partial Class Departamentos
         '
         'Button4
         '
+        Me.Button4.Enabled = False
         Me.Button4.Location = New System.Drawing.Point(330, 411)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(80, 69)
@@ -484,6 +488,8 @@ Partial Class Departamentos
         Me.Controls.Add(IDLabel)
         Me.Controls.Add(Me.IDTextBox)
         Me.Controls.Add(Me.NomeDiretorTextBox)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
         Me.Name = "Departamentos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Departamentos"

@@ -28,30 +28,52 @@
         IgnoreTextBoxs.Add(TextBox1)
         IgnoreDateTimePickers.Add(DDCDateTimePicker)
 
+        Debug.WriteLine("ID_Departamento : " & InfoUser.UserDepID)
+        DepartamentosBindingSource.Position = DepartamentosBindingSource.Find("ID", InfoUser.UserDepID)
+
+        If InfoUser.UserDepDirectorYN OrElse InfoUser.UserDepID = 2 Then
+            FuncionariosDataGridView.Columns(4).Visible = True
+        Else
+            FuncionariosDataGridView.Columns(4).Visible = False
+            FuncionariosDataGridView.Width = FuncionariosDataGridView.Width - 95
+            Me.Width = Me.ClientSize.Width - 95
+        End If
+
+        If InfoUser.UserDepID = 2 Then
+            ButtonF.Enabled = True
+            ButtonP.Enabled = True
+            ButtonN.Enabled = True
+            ButtonL.Enabled = True
+        Else
+            ButtonF.Enabled = False
+            ButtonP.Enabled = False
+            ButtonN.Enabled = False
+            ButtonL.Enabled = False
+        End If
+
+        AtualizarInfosDiretor()
     End Sub
 
-    'TODO: Acabar este sub
+    '@TODO: Acabar este sub
     Sub AtualizarBotoesDiretor()
 
-        If InfoUser.UserDepID = 1 Or InfoUser.UserDepDirectorYN Then
+        If InfoUser.UserDepID = 2 Or InfoUser.UserDepDirectorYN Then
 
             If Diretores_de_DepartamentosBindingSource.Current("DDC") <= Today Then
                 Button7.Text = "Eleger diretor"
             ElseIf Diretores_de_DepartamentosBindingSource.Current("DDF") <= Today Then
-                Button7.Text = "Demitir diretor"
+                Button7.Text = "Despedir diretor"
             End If
 
-            Button7.Enabled = True
+            Button7.Visible = True
 
-                If InfoUser.UserDepDirectorID Then
-
-
-
-
-                End If
+            If InfoUser.UserDepDirectorID = Diretores_de_DepartamentosBindingSource.Current("ID") Then
+                Button7.Text = "Demitir-me"
             End If
 
+        Else
 
+        End If
 
     End Sub
 
@@ -240,6 +262,8 @@
             DDCDateTimePicker.Value = Today
             TextBox1.Text = ""
         End If
+
+        AtualizarBotoesDiretor()
     End Sub
 
     Sub ElegerNovoDiretorDeNovoImediatamente()
@@ -251,6 +275,14 @@
 
         ElseIf Button7.Text = "Despedir diretor" Then
             Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
+        ElseIf Button7.Text = "Demitir-me" Then 'Antenção este e o outro de cima são diferentes
+            Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
+            If MsgBox("Enviar aviso e email de demissão?", vbYesNo, "Informar empresa") = MsgBoxResult.Yes Then
+                '@TODO: Depois meter o codigo
+            End If
+            If MsgBox("Deseja eleger um subsituto para o seu cargo?", vbYesNo, "Eleger novo diretor") Then
+                '@TODO: Depois meter o codigo
+            End If
         End If
     End Sub
 

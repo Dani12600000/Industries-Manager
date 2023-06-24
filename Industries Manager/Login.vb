@@ -109,7 +109,7 @@
     Private Sub FazerLogin()
         Login_FuncionarioBindingSource.AddNew()
 
-        DepartamentosBindingSource.Find("ID", FuncionariosBindingSource.Current("ID_Departamento"))
+        DepartamentosBindingSource.Filter = "ID = " & FuncionariosBindingSource.Current("ID_Departamento")
         Diretores_de_DepartamentosBindingSource.Filter = "ID_Funcionario = " & FuncionariosBindingSource.Current("ID")
         Diretores_de_DepartamentosBindingSource.MoveLast()
 
@@ -139,6 +139,7 @@
         Debug.WriteLine("Name : " & InfoUser.UserName)
         Debug.WriteLine("Email : " & InfoUser.UserEmail)
         Debug.WriteLine("Admin : " & InfoUser.UserAdm)
+        Debug.WriteLine("ID Departamento : " & InfoUser.UserDepID)
         Debug.WriteLine("Departamento : " & InfoUser.UserDepName)
         Debug.Write("Diretor (Sim/Não) : ")
         Debug.WriteLineIf(Not InfoUser.UserDepDirectorYN, "Não")

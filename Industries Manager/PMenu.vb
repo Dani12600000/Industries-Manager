@@ -25,6 +25,7 @@
         Debug.WriteLine("Name : " & InfoUser.UserName)
         Debug.WriteLine("Email : " & InfoUser.UserEmail)
         Debug.WriteLine("Admin : " & InfoUser.UserAdm)
+        Debug.WriteLine("ID Departamento : " & InfoUser.UserDepID)
         Debug.WriteLine("Departamento : " & InfoUser.UserDepName)
         Debug.Write("Diretor (Sim/Não) : ")
         Debug.WriteLineIf(Not InfoUser.UserDepDirectorYN, "Não")
