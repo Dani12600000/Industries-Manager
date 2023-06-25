@@ -115,6 +115,7 @@
     <Compile Include="FormSenha.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ControleFormsLoad.vb" />
     <Compile Include="Fornecedores.Designer.vb">
       <DependentUpon>Fornecedores.vb</DependentUpon>
     </Compile>

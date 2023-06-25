@@ -45,6 +45,8 @@ Partial Class Vendas
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProdutosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProdutosTableAdapter()
         Me.ProdAdGroupBox = New System.Windows.Forms.GroupBox()
+        Me.SubtotalTextBox = New System.Windows.Forms.TextBox()
+        Me.PCTextBox = New System.Windows.Forms.TextBox()
         Me.QuantidadeNumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.ProdutoComboBox = New System.Windows.Forms.ComboBox()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -57,8 +59,6 @@ Partial Class Vendas
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.PCTextBox = New System.Windows.Forms.TextBox()
-        Me.SubtotalTextBox = New System.Windows.Forms.TextBox()
         Mail_ClienteLabel = New System.Windows.Forms.Label()
         TotalLabel = New System.Windows.Forms.Label()
         ID_ProdutoLabel = New System.Windows.Forms.Label()
@@ -194,6 +194,8 @@ Partial Class Vendas
         Me.Venda_de_produtoDataGridView.AllowUserToResizeColumns = False
         Me.Venda_de_produtoDataGridView.AllowUserToResizeRows = False
         Me.Venda_de_produtoDataGridView.AutoGenerateColumns = False
+        Me.Venda_de_produtoDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLight
+        Me.Venda_de_produtoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.Venda_de_produtoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Venda_de_produtoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID_Produto, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
         Me.Venda_de_produtoDataGridView.DataSource = Me.Venda_de_produtoBindingSource
@@ -268,6 +270,22 @@ Partial Class Vendas
         Me.ProdAdGroupBox.TabIndex = 14
         Me.ProdAdGroupBox.TabStop = False
         Me.ProdAdGroupBox.Text = "Adicionar Produtos a compra"
+        '
+        'SubtotalTextBox
+        '
+        Me.SubtotalTextBox.Location = New System.Drawing.Point(109, 135)
+        Me.SubtotalTextBox.Name = "SubtotalTextBox"
+        Me.SubtotalTextBox.ReadOnly = True
+        Me.SubtotalTextBox.Size = New System.Drawing.Size(134, 26)
+        Me.SubtotalTextBox.TabIndex = 19
+        '
+        'PCTextBox
+        '
+        Me.PCTextBox.Location = New System.Drawing.Point(109, 103)
+        Me.PCTextBox.Name = "PCTextBox"
+        Me.PCTextBox.ReadOnly = True
+        Me.PCTextBox.Size = New System.Drawing.Size(134, 26)
+        Me.PCTextBox.TabIndex = 18
         '
         'QuantidadeNumericUpDown
         '
@@ -385,22 +403,6 @@ Partial Class Vendas
         Me.Label3.Size = New System.Drawing.Size(164, 20)
         Me.Label3.TabIndex = 22
         Me.Label3.Text = "Produtos nesta venda"
-        '
-        'PCTextBox
-        '
-        Me.PCTextBox.Location = New System.Drawing.Point(109, 103)
-        Me.PCTextBox.Name = "PCTextBox"
-        Me.PCTextBox.ReadOnly = True
-        Me.PCTextBox.Size = New System.Drawing.Size(134, 26)
-        Me.PCTextBox.TabIndex = 18
-        '
-        'SubtotalTextBox
-        '
-        Me.SubtotalTextBox.Location = New System.Drawing.Point(109, 135)
-        Me.SubtotalTextBox.Name = "SubtotalTextBox"
-        Me.SubtotalTextBox.ReadOnly = True
-        Me.SubtotalTextBox.Size = New System.Drawing.Size(134, 26)
-        Me.SubtotalTextBox.TabIndex = 19
         '
         'Vendas
         '

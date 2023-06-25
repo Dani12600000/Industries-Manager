@@ -8,16 +8,24 @@
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Profissões'. Você pode movê-la ou removê-la conforme necessário.
         Me.ProfissõesTableAdapter.Fill(Me.Industries_DanDataSet.Profissões)
 
-        Me.Width = Me.ClientSize.Width * 1.29
+        Me.Width = Me.ClientSize.Width * 1.39
+
         FuncionariosDataGridView.Columns(5).DefaultCellStyle.Format = "#,##0.00€"
 
+        Formulario = Me
         ButtonNandG = Button9
-        ButtonRorEandC = Button8
+        ButtonRorEandC = Button11
         ButtonF = Button1
         ButtonP = Button2
         ButtonN = Button3
         ButtonL = Button4
-        ButtonE = Button11
+
+        CenterOnScreenForm()
+
+        ButtonsQPrecisamSerGuardados.Add(Button5)
+        ButtonsQPrecisamSerGuardados.Add(Button6)
+        ButtonsQPrecisamSerGuardados.Add(Button7)
+        ButtonsQPrecisamSerGuardados.Add(Button10)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -43,14 +51,6 @@
         ElseIf Button9.Text = "Guardar" Then
             acabarAlteracoes()
 
-        End If
-    End Sub
-
-    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
-        If Button8.Text = "Eliminar" Then
-            ProfissõesBindingSource.RemoveCurrent()
-        Else
-            acabarAlteracoes()
         End If
     End Sub
 
@@ -81,6 +81,12 @@
     End Sub
 
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
-
+        If ButtonRorEandC.Text = "Editar profissão" Then
+            iniciarAlteracoes()
+        Else
+            ProfissõesBindingSource.EndEdit()
+            ProfissõesTableAdapter.Update(Industries_DanDataSet)
+            acabarAlteracoes()
+        End If
     End Sub
 End Class

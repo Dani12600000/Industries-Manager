@@ -58,8 +58,6 @@
 
         ' Fazer loop para buscar todos os Avisos não lidos e lidos do Departamento
 
-
-
         Dim nenhumAvisoLabel As New ToolStripLabel("Nenhum aviso novo por agora") With {
             .ForeColor = Color.DimGray
         }
@@ -69,6 +67,10 @@
 
         AvisosToolStripMenuItem.DropDownItems.Insert(0, nenhumAvisoLabel)
 
+
+        Formulario = Me
+
+        CenterOnScreenForm()
 
     End Sub
 

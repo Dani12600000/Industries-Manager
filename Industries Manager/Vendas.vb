@@ -13,6 +13,10 @@ Public Class Vendas
         Me.VendasTableAdapter.Fill(Me.Industries_DanDataSet.Vendas)
         QuantidadeNumericUpDown.Value = 1
         ProdutoComboBox.SelectedIndex = -1
+
+        Formulario = Me
+
+        CenterOnScreenForm()
     End Sub
     Sub Nova_Venda(email As String)
         Debug.WriteLine("Executando Nova_venda")

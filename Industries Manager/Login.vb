@@ -21,7 +21,9 @@
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Funcionarios'. Você pode movê-la ou removê-la conforme necessário.
         Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
 
+        Formulario = Me
 
+        CenterOnScreenForm()
 
         strHostName = System.Net.Dns.GetHostName()
 

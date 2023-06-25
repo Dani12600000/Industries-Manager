@@ -1,17 +1,18 @@
 ﻿Module ControleAlteracoes
-    Public Formulario As Form
+
     Public ButtonNandG, ButtonRorEandC, ButtonF, ButtonP, ButtonN, ButtonL, ButtonE As Button
     Public IgnoreTextBoxs As List(Of TextBox) = New List(Of TextBox)()
     Public IgnoreDateTimePickers As List(Of DateTimePicker) = New List(Of DateTimePicker)()
     Public IgnoreNumericUpDowns As List(Of NumericUpDown) = New List(Of NumericUpDown)()
     Public IgnoreButtons As List(Of Button) = New List(Of Button)()
+    Public ButtonsQPrecisamSerGuardados As List(Of Button) = New List(Of Button)()
+    Public ValoresGuardadosDosButtonsQPrecisamSerGuardados As List(Of Boolean) = New List(Of Boolean)()
     Dim TextButNandG, TextButRorEandC, TextButAltUnic As String
     Dim TorF As Boolean
     Dim buttonAltUnicTemp As Button
     Dim componenteAltUnicTemp As Control
 
     ' Para usar este metodo tenho que declarar as seguintes variaveis primeiro:
-    ' Formulario - Fomulario atual
     ' ButtonNandG - Botão para Salar e Guardar
     ' ButtonRorEandC - Botão para Remover ou Editar e Cancelar 
     ' ButtonF - Botão First/Primeiro
@@ -33,6 +34,7 @@
         TorF = False
         Debug.WriteLine("iniciando alterações - começo")
 
+        ValoresGuardadosDosButtonsQPrecisamSerGuardados.Clear()
         trocarBooleansParaAlteracoes()
 
         TextButNandG = ButtonNandG.Text
@@ -70,6 +72,7 @@
     End Sub
 
     Private Sub trocarBooleansParaAlteracoes()
+        Dim i As String = 0
 
         For Each ctl As Control In Formulario.Controls
 
@@ -102,7 +105,12 @@
                 Dim button As Button = DirectCast(ctl, Button)
                 Debug.WriteLine("Name: " & button.Name & "  »Enabled: " & button.Enabled)
                 If IgnoreButtons.Contains(button) Then Continue For
+                If ButtonsQPrecisamSerGuardados.Contains(button) And Not TorF Then ValoresGuardadosDosButtonsQPrecisamSerGuardados.Add(button.Enabled)
                 button.Enabled = TorF
+                If ButtonsQPrecisamSerGuardados.Contains(button) And TorF Then
+                    button.Enabled = ValoresGuardadosDosButtonsQPrecisamSerGuardados(i)
+                    i += 1
+                End If
                 Debug.WriteLine("Name: " & button.Name & "  «Enabled: " & button.Enabled)
 
             End If
@@ -147,8 +155,6 @@
     End Sub
 
     Sub trocarBooleansParaAlteracaoUnica()
-
-
 
         If TypeOf componenteAltUnicTemp Is TextBox Then
             Dim CTextBoxAltUnic As TextBox = DirectCast(componenteAltUnicTemp, TextBox)

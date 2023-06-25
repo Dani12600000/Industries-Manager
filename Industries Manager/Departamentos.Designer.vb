@@ -265,9 +265,9 @@ Partial Class Departamentos
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(614, 44)
+        Me.Button7.Location = New System.Drawing.Point(614, 40)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(146, 30)
+        Me.Button7.Size = New System.Drawing.Size(146, 33)
         Me.Button7.TabIndex = 17
         Me.Button7.Text = "Eleger diretor / Despedir diretor"
         Me.Button7.UseVisualStyleBackColor = True

@@ -19,6 +19,10 @@ Public Class FormSenha
     End Sub
 
     Private Sub FormSenha_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Formulario = Me
+
+        CenterOnScreenForm()
+
         Debug.WriteLine("IPI: " & IPI)
         corTextBox = TextBoxSenha.BackColor
         If IPI Then

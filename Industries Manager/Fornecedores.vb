@@ -14,7 +14,7 @@
         FornecimentosDataGridView.Columns(3).DefaultCellStyle.Format = "#0.00€"
         FornecimentosDataGridView.Columns(5).DefaultCellStyle.Format = "#0.00€"
 
-        Me.Width = Me.ClientSize.Width * 1.025
+        Me.Width = Me.ClientSize.Width * 1.046
 
 
         Formulario = Me
@@ -24,6 +24,8 @@
         ButtonP = Button2
         ButtonN = Button3
         ButtonL = Button4
+
+        CenterOnScreenForm()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

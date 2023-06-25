@@ -1,5 +1,7 @@
 ﻿Public Class Departamentos
 
+    Dim cargoDiretorVazio As Boolean
+
     Private Sub Departamentos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Profissões' table. You can move, or remove it, as needed.
         Me.ProfissõesTableAdapter.Fill(Me.Industries_DanDataSet.Profissões)
@@ -31,13 +33,7 @@
         Debug.WriteLine("ID_Departamento : " & InfoUser.UserDepID)
         DepartamentosBindingSource.Position = DepartamentosBindingSource.Find("ID", InfoUser.UserDepID)
 
-        If InfoUser.UserDepDirectorYN OrElse InfoUser.UserDepID = 2 Then
-            FuncionariosDataGridView.Columns(4).Visible = True
-        Else
-            FuncionariosDataGridView.Columns(4).Visible = False
-            FuncionariosDataGridView.Width = FuncionariosDataGridView.Width - 95
-            Me.Width = Me.ClientSize.Width - 95
-        End If
+        MostrarSalariosOuNao()
 
         If InfoUser.UserDepID = 2 Then
             ButtonF.Enabled = True
@@ -52,14 +48,26 @@
         End If
 
         AtualizarInfosDiretor()
+        CenterOnScreenForm()
+    End Sub
+
+    Sub MostrarSalariosOuNao()
+        If InfoUser.UserDepDirectorYN OrElse {5, 3}.Contains(InfoUser.UserDepID) Then
+            FuncionariosDataGridView.Columns(4).Visible = True
+        Else
+            FuncionariosDataGridView.Columns(4).Visible = False
+            FuncionariosDataGridView.Width = FuncionariosDataGridView.Width - 95
+            Me.Width = Me.ClientSize.Width - 95 + 10
+        End If
     End Sub
 
     '@TODO: Acabar este sub
     Sub AtualizarBotoesDiretor()
 
         If InfoUser.UserDepID = 2 Or InfoUser.UserDepDirectorYN Then
+            Debug.WriteLine("cargoDiretorVazio: " & cargoDiretorVazio)
 
-            If Diretores_de_DepartamentosBindingSource.Current("DDC") <= Today Then
+            If cargoDiretorVazio OrElse Diretores_de_DepartamentosBindingSource.Current("DDC") <= Today Then
                 Button7.Text = "Eleger diretor"
             ElseIf Diretores_de_DepartamentosBindingSource.Current("DDF") <= Today Then
                 Button7.Text = "Despedir diretor"
@@ -67,7 +75,7 @@
 
             Button7.Visible = True
 
-            If InfoUser.UserDepDirectorID = Diretores_de_DepartamentosBindingSource.Current("ID") Then
+            If Not cargoDiretorVazio AndAlso InfoUser.UserDepDirectorID = Diretores_de_DepartamentosBindingSource.Current("ID") Then
                 Button7.Text = "Demitir-me"
             End If
 
@@ -252,6 +260,7 @@
 
 
             End If
+            cargoDiretorVazio = False
 
             Debug.WriteLine("Acabou")
         Else
@@ -261,6 +270,7 @@
             NomeDiretorTextBox.Text = ""
             DDCDateTimePicker.Value = Today
             TextBox1.Text = ""
+            cargoDiretorVazio = True
         End If
 
         AtualizarBotoesDiretor()

@@ -62,14 +62,14 @@ Partial Class Clientes
         Me.IndustriesDanDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ProdutosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProdutosTableAdapter()
         Me.Venda_de_produtoDataGridView = New System.Windows.Forms.DataGridView()
-        Me.Button10 = New System.Windows.Forms.Button()
-        Me.Button11 = New System.Windows.Forms.Button()
-        Me.Button9 = New System.Windows.Forms.Button()
-        Me.Button12 = New System.Windows.Forms.Button()
         Me.Column1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PC = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Subtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button10 = New System.Windows.Forms.Button()
+        Me.Button11 = New System.Windows.Forms.Button()
+        Me.Button9 = New System.Windows.Forms.Button()
+        Me.Button12 = New System.Windows.Forms.Button()
         MailLabel = New System.Windows.Forms.Label()
         NIFLabel = New System.Windows.Forms.Label()
         NIBLabel = New System.Windows.Forms.Label()
@@ -220,6 +220,8 @@ Partial Class Clientes
         Me.VendasDataGridView.AllowUserToResizeColumns = False
         Me.VendasDataGridView.AllowUserToResizeRows = False
         Me.VendasDataGridView.AutoGenerateColumns = False
+        Me.VendasDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLight
+        Me.VendasDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.VendasDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.VendasDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3, Me.Total})
         Me.VendasDataGridView.DataSource = Me.VendasBindingSource
@@ -427,6 +429,8 @@ Partial Class Clientes
         Me.Venda_de_produtoDataGridView.AllowUserToResizeColumns = False
         Me.Venda_de_produtoDataGridView.AllowUserToResizeRows = False
         Me.Venda_de_produtoDataGridView.AutoGenerateColumns = False
+        Me.Venda_de_produtoDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLight
+        Me.Venda_de_produtoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.Venda_de_produtoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Venda_de_produtoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.DataGridViewTextBoxColumn6, Me.PC, Me.Subtotal})
         Me.Venda_de_produtoDataGridView.DataSource = Me.Venda_de_produtoBindingSource1
@@ -437,44 +441,6 @@ Partial Class Clientes
         Me.Venda_de_produtoDataGridView.RowHeadersWidth = 62
         Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(547, 464)
         Me.Venda_de_produtoDataGridView.TabIndex = 24
-        '
-        'Button10
-        '
-        Me.Button10.Location = New System.Drawing.Point(86, 401)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(145, 47)
-        Me.Button10.TabIndex = 26
-        Me.Button10.Text = "Novo"
-        Me.Button10.UseVisualStyleBackColor = True
-        '
-        'Button11
-        '
-        Me.Button11.BackColor = System.Drawing.Color.IndianRed
-        Me.Button11.Location = New System.Drawing.Point(240, 401)
-        Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(144, 47)
-        Me.Button11.TabIndex = 27
-        Me.Button11.Text = "Remover"
-        Me.Button11.UseVisualStyleBackColor = False
-        '
-        'Button9
-        '
-        Me.Button9.BackColor = System.Drawing.Color.IndianRed
-        Me.Button9.Location = New System.Drawing.Point(773, 401)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(144, 47)
-        Me.Button9.TabIndex = 29
-        Me.Button9.Text = "Remover"
-        Me.Button9.UseVisualStyleBackColor = False
-        '
-        'Button12
-        '
-        Me.Button12.Location = New System.Drawing.Point(619, 401)
-        Me.Button12.Name = "Button12"
-        Me.Button12.Size = New System.Drawing.Size(145, 47)
-        Me.Button12.TabIndex = 28
-        Me.Button12.Text = "Novo"
-        Me.Button12.UseVisualStyleBackColor = True
         '
         'Column1
         '
@@ -515,6 +481,44 @@ Partial Class Clientes
         Me.Subtotal.Name = "Subtotal"
         Me.Subtotal.ReadOnly = True
         Me.Subtotal.Width = 85
+        '
+        'Button10
+        '
+        Me.Button10.Location = New System.Drawing.Point(86, 401)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(145, 47)
+        Me.Button10.TabIndex = 26
+        Me.Button10.Text = "Novo"
+        Me.Button10.UseVisualStyleBackColor = True
+        '
+        'Button11
+        '
+        Me.Button11.BackColor = System.Drawing.Color.IndianRed
+        Me.Button11.Location = New System.Drawing.Point(240, 401)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(144, 47)
+        Me.Button11.TabIndex = 27
+        Me.Button11.Text = "Remover"
+        Me.Button11.UseVisualStyleBackColor = False
+        '
+        'Button9
+        '
+        Me.Button9.BackColor = System.Drawing.Color.IndianRed
+        Me.Button9.Location = New System.Drawing.Point(773, 401)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(144, 47)
+        Me.Button9.TabIndex = 29
+        Me.Button9.Text = "Remover"
+        Me.Button9.UseVisualStyleBackColor = False
+        '
+        'Button12
+        '
+        Me.Button12.Location = New System.Drawing.Point(619, 401)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(145, 47)
+        Me.Button12.TabIndex = 28
+        Me.Button12.Text = "Novo"
+        Me.Button12.UseVisualStyleBackColor = True
         '
         'Clientes
         '

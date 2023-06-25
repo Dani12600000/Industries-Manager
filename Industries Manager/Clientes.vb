@@ -22,6 +22,8 @@
         ButtonP = Button2
         ButtonN = Button3
         ButtonL = Button4
+
+        CenterOnScreenForm()
     End Sub
 
     Private Sub SobrenomeLabel_Click(sender As Object, e As EventArgs)

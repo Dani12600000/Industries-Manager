@@ -7,6 +7,9 @@
         Me.FornecedoresTableAdapter.Fill(Me.Industries_DanDataSet.Fornecedores)
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Fornecimentos' table. You can move, or remove it, as needed.
         Me.FornecimentosTableAdapter.Fill(Me.Industries_DanDataSet.Fornecimentos)
+        Formulario = Me
+
+        CenterOnScreenForm()
     End Sub
 
     Private Sub PCPNumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles PCPNumericUpDown.ValueChanged

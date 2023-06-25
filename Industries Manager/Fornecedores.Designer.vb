@@ -230,6 +230,8 @@ Partial Class Fornecedores
         Me.FornecimentosDataGridView.AllowUserToResizeColumns = False
         Me.FornecimentosDataGridView.AllowUserToResizeRows = False
         Me.FornecimentosDataGridView.AutoGenerateColumns = False
+        Me.FornecimentosDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLight
+        Me.FornecimentosDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.FornecimentosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.FornecimentosDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7})
         Me.FornecimentosDataGridView.DataSource = Me.FornecimentosBindingSource

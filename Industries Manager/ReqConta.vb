@@ -13,6 +13,9 @@ Public Class ReqConta
         FotoPictureBox.SizeMode = PictureBoxSizeMode.Zoom
         Me.FuncionariosBindingSource.AddNew()
 
+        Formulario = Me
+
+        CenterOnScreenForm()
 
         DefaultColor = NomeTextBox.BackColor
     End Sub
