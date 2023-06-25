@@ -1,4 +1,8 @@
-﻿Public Class Login
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports System.IO
+Imports Newtonsoft.Json
+
+Public Class Login
     Public Nome As String
     Dim ID As Integer
     Dim strHostName As String
@@ -31,21 +35,25 @@
 
         Debug.WriteLine("IP : " & strIPAddress)
 
-        Dim index As Integer = Login_FuncionarioBindingSource.Find("Ip", strIPAddress)
-        If index >= 0 Then
-            Login_FuncionarioBindingSource.Position = index
-            Debug.WriteLine("Posição login : " & index)
-            Dim ID_Funcionario = Login_FuncionarioBindingSource.Current("ID_Funcionario")
-            index = FuncionariosBindingSource.Find("ID", ID_Funcionario)
-            FuncionariosBindingSource.Position = index
-            Debug.WriteLine("Posição utilizador : " & index)
-            If FuncionariosBindingSource.Current("Adm") Then
-                Button2.Visible = True
-            End If
-            Debug.WriteLine("Admin : " & FuncionariosBindingSource.Current("Adm"))
+        If FuncionariosBindingSource.Count = 0 Then
+
         End If
 
     End Sub
+
+    Private Sub Form1_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
+        Dim pen1 As New Pen(Color.Gray, 0.5)
+        Dim posicaoMedia As Integer = (LinkLabel1.Location.Y - LinkLabel2.Location.Y + LinkLabel2.Height) / 2
+        Dim startPoint As New Point(Button1.Location.X, LinkLabel2.Location.Y + posicaoMedia)
+        Dim endPoint As New Point(Button1.Location.X + Button1.Width, LinkLabel2.Location.Y + posicaoMedia)
+
+        Debug.WriteLine("startPoint: " & startPoint.ToString)
+        Debug.WriteLine("endPoint: " & endPoint.ToString)
+
+        Dim g As Graphics = CreateGraphics()
+        g.DrawLine(pen1, startPoint, endPoint)
+    End Sub
+
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         ReqConta.Show()
@@ -71,20 +79,130 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If CheckBox1.Checked Then
+            GuardarDadosParaMemorizarAPalavraPasse()
+        End If
+
+        VericarSeContaExisteEFazerLogin(TextBox1.Text, TextBox2.Text, False, 0, "")
+    End Sub
+
+    Private Sub VericarSeContaExisteEFazerLogin(Email As String, Password As String, Memorizado As Boolean, Last_ID_Funcionario_Memorizado As Integer, Last_IP_Memorizado As String)
+
+        If Memorizado Then
+            Login_FuncionarioBindingSource.Filter = "ID_Funcionario = " & Last_ID_Funcionario_Memorizado
+            Login_FuncionarioBindingSource.MoveLast()
+
+            If Login_FuncionarioBindingSource.Position >= 0 Then
+                If Login_FuncionarioBindingSource.Current("IP") <> Last_IP_Memorizado Then
+                    Me.Hide()
+                    MsgBox("Por favor dê novamente login, o seu IP mudou", vbInformation, "Mudou de internet")
+                    Me.Show()
+                    Return
+                Else
+                    FuncionariosBindingSource.Filter = "ID = " & Last_ID_Funcionario_Memorizado
+                    Email = FuncionariosBindingSource.Current("Email")
+                    FuncionariosBindingSource.RemoveFilter()
+                End If
+
+                Login_FuncionarioBindingSource.RemoveFilter()
+            Else
+                MsgBox("A conta que está memorizada não tem acessos guardados ou foi apagada, por favor dê login novamente" & vbCrLf & "Se não conseguir entrar entre em contacto com o departamento de desenvolvimento", vbInformation, "Não foi possivel usar os dados memorizados")
+            End If
+        End If
+
         FuncionariosTableAdapter.Fill(Industries_DanDataSet.Funcionarios)
 
-        If FuncionariosBindingSource.Find("Email", TextBox1.Text) = -1 Then
+        If FuncionariosBindingSource.Find("Email", Email) = -1 Then
             MsgBox("Email inválido")
             TextBox1.Text = ""
             TextBox2.Text = ""
         Else
-            FuncionariosBindingSource.Position = FuncionariosBindingSource.Find("Email", TextBox1.Text)
+            FuncionariosBindingSource.Position = FuncionariosBindingSource.Find("Email", Email)
             If FuncionariosBindingSource.Current("Pass") = TextBox2.Text Then
                 If FuncionariosBindingSource.Current("Aprovacao") Then
                     Nome = FuncionariosBindingSource.Current("Nome")
                     ID = FuncionariosBindingSource.Current("ID")
+                    Login_FuncionarioBindingSource.AddNew()
 
-                    FazerLogin()
+                    DepartamentosBindingSource.Filter = "ID = " & FuncionariosBindingSource.Current("ID_Departamento")
+                    Diretores_de_DepartamentosBindingSource.Filter = "ID_Funcionario = " & FuncionariosBindingSource.Current("ID")
+                    Diretores_de_DepartamentosBindingSource.MoveLast()
+
+                    Login_FuncionarioBindingSource.Current("ID_Funcionario") = FuncionariosBindingSource.Current("ID")
+                    Login_FuncionarioBindingSource.Current("LiOuLo") = "Login"
+                    Login_FuncionarioBindingSource.Current("DeH") = Now()
+                    Login_FuncionarioBindingSource.Current("Ip") = strIPAddress
+
+                    InfoUser.UserID = FuncionariosBindingSource.Current("ID")
+                    InfoUser.UserIp = strIPAddress
+                    InfoUser.UserName = FuncionariosBindingSource.Current("Nome")
+                    InfoUser.UserEmail = FuncionariosBindingSource.Current("Email")
+                    InfoUser.UserAdm = FuncionariosBindingSource.Current("Adm")
+                    InfoUser.UserDepID = DepartamentosBindingSource.Current("ID")
+                    InfoUser.UserDepName = DepartamentosBindingSource.Current("NDD")
+                    If Diretores_de_DepartamentosBindingSource.Position >= 0 Then
+                        InfoUser.UserDepDirectorYN = True
+                        InfoUser.UserDepDirectorID = Diretores_de_DepartamentosBindingSource.Current("ID")
+                    Else
+                        InfoUser.UserDepDirectorYN = False
+                    End If
+
+                    'For debug
+                    Debug.WriteLine("Login form" & vbCrLf & "---------")
+                    Debug.WriteLine("ID : " & InfoUser.UserID)
+                    Debug.WriteLine("Ip : " & InfoUser.UserIp)
+                    Debug.WriteLine("Name : " & InfoUser.UserName)
+                    Debug.WriteLine("Email : " & InfoUser.UserEmail)
+                    Debug.WriteLine("Admin : " & InfoUser.UserAdm)
+                    Debug.WriteLine("ID Departamento : " & InfoUser.UserDepID)
+                    Debug.WriteLine("Departamento : " & InfoUser.UserDepName)
+                    Debug.Write("Diretor (Sim/Não) : ")
+                    Debug.WriteLineIf(Not InfoUser.UserDepDirectorYN, "Não")
+                    Debug.WriteLineIf(InfoUser.UserDepDirectorYN, "Sim")
+                    Debug.WriteLineIf(InfoUser.UserDepDirectorYN, "ID Diretor : " & InfoUser.UserDepDirectorID)
+                    Debug.WriteLine("Estas são todas as infos do user carregadas")
+
+                    Login_FuncionarioBindingSource.EndEdit()
+                    Login_FuncionarioTableAdapter.Update(Industries_DanDataSet.Login_Funcionario)
+
+                    If FuncionariosBindingSource.Current("Pass") = "123456Ab" Then
+                        Dim senha As String = ""
+
+                        While FuncionariosBindingSource.Current("Pass") = "123456Ab"
+                            Dim bol As Boolean
+
+                            Dim formSenha As New FormSenha()
+                            If bol = True Then
+                                formSenha.ReceberDados(bol)
+                            End If
+                            Dim resultado As DialogResult = formSenha.ShowDialog()
+
+                            If resultado = DialogResult.OK Then
+                                senha = formSenha.TextBoxSenha.Text
+                            End If
+
+                            ' Verificar se a senha está vazia ou se é igual à senha atual
+                            If String.IsNullOrWhiteSpace(senha) OrElse senha = FuncionariosBindingSource.Current("Pass") Then
+                                MessageBox.Show("A nova palavra-passe não é válida. Tente novamente.", "Erro de palavra-passe", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                bol = True
+                            Else
+                                ' Senha válida, sair do loop
+                                Exit While
+                            End If
+
+                        End While
+
+                        If CheckBox1.Checked Then
+
+                        End If
+
+                        FuncionariosBindingSource.EndEdit()
+                        FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+                    End If
+
+
+                    PMenu.Show()
+                    Me.Close()
                 Else
                     MsgBox("A conta ainda não foi confirmada" + vbCrLf + "Tente novamente mais tarde")
                 End If
@@ -108,105 +226,72 @@
         End If
     End Sub
 
-    Private Sub FazerLogin()
-        Login_FuncionarioBindingSource.AddNew()
+    Private Sub GuardarDadosParaMemorizarAPalavraPasse()
+        Dim valores As New Dictionary(Of String, String) From {
+            {"ID_Funcionario", InfoUser.UserID},
+            {"palavra_passe", TextBox2.Text},
+            {"ip", strIPAddress}
+        }
 
-        DepartamentosBindingSource.Filter = "ID = " & FuncionariosBindingSource.Current("ID_Departamento")
-        Diretores_de_DepartamentosBindingSource.Filter = "ID_Funcionario = " & FuncionariosBindingSource.Current("ID")
-        Diretores_de_DepartamentosBindingSource.MoveLast()
+        Dim caminhoArquivo As String = "C:\Industries Dan_PAP\DadosMemorizados.json"
 
-        Login_FuncionarioBindingSource.Current("ID_Funcionario") = FuncionariosBindingSource.Current("ID")
-        Login_FuncionarioBindingSource.Current("LiOuLo") = "Login"
-        Login_FuncionarioBindingSource.Current("DeH") = Now()
-        Login_FuncionarioBindingSource.Current("Ip") = strIPAddress
+        Try
+            If File.Exists(caminhoArquivo) Then
+                ' Ler o conteúdo atual do arquivo
+                Dim json As String = File.ReadAllText(caminhoArquivo)
 
-        InfoUser.UserID = FuncionariosBindingSource.Current("ID")
-        InfoUser.UserIp = strIPAddress
-        InfoUser.UserName = FuncionariosBindingSource.Current("Nome")
-        InfoUser.UserEmail = FuncionariosBindingSource.Current("Email")
-        InfoUser.UserAdm = FuncionariosBindingSource.Current("Adm")
-        InfoUser.UserDepID = DepartamentosBindingSource.Current("ID")
-        InfoUser.UserDepName = DepartamentosBindingSource.Current("NDD")
-        If Diretores_de_DepartamentosBindingSource.Position >= 0 Then
-            InfoUser.UserDepDirectorYN = True
-            InfoUser.UserDepDirectorID = Diretores_de_DepartamentosBindingSource.Current("ID")
-        Else
-            InfoUser.UserDepDirectorYN = False
-        End If
+                ' Desserializar JSON para um dicionário existente
+                Dim valoresExistentes As Dictionary(Of String, String) = JsonConvert.DeserializeObject(Of Dictionary(Of String, String))(json)
 
-        'For debug
-        Debug.WriteLine("Login form" & vbCrLf & "---------")
-        Debug.WriteLine("ID : " & InfoUser.UserID)
-        Debug.WriteLine("Ip : " & InfoUser.UserIp)
-        Debug.WriteLine("Name : " & InfoUser.UserName)
-        Debug.WriteLine("Email : " & InfoUser.UserEmail)
-        Debug.WriteLine("Admin : " & InfoUser.UserAdm)
-        Debug.WriteLine("ID Departamento : " & InfoUser.UserDepID)
-        Debug.WriteLine("Departamento : " & InfoUser.UserDepName)
-        Debug.Write("Diretor (Sim/Não) : ")
-        Debug.WriteLineIf(Not InfoUser.UserDepDirectorYN, "Não")
-        Debug.WriteLineIf(InfoUser.UserDepDirectorYN, "Sim")
-        Debug.WriteLineIf(InfoUser.UserDepDirectorYN, "ID Diretor : " & InfoUser.UserDepDirectorID)
-        Debug.WriteLine("Estas são todas as infos do user carregadas")
+                ' Atualizar os valores no dicionário existente
+                For Each kvp As KeyValuePair(Of String, String) In valores
+                    valoresExistentes(kvp.Key) = kvp.Value
+                Next
 
-        Login_FuncionarioBindingSource.EndEdit()
-        Login_FuncionarioTableAdapter.Update(Industries_DanDataSet.Login_Funcionario)
+                ' Serializar objeto atualizado para JSON
+                json = JsonConvert.SerializeObject(valoresExistentes)
 
+                ' Sobrescrever o arquivo com os novos dados
+                File.WriteAllText(caminhoArquivo, json)
 
-        If FuncionariosBindingSource.Current("Pass") = "123456Ab" Then
-            Dim senha As String = ""
+                Debug.WriteLine("Valores atualizados com sucesso!")
+            Else
+                ' Serializar objeto para JSON
+                Dim json As String = JsonConvert.SerializeObject(valores)
 
-            While FuncionariosBindingSource.Current("Pass") = "123456Ab"
-                Dim bol As Boolean
+                ' Escrever JSON no arquivo
+                File.WriteAllText(caminhoArquivo, json)
 
-                Dim formSenha As New FormSenha()
-                If bol = True Then
-                    formSenha.ReceberDados(bol)
-                End If
-                Dim resultado As DialogResult = FormSenha.ShowDialog()
-
-                If resultado = DialogResult.OK Then
-                    senha = formSenha.TextBoxSenha.Text
-                End If
-
-                ' Verificar se a senha está vazia ou se é igual à senha atual
-                If String.IsNullOrWhiteSpace(senha) OrElse senha = FuncionariosBindingSource.Current("Pass") Then
-                    MessageBox.Show("A nova palavra-passe não é válida. Tente novamente.", "Erro de palavra-passe", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    bol = True
-                Else
-                    ' Senha válida, sair do loop
-                    Exit While
-                End If
-
-            End While
-
-
-            FuncionariosBindingSource.EndEdit()
-            FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
-        End If
-
-
-        PMenu.Show()
-        Me.Close()
+                Debug.WriteLine("Valores salvos com sucesso!")
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Ocorreu um erro ao salvar/atualizar os valores no arquivo: " & ex.Message)
+        End Try
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        'Este bloco de codigo a seguir serve apenas para dar os previlegios de admin ao Debbuger
-        ' Localizar a linha com o ID igual a 6
-        Dim index As Integer = FuncionariosBindingSource.Find("ID", 6)
+    Public Class Valores
+        Public Property palavra_passe As String
+        Public Property ID_Funcionario As String
+        Public Property ip As String
+    End Class
 
-        ' Verificar se a linha foi encontrada
-        If index >= 0 Then
-            ' Definir os valores dos booleanos Adm e Aprovacao para true
-            FuncionariosBindingSource.Position = index
-            FuncionariosBindingSource.Current("Adm") = True
-            FuncionariosBindingSource.Current("Aprovacao") = True
+    Private Sub LerDadosMemorizadosEIniciarSessao()
+        Dim caminhoArquivo As String = "C:\Industries Dan_PAP\valores.json"
 
-            FuncionariosBindingSource.EndEdit()
-            FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
-        End If
+        Try
+            If File.Exists(caminhoArquivo) Then
+                Dim json As String = File.ReadAllText(caminhoArquivo)
+                Dim valores As Valores = JsonConvert.DeserializeObject(Of Valores)(json)
 
-        FazerLogin()
+                Debug.WriteLine("Valores lidos do arquivo com sucesso!")
+                Else
+                    Debug.WriteLine("Arquivo não encontrado.")
+            End If
+        Catch ex As FileNotFoundException
+            Debug.WriteLine("Arquivo não encontrado.")
+        Catch ex As Exception
+            Debug.WriteLine("Ocorreu um erro ao ler o arquivo: " & ex.Message)
+        End Try
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click

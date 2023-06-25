@@ -35,12 +35,14 @@ Partial Class Login
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Login_FuncionarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Login_FuncionarioTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Login_FuncionarioTableAdapter()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.DepartamentosTableAdapter()
         Me.Diretores_de_DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
         EmailLabel = New System.Windows.Forms.Label()
         PassLabel = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -54,23 +56,23 @@ Partial Class Login
         '
         EmailLabel.AutoSize = True
         EmailLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        EmailLabel.Location = New System.Drawing.Point(77, 118)
+        EmailLabel.Location = New System.Drawing.Point(80, 63)
         EmailLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         EmailLabel.Name = "EmailLabel"
-        EmailLabel.Size = New System.Drawing.Size(59, 22)
+        EmailLabel.Size = New System.Drawing.Size(65, 22)
         EmailLabel.TabIndex = 1
-        EmailLabel.Text = "Email:"
+        EmailLabel.Text = "E-mail:"
         '
         'PassLabel
         '
         PassLabel.AutoSize = True
         PassLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        PassLabel.Location = New System.Drawing.Point(80, 158)
+        PassLabel.Location = New System.Drawing.Point(80, 128)
         PassLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         PassLabel.Name = "PassLabel"
-        PassLabel.Size = New System.Drawing.Size(55, 22)
+        PassLabel.Size = New System.Drawing.Size(132, 22)
         PassLabel.TabIndex = 2
-        PassLabel.Text = "Pass:"
+        PassLabel.Text = "Palavra-Passe:"
         '
         'Industries_DanDataSet
         '
@@ -107,10 +109,10 @@ Partial Class Login
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.Button1.Location = New System.Drawing.Point(287, 196)
+        Me.Button1.Location = New System.Drawing.Point(84, 253)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(96, 35)
+        Me.Button1.Size = New System.Drawing.Size(422, 35)
         Me.Button1.TabIndex = 4
         Me.Button1.Text = "Login"
         Me.Button1.UseVisualStyleBackColor = True
@@ -119,31 +121,31 @@ Partial Class Login
         '
         Me.LinkLabel1.AutoSize = True
         Me.LinkLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.LinkLabel1.Location = New System.Drawing.Point(77, 201)
+        Me.LinkLabel1.Location = New System.Drawing.Point(288, 384)
         Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(184, 22)
+        Me.LinkLabel1.Size = New System.Drawing.Size(218, 22)
         Me.LinkLabel1.TabIndex = 5
         Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "Ainda não tem conta?"
+        Me.LinkLabel1.Text = "Requesite uma conta aqui"
         '
         'TextBox1
         '
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.TextBox1.Location = New System.Drawing.Point(138, 115)
+        Me.TextBox1.Location = New System.Drawing.Point(84, 90)
         Me.TextBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(245, 28)
+        Me.TextBox1.Size = New System.Drawing.Size(422, 28)
         Me.TextBox1.TabIndex = 6
         '
         'TextBox2
         '
         Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.TextBox2.Location = New System.Drawing.Point(138, 155)
+        Me.TextBox2.Location = New System.Drawing.Point(84, 155)
         Me.TextBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
-        Me.TextBox2.Size = New System.Drawing.Size(214, 28)
+        Me.TextBox2.Size = New System.Drawing.Size(388, 28)
         Me.TextBox2.TabIndex = 7
         '
         'Login_FuncionarioBindingSource
@@ -154,18 +156,6 @@ Partial Class Login
         'Login_FuncionarioTableAdapter
         '
         Me.Login_FuncionarioTableAdapter.ClearBeforeFill = True
-        '
-        'Button2
-        '
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.Button2.Location = New System.Drawing.Point(317, 310)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(138, 35)
-        Me.Button2.TabIndex = 8
-        Me.Button2.Text = "Enter Debug"
-        Me.Button2.UseVisualStyleBackColor = True
-        Me.Button2.Visible = False
         '
         'DepartamentosBindingSource
         '
@@ -192,20 +182,56 @@ Partial Class Login
         Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Button3.FlatAppearance.BorderSize = 0
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Location = New System.Drawing.Point(351, 155)
+        Me.Button3.Location = New System.Drawing.Point(474, 155)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(32, 31)
         Me.Button3.TabIndex = 9
         Me.Button3.UseVisualStyleBackColor = False
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Checked = True
+        Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBox1.Location = New System.Drawing.Point(84, 191)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(181, 24)
+        Me.CheckBox1.TabIndex = 10
+        Me.CheckBox1.Text = "Memorizar password"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(82, 386)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(200, 20)
+        Me.Label1.TabIndex = 11
+        Me.Label1.Text = "Ainda não tem uma conta?"
+        '
+        'LinkLabel2
+        '
+        Me.LinkLabel2.AutoSize = True
+        Me.LinkLabel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.LinkLabel2.Location = New System.Drawing.Point(147, 296)
+        Me.LinkLabel2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.LinkLabel2.Name = "LinkLabel2"
+        Me.LinkLabel2.Size = New System.Drawing.Size(300, 22)
+        Me.LinkLabel2.TabIndex = 12
+        Me.LinkLabel2.TabStop = True
+        Me.LinkLabel2.Text = "Esqueci-me da minha palavra-passe"
+        Me.LinkLabel2.Visible = False
+        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(468, 359)
+        Me.ClientSize = New System.Drawing.Size(579, 465)
+        Me.Controls.Add(Me.LinkLabel2)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Button1)
@@ -236,10 +262,12 @@ Partial Class Login
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Login_FuncionarioBindingSource As BindingSource
     Friend WithEvents Login_FuncionarioTableAdapter As Industries_DanDataSetTableAdapters.Login_FuncionarioTableAdapter
-    Friend WithEvents Button2 As Button
     Friend WithEvents DepartamentosBindingSource As BindingSource
     Friend WithEvents DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.DepartamentosTableAdapter
     Friend WithEvents Diretores_de_DepartamentosBindingSource As BindingSource
     Friend WithEvents Diretores_de_DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter
     Friend WithEvents Button3 As Button
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents LinkLabel2 As LinkLabel
 End Class

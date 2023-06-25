@@ -1,4 +1,5 @@
-﻿Public Class PMenu
+﻿Imports System.IO
+Public Class PMenu
     Private Sub PMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Leitura_de_avisos' table. You can move, or remove it, as needed.
         Me.Leitura_de_avisosTableAdapter.Fill(Me.Industries_DanDataSet.Leitura_de_avisos)
@@ -107,8 +108,20 @@
     End Sub
 
     Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
+        ApagarArquivo()
         Login.Show()
         Me.Close()
+    End Sub
+
+    Private Sub ApagarArquivo()
+        Dim caminhoArquivo As String = "C:\Industries Dan_PAP\DadosMemorizados.json"
+
+        If File.Exists(caminhoArquivo) Then
+            File.Delete(caminhoArquivo)
+            MessageBox.Show("Arquivo apagado com sucesso!")
+        Else
+            MessageBox.Show("Arquivo não encontrado.")
+        End If
     End Sub
 
     Private Sub Login_FuncionarioBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)

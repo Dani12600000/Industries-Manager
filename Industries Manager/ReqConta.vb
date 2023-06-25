@@ -4,6 +4,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class ReqConta
     Dim DefaultColor As Color
+    Dim Alpha As Boolean
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Profissões' table. You can move, or remove it, as needed.
@@ -32,11 +33,12 @@ Public Class ReqConta
 
         FotoPictureBox.SizeMode = PictureBoxSizeMode.Zoom
     End Sub
-
+    
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim todosCamposObrigatoriosPreenchidos, deuErro As Boolean
         Try
             todosCamposObrigatoriosPreenchidos = True
+
             If FuncionariosBindingSource.Find("Email", EmailTextBox.Text) = -1 Then
 
                 Debug.WriteLine("Numero de caracteres NomeTextBox: " & NomeTextBox.Text.Length)
@@ -80,13 +82,13 @@ Public Class ReqConta
                     MsgBox("Conta requesitada com sucesso!" & vbCrLf & "Espere para ser aceito", vbInformation, "Sucesso")
                     Debug.WriteLine("Nova requesição feita")
 
-                    Else
-                        MsgBox("Tem que preencher os campos obrigatorios" & vbCrLf & "(Os que se encontram agora a vermelho)", vbCritical, "Campos não preenchidos")
-                        Return
-                    End If
                 Else
+                    MsgBox("Tem que preencher os campos obrigatorios" & vbCrLf & "(Os que se encontram agora a vermelho)", vbCritical, "Campos não preenchidos")
+                    Return
+                End If
+            Else
 
-                    MsgBox("Já existe uma conta registada com esse mail, tente dar Login" & vbCrLf & "Se tiver problemas a dar Login entre em contacto com a equipa administrativa para lhe resetarem a palavra-pass", vbInformation, "Email já existente")
+                MsgBox("Já existe uma conta registada com esse mail, tente dar Login" & vbCrLf & "Se tiver problemas a dar Login entre em contacto com a equipa administrativa para lhe resetarem a palavra-pass", vbInformation, "Email já existente")
                 Login.Show()
                 Login.TextBox1.Text = EmailTextBox.Text
             End If
