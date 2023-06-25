@@ -35,6 +35,9 @@ Partial Class Avisos
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.AvisosDataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DTDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.DLDMDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -50,9 +53,6 @@ Partial Class Avisos
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -85,6 +85,15 @@ Partial Class Avisos
         IDLabel.Size = New System.Drawing.Size(30, 20)
         IDLabel.TabIndex = 2
         IDLabel.Text = "ID:"
+        '
+        'Label2
+        '
+        Label2.AutoSize = True
+        Label2.Location = New System.Drawing.Point(813, 30)
+        Label2.Name = "Label2"
+        Label2.Size = New System.Drawing.Size(216, 20)
+        Label2.TabIndex = 11
+        Label2.Text = "Todos os avisos transmitidos:"
         '
         'Industries_DanDataSet
         '
@@ -169,6 +178,33 @@ Partial Class Avisos
         Me.AvisosDataGridView.Size = New System.Drawing.Size(617, 461)
         Me.AvisosDataGridView.TabIndex = 6
         '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 60
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "DT"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Data de envio do aviso"
+        Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.DataGridViewTextBoxColumn5.Width = 140
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "DLDM"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Data limite do aviso"
+        Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Width = 140
+        '
         'DTDateTimePicker
         '
         Me.DTDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.AvisosBindingSource, "DT", True))
@@ -184,15 +220,6 @@ Partial Class Avisos
         Me.DLDMDateTimePicker.Name = "DLDMDateTimePicker"
         Me.DLDMDateTimePicker.Size = New System.Drawing.Size(238, 26)
         Me.DLDMDateTimePicker.TabIndex = 10
-        '
-        'Label2
-        '
-        Label2.AutoSize = True
-        Label2.Location = New System.Drawing.Point(813, 30)
-        Label2.Name = "Label2"
-        Label2.Size = New System.Drawing.Size(216, 20)
-        Label2.TabIndex = 11
-        Label2.Text = "Todos os avisos transmitidos:"
         '
         'Button1
         '
@@ -319,33 +346,6 @@ Partial Class Avisos
         Me.Button7.TabIndex = 33
         Me.Button7.Text = "Copiar para a clipboard"
         Me.Button7.UseVisualStyleBackColor = True
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 60
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "DT"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Data de envio do aviso"
-        Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Width = 140
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "DLDM"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Data limite do aviso"
-        Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 140
         '
         'Button10
         '

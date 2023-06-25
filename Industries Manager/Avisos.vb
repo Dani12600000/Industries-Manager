@@ -101,4 +101,8 @@
         AvisosTableAdapter.Update(Industries_DanDataSet)
         AtualizarLabelsinTextBoxesAndButtons()
     End Sub
+
+    Private Sub Avisos_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        PMenu.Activate()
+    End Sub
 End Class

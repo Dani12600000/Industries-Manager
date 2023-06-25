@@ -299,4 +299,8 @@
     Private Sub Button10_Click(sender As Object, e As EventArgs)
 
     End Sub
+
+    Private Sub Departamentos_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        PMenu.Activate()
+    End Sub
 End Class

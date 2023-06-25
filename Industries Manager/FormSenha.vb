@@ -43,4 +43,8 @@ Public Class FormSenha
             Button1.PerformClick()
         End If
     End Sub
+
+    Private Sub FormSenha_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        PMenu.Activate()
+    End Sub
 End Class

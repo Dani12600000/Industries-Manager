@@ -414,6 +414,10 @@ Public Class Funcionarios
         End If
     End Sub
 
+    Private Sub Funcionarios_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        PMenu.Activate()
+    End Sub
+
     ' Função para restaurar os valores Enabled originais dos botões
     Private Sub RestaurarValoresEnabled()
         Dim botoes As New List(Of Button)()
