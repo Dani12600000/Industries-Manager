@@ -84,6 +84,8 @@ Public Class Vendas
 
         Clientes.VendasTableAdapter.Fill(Clientes.Industries_DanDataSet.Vendas)
         Clientes.Venda_de_produtoTableAdapter.Fill(Clientes.Industries_DanDataSet.Venda_de_produto)
+
+        PMenu.Activate()
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click

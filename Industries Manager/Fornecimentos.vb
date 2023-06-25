@@ -76,5 +76,6 @@
         Produtos.ProdutosBindingSource.Position = posicaoAtualProd
 
         Debug.WriteLine("Fechado")
+        Produtos.Activate()
     End Sub
 End Class

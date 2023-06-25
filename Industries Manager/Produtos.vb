@@ -222,4 +222,8 @@
         End If
 
     End Sub
+
+    Private Sub Produtos_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        PMenu.Activate()
+    End Sub
 End Class

@@ -40,7 +40,13 @@ Partial Class Produtos
         Me.DescricaoTextBox = New System.Windows.Forms.TextBox()
         Me.FornecimentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FornecimentosDataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ID_Fornecedor = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.FornecedoresBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Venda_de_produtoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Venda_de_produtoDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -63,12 +69,6 @@ Partial Class Produtos
         Me.DGTextBox = New System.Windows.Forms.TextBox()
         Me.PFTextBox = New System.Windows.Forms.TextBox()
         Me.FornecedoresTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FornecedoresTableAdapter()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ID_Fornecedor = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         IDLabel = New System.Windows.Forms.Label()
         NomeLabel = New System.Windows.Forms.Label()
         DescricaoLabel = New System.Windows.Forms.Label()
@@ -240,10 +240,79 @@ Partial Class Produtos
         Me.FornecimentosDataGridView.Size = New System.Drawing.Size(710, 289)
         Me.FornecimentosDataGridView.TabIndex = 8
         '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        Me.DataGridViewTextBoxColumn1.Width = 30
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Data"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Data"
+        Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        Me.DataGridViewTextBoxColumn2.Width = 70
+        '
+        'ID_Fornecedor
+        '
+        Me.ID_Fornecedor.DataPropertyName = "ID_Fornecedor"
+        Me.ID_Fornecedor.DataSource = Me.FornecedoresBindingSource
+        Me.ID_Fornecedor.DisplayMember = "NDE"
+        Me.ID_Fornecedor.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.[Nothing]
+        Me.ID_Fornecedor.HeaderText = "Fornecedor"
+        Me.ID_Fornecedor.MinimumWidth = 8
+        Me.ID_Fornecedor.Name = "ID_Fornecedor"
+        Me.ID_Fornecedor.ReadOnly = True
+        Me.ID_Fornecedor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        Me.ID_Fornecedor.ValueMember = "ID"
+        Me.ID_Fornecedor.Width = 85
+        '
         'FornecedoresBindingSource
         '
         Me.FornecedoresBindingSource.DataMember = "Fornecedores"
         Me.FornecedoresBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "PCP"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Preço cada"
+        Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.DataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        Me.DataGridViewTextBoxColumn5.Width = 85
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Quantidade"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Quant."
+        Me.DataGridViewTextBoxColumn6.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        Me.DataGridViewTextBoxColumn6.Width = 50
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "TG"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Total Gasto"
+        Me.DataGridViewTextBoxColumn7.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        Me.DataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        Me.DataGridViewTextBoxColumn7.Width = 90
         '
         'Venda_de_produtoBindingSource
         '
@@ -469,75 +538,6 @@ Partial Class Produtos
         'FornecedoresTableAdapter
         '
         Me.FornecedoresTableAdapter.ClearBeforeFill = True
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        Me.DataGridViewTextBoxColumn1.Width = 30
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Data"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Data"
-        Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        Me.DataGridViewTextBoxColumn2.Width = 70
-        '
-        'ID_Fornecedor
-        '
-        Me.ID_Fornecedor.DataPropertyName = "ID_Fornecedor"
-        Me.ID_Fornecedor.DataSource = Me.FornecedoresBindingSource
-        Me.ID_Fornecedor.DisplayMember = "NDE"
-        Me.ID_Fornecedor.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.[Nothing]
-        Me.ID_Fornecedor.HeaderText = "Fornecedor"
-        Me.ID_Fornecedor.MinimumWidth = 8
-        Me.ID_Fornecedor.Name = "ID_Fornecedor"
-        Me.ID_Fornecedor.ReadOnly = True
-        Me.ID_Fornecedor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        Me.ID_Fornecedor.ValueMember = "ID"
-        Me.ID_Fornecedor.Width = 85
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "PCP"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Preço cada"
-        Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        Me.DataGridViewTextBoxColumn5.Width = 85
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Quantidade"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Quant."
-        Me.DataGridViewTextBoxColumn6.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        Me.DataGridViewTextBoxColumn6.Width = 50
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "TG"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Total Gasto"
-        Me.DataGridViewTextBoxColumn7.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        Me.DataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        Me.DataGridViewTextBoxColumn7.Width = 90
         '
         'Produtos
         '
