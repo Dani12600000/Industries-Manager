@@ -118,9 +118,9 @@ Public Class PMenu
 
         If File.Exists(caminhoArquivo) Then
             File.Delete(caminhoArquivo)
-            MessageBox.Show("Arquivo apagado com sucesso!")
+            Debug.WriteLine("Arquivo apagado com sucesso!")
         Else
-            MessageBox.Show("Arquivo não encontrado.")
+            Debug.WriteLine("Arquivo não encontrado.")
         End If
     End Sub
 

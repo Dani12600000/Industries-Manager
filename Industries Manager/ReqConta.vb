@@ -4,7 +4,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class ReqConta
     Dim DefaultColor As Color
-    Dim Alpha As Boolean ' Isto depois vou ter que testar apagando todos os utilizadores (O nome Alpha é referencia a Alpha do anime The Eminence in Shadow, pois ela foi a primeira)
+    Public Alpha As Boolean ' Isto depois vou ter que testar apagando todos os utilizadores (O nome Alpha é referencia a Alpha do anime The Eminence in Shadow, pois ela foi a primeira)
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Profissões' table. You can move, or remove it, as needed.

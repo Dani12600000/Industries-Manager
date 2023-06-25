@@ -36,7 +36,11 @@ Public Class Login
         Debug.WriteLine("IP : " & strIPAddress)
 
         If FuncionariosBindingSource.Count = 0 Then
-
+            ReqConta.Show()
+            ReqConta.Alpha = True
+            Me.Close()
+        Else
+            LerDadosMemorizadosEIniciarSessao()
         End If
 
     End Sub
@@ -46,9 +50,6 @@ Public Class Login
         Dim posicaoMedia As Integer = (LinkLabel1.Location.Y - LinkLabel2.Location.Y + LinkLabel2.Height) / 2
         Dim startPoint As New Point(Button1.Location.X, LinkLabel2.Location.Y + posicaoMedia)
         Dim endPoint As New Point(Button1.Location.X + Button1.Width, LinkLabel2.Location.Y + posicaoMedia)
-
-        Debug.WriteLine("startPoint: " & startPoint.ToString)
-        Debug.WriteLine("endPoint: " & endPoint.ToString)
 
         Dim g As Graphics = CreateGraphics()
         g.DrawLine(pen1, startPoint, endPoint)
@@ -79,10 +80,6 @@ Public Class Login
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If CheckBox1.Checked Then
-            GuardarDadosParaMemorizarAPalavraPasse()
-        End If
-
         VericarSeContaExisteEFazerLogin(TextBox1.Text, TextBox2.Text, False, 0, "")
     End Sub
 
@@ -90,23 +87,31 @@ Public Class Login
 
         If Memorizado Then
             Login_FuncionarioBindingSource.Filter = "ID_Funcionario = " & Last_ID_Funcionario_Memorizado
-            Login_FuncionarioBindingSource.MoveLast()
+            Login_FuncionarioBindingSource.Sort = "DEH DESC"
+            Login_FuncionarioBindingSource.MoveFirst()
 
             If Login_FuncionarioBindingSource.Position >= 0 Then
+                FuncionariosBindingSource.Filter = "ID = " & Last_ID_Funcionario_Memorizado
+
+                Debug.WriteLine("Login_FuncionarioBindingSource.Current(""IP""): " & Login_FuncionarioBindingSource.Current("IP"))
+                Debug.WriteLine("Login_FuncionarioBindingSource.Current(""ID""): " & Login_FuncionarioBindingSource.Current("ID"))
+                Debug.WriteLine("Login_FuncionarioBindingSource.Count: " & Login_FuncionarioBindingSource.Count)
                 If Login_FuncionarioBindingSource.Current("IP") <> Last_IP_Memorizado Then
                     Me.Hide()
                     MsgBox("Por favor dê novamente login, o seu IP mudou", vbInformation, "Mudou de internet")
+                    TextBox1.Text = FuncionariosBindingSource.Current("Email")
                     Me.Show()
+                    Dim caminhoArquivo As String = "C:\Industries Dan_PAP\DadosMemorizados.json"
+                    File.Delete(caminhoArquivo)
                     Return
                 Else
-                    FuncionariosBindingSource.Filter = "ID = " & Last_ID_Funcionario_Memorizado
                     Email = FuncionariosBindingSource.Current("Email")
                     FuncionariosBindingSource.RemoveFilter()
                 End If
-
                 Login_FuncionarioBindingSource.RemoveFilter()
             Else
                 MsgBox("A conta que está memorizada não tem acessos guardados ou foi apagada, por favor dê login novamente" & vbCrLf & "Se não conseguir entrar entre em contacto com o departamento de desenvolvimento", vbInformation, "Não foi possivel usar os dados memorizados")
+                Return
             End If
         End If
 
@@ -118,7 +123,7 @@ Public Class Login
             TextBox2.Text = ""
         Else
             FuncionariosBindingSource.Position = FuncionariosBindingSource.Find("Email", Email)
-            If FuncionariosBindingSource.Current("Pass") = TextBox2.Text Then
+            If FuncionariosBindingSource.Current("Pass") = Password Then
                 If FuncionariosBindingSource.Current("Aprovacao") Then
                     Nome = FuncionariosBindingSource.Current("Nome")
                     ID = FuncionariosBindingSource.Current("ID")
@@ -192,14 +197,15 @@ Public Class Login
 
                         End While
 
-                        If CheckBox1.Checked Then
 
-                        End If
 
                         FuncionariosBindingSource.EndEdit()
                         FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
                     End If
 
+                    If CheckBox1.Checked Then
+                        GuardarDadosParaMemorizarAPalavraPasse()
+                    End If
 
                     PMenu.Show()
                     Me.Close()
@@ -232,6 +238,8 @@ Public Class Login
             {"palavra_passe", TextBox2.Text},
             {"ip", strIPAddress}
         }
+
+        Debug.WriteLine("valores: " & valores.ToString)
 
         Dim caminhoArquivo As String = "C:\Industries Dan_PAP\DadosMemorizados.json"
 
@@ -276,12 +284,16 @@ Public Class Login
     End Class
 
     Private Sub LerDadosMemorizadosEIniciarSessao()
-        Dim caminhoArquivo As String = "C:\Industries Dan_PAP\valores.json"
+        Dim caminhoArquivo As String = "C:\Industries Dan_PAP\DadosMemorizados.json"
 
         Try
             If File.Exists(caminhoArquivo) Then
                 Dim json As String = File.ReadAllText(caminhoArquivo)
                 Dim valores As Valores = JsonConvert.DeserializeObject(Of Valores)(json)
+                Debug.WriteLine("ID_Funcionario: " & valores.ID_Funcionario)
+                Debug.WriteLine("IP: " & valores.ip)
+
+                VericarSeContaExisteEFazerLogin("", valores.palavra_passe, True, valores.ID_Funcionario, valores.ip)
 
                 Debug.WriteLine("Valores lidos do arquivo com sucesso!")
                 Else

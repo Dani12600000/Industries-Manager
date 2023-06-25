@@ -56,7 +56,7 @@ Partial Class Login
         '
         EmailLabel.AutoSize = True
         EmailLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        EmailLabel.Location = New System.Drawing.Point(80, 63)
+        EmailLabel.Location = New System.Drawing.Point(71, 63)
         EmailLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         EmailLabel.Name = "EmailLabel"
         EmailLabel.Size = New System.Drawing.Size(65, 22)
@@ -67,7 +67,7 @@ Partial Class Login
         '
         PassLabel.AutoSize = True
         PassLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        PassLabel.Location = New System.Drawing.Point(80, 128)
+        PassLabel.Location = New System.Drawing.Point(71, 128)
         PassLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         PassLabel.Name = "PassLabel"
         PassLabel.Size = New System.Drawing.Size(132, 22)
@@ -109,7 +109,7 @@ Partial Class Login
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.Button1.Location = New System.Drawing.Point(84, 253)
+        Me.Button1.Location = New System.Drawing.Point(75, 253)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(422, 35)
@@ -121,7 +121,7 @@ Partial Class Login
         '
         Me.LinkLabel1.AutoSize = True
         Me.LinkLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.LinkLabel1.Location = New System.Drawing.Point(288, 384)
+        Me.LinkLabel1.Location = New System.Drawing.Point(279, 384)
         Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(218, 22)
@@ -132,7 +132,7 @@ Partial Class Login
         'TextBox1
         '
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.TextBox1.Location = New System.Drawing.Point(84, 90)
+        Me.TextBox1.Location = New System.Drawing.Point(75, 90)
         Me.TextBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(422, 28)
@@ -141,7 +141,7 @@ Partial Class Login
         'TextBox2
         '
         Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.TextBox2.Location = New System.Drawing.Point(84, 155)
+        Me.TextBox2.Location = New System.Drawing.Point(75, 155)
         Me.TextBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
@@ -182,7 +182,7 @@ Partial Class Login
         Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Button3.FlatAppearance.BorderSize = 0
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Location = New System.Drawing.Point(474, 155)
+        Me.Button3.Location = New System.Drawing.Point(465, 155)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(32, 31)
         Me.Button3.TabIndex = 9
@@ -193,7 +193,7 @@ Partial Class Login
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.Checked = True
         Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox1.Location = New System.Drawing.Point(84, 191)
+        Me.CheckBox1.Location = New System.Drawing.Point(75, 191)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(181, 24)
         Me.CheckBox1.TabIndex = 10
@@ -203,7 +203,7 @@ Partial Class Login
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(82, 386)
+        Me.Label1.Location = New System.Drawing.Point(73, 386)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(200, 20)
         Me.Label1.TabIndex = 11
@@ -213,7 +213,7 @@ Partial Class Login
         '
         Me.LinkLabel2.AutoSize = True
         Me.LinkLabel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.LinkLabel2.Location = New System.Drawing.Point(147, 296)
+        Me.LinkLabel2.Location = New System.Drawing.Point(138, 296)
         Me.LinkLabel2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LinkLabel2.Name = "LinkLabel2"
         Me.LinkLabel2.Size = New System.Drawing.Size(300, 22)
