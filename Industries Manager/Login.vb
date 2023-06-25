@@ -85,6 +85,8 @@ Public Class Login
 
     Private Sub VericarSeContaExisteEFazerLogin(Email As String, Password As String, Memorizado As Boolean, Last_ID_Funcionario_Memorizado As Integer, Last_IP_Memorizado As String)
 
+        FuncionariosTableAdapter.Fill(Industries_DanDataSet.Funcionarios)
+
         If Memorizado Then
             Login_FuncionarioBindingSource.Filter = "ID_Funcionario = " & Last_ID_Funcionario_Memorizado
             Login_FuncionarioBindingSource.Sort = "DEH DESC"
@@ -115,14 +117,13 @@ Public Class Login
             End If
         End If
 
-        FuncionariosTableAdapter.Fill(Industries_DanDataSet.Funcionarios)
-
         If FuncionariosBindingSource.Find("Email", Email) = -1 Then
             MsgBox("Email inválido")
             TextBox1.Text = ""
             TextBox2.Text = ""
         Else
             FuncionariosBindingSource.Position = FuncionariosBindingSource.Find("Email", Email)
+
             If FuncionariosBindingSource.Current("Pass") = Password Then
                 If FuncionariosBindingSource.Current("Aprovacao") Then
                     Nome = FuncionariosBindingSource.Current("Nome")
@@ -203,17 +204,22 @@ Public Class Login
                         FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
                     End If
 
-                    If CheckBox1.Checked Then
+                    If CheckBox1.Checked And Not Memorizado Then
                         GuardarDadosParaMemorizarAPalavraPasse()
                     End If
 
                     PMenu.Show()
                     Me.Close()
                 Else
-                    MsgBox("A conta ainda não foi confirmada" + vbCrLf + "Tente novamente mais tarde")
+                    MsgBox("A conta ainda não foi confirmada" + vbCrLf + "Tente novamente mais tarde", vbInformation, "Espere verificação")
                 End If
             Else
-                MsgBox("Password errada")
+                If Memorizado Then
+                    MsgBox("A palavra-passe foi atualizada desde o ultimo login" & vbCrLf & "Por favor introduza novamente a palavra-passe", vbInformation, "Reintroduza a palavra-passe")
+                Else
+                    MsgBox("A palavra-passe que introduziu está errada" & vbCrLf & "Por favor introduza novamente a palavra-passe", vbInformation, "Palavra-passe incorreta")
+                End If
+
                 TextBox2.Text = ""
 
                 Debug.WriteLine("ID_Funcionario : " & FuncionariosBindingSource.Current("ID"))
