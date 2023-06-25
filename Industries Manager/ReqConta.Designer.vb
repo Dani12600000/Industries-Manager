@@ -42,18 +42,13 @@ Partial Class ReqConta
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.ProfissãoComboBox = New System.Windows.Forms.ComboBox()
         Me.ProfissõesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ProfissõesTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProfissõesTableAdapter()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.SINumericUpDown = New System.Windows.Forms.NumericUpDown()
+        Me.Label1 = New System.Windows.Forms.Label()
         NomeLabel = New System.Windows.Forms.Label()
         SobrenomeLabel = New System.Windows.Forms.Label()
         FotoLabel = New System.Windows.Forms.Label()
@@ -221,78 +216,24 @@ Partial Class ReqConta
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(303, 557)
+        Me.Button2.Location = New System.Drawing.Point(181, 558)
         Me.Button2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(112, 35)
+        Me.Button2.Size = New System.Drawing.Size(232, 35)
         Me.Button2.TabIndex = 19
-        Me.Button2.Text = "Criar"
+        Me.Button2.Text = "Requesitar"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(144, 565)
+        Me.LinkLabel1.Location = New System.Drawing.Point(331, 616)
         Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(110, 20)
+        Me.LinkLabel1.Size = New System.Drawing.Size(77, 20)
         Me.LinkLabel1.TabIndex = 21
         Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "Já tem conta?"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(414, 60)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(15, 20)
-        Me.Label1.TabIndex = 22
-        Me.Label1.Text = "*"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(414, 101)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(15, 20)
-        Me.Label2.TabIndex = 23
-        Me.Label2.Text = "*"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(414, 386)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(15, 20)
-        Me.Label3.TabIndex = 24
-        Me.Label3.Text = "*"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(414, 426)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(15, 20)
-        Me.Label4.TabIndex = 25
-        Me.Label4.Text = "*"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(414, 469)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(15, 20)
-        Me.Label5.TabIndex = 26
-        Me.Label5.Text = "*"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(467, 572)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(184, 20)
-        Me.Label7.TabIndex = 28
-        Me.Label7.Text = "(*) - Campos obrigatorios"
+        Me.LinkLabel1.Text = "faça login"
         '
         'ProfissãoComboBox
         '
@@ -345,22 +286,26 @@ Partial Class ReqConta
         Me.SINumericUpDown.ThousandsSeparator = True
         Me.SINumericUpDown.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(179, 616)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(145, 20)
+        Me.Label1.TabIndex = 34
+        Me.Label1.Text = "Já tem uma conta?"
+        '
         'ReqConta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(663, 601)
+        Me.ClientSize = New System.Drawing.Size(611, 645)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.SINumericUpDown)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(SILabel)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ProfissãoComboBox)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -400,16 +345,11 @@ Partial Class ReqConta
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents Button2 As Button
     Friend WithEvents LinkLabel1 As LinkLabel
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label7 As Label
     Friend WithEvents ProfissãoComboBox As ComboBox
     Friend WithEvents Label6 As Label
     Friend WithEvents ProfissõesBindingSource As BindingSource
     Friend WithEvents ProfissõesTableAdapter As Industries_DanDataSetTableAdapters.ProfissõesTableAdapter
     Friend WithEvents Label8 As Label
     Friend WithEvents SINumericUpDown As NumericUpDown
+    Friend WithEvents Label1 As Label
 End Class

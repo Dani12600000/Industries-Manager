@@ -4,7 +4,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class ReqConta
     Dim DefaultColor As Color
-    Dim Alpha As Boolean
+    Dim Alpha As Boolean ' Isto depois vou ter que testar apagando todos os utilizadores (O nome Alpha é referencia a Alpha do anime The Eminence in Shadow, pois ela foi a primeira)
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Profissões' table. You can move, or remove it, as needed.
@@ -19,6 +19,11 @@ Public Class ReqConta
         CenterOnScreenForm()
 
         DefaultColor = NomeTextBox.BackColor
+
+        If Alpha Then
+            Me.Text = "Criar primeira conta"
+            Button2.Text = "Criar"
+        End If
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -76,10 +81,18 @@ Public Class ReqConta
                 If todosCamposObrigatoriosPreenchidos Then
                     Me.FuncionariosBindingSource.Current("ID_Profissão") = Me.ProfissõesBindingSource.Current("ID")
                     Me.FuncionariosBindingSource.Current("SI") = SINumericUpDown.Value
+                    If Alpha Then
+                        Me.FuncionariosBindingSource.Current("Aprovacao") = True
+                        Me.FuncionariosBindingSource.Current("DDEDE") = Today
+                    End If
                     Me.Validate()
                     Me.FuncionariosBindingSource.EndEdit()
                     Me.TableAdapterManager.UpdateAll(Me.Industries_DanDataSet)
-                    MsgBox("Conta requesitada com sucesso!" & vbCrLf & "Espere para ser aceito", vbInformation, "Sucesso")
+                    If Alpha Then
+                        MsgBox("Conta criada com sucesso!", vbInformation, "Sucesso")
+                    Else
+                        MsgBox("Conta requesitada com sucesso!" & vbCrLf & "Espere para ser aceito", vbInformation, "Sucesso")
+                    End If
                     Debug.WriteLine("Nova requesição feita")
 
                 Else
@@ -97,6 +110,11 @@ Public Class ReqConta
             MsgBox("Houve um erro a fazer a requesição da sua conta por favor tente mais tarde ou entre em contacto com o suporte", vbCritical, "Erro")
             Debug.WriteLine("Erro ao fazer a requesição")
         Finally
+            If Alpha Then
+                Login.Show()
+                Login.TextBox1.Text = EmailTextBox.Text
+                Login.TextBox2.Text = PassTextBox.Text
+            End If
             If deuErro Or todosCamposObrigatoriosPreenchidos Then
                 Me.Close()
             End If
