@@ -45,7 +45,7 @@
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
-        If Button9.Text = "Novo" Then
+        If Button9.Text = "Novo profissão" Then
             ProfissõesBindingSource.AddNew()
             iniciarAlteracoes()
         ElseIf Button9.Text = "Guardar" Then

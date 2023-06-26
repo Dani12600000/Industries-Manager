@@ -162,6 +162,10 @@
         ElseIf TypeOf componenteAltUnicTemp Is NumericUpDown Then
             Dim CNumericUpDownAltUnic As NumericUpDown = DirectCast(componenteAltUnicTemp, NumericUpDown)
             CNumericUpDownAltUnic.Enabled = Not TorF
+        ElseIf TypeOf componenteAltUnicTemp Is ComboBox Then
+            Dim CComboBoxAltUnic As ComboBox = DirectCast(componenteAltUnicTemp, ComboBox)
+            CComboBoxAltUnic.Enabled = Not TorF
+            CComboBoxAltUnic.SelectionLength = 0
         End If
 
         If ButtonNandG IsNot Nothing Then

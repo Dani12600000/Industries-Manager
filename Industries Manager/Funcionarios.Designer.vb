@@ -72,6 +72,7 @@ Partial Class Funcionarios
         Me.ID_DepartamentoComboBox = New System.Windows.Forms.ComboBox()
         Me.SITextBox = New System.Windows.Forms.TextBox()
         Me.SINumericUpDown = New System.Windows.Forms.NumericUpDown()
+        Me.Button12 = New System.Windows.Forms.Button()
         NomeLabel = New System.Windows.Forms.Label()
         SobrenomeLabel = New System.Windows.Forms.Label()
         FotoLabel = New System.Windows.Forms.Label()
@@ -216,7 +217,7 @@ Partial Class Funcionarios
         Me.FotoPictureBox.DataBindings.Add(New System.Windows.Forms.Binding("Image", Me.FuncionariosBindingSource, "foto", True))
         Me.FotoPictureBox.Location = New System.Drawing.Point(64, 90)
         Me.FotoPictureBox.Name = "FotoPictureBox"
-        Me.FotoPictureBox.Size = New System.Drawing.Size(361, 187)
+        Me.FotoPictureBox.Size = New System.Drawing.Size(267, 187)
         Me.FotoPictureBox.TabIndex = 5
         Me.FotoPictureBox.TabStop = False
         '
@@ -517,11 +518,21 @@ Partial Class Funcionarios
         Me.SINumericUpDown.ThousandsSeparator = True
         Me.SINumericUpDown.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
+        'Button12
+        '
+        Me.Button12.Location = New System.Drawing.Point(337, 343)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(88, 32)
+        Me.Button12.TabIndex = 43
+        Me.Button12.Text = "Editar"
+        Me.Button12.UseVisualStyleBackColor = True
+        '
         'Funcionarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1277, 726)
+        Me.Controls.Add(Me.Button12)
         Me.Controls.Add(Me.SINumericUpDown)
         Me.Controls.Add(Me.ID_DepartamentoComboBox)
         Me.Controls.Add(Me.Button11)
@@ -616,4 +627,5 @@ Partial Class Funcionarios
     Friend WithEvents ID_DepartamentoComboBox As ComboBox
     Friend WithEvents SITextBox As TextBox
     Friend WithEvents SINumericUpDown As NumericUpDown
+    Friend WithEvents Button12 As Button
 End Class

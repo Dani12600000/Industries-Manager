@@ -7,6 +7,7 @@ Public Class Funcionarios
     Dim DespColor, ContColor As Color
     Dim SM As Double 'Salario Minimo
     Dim botaoEnabledArray As Boolean()
+    Dim tamanhoProfissoesID As Integer
 
     Private Sub Funcionarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Diretores_de_Departamentos' table. You can move, or remove it, as needed.
@@ -39,6 +40,8 @@ Public Class Funcionarios
         ButtonP = Button2
         ButtonN = Button3
         ButtonL = Button4
+
+        tamanhoProfissoesID = ID_ProfissãoComboBox.Width
 
         GestaoButtonsAndLabelsShown()
         CenterOnScreenForm()
@@ -154,6 +157,15 @@ Public Class Funcionarios
             DDSDELabel.Visible = True
         End If
 
+        If FuncionariosBindingSource.Current("ID") = InfoUser.UserID Then
+            ID_ProfissãoComboBox.Width = tamanhoProfissoesID - 64
+            Button12.Visible = True
+        Else
+            ID_ProfissãoComboBox.Width = tamanhoProfissoesID
+            Button12.Visible = False
+        End If
+
+        ID_ProfissãoComboBox.SelectionLength = 0
 
     End Sub
 
@@ -422,6 +434,20 @@ Public Class Funcionarios
 
     Private Sub Funcionarios_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         PMenu.Activate()
+    End Sub
+
+    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
+        If Button12.Text = "Editar" Then
+
+            iniciarAlteracaoUnica(Button12, ID_ProfissãoComboBox)
+
+        ElseIf Button12.Text = "Guardar" Then
+
+            acabarAlteracaoUnica()
+            FuncionariosBindingSource.EndEdit()
+            FuncionariosTableAdapter.Update(Industries_DanDataSet)
+
+        End If
     End Sub
 
     ' Função para restaurar os valores Enabled originais dos botões

@@ -98,7 +98,9 @@ Public Class Login
                 Debug.WriteLine("Login_FuncionarioBindingSource.Current(""IP""): " & Login_FuncionarioBindingSource.Current("IP"))
                 Debug.WriteLine("Login_FuncionarioBindingSource.Current(""ID""): " & Login_FuncionarioBindingSource.Current("ID"))
                 Debug.WriteLine("Login_FuncionarioBindingSource.Count: " & Login_FuncionarioBindingSource.Count)
-                If Login_FuncionarioBindingSource.Current("IP") <> Last_IP_Memorizado Then
+                Debug.WriteLine("Last_IP_Memorizado: " & Last_IP_Memorizado)
+
+                If Login_FuncionarioBindingSource.Current("IP") <> strIPAddress Then
                     Me.Hide()
                     MsgBox("Por favor dê novamente login, o seu IP mudou", vbInformation, "Mudou de internet")
                     TextBox1.Text = FuncionariosBindingSource.Current("Email")
