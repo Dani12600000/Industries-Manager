@@ -26,10 +26,6 @@
         CenterOnScreenForm()
     End Sub
 
-    Private Sub SobrenomeLabel_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub SobrenomeTextBox_TextChanged(sender As Object, e As EventArgs) Handles SobrenomeTextBox.TextChanged
 
     End Sub
@@ -70,6 +66,7 @@
         If Button10.Text = "Novo" Then
             ClientesBindingSource.AddNew()
             iniciarAlteracoes()
+            NomeTextBox.Focus()
         ElseIf Button10.Text = "Guardar" Then
             Try
                 ClientesBindingSource.EndEdit()
@@ -123,5 +120,10 @@
 
     Private Sub Clientes_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         PMenu.Activate()
+    End Sub
+
+    Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
+        iniciarAlteracoes()
+        NomeTextBox.Focus()
     End Sub
 End Class

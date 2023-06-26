@@ -70,6 +70,7 @@ Partial Class Clientes
         Me.Button11 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button12 = New System.Windows.Forms.Button()
+        Me.Button13 = New System.Windows.Forms.Button()
         MailLabel = New System.Windows.Forms.Label()
         NIFLabel = New System.Windows.Forms.Label()
         NIBLabel = New System.Windows.Forms.Label()
@@ -90,7 +91,7 @@ Partial Class Clientes
         'MailLabel
         '
         MailLabel.AutoSize = True
-        MailLabel.Location = New System.Drawing.Point(21, 20)
+        MailLabel.Location = New System.Drawing.Point(18, 120)
         MailLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         MailLabel.Name = "MailLabel"
         MailLabel.Size = New System.Drawing.Size(41, 20)
@@ -100,7 +101,7 @@ Partial Class Clientes
         'NIFLabel
         '
         NIFLabel.AutoSize = True
-        NIFLabel.Location = New System.Drawing.Point(21, 60)
+        NIFLabel.Location = New System.Drawing.Point(18, 166)
         NIFLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         NIFLabel.Name = "NIFLabel"
         NIFLabel.Size = New System.Drawing.Size(39, 20)
@@ -110,7 +111,7 @@ Partial Class Clientes
         'NIBLabel
         '
         NIBLabel.AutoSize = True
-        NIBLabel.Location = New System.Drawing.Point(21, 100)
+        NIBLabel.Location = New System.Drawing.Point(18, 212)
         NIBLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         NIBLabel.Name = "NIBLabel"
         NIBLabel.Size = New System.Drawing.Size(40, 20)
@@ -120,7 +121,7 @@ Partial Class Clientes
         'NomeLabel
         '
         NomeLabel.AutoSize = True
-        NomeLabel.Location = New System.Drawing.Point(21, 171)
+        NomeLabel.Location = New System.Drawing.Point(13, 31)
         NomeLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         NomeLabel.Name = "NomeLabel"
         NomeLabel.Size = New System.Drawing.Size(55, 20)
@@ -130,7 +131,7 @@ Partial Class Clientes
         'SobrenomeLabel
         '
         SobrenomeLabel.AutoSize = True
-        SobrenomeLabel.Location = New System.Drawing.Point(225, 171)
+        SobrenomeLabel.Location = New System.Drawing.Point(217, 31)
         SobrenomeLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         SobrenomeLabel.Name = "SobrenomeLabel"
         SobrenomeLabel.Size = New System.Drawing.Size(96, 20)
@@ -151,11 +152,11 @@ Partial Class Clientes
         'MailTextBox
         '
         Me.MailTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Mail", True))
-        Me.MailTextBox.Location = New System.Drawing.Point(70, 15)
+        Me.MailTextBox.Location = New System.Drawing.Point(67, 115)
         Me.MailTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MailTextBox.Name = "MailTextBox"
         Me.MailTextBox.ReadOnly = True
-        Me.MailTextBox.Size = New System.Drawing.Size(398, 26)
+        Me.MailTextBox.Size = New System.Drawing.Size(401, 26)
         Me.MailTextBox.TabIndex = 2
         '
         'ClientesBindingSource
@@ -171,7 +172,7 @@ Partial Class Clientes
         'NIFTextBox
         '
         Me.NIFTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "NIF", True))
-        Me.NIFTextBox.Location = New System.Drawing.Point(70, 55)
+        Me.NIFTextBox.Location = New System.Drawing.Point(67, 161)
         Me.NIFTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.NIFTextBox.Name = "NIFTextBox"
         Me.NIFTextBox.ReadOnly = True
@@ -181,7 +182,7 @@ Partial Class Clientes
         'NIBTextBox
         '
         Me.NIBTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "NIB", True))
-        Me.NIBTextBox.Location = New System.Drawing.Point(70, 95)
+        Me.NIBTextBox.Location = New System.Drawing.Point(67, 207)
         Me.NIBTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.NIBTextBox.Name = "NIBTextBox"
         Me.NIBTextBox.ReadOnly = True
@@ -191,7 +192,7 @@ Partial Class Clientes
         'NomeTextBox
         '
         Me.NomeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Nome", True))
-        Me.NomeTextBox.Location = New System.Drawing.Point(26, 195)
+        Me.NomeTextBox.Location = New System.Drawing.Point(18, 55)
         Me.NomeTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.NomeTextBox.Name = "NomeTextBox"
         Me.NomeTextBox.ReadOnly = True
@@ -201,11 +202,11 @@ Partial Class Clientes
         'SobrenomeTextBox
         '
         Me.SobrenomeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Sobrenome", True))
-        Me.SobrenomeTextBox.Location = New System.Drawing.Point(230, 195)
+        Me.SobrenomeTextBox.Location = New System.Drawing.Point(222, 55)
         Me.SobrenomeTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.SobrenomeTextBox.Name = "SobrenomeTextBox"
         Me.SobrenomeTextBox.ReadOnly = True
-        Me.SobrenomeTextBox.Size = New System.Drawing.Size(240, 26)
+        Me.SobrenomeTextBox.Size = New System.Drawing.Size(246, 26)
         Me.SobrenomeTextBox.TabIndex = 10
         '
         'VendasBindingSource
@@ -486,7 +487,7 @@ Partial Class Clientes
         '
         Me.Button10.Location = New System.Drawing.Point(86, 401)
         Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(145, 47)
+        Me.Button10.Size = New System.Drawing.Size(100, 47)
         Me.Button10.TabIndex = 26
         Me.Button10.Text = "Novo"
         Me.Button10.UseVisualStyleBackColor = True
@@ -494,9 +495,9 @@ Partial Class Clientes
         'Button11
         '
         Me.Button11.BackColor = System.Drawing.Color.IndianRed
-        Me.Button11.Location = New System.Drawing.Point(240, 401)
+        Me.Button11.Location = New System.Drawing.Point(284, 401)
         Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(144, 47)
+        Me.Button11.Size = New System.Drawing.Size(100, 47)
         Me.Button11.TabIndex = 27
         Me.Button11.Text = "Remover"
         Me.Button11.UseVisualStyleBackColor = False
@@ -520,11 +521,21 @@ Partial Class Clientes
         Me.Button12.Text = "Novo"
         Me.Button12.UseVisualStyleBackColor = True
         '
+        'Button13
+        '
+        Me.Button13.Location = New System.Drawing.Point(192, 401)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(86, 47)
+        Me.Button13.TabIndex = 30
+        Me.Button13.Text = "Editar"
+        Me.Button13.UseVisualStyleBackColor = True
+        '
         'Clientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1554, 534)
+        Me.Controls.Add(Me.Button13)
         Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.Button12)
         Me.Controls.Add(Me.Button11)
@@ -615,4 +626,5 @@ Partial Class Clientes
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents PC As DataGridViewTextBoxColumn
     Friend WithEvents Subtotal As DataGridViewTextBoxColumn
+    Friend WithEvents Button13 As Button
 End Class

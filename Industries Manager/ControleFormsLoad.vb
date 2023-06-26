@@ -1,8 +1,18 @@
 ﻿Module ControleFormsLoad
     Public Formulario As Form
+    Public tamanhobuttonadd As Integer
+    Public tamanhobuttonedit As Integer
+    Public somaTamanhosButtonFPAndSpaceBetween As Integer
+
     Sub CenterOnScreenForm()
         Formulario.StartPosition = FormStartPosition.Manual
         Formulario.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Formulario.Width) \ 2, (Screen.PrimaryScreen.Bounds.Height - Formulario.Height) \ 2)
+    End Sub
+
+    Sub CarregamentoInicial()
+        tamanhobuttonadd = ButtonNandG.Width
+        tamanhobuttonedit = ButtonE.Width
+        somaTamanhosButtonFPAndSpaceBetween = ButtonF.Width + ButtonP.Width + (ButtonP.Location.X - ButtonF.Location.X + ButtonF.Width)
     End Sub
 
     Sub Desancorar(controles As Control, esquerda As Boolean, direita As Boolean, cima As Boolean, baixo As Boolean)

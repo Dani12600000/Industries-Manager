@@ -3,10 +3,10 @@ Public Class PMenu
     Dim TextOfFormButtonsPermitidos As List(Of String) = New List(Of String)()
 
     Private Sub PMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        CarragamentoInicialProprio()
     End Sub
 
-    Sub CarragamentoInicial()
+    Sub CarragamentoInicialProprio()
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Leitura_de_avisos' table. You can move, or remove it, as needed.
         Me.Leitura_de_avisosTableAdapter.Fill(Me.Industries_DanDataSet.Leitura_de_avisos)
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Avisos' table. You can move, or remove it, as needed.
