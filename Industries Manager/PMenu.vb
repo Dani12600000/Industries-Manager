@@ -151,6 +151,33 @@ Public Class PMenu
         Dim separador As String = Environment.NewLine
         Debug.WriteLine(String.Join(separador, TextOfFormButtonsPermitidos))
 
+        Dim botoesNaoUsados As List(Of Button) = New List(Of Button)()
+
+        For i As Integer = 1 To 6
+            Dim buttonName As String = "Button" & i
+            Debug.WriteLine("Button name: " & buttonName)
+            Dim button As Button = Me.Controls.OfType(Of Button)().FirstOrDefault(Function(btn) btn.Name = buttonName)
+
+            If i <= TextOfFormButtonsPermitidos.Count Then
+                button.Text = TextOfFormButtonsPermitidos(i - 1)
+            Else
+                button.Visible = False
+                botoesNaoUsados.Add(button)
+            End If
+        Next
+
+        Dim espacoNaoNecessario As Integer
+
+        If botoesNaoUsados.Count > 0 Then
+            espacoNaoNecessario = botoesNaoUsados(botoesNaoUsados.Count - 1).Location.Y - botoesNaoUsados(0).Location.Y
+
+            Me.Height = Me.ClientSize.Height - espacoNaoNecessario
+
+            For Each button As Button In Me.Controls.OfType(Of Button)()
+                Desancorar(button, True, True, False, False)
+            Next
+        End If
+
     End Sub
 
     Private Sub VerAvisosMandados_Click(sender As Object, e As EventArgs)

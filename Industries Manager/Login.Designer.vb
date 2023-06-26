@@ -195,9 +195,9 @@ Partial Class Login
         Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox1.Location = New System.Drawing.Point(75, 191)
         Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(181, 24)
+        Me.CheckBox1.Size = New System.Drawing.Size(136, 24)
         Me.CheckBox1.TabIndex = 10
-        Me.CheckBox1.Text = "Memorizar password"
+        Me.CheckBox1.Text = "Memorizar-me"
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'Label1

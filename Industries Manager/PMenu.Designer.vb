@@ -62,7 +62,8 @@ Partial Class PMenu
         '
         'Button1
         '
-        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Button1.Location = New System.Drawing.Point(32, 86)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -74,7 +75,8 @@ Partial Class PMenu
         '
         'Button2
         '
-        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Button2.Location = New System.Drawing.Point(32, 155)
         Me.Button2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -113,7 +115,8 @@ Partial Class PMenu
         '
         'Button3
         '
-        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Button3.Location = New System.Drawing.Point(32, 225)
         Me.Button3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -125,7 +128,8 @@ Partial Class PMenu
         '
         'Button4
         '
-        Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Button4.Location = New System.Drawing.Point(32, 295)
         Me.Button4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -137,7 +141,8 @@ Partial Class PMenu
         '
         'Button5
         '
-        Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Button5.Location = New System.Drawing.Point(32, 364)
         Me.Button5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -149,7 +154,8 @@ Partial Class PMenu
         '
         'Button6
         '
-        Me.Button6.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button6.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Button6.Location = New System.Drawing.Point(32, 434)
         Me.Button6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)

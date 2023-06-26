@@ -308,6 +308,8 @@ Public Class Funcionarios
 
             FuncionariosBindingSource.EndEdit()
             FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+
+            SortLogins()
         End If
     End Sub
 
