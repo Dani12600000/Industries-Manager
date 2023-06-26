@@ -193,6 +193,10 @@ Public Class Login
                                 bol = True
                             Else
                                 ' Senha válida, sair do loop
+                                Password = senha
+                                FuncionariosBindingSource.Current("Pass") = senha
+                                FuncionariosBindingSource.EndEdit()
+                                FuncionariosTableAdapter.Update(Industries_DanDataSet)
                                 Exit While
                             End If
 
@@ -216,6 +220,7 @@ Public Class Login
             Else
                 If Memorizado Then
                     MsgBox("A palavra-passe foi atualizada desde o ultimo login" & vbCrLf & "Por favor introduza novamente a palavra-passe", vbInformation, "Reintroduza a palavra-passe")
+                    TextBox1.Text = FuncionariosBindingSource.Current("Email")
                 Else
                     MsgBox("A palavra-passe que introduziu está errada" & vbCrLf & "Por favor introduza novamente a palavra-passe", vbInformation, "Palavra-passe incorreta")
                 End If

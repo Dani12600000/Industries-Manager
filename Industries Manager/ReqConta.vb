@@ -24,6 +24,7 @@ Public Class ReqConta
             Me.Text = "Criar primeira conta"
             Button2.Text = "Criar"
         End If
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

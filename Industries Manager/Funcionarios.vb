@@ -122,21 +122,18 @@ Public Class Funcionarios
         If FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") Then
             Button5.Text = "Contratar"
             Button5.BackColor = ContColor
-            ID_ProfissãoComboBox.Enabled = True
             ID_DepartamentoComboBox.Enabled = True
             SINumericUpDown.Enabled = True
             Button8.Enabled = False
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Despedir"
             Button5.BackColor = DespColor
-            ID_ProfissãoComboBox.Enabled = False
             ID_DepartamentoComboBox.Enabled = False
             SINumericUpDown.Enabled = False
             Button8.Enabled = True
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And Not FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Recontratar"
             Button5.BackColor = ContColor
-            ID_ProfissãoComboBox.Enabled = True
             ID_DepartamentoComboBox.Enabled = True
             SINumericUpDown.Enabled = True
             Button8.Enabled = False
@@ -216,6 +213,19 @@ Public Class Funcionarios
         End Try
     End Sub
 
+    Sub AtualizarBaseDadosContratarAndRecontratar()
+        FuncionariosBindingSource.Current("ID_Profissão") = ProfissõesBindingSource.Current("ID")
+        Debug.WriteLine("ID_DepartamentoComboBox.ValueMember: " & ID_DepartamentoComboBox.ValueMember)
+        FuncionariosBindingSource.Current("ID_Departamento") = DepartamentosBindingSource.Current("ID")
+        FuncionariosBindingSource.Current("Aprovacao") = True
+        FuncionariosBindingSource.Current("DDEDE") = Today()
+        FuncionariosBindingSource.Current("DDSDE") = DBNull.Value
+        FuncionariosBindingSource.Current("SI") = SINumericUpDown.Value
+
+        FuncionariosBindingSource.EndEdit()
+        FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+    End Sub
+
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
 
         Debug.WriteLine("SINumericUpDown.Value : " & SINumericUpDown.Value)
@@ -225,14 +235,7 @@ Public Class Funcionarios
                 EnviarMensagemAutomaticaContratacao(InfoUser.UserName, EmailTextBox.Text, NomeTextBox.Text, SobrenomeTextBox.Text, ProfissõesBindingSource.Current("Profissao"), DepartamentosBindingSource.Current("NDD"), SINumericUpDown.Value)
             End If
 
-            FuncionariosBindingSource.Current("ID_Profissão") = ProfissõesBindingSource.Current("ID")
-            FuncionariosBindingSource.Current("ID_Departamento") = DepartamentosBindingSource.Current("ID")
-            FuncionariosBindingSource.Current("Aprovacao") = True
-            FuncionariosBindingSource.Current("DDEDE") = Today()
-            FuncionariosBindingSource.Current("SI") = SINumericUpDown.Value
-
-            FuncionariosBindingSource.EndEdit()
-            FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+            AtualizarBaseDadosContratarAndRecontratar()
 
             MsgBox("Contradado", vbInformation)
 
@@ -258,19 +261,14 @@ Public Class Funcionarios
                 EnviarMensagemAutomaticaRecontratacao(InfoUser.UserName, EmailTextBox.Text, ProfissõesBindingSource.Current("Profissao"), DepartamentosBindingSource.Current("NDD"), SINumericUpDown.Value)
             End If
 
-            FuncionariosBindingSource.Current("Aprovacao") = True
-            FuncionariosBindingSource.Current("DDEDE") = Today()
-            FuncionariosBindingSource.Current("DDSDE") = DBNull.Value
-            FuncionariosBindingSource.Current("SI") = SINumericUpDown.Value
-
-            FuncionariosBindingSource.EndEdit()
-            FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+            AtualizarBaseDadosContratarAndRecontratar()
 
             MsgBox("Recontratado", vbInformation)
 
         End If
 
         VerificarContrartarDespedir()
+        SortLogins()
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click

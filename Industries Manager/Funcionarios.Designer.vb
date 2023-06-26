@@ -147,7 +147,7 @@ Partial Class Funcionarios
         'ID_DepartamentoLabel
         '
         ID_DepartamentoLabel.AutoSize = True
-        ID_DepartamentoLabel.Location = New System.Drawing.Point(12, 384)
+        ID_DepartamentoLabel.Location = New System.Drawing.Point(12, 387)
         ID_DepartamentoLabel.Name = "ID_DepartamentoLabel"
         ID_DepartamentoLabel.Size = New System.Drawing.Size(116, 20)
         ID_DepartamentoLabel.TabIndex = 34
@@ -449,6 +449,7 @@ Partial Class Funcionarios
         '
         Me.ID_ProfissãoComboBox.DataSource = Me.ProfissõesBindingSource
         Me.ID_ProfissãoComboBox.DisplayMember = "Profissao"
+        Me.ID_ProfissãoComboBox.Enabled = False
         Me.ID_ProfissãoComboBox.FormattingEnabled = True
         Me.ID_ProfissãoComboBox.Location = New System.Drawing.Point(97, 345)
         Me.ID_ProfissãoComboBox.Name = "ID_ProfissãoComboBox"
@@ -487,12 +488,13 @@ Partial Class Funcionarios
         'ID_DepartamentoComboBox
         '
         Me.ID_DepartamentoComboBox.DataSource = Me.DepartamentosBindingSource
-        Me.ID_DepartamentoComboBox.DisplayMember = "NDD"
+        Me.ID_DepartamentoComboBox.DisplayMember = "ADD"
         Me.ID_DepartamentoComboBox.FormattingEnabled = True
         Me.ID_DepartamentoComboBox.Location = New System.Drawing.Point(134, 384)
         Me.ID_DepartamentoComboBox.Name = "ID_DepartamentoComboBox"
         Me.ID_DepartamentoComboBox.Size = New System.Drawing.Size(291, 28)
         Me.ID_DepartamentoComboBox.TabIndex = 39
+        Me.ID_DepartamentoComboBox.ValueMember = "ID"
         '
         'SITextBox
         '
@@ -512,6 +514,7 @@ Partial Class Funcionarios
         Me.SINumericUpDown.Size = New System.Drawing.Size(231, 26)
         Me.SINumericUpDown.TabIndex = 42
         Me.SINumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.SINumericUpDown.ThousandsSeparator = True
         Me.SINumericUpDown.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
         'Funcionarios
