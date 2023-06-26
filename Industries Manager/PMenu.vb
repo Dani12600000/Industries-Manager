@@ -75,12 +75,81 @@ Public Class PMenu
 
         CenterOnScreenForm()
 
+        Dim DepartamentosComPermissao As List(Of Integer) = New List(Of Integer)()
+
         ' depois fazer duas tabelas novas, uma que tenha todos os tipos de permissões existentes e outra que junte as permissões e os departamentos pois 1 departamento pode ter varias permissões e 1 permissão pode estar em varios departamentos 
         ' devido a isso depois vou ter que alterar isto
 
-        If (InfoUser.UserDepID = 1) OrElse (InfoUser.UserDepID = 2) OrElse (InfoUser.UserDepID = 4) OrElse (InfoUser.UserDepID = 2) Then TextOfFormButtonsPermitidos.Add("Clientes")
+        Debug.WriteLine("")
 
+        ' Inserção destes valores na lista
 
+        ' Lista de departamentos com permissões para abrir
+        DepartamentosComPermissao = New List(Of Integer) From { ' Clientes
+            1, ' DSI
+            2, ' ADM
+            4, ' MKTG
+            5, ' CONT
+            10 ' VDS
+        }
+        Debug.WriteLine("ID_Departamentos permitidos para abrir o menu Clientes: " & String.Join(", ", DepartamentosComPermissao))
+
+        If DepartamentosComPermissao.Contains(InfoUser.UserDepID) OrElse InfoUser.UserAdm Then TextOfFormButtonsPermitidos.Add("Clientes")
+
+        ' Lista de departamentos com permissões para abrir
+        DepartamentosComPermissao = New List(Of Integer) From { ' Departamentos
+            1, ' DSI
+            2, ' ADM
+            3, ' RH
+            5 ' CONT
+        }
+        Debug.WriteLine("ID_Departamentos permitidos para abrir o menu Departamentos: " & String.Join(", ", DepartamentosComPermissao))
+
+        If DepartamentosComPermissao.Contains(InfoUser.UserDepID) OrElse InfoUser.UserAdm Then TextOfFormButtonsPermitidos.Add("Departamentos")
+
+        ' Lista de departamentos com permissões para abrir
+        DepartamentosComPermissao = New List(Of Integer) From { ' Fornecedores
+            5, ' CONT
+            9 ' COMP
+        }
+        Debug.WriteLine("ID_Departamentos permitidos para abrir o menu Fornecedores: " & String.Join(", ", DepartamentosComPermissao))
+
+        If DepartamentosComPermissao.Contains(InfoUser.UserDepID) OrElse InfoUser.UserAdm Then TextOfFormButtonsPermitidos.Add("Fornecedores")
+
+        ' Lista de departamentos com permissões para abrir
+        DepartamentosComPermissao = New List(Of Integer) From { ' Funcionarios
+            1, ' DSI
+            2, ' ADM
+            3, ' RH
+            5 ' CONT
+        }
+        Debug.WriteLine("ID_Departamentos permitidos para abrir o menu Funcionarios: " & String.Join(", ", DepartamentosComPermissao))
+
+        If DepartamentosComPermissao.Contains(InfoUser.UserDepID) OrElse InfoUser.UserAdm Then TextOfFormButtonsPermitidos.Add("Funcionarios")
+
+        ' Lista de departamentos com permissões para abrir
+        DepartamentosComPermissao = New List(Of Integer) From { ' Produtos
+            4, ' MKTG
+            8, ' DP
+            10 ' VDS
+        }
+        Debug.WriteLine("ID_Departamentos permitidos para abrir o menu Produtos: " & String.Join(", ", DepartamentosComPermissao))
+
+        If DepartamentosComPermissao.Contains(InfoUser.UserDepID) OrElse InfoUser.UserAdm Then TextOfFormButtonsPermitidos.Add("Produtos")
+
+        ' Lista de departamentos com permissões para abrir
+        DepartamentosComPermissao = New List(Of Integer) From { ' Profissões
+            3 ' RH
+        }
+        Debug.WriteLine("ID_Departamentos permitidos para abrir o menu Profissões: " & String.Join(", ", DepartamentosComPermissao))
+
+        If DepartamentosComPermissao.Contains(InfoUser.UserDepID) OrElse InfoUser.UserAdm Then TextOfFormButtonsPermitidos.Add("Profissões")
+
+        Debug.WriteLine("")
+
+        Debug.WriteLine("Menus a mostrar:")
+        Dim separador As String = Environment.NewLine
+        Debug.WriteLine(String.Join(separador, TextOfFormButtonsPermitidos))
 
     End Sub
 

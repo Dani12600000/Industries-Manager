@@ -23,6 +23,7 @@
         ButtonP = Button2
         ButtonN = Button3
         ButtonL = Button4
+        ButtonE = Button10
 
         IgnoreTextBoxs.Add(DDDTextBox)
         IgnoreTextBoxs.Add(NomeDiretorTextBox)
@@ -157,9 +158,9 @@
                 DepartamentosBindingSource.EndEdit()
                 DepartamentosTableAdapter.Update(Industries_DanDataSet.Departamentos)
                 acabarAlteracoes()
-                MessageBox.Show("Alterações salvas com sucesso.")
+                MessageBox.Show("Departamento salvo com sucesso.")
             Catch ex As Exception
-                MessageBox.Show("Ocorreu um erro ao salvar as alterações: " & ex.Message)
+                MessageBox.Show("Ocorreu um erro ao salvar o departamentos: " & ex.Message)
             End Try
         End If
     End Sub
@@ -302,5 +303,9 @@
 
     Private Sub Departamentos_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         PMenu.Activate()
+    End Sub
+
+    Private Sub Button10_Click_1(sender As Object, e As EventArgs) Handles Button10.Click
+        iniciarAlteracoes()
     End Sub
 End Class
