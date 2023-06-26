@@ -61,7 +61,7 @@
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        FuncionariosBindingSource.Filter = "DDEDE <= #" & Date.Today.ToString("MM/dd/yyyy") & "# AND (DDSDE IS NULL OR DDSDE >= #" & Date.Today.ToString("MM/dd/yyyy") & "#)"
+        FuncionariosBindingSource.Filter = "DDEDE <= #" & Date.Today.ToString("MM/dd/yyyy") & "# AND (DDSDE IS NULL OR DDSDE > #" & Date.Today.ToString("MM/dd/yyyy") & "#)"
         ResetarBotões_DeixarApenasEste(Button6)
     End Sub
 
