@@ -251,6 +251,8 @@ Public Class Funcionarios
 
         FuncionariosBindingSource.EndEdit()
         FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+
+        SortLogins()
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
@@ -278,6 +280,8 @@ Public Class Funcionarios
                 FuncionariosBindingSource.EndEdit()
                 FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
 
+                SortLogins()
+
                 MsgBox("Despedido", vbInformation)
 
             End If
@@ -295,7 +299,6 @@ Public Class Funcionarios
         End If
 
         VerificarContrartarDespedir()
-        SortLogins()
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
