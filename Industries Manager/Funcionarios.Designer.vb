@@ -41,7 +41,6 @@ Partial Class Funcionarios
         Me.FotoPictureBox = New System.Windows.Forms.PictureBox()
         Me.EmailTextBox = New System.Windows.Forms.TextBox()
         Me.ProfissõesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SINumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.DDEDEDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Login_FuncionarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -72,6 +71,7 @@ Partial Class Funcionarios
         Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
         Me.ID_DepartamentoComboBox = New System.Windows.Forms.ComboBox()
         Me.SITextBox = New System.Windows.Forms.TextBox()
+        Me.SINumericUpDown = New System.Windows.Forms.NumericUpDown()
         NomeLabel = New System.Windows.Forms.Label()
         SobrenomeLabel = New System.Windows.Forms.Label()
         FotoLabel = New System.Windows.Forms.Label()
@@ -83,11 +83,11 @@ Partial Class Funcionarios
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FotoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProfissõesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SINumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Login_FuncionarioDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SINumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NomeLabel
@@ -147,7 +147,7 @@ Partial Class Funcionarios
         'ID_DepartamentoLabel
         '
         ID_DepartamentoLabel.AutoSize = True
-        ID_DepartamentoLabel.Location = New System.Drawing.Point(12, 384)
+        ID_DepartamentoLabel.Location = New System.Drawing.Point(12, 387)
         ID_DepartamentoLabel.Name = "ID_DepartamentoLabel"
         ID_DepartamentoLabel.Size = New System.Drawing.Size(116, 20)
         ID_DepartamentoLabel.TabIndex = 34
@@ -233,22 +233,6 @@ Partial Class Funcionarios
         '
         Me.ProfissõesBindingSource.DataMember = "Profissões"
         Me.ProfissõesBindingSource.DataSource = Me.Industries_DanDataSet
-        '
-        'SINumericUpDown
-        '
-        Me.SINumericUpDown.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FuncionariosBindingSource, "SI", True))
-        Me.SINumericUpDown.DecimalPlaces = 2
-        Me.SINumericUpDown.Enabled = False
-        Me.SINumericUpDown.Increment = New Decimal(New Integer() {15, 0, 0, 0})
-        Me.SINumericUpDown.Location = New System.Drawing.Point(80, 429)
-        Me.SINumericUpDown.Maximum = New Decimal(New Integer() {100000000, 0, 0, 0})
-        Me.SINumericUpDown.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.SINumericUpDown.Name = "SINumericUpDown"
-        Me.SINumericUpDown.Size = New System.Drawing.Size(231, 26)
-        Me.SINumericUpDown.TabIndex = 11
-        Me.SINumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.SINumericUpDown.ThousandsSeparator = True
-        Me.SINumericUpDown.Value = New Decimal(New Integer() {74083, 0, 0, 131072})
         '
         'DDEDEDateTimePicker
         '
@@ -465,6 +449,7 @@ Partial Class Funcionarios
         '
         Me.ID_ProfissãoComboBox.DataSource = Me.ProfissõesBindingSource
         Me.ID_ProfissãoComboBox.DisplayMember = "Profissao"
+        Me.ID_ProfissãoComboBox.Enabled = False
         Me.ID_ProfissãoComboBox.FormattingEnabled = True
         Me.ID_ProfissãoComboBox.Location = New System.Drawing.Point(97, 345)
         Me.ID_ProfissãoComboBox.Name = "ID_ProfissãoComboBox"
@@ -503,12 +488,13 @@ Partial Class Funcionarios
         'ID_DepartamentoComboBox
         '
         Me.ID_DepartamentoComboBox.DataSource = Me.DepartamentosBindingSource
-        Me.ID_DepartamentoComboBox.DisplayMember = "NDD"
+        Me.ID_DepartamentoComboBox.DisplayMember = "ADD"
         Me.ID_DepartamentoComboBox.FormattingEnabled = True
         Me.ID_DepartamentoComboBox.Location = New System.Drawing.Point(134, 384)
         Me.ID_DepartamentoComboBox.Name = "ID_DepartamentoComboBox"
         Me.ID_DepartamentoComboBox.Size = New System.Drawing.Size(291, 28)
         Me.ID_DepartamentoComboBox.TabIndex = 39
+        Me.ID_DepartamentoComboBox.ValueMember = "ID"
         '
         'SITextBox
         '
@@ -518,11 +504,25 @@ Partial Class Funcionarios
         Me.SITextBox.TabIndex = 41
         Me.SITextBox.Visible = False
         '
+        'SINumericUpDown
+        '
+        Me.SINumericUpDown.DecimalPlaces = 2
+        Me.SINumericUpDown.Location = New System.Drawing.Point(80, 428)
+        Me.SINumericUpDown.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
+        Me.SINumericUpDown.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.SINumericUpDown.Name = "SINumericUpDown"
+        Me.SINumericUpDown.Size = New System.Drawing.Size(231, 26)
+        Me.SINumericUpDown.TabIndex = 42
+        Me.SINumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.SINumericUpDown.ThousandsSeparator = True
+        Me.SINumericUpDown.Value = New Decimal(New Integer() {10, 0, 0, 0})
+        '
         'Funcionarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1277, 726)
+        Me.Controls.Add(Me.SINumericUpDown)
         Me.Controls.Add(Me.ID_DepartamentoComboBox)
         Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.ID_ProfissãoComboBox)
@@ -545,7 +545,6 @@ Partial Class Funcionarios
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DDEDEDateTimePicker)
         Me.Controls.Add(SILabel)
-        Me.Controls.Add(Me.SINumericUpDown)
         Me.Controls.Add(ID_ProfissãoLabel)
         Me.Controls.Add(EmailLabel)
         Me.Controls.Add(Me.EmailTextBox)
@@ -565,11 +564,11 @@ Partial Class Funcionarios
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FotoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ProfissõesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SINumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Login_FuncionarioDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SINumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -583,7 +582,6 @@ Partial Class Funcionarios
     Friend WithEvents SobrenomeTextBox As TextBox
     Friend WithEvents FotoPictureBox As PictureBox
     Friend WithEvents EmailTextBox As TextBox
-    Friend WithEvents SINumericUpDown As NumericUpDown
     Friend WithEvents DDEDEDateTimePicker As DateTimePicker
     Friend WithEvents Label1 As Label
     Friend WithEvents Login_FuncionarioTableAdapter As Industries_DanDataSetTableAdapters.Login_FuncionarioTableAdapter
@@ -617,4 +615,5 @@ Partial Class Funcionarios
     Friend WithEvents Diretores_de_DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter
     Friend WithEvents ID_DepartamentoComboBox As ComboBox
     Friend WithEvents SITextBox As TextBox
+    Friend WithEvents SINumericUpDown As NumericUpDown
 End Class

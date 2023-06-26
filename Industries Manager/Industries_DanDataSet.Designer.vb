@@ -2957,7 +2957,7 @@ Partial Public Class Industries_DanDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddFuncionariosRow(ByVal Aprovacao As Boolean, ByVal Adm As Boolean, ByVal Nome As String, ByVal Sobrenome As String, ByVal foto() As Byte, ByVal Email As String, ByVal Pass As String, ByVal parentProfissõesRowByProfissõesFuncionarios As ProfissõesRow, ByVal parentDepartamentosRowByDepartamentosFuncionarios As DepartamentosRow, ByVal SI As Integer, ByVal DDEDE As Date, ByVal DDSDE As Date) As FuncionariosRow
+        Public Overloads Function AddFuncionariosRow(ByVal Aprovacao As Boolean, ByVal Adm As Boolean, ByVal Nome As String, ByVal Sobrenome As String, ByVal foto() As Byte, ByVal Email As String, ByVal Pass As String, ByVal parentProfissõesRowByProfissõesFuncionarios As ProfissõesRow, ByVal parentDepartamentosRowByDepartamentosFuncionarios As DepartamentosRow, ByVal SI As Double, ByVal DDEDE As Date, ByVal DDSDE As Date) As FuncionariosRow
             Dim rowFuncionariosRow As FuncionariosRow = CType(Me.NewRow,FuncionariosRow)
             Dim columnValuesArray() As Object = New Object() {Nothing, Aprovacao, Adm, Nome, Sobrenome, foto, Email, Pass, Nothing, Nothing, SI, DDEDE, DDSDE}
             If (Not (parentProfissõesRowByProfissõesFuncionarios) Is Nothing) Then
@@ -3032,7 +3032,7 @@ Partial Public Class Industries_DanDataSet
             MyBase.Columns.Add(Me.columnID_Profissão)
             Me.columnID_Departamento = New Global.System.Data.DataColumn("ID_Departamento", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnID_Departamento)
-            Me.columnSI = New Global.System.Data.DataColumn("SI", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnSI = New Global.System.Data.DataColumn("SI", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSI)
             Me.columnDDEDE = New Global.System.Data.DataColumn("DDEDE", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDDEDE)
@@ -6270,10 +6270,10 @@ Partial Public Class Industries_DanDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property SI() As Integer
+        Public Property SI() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tableFuncionarios.SIColumn),Integer)
+                    Return CType(Me(Me.tableFuncionarios.SIColumn),Double)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("O valor da coluna 'SI' na tabela 'Funcionarios' é DBNull.", e)
                 End Try
@@ -10560,7 +10560,7 @@ Namespace Industries_DanDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ID_Departamento", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Departamento", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ID_Departamento", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Departamento", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_SI", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SI", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_SI", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SI", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_SI", Global.System.Data.OleDb.OleDbType.[Double], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SI", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_DDEDE", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DDEDE", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_DDEDE", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DDEDE", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_DDSDE", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DDSDE", Global.System.Data.DataRowVersion.Original, true, Nothing))
@@ -10580,7 +10580,7 @@ Namespace Industries_DanDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Pass", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Pass", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_Profissão", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Profissão", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_Departamento", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Departamento", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("SI", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SI", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("SI", Global.System.Data.OleDb.OleDbType.[Double], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SI", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("DDEDE", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DDEDE", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("DDSDE", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DDSDE", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand = New Global.System.Data.OleDb.OleDbCommand()
@@ -10606,7 +10606,7 @@ Namespace Industries_DanDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Pass", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Pass", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_Profissão", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Profissão", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_Departamento", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Departamento", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("SI", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SI", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("SI", Global.System.Data.OleDb.OleDbType.[Double], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SI", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("DDEDE", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DDEDE", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("DDSDE", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DDSDE", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ID", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
@@ -10627,7 +10627,7 @@ Namespace Industries_DanDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ID_Departamento", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Departamento", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ID_Departamento", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Departamento", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_SI", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SI", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_SI", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SI", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_SI", Global.System.Data.OleDb.OleDbType.[Double], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SI", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_DDEDE", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DDEDE", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_DDEDE", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DDEDE", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_DDSDE", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DDSDE", Global.System.Data.DataRowVersion.Original, true, Nothing))
@@ -10708,7 +10708,7 @@ Namespace Industries_DanDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer, ByVal Original_Aprovacao As Boolean, ByVal Original_Adm As Boolean, ByVal Original_Nome As String, ByVal Original_Sobrenome As String, ByVal Original_Email As String, ByVal Original_Pass As String, ByVal Original_ID_Profissão As Global.System.Nullable(Of Integer), ByVal Original_ID_Departamento As Global.System.Nullable(Of Integer), ByVal Original_SI As Global.System.Nullable(Of Integer), ByVal Original_DDEDE As Global.System.Nullable(Of Date), ByVal Original_DDSDE As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer, ByVal Original_Aprovacao As Boolean, ByVal Original_Adm As Boolean, ByVal Original_Nome As String, ByVal Original_Sobrenome As String, ByVal Original_Email As String, ByVal Original_Pass As String, ByVal Original_ID_Profissão As Global.System.Nullable(Of Integer), ByVal Original_ID_Departamento As Global.System.Nullable(Of Integer), ByVal Original_SI As Global.System.Nullable(Of Double), ByVal Original_DDEDE As Global.System.Nullable(Of Date), ByVal Original_DDSDE As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
             Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
             Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Aprovacao,Boolean)
@@ -10758,7 +10758,7 @@ Namespace Industries_DanDataSetTableAdapters
             End If
             If (Original_SI.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_SI.Value,Integer)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_SI.Value,Double)
             Else
                 Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
@@ -10796,7 +10796,7 @@ Namespace Industries_DanDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Aprovacao As Boolean, ByVal Adm As Boolean, ByVal Nome As String, ByVal Sobrenome As String, ByVal foto() As Byte, ByVal Email As String, ByVal Pass As String, ByVal ID_Profissão As Global.System.Nullable(Of Integer), ByVal ID_Departamento As Global.System.Nullable(Of Integer), ByVal SI As Global.System.Nullable(Of Integer), ByVal DDEDE As Global.System.Nullable(Of Date), ByVal DDSDE As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Insert(ByVal Aprovacao As Boolean, ByVal Adm As Boolean, ByVal Nome As String, ByVal Sobrenome As String, ByVal foto() As Byte, ByVal Email As String, ByVal Pass As String, ByVal ID_Profissão As Global.System.Nullable(Of Integer), ByVal ID_Departamento As Global.System.Nullable(Of Integer), ByVal SI As Global.System.Nullable(Of Double), ByVal DDEDE As Global.System.Nullable(Of Date), ByVal DDSDE As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(Aprovacao,Boolean)
             Me.Adapter.InsertCommand.Parameters(1).Value = CType(Adm,Boolean)
             If (Nome Is Nothing) Then
@@ -10835,7 +10835,7 @@ Namespace Industries_DanDataSetTableAdapters
                 Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
             If (SI.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(SI.Value,Integer)
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(SI.Value,Double)
             Else
                 Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
@@ -10878,7 +10878,7 @@ Namespace Industries_DanDataSetTableAdapters
                     ByVal Pass As String,  _
                     ByVal ID_Profissão As Global.System.Nullable(Of Integer),  _
                     ByVal ID_Departamento As Global.System.Nullable(Of Integer),  _
-                    ByVal SI As Global.System.Nullable(Of Integer),  _
+                    ByVal SI As Global.System.Nullable(Of Double),  _
                     ByVal DDEDE As Global.System.Nullable(Of Date),  _
                     ByVal DDSDE As Global.System.Nullable(Of Date),  _
                     ByVal Original_ID As Integer,  _
@@ -10890,7 +10890,7 @@ Namespace Industries_DanDataSetTableAdapters
                     ByVal Original_Pass As String,  _
                     ByVal Original_ID_Profissão As Global.System.Nullable(Of Integer),  _
                     ByVal Original_ID_Departamento As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_SI As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_SI As Global.System.Nullable(Of Double),  _
                     ByVal Original_DDEDE As Global.System.Nullable(Of Date),  _
                     ByVal Original_DDSDE As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Aprovacao,Boolean)
@@ -10931,7 +10931,7 @@ Namespace Industries_DanDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
             If (SI.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(SI.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(SI.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
@@ -10994,7 +10994,7 @@ Namespace Industries_DanDataSetTableAdapters
             End If
             If (Original_SI.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_SI.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_SI.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value

@@ -50,38 +50,40 @@ Public Class Funcionarios
         distanciaButtonsContAndRest = Button6.Location.X - Button5.Location.X - Button5.Width
         distanciaButtonsContAndFirst = ButtonF.Location.Y - Button5.Location.Y - Button5.Height
 
-        If {1}.Contains(InfoUser.UserDepID) Then ' Depois mudar para variaveis dos departamentos com permissão para a gerenciar as contas (neste caso os departamentos de TI ou no caso da minha base de dados gestão de base dados
-            Button11.Visible = True
-            Button5.Visible = False
-            Button6.Visible = True
+        If Not InfoUser.UserAdm Then
+            If {1}.Contains(InfoUser.UserDepID) Then ' Depois mudar para variaveis dos departamentos com permissão para a gerenciar as contas (neste caso os departamentos de TI ou no caso da minha base de dados o departamento de Desenvolvimento de Sistemas de Informação
+                Button11.Visible = True
+                Button5.Visible = False
+                Button6.Visible = True
 
-            Button6.Location = Button5.Location
-            Button6.Width = Button6.Width + distanciaButtonsContAndRest + Button5.Width
+                Button6.Location = Button5.Location
+                Button6.Width = Button6.Width + distanciaButtonsContAndRest + Button5.Width
 
-        Else
-            Button11.Visible = False
-            Button5.Visible = True
-            Button6.Visible = False
+            Else
+                Button11.Visible = False
+                Button5.Visible = True
+                Button6.Visible = False
 
-            Button5.Location = Button11.Location
+                Button5.Location = Button11.Location
 
-            Dim yNewLocationButtons As Integer = Button5.Location.Y + Button5.Height + distanciaButtonsContAndFirst
+                Dim yNewLocationButtons As Integer = Button5.Location.Y + Button5.Height + distanciaButtonsContAndFirst
 
-            ButtonF.Location = New Point(ButtonF.Location.X, yNewLocationButtons)
-            ButtonP.Location = New Point(ButtonP.Location.X, yNewLocationButtons)
-            ButtonN.Location = New Point(ButtonN.Location.X, yNewLocationButtons)
-            ButtonL.Location = New Point(ButtonL.Location.X, yNewLocationButtons)
-            Button5.Width = Button5.Width + distanciaButtonsContAndRest + Button6.Width
+                ButtonF.Location = New Point(ButtonF.Location.X, yNewLocationButtons)
+                ButtonP.Location = New Point(ButtonP.Location.X, yNewLocationButtons)
+                ButtonN.Location = New Point(ButtonN.Location.X, yNewLocationButtons)
+                ButtonL.Location = New Point(ButtonL.Location.X, yNewLocationButtons)
+                Button5.Width = Button5.Width + distanciaButtonsContAndRest + Button6.Width
 
-            Label2.Visible = False
-            Login_FuncionarioDataGridView.Visible = False
-            Button9.Visible = False
-            Button10.Visible = False
+                Label2.Visible = False
+                Login_FuncionarioDataGridView.Visible = False
+                Button9.Visible = False
+                Button10.Visible = False
 
-            Me.Width = Me.ClientSize.Width - Login_FuncionarioDataGridView.Size.Width - ((SobrenomeTextBox.Location.X + SobrenomeTextBox.Width) - Login_FuncionarioDataGridView.Location.X) - 40
-            Me.Height = Me.ClientSize.Height
+                Me.Width = Me.ClientSize.Width - Login_FuncionarioDataGridView.Size.Width - ((SobrenomeTextBox.Location.X + SobrenomeTextBox.Width) - Login_FuncionarioDataGridView.Location.X) - 40
+                Me.Height = Me.ClientSize.Height
 
 
+            End If
         End If
     End Sub
 
@@ -107,6 +109,8 @@ Public Class Funcionarios
         If IsDBNull(FuncionariosBindingSource.Current("SI")) OrElse FuncionariosBindingSource.Current("SI") < 10 Then
             SINumericUpDown.Value = Double.Parse(740.83)
             Debug.WriteLine("Teste")
+        Else
+            SINumericUpDown.Value = FuncionariosBindingSource.Current("SI")
         End If
 
 
@@ -118,21 +122,18 @@ Public Class Funcionarios
         If FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") Then
             Button5.Text = "Contratar"
             Button5.BackColor = ContColor
-            ID_ProfissãoComboBox.Enabled = True
             ID_DepartamentoComboBox.Enabled = True
             SINumericUpDown.Enabled = True
             Button8.Enabled = False
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Despedir"
             Button5.BackColor = DespColor
-            ID_ProfissãoComboBox.Enabled = False
             ID_DepartamentoComboBox.Enabled = False
             SINumericUpDown.Enabled = False
             Button8.Enabled = True
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And Not FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Recontratar"
             Button5.BackColor = ContColor
-            ID_ProfissãoComboBox.Enabled = True
             ID_DepartamentoComboBox.Enabled = True
             SINumericUpDown.Enabled = True
             Button8.Enabled = False
@@ -212,6 +213,19 @@ Public Class Funcionarios
         End Try
     End Sub
 
+    Sub AtualizarBaseDadosContratarAndRecontratar()
+        FuncionariosBindingSource.Current("ID_Profissão") = ProfissõesBindingSource.Current("ID")
+        Debug.WriteLine("ID_DepartamentoComboBox.ValueMember: " & ID_DepartamentoComboBox.ValueMember)
+        FuncionariosBindingSource.Current("ID_Departamento") = DepartamentosBindingSource.Current("ID")
+        FuncionariosBindingSource.Current("Aprovacao") = True
+        FuncionariosBindingSource.Current("DDEDE") = Today()
+        FuncionariosBindingSource.Current("DDSDE") = DBNull.Value
+        FuncionariosBindingSource.Current("SI") = SINumericUpDown.Value
+
+        FuncionariosBindingSource.EndEdit()
+        FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+    End Sub
+
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
 
         Debug.WriteLine("SINumericUpDown.Value : " & SINumericUpDown.Value)
@@ -221,13 +235,7 @@ Public Class Funcionarios
                 EnviarMensagemAutomaticaContratacao(InfoUser.UserName, EmailTextBox.Text, NomeTextBox.Text, SobrenomeTextBox.Text, ProfissõesBindingSource.Current("Profissao"), DepartamentosBindingSource.Current("NDD"), SINumericUpDown.Value)
             End If
 
-            FuncionariosBindingSource.Current("ID_Profissão") = ProfissõesBindingSource.Current("ID")
-            FuncionariosBindingSource.Current("ID_Departamento") = DepartamentosBindingSource.Current("ID")
-            FuncionariosBindingSource.Current("Aprovacao") = True
-            FuncionariosBindingSource.Current("DDEDE") = Today()
-
-            FuncionariosBindingSource.EndEdit()
-            FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+            AtualizarBaseDadosContratarAndRecontratar()
 
             MsgBox("Contradado", vbInformation)
 
@@ -253,18 +261,14 @@ Public Class Funcionarios
                 EnviarMensagemAutomaticaRecontratacao(InfoUser.UserName, EmailTextBox.Text, ProfissõesBindingSource.Current("Profissao"), DepartamentosBindingSource.Current("NDD"), SINumericUpDown.Value)
             End If
 
-            FuncionariosBindingSource.Current("Aprovacao") = True
-            FuncionariosBindingSource.Current("DDEDE") = Today()
-            FuncionariosBindingSource.Current("DDSDE") = DBNull.Value
-
-            FuncionariosBindingSource.EndEdit()
-            FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+            AtualizarBaseDadosContratarAndRecontratar()
 
             MsgBox("Recontratado", vbInformation)
 
         End If
 
         VerificarContrartarDespedir()
+        SortLogins()
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
@@ -286,6 +290,8 @@ Public Class Funcionarios
             iniciarAlteracaoUnica(Button8, SINumericUpDown)
 
         ElseIf Button8.Text = "Guardar" Then
+
+            FuncionariosBindingSource.Current("SI") = SINumericUpDown.Value
 
             FuncionariosBindingSource.EndEdit()
             FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)

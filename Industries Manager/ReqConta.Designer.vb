@@ -230,10 +230,10 @@ Partial Class ReqConta
         Me.LinkLabel1.Location = New System.Drawing.Point(331, 616)
         Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(77, 20)
+        Me.LinkLabel1.Size = New System.Drawing.Size(82, 20)
         Me.LinkLabel1.TabIndex = 21
         Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "faça login"
+        Me.LinkLabel1.Text = "Faça login"
         '
         'ProfissãoComboBox
         '
@@ -319,6 +319,7 @@ Partial Class ReqConta
         Me.Controls.Add(Me.SobrenomeTextBox)
         Me.Controls.Add(NomeLabel)
         Me.Controls.Add(Me.NomeTextBox)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "ReqConta"
         Me.Text = "Requesitar Conta"
