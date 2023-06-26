@@ -66,11 +66,13 @@
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-
+        FuncionariosBindingSource.Filter = "DDEDE IS NULL AND DDSDE IS NULL"
+        ResetarBotões_DeixarApenasEste(Button7)
     End Sub
 
     Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
-
+        FuncionariosBindingSource.Filter = "DDEDE <= #" & Date.Today.ToString("MM/dd/yyyy") & "# AND DDSDE < #" & Date.Today.ToString("MM/dd/yyyy") & "#"
+        ResetarBotões_DeixarApenasEste(Button10)
     End Sub
 
     Private Sub ResetarBotões_DeixarApenasEste(botao As Button)
