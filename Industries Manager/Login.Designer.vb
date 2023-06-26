@@ -59,9 +59,9 @@ Partial Class Login
         EmailLabel.Location = New System.Drawing.Point(71, 63)
         EmailLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         EmailLabel.Name = "EmailLabel"
-        EmailLabel.Size = New System.Drawing.Size(65, 22)
+        EmailLabel.Size = New System.Drawing.Size(60, 22)
         EmailLabel.TabIndex = 1
-        EmailLabel.Text = "E-mail:"
+        EmailLabel.Text = "E-mail"
         '
         'PassLabel
         '
@@ -70,9 +70,9 @@ Partial Class Login
         PassLabel.Location = New System.Drawing.Point(71, 128)
         PassLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         PassLabel.Name = "PassLabel"
-        PassLabel.Size = New System.Drawing.Size(132, 22)
+        PassLabel.Size = New System.Drawing.Size(127, 22)
         PassLabel.TabIndex = 2
-        PassLabel.Text = "Palavra-Passe:"
+        PassLabel.Text = "Palavra-Passe"
         '
         'Industries_DanDataSet
         '
