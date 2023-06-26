@@ -3,6 +3,7 @@
     Public tamanhobuttonadd As Integer
     Public tamanhobuttonedit As Integer
     Public somaTamanhosButtonFPAndSpaceBetween As Integer
+    Public Locationbuttonadd, Locationbuttonedit As Point
 
     Sub CenterOnScreenForm()
         Formulario.StartPosition = FormStartPosition.Manual
@@ -13,6 +14,13 @@
         tamanhobuttonadd = ButtonNandG.Width
         tamanhobuttonedit = ButtonE.Width
         somaTamanhosButtonFPAndSpaceBetween = ButtonF.Width + ButtonP.Width + (ButtonP.Location.X - ButtonF.Location.X + ButtonF.Width)
+    End Sub
+
+    Sub DepartamentosAndAcoesQuePodemRealizar(AcoesDeCadaDepartamento As String)
+        If AcoesDeCadaDepartamento Then
+            '@TODO : TERMINAR
+        End If
+
     End Sub
 
     Sub Desancorar(controles As Control, esquerda As Boolean, direita As Boolean, cima As Boolean, baixo As Boolean)

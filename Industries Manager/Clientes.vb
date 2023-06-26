@@ -23,6 +23,7 @@
         ButtonN = Button3
         ButtonL = Button4
 
+
         CenterOnScreenForm()
     End Sub
 

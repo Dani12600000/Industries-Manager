@@ -137,7 +137,6 @@ Partial Class Clientes
         SobrenomeLabel.Size = New System.Drawing.Size(96, 20)
         SobrenomeLabel.TabIndex = 9
         SobrenomeLabel.Text = "Sobrenome:"
-        AddHandler SobrenomeLabel.Click, AddressOf Me.SobrenomeLabel_Click
         '
         'DDNLabel
         '
