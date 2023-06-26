@@ -28,7 +28,6 @@ Partial Class Funcionarios
         Dim FotoLabel As System.Windows.Forms.Label
         Dim EmailLabel As System.Windows.Forms.Label
         Dim ID_ProfissãoLabel As System.Windows.Forms.Label
-        Dim SILabel As System.Windows.Forms.Label
         Dim ID_DepartamentoLabel As System.Windows.Forms.Label
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
         Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -73,12 +72,12 @@ Partial Class Funcionarios
         Me.SITextBox = New System.Windows.Forms.TextBox()
         Me.SINumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.Button12 = New System.Windows.Forms.Button()
+        Me.SILabel = New System.Windows.Forms.Label()
         NomeLabel = New System.Windows.Forms.Label()
         SobrenomeLabel = New System.Windows.Forms.Label()
         FotoLabel = New System.Windows.Forms.Label()
         EmailLabel = New System.Windows.Forms.Label()
         ID_ProfissãoLabel = New System.Windows.Forms.Label()
-        SILabel = New System.Windows.Forms.Label()
         ID_DepartamentoLabel = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -135,15 +134,6 @@ Partial Class Funcionarios
         ID_ProfissãoLabel.Size = New System.Drawing.Size(79, 20)
         ID_ProfissãoLabel.TabIndex = 8
         ID_ProfissãoLabel.Text = "Profissão:"
-        '
-        'SILabel
-        '
-        SILabel.AutoSize = True
-        SILabel.Location = New System.Drawing.Point(12, 431)
-        SILabel.Name = "SILabel"
-        SILabel.Size = New System.Drawing.Size(62, 20)
-        SILabel.TabIndex = 10
-        SILabel.Text = "Salário:"
         '
         'ID_DepartamentoLabel
         '
@@ -217,7 +207,7 @@ Partial Class Funcionarios
         Me.FotoPictureBox.DataBindings.Add(New System.Windows.Forms.Binding("Image", Me.FuncionariosBindingSource, "foto", True))
         Me.FotoPictureBox.Location = New System.Drawing.Point(64, 90)
         Me.FotoPictureBox.Name = "FotoPictureBox"
-        Me.FotoPictureBox.Size = New System.Drawing.Size(267, 187)
+        Me.FotoPictureBox.Size = New System.Drawing.Size(359, 187)
         Me.FotoPictureBox.TabIndex = 5
         Me.FotoPictureBox.TabStop = False
         '
@@ -227,7 +217,7 @@ Partial Class Funcionarios
         Me.EmailTextBox.Location = New System.Drawing.Point(70, 303)
         Me.EmailTextBox.Name = "EmailTextBox"
         Me.EmailTextBox.ReadOnly = True
-        Me.EmailTextBox.Size = New System.Drawing.Size(241, 26)
+        Me.EmailTextBox.Size = New System.Drawing.Size(353, 26)
         Me.EmailTextBox.TabIndex = 7
         '
         'ProfissõesBindingSource
@@ -385,7 +375,7 @@ Partial Class Funcionarios
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(320, 299)
+        Me.Button7.Location = New System.Drawing.Point(320, 302)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(105, 34)
         Me.Button7.TabIndex = 28
@@ -454,7 +444,7 @@ Partial Class Funcionarios
         Me.ID_ProfissãoComboBox.FormattingEnabled = True
         Me.ID_ProfissãoComboBox.Location = New System.Drawing.Point(97, 345)
         Me.ID_ProfissãoComboBox.Name = "ID_ProfissãoComboBox"
-        Me.ID_ProfissãoComboBox.Size = New System.Drawing.Size(328, 28)
+        Me.ID_ProfissãoComboBox.Size = New System.Drawing.Size(326, 28)
         Me.ID_ProfissãoComboBox.TabIndex = 36
         Me.ID_ProfissãoComboBox.ValueMember = "ID"
         '
@@ -499,20 +489,20 @@ Partial Class Funcionarios
         '
         'SITextBox
         '
-        Me.SITextBox.Location = New System.Drawing.Point(80, 429)
+        Me.SITextBox.Location = New System.Drawing.Point(160, 429)
         Me.SITextBox.Name = "SITextBox"
-        Me.SITextBox.Size = New System.Drawing.Size(247, 26)
+        Me.SITextBox.Size = New System.Drawing.Size(167, 26)
         Me.SITextBox.TabIndex = 41
         Me.SITextBox.Visible = False
         '
         'SINumericUpDown
         '
         Me.SINumericUpDown.DecimalPlaces = 2
-        Me.SINumericUpDown.Location = New System.Drawing.Point(80, 428)
+        Me.SINumericUpDown.Location = New System.Drawing.Point(160, 428)
         Me.SINumericUpDown.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
         Me.SINumericUpDown.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
         Me.SINumericUpDown.Name = "SINumericUpDown"
-        Me.SINumericUpDown.Size = New System.Drawing.Size(231, 26)
+        Me.SINumericUpDown.Size = New System.Drawing.Size(151, 26)
         Me.SINumericUpDown.TabIndex = 42
         Me.SINumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.SINumericUpDown.ThousandsSeparator = True
@@ -520,18 +510,28 @@ Partial Class Funcionarios
         '
         'Button12
         '
-        Me.Button12.Location = New System.Drawing.Point(337, 343)
+        Me.Button12.Location = New System.Drawing.Point(337, 344)
         Me.Button12.Name = "Button12"
         Me.Button12.Size = New System.Drawing.Size(88, 32)
         Me.Button12.TabIndex = 43
         Me.Button12.Text = "Editar"
         Me.Button12.UseVisualStyleBackColor = True
         '
+        'SILabel
+        '
+        Me.SILabel.AutoSize = True
+        Me.SILabel.Location = New System.Drawing.Point(12, 431)
+        Me.SILabel.Name = "SILabel"
+        Me.SILabel.Size = New System.Drawing.Size(103, 20)
+        Me.SILabel.TabIndex = 44
+        Me.SILabel.Text = "Salário Atual:"
+        '
         'Funcionarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1277, 726)
+        Me.Controls.Add(Me.SILabel)
         Me.Controls.Add(Me.Button12)
         Me.Controls.Add(Me.SINumericUpDown)
         Me.Controls.Add(Me.ID_DepartamentoComboBox)
@@ -555,7 +555,6 @@ Partial Class Funcionarios
         Me.Controls.Add(Me.Login_FuncionarioDataGridView)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DDEDEDateTimePicker)
-        Me.Controls.Add(SILabel)
         Me.Controls.Add(ID_ProfissãoLabel)
         Me.Controls.Add(EmailLabel)
         Me.Controls.Add(Me.EmailTextBox)
@@ -628,4 +627,5 @@ Partial Class Funcionarios
     Friend WithEvents SITextBox As TextBox
     Friend WithEvents SINumericUpDown As NumericUpDown
     Friend WithEvents Button12 As Button
+    Friend WithEvents SILabel As Label
 End Class

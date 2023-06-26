@@ -50,7 +50,8 @@
             iniciarAlteracoes()
         ElseIf Button9.Text = "Guardar" Then
             acabarAlteracoes()
-
+            ProfissõesBindingSource.EndEdit()
+            ProfissõesTableAdapter.Update(Industries_DanDataSet)
         End If
     End Sub
 

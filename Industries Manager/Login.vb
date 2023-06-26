@@ -123,6 +123,7 @@ Public Class Login
             MsgBox("Email inválido")
             TextBox1.Text = ""
             TextBox2.Text = ""
+            TextBox1.Focus()
         Else
             FuncionariosBindingSource.Position = FuncionariosBindingSource.Find("Email", Email)
 
@@ -217,7 +218,11 @@ Public Class Login
                     PMenu.Show()
                     Me.Close()
                 Else
-                    MsgBox("A conta ainda não foi confirmada" + vbCrLf + "Tente novamente mais tarde", vbInformation, "Espere verificação")
+                    If IsDBNull(FuncionariosBindingSource.Current("DDSDE")) Then
+                        MsgBox("A conta ainda não foi confirmada" + vbCrLf + "Tente novamente mais tarde", vbInformation, "Espere verificação")
+                    Else
+                        MsgBox("Você foi despedido e como tal não tem mais acesso ao sistema", vbInformation, "Foi despedido")
+                    End If
                 End If
             Else
                 If Memorizado Then
@@ -228,6 +233,7 @@ Public Class Login
                 End If
 
                 TextBox2.Text = ""
+                TextBox2.Focus()
 
                 Debug.WriteLine("ID_Funcionario : " & FuncionariosBindingSource.Current("ID"))
                 Debug.WriteLine("LiOuLo : " & "Tentativa de Login")

@@ -8,6 +8,7 @@ Public Class Funcionarios
     Dim SM As Double 'Salario Minimo
     Dim botaoEnabledArray As Boolean()
     Dim tamanhoProfissoesID As Integer
+    Dim tamanhoEmailTextBox As Integer
 
     Private Sub Funcionarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Diretores_de_Departamentos' table. You can move, or remove it, as needed.
@@ -42,6 +43,7 @@ Public Class Funcionarios
         ButtonL = Button4
 
         tamanhoProfissoesID = ID_ProfissãoComboBox.Width
+        tamanhoEmailTextBox = EmailTextBox.Width
 
         GestaoButtonsAndLabelsShown()
         CenterOnScreenForm()
@@ -127,15 +129,22 @@ Public Class Funcionarios
             Button5.BackColor = ContColor
             ID_DepartamentoComboBox.Enabled = True
             SINumericUpDown.Enabled = True
+            If IsDBNull(FuncionariosBindingSource.Current("SI")) Then
+                SILabel.Text = "Salário Mínimo:"
+            Else
+                SILabel.Text = "Salário Pretendido:"
+            End If
             Button8.Enabled = False
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Despedir"
             Button5.BackColor = DespColor
+            SILabel.Text = "Salário Atual:"
             ID_DepartamentoComboBox.Enabled = False
             SINumericUpDown.Enabled = False
             Button8.Enabled = True
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And Not FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Recontratar"
+            SILabel.Text = "Salário Antigo:"
             Button5.BackColor = ContColor
             ID_DepartamentoComboBox.Enabled = True
             SINumericUpDown.Enabled = True
@@ -158,9 +167,15 @@ Public Class Funcionarios
         End If
 
         If FuncionariosBindingSource.Current("ID") = InfoUser.UserID Then
+            Button7.Visible = False
+            EmailTextBox.Width = tamanhoEmailTextBox
+
             ID_ProfissãoComboBox.Width = tamanhoProfissoesID - 64
             Button12.Visible = True
         Else
+            Button7.Visible = True
+            EmailTextBox.Width = tamanhoEmailTextBox - 74
+
             ID_ProfissãoComboBox.Width = tamanhoProfissoesID
             Button12.Visible = False
         End If
@@ -444,9 +459,10 @@ Public Class Funcionarios
         ElseIf Button12.Text = "Guardar" Then
 
             acabarAlteracaoUnica()
+            FuncionariosBindingSource.Current("ID_Profissão") = ID_ProfissãoComboBox.SelectedValue
             FuncionariosBindingSource.EndEdit()
             FuncionariosTableAdapter.Update(Industries_DanDataSet)
-
+            SortLogins()
         End If
     End Sub
 
