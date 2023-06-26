@@ -25,8 +25,14 @@
 
         Dim insercaoPermissoesCadaDep As New PermissoesDep
 
-        insercaoPermissoesCadaDep.NewAndEditDepIDs.Add(10)
+        insercaoPermissoesCadaDep.OnlySeeDepIDs.Add(1)
+        insercaoPermissoesCadaDep.OnlySeeDepIDs.Add(2)
+        insercaoPermissoesCadaDep.OnlySeeDepIDs.Add(4)
         insercaoPermissoesCadaDep.NewAndEditDepIDs.Add(5)
+        insercaoPermissoesCadaDep.NewAndEditDepIDs.Add(10)
+
+        insercaoPermissoesCadaDep.ComponentesAModificarTamanho.Add(VendasDataGridView)
+        insercaoPermissoesCadaDep.ComponentesAModificarTamanho.Add(Venda_de_produtoDataGridView)
 
         ' @TODO : ACABAR!
 

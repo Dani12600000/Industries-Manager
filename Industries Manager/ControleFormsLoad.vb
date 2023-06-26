@@ -1,12 +1,19 @@
 ﻿Module ControleFormsLoad
     Public Class PermissoesDep
+        Public Property OnlySeeDepIDs As List(Of Integer) = New List(Of Integer)()
         Public Property OnlyNewDepIDs As List(Of Integer) = New List(Of Integer)()
         Public Property OnlyRemoveDepIDs As List(Of Integer) = New List(Of Integer)()
         Public Property OnlyEditDepIDs As List(Of Integer) = New List(Of Integer)()
         Public Property NewAndEditDepIDs As List(Of Integer) = New List(Of Integer)()
         Public Property NewAndRemoveDepIDs As List(Of Integer) = New List(Of Integer)()
         Public Property RemoveAndEditDepIDs As List(Of Integer) = New List(Of Integer)()
+        Public Property EverythingDepIDs As List(Of Integer) = New List(Of Integer)()
         Public Property RemoverNavegacaoDepIDs As List(Of Integer) = New List(Of Integer)()
+        Public Property ComponentesAModificarTamanho As List(Of Control) = New List(Of Control)()
+        Public Property ButtonAddExtra As Button
+        Public Property ButtonEditExtra As Button
+        Public Property ButtonRemoverExtra As Button
+        Public Property ButtonsNavegacaoExtra As List(Of Button) = New List(Of Button)()
     End Class
 
 
@@ -33,30 +40,37 @@
             Dim AcoesDeCadaDepartamento As String = ""
             Dim RemoverNavegacao As Boolean = False
 
+
+
+            If permissoesDepComValores.OnlySeeDepIDs IsNot Nothing AndAlso permissoesDepComValores.OnlySeeDepIDs.Contains(InfoUser.UserDepID) Then AcoesDeCadaDepartamento = "Apenas ver"
             If permissoesDepComValores.OnlyNewDepIDs IsNot Nothing AndAlso permissoesDepComValores.OnlyNewDepIDs.Contains(InfoUser.UserDepID) Then AcoesDeCadaDepartamento = "Apenas novo"
             If permissoesDepComValores.OnlyRemoveDepIDs IsNot Nothing AndAlso permissoesDepComValores.OnlyRemoveDepIDs.Contains(InfoUser.UserDepID) Then AcoesDeCadaDepartamento = "Apenas remover"
             If permissoesDepComValores.OnlyEditDepIDs IsNot Nothing AndAlso permissoesDepComValores.OnlyEditDepIDs.Contains(InfoUser.UserDepID) Then AcoesDeCadaDepartamento = "Apenas editar"
             If permissoesDepComValores.NewAndEditDepIDs IsNot Nothing AndAlso permissoesDepComValores.NewAndEditDepIDs.Contains(InfoUser.UserDepID) Then AcoesDeCadaDepartamento = "Novo e Editar"
             If permissoesDepComValores.NewAndRemoveDepIDs IsNot Nothing AndAlso permissoesDepComValores.NewAndRemoveDepIDs.Contains(InfoUser.UserDepID) Then AcoesDeCadaDepartamento = "Novo e Remover"
             If permissoesDepComValores.RemoveAndEditDepIDs IsNot Nothing AndAlso permissoesDepComValores.RemoveAndEditDepIDs.Contains(InfoUser.UserDepID) Then AcoesDeCadaDepartamento = "Remover e Editar"
+            If permissoesDepComValores.EverythingDepIDs IsNot Nothing AndAlso permissoesDepComValores.EverythingDepIDs.Contains(InfoUser.UserDepID) Then AcoesDeCadaDepartamento = "Tudo"
+            If permissoesDepComValores.RemoverNavegacaoDepIDs IsNot Nothing AndAlso permissoesDepComValores.RemoverNavegacaoDepIDs.Contains(InfoUser.UserDepID) Then RemoverNavegacao = True
 
-            If AcoesDeCadaDepartamento = "Apenas novo" Then
-                ' @TODO : TERMINAR
 
-            End If
-            If AcoesDeCadaDepartamento = "Apenas remover" Then
+
+            If AcoesDeCadaDepartamento = "Apenas ver" Then
                 ' @TODO : COMEÇAR - TERMINAR
-            End If
-            If AcoesDeCadaDepartamento = "Apenas editar" Then
+
+            ElseIf AcoesDeCadaDepartamento = "Apenas novo" Then
                 ' @TODO : COMEÇAR - TERMINAR
-            End If
-            If AcoesDeCadaDepartamento = "Novo e Editar" Then
+
+            ElseIf AcoesDeCadaDepartamento = "Apenas remover" Then
                 ' @TODO : COMEÇAR - TERMINAR
-            End If
-            If AcoesDeCadaDepartamento = "Novo e Remover" Then
+            ElseIf AcoesDeCadaDepartamento = "Apenas editar" Then
                 ' @TODO : COMEÇAR - TERMINAR
-            End If
-            If AcoesDeCadaDepartamento = "Remover e Editar" Then
+            ElseIf AcoesDeCadaDepartamento = "Novo e Editar" Then
+                ' @TODO : COMEÇAR - TERMINAR
+            ElseIf AcoesDeCadaDepartamento = "Novo e Remover" Then
+                ' @TODO : COMEÇAR - TERMINAR
+            ElseIf AcoesDeCadaDepartamento = "Remover e Editar" Then
+                ' @TODO : COMEÇAR - TERMINAR
+            ElseIf AcoesDeCadaDepartamento = "Tudo" Then
                 ' @TODO : COMEÇAR - TERMINAR
             End If
 
