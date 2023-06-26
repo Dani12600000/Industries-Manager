@@ -1,5 +1,7 @@
 ﻿Imports System.IO
 Public Class PMenu
+    Dim FormButtonsPermitidos As List(Of String) = New List(Of String)()
+
     Private Sub PMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Leitura_de_avisos' table. You can move, or remove it, as needed.
         Me.Leitura_de_avisosTableAdapter.Fill(Me.Industries_DanDataSet.Leitura_de_avisos)
@@ -72,6 +74,11 @@ Public Class PMenu
         Formulario = Me
 
         CenterOnScreenForm()
+
+        ' depois fazer duas tabelas novas, uma que tenha todos os tipos de permissões existentes e outra que junte as permissões e os departamentos pois 1 departamento pode ter varias permissões e 1 permissão pode estar em varios departamentos 
+        ' devido a isso depois vou ter que alterar isto
+
+
 
     End Sub
 
