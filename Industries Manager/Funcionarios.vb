@@ -126,6 +126,8 @@ Public Class Funcionarios
 
         If FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") Then
             Button5.Text = "Contratar"
+            Button5.Enabled = True
+            Button11.Text = "Apagar conta"
             Button5.BackColor = ContColor
             ID_DepartamentoComboBox.Enabled = True
             SINumericUpDown.Enabled = True
@@ -137,6 +139,13 @@ Public Class Funcionarios
             Button8.Enabled = False
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Despedir"
+            If FuncionariosBindingSource.Current("Adm") Then
+                Button11.Text = "Retirar previlegios de admin"
+                Button5.Enabled = False
+            Else
+                Button11.Text = "Dar previlegios de admin"
+                Button5.Enabled = True
+            End If
             Button5.BackColor = DespColor
             SILabel.Text = "Salário Atual:"
             ID_DepartamentoComboBox.Enabled = False
@@ -144,6 +153,8 @@ Public Class Funcionarios
             Button8.Enabled = True
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And Not FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Recontratar"
+            Button5.Enabled = True
+            Button11.Text = "Apagar conta"
             SILabel.Text = "Salário Antigo:"
             Button5.BackColor = ContColor
             ID_DepartamentoComboBox.Enabled = True
@@ -167,12 +178,14 @@ Public Class Funcionarios
         End If
 
         If FuncionariosBindingSource.Current("ID") = InfoUser.UserID Then
+            Button11.Enabled = False
             Button7.Visible = False
             EmailTextBox.Width = tamanhoEmailTextBox
 
             ID_ProfissãoComboBox.Width = tamanhoProfissoesID - 64
             Button12.Visible = True
         Else
+            Button11.Enabled = True
             Button7.Visible = True
             EmailTextBox.Width = tamanhoEmailTextBox - 74
 
@@ -418,34 +431,52 @@ Public Class Funcionarios
     End Sub
 
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
-        If MsgBox("Tem certeza que deseja apagar esta conta?", vbYesNo, "Confirmação") = vbYes Then
-            Try
-                If Login_FuncionarioBindingSource.Position >= 0 Then
-                    While Login_FuncionarioBindingSource.Position >= 0
-                        Login_FuncionarioBindingSource.RemoveCurrent()
-                    End While
+        If Button11.Text = "Apagar conta" Then
+            If MsgBox("Tem certeza que deseja apagar esta conta?", vbYesNo, "Confirmação") = vbYes Then
+                Try
+                    If Login_FuncionarioBindingSource.Position >= 0 Then
+                        While Login_FuncionarioBindingSource.Position >= 0
+                            Login_FuncionarioBindingSource.RemoveCurrent()
+                        End While
 
-                    Login_FuncionarioTableAdapter.Update(Industries_DanDataSet)
+                        Login_FuncionarioTableAdapter.Update(Industries_DanDataSet)
 
-                End If
+                    End If
 
-                If Diretores_de_DepartamentosBindingSource.Find("ID_Funcionario", FuncionariosBindingSource.Current("ID")) >= 0 Then
-                    Debug.WriteLine("É/Foi Diretor")
+                    If Diretores_de_DepartamentosBindingSource.Find("ID_Funcionario", FuncionariosBindingSource.Current("ID")) >= 0 Then
+                        Debug.WriteLine("É/Foi Diretor")
 
-                    While Diretores_de_DepartamentosBindingSource.Find("ID_Funcionario", FuncionariosBindingSource.Current("ID")) >= 0
-                        Diretores_de_DepartamentosBindingSource.RemoveAt(Diretores_de_DepartamentosBindingSource.Find("ID_Funcionario", FuncionariosBindingSource.Current("ID")))
-                    End While
+                        While Diretores_de_DepartamentosBindingSource.Find("ID_Funcionario", FuncionariosBindingSource.Current("ID")) >= 0
+                            Diretores_de_DepartamentosBindingSource.RemoveAt(Diretores_de_DepartamentosBindingSource.Find("ID_Funcionario", FuncionariosBindingSource.Current("ID")))
+                        End While
 
-                    Diretores_de_DepartamentosTableAdapter.Update(Industries_DanDataSet)
-                End If
+                        Diretores_de_DepartamentosTableAdapter.Update(Industries_DanDataSet)
+                    End If
 
-                FuncionariosBindingSource.RemoveCurrent()
-                FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
-                MsgBox("A conta foi apagada com sucesso!", vbInformation, "Apagado com sucesso")
-            Catch erro As Exception
-                MsgBox("Ocorreu o erro: " & erro.ToString & vbCrLf & "Tente novamente mais tarde, se o erro presistir entre em contacto com o administrador", vbCritical, "Erro")
-                Debug.WriteLine(erro)
-            End Try
+                    FuncionariosBindingSource.RemoveCurrent()
+                    FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
+                    MsgBox("A conta foi apagada com sucesso!", vbInformation, "Apagado com sucesso")
+                Catch erro As Exception
+                    MsgBox("Ocorreu o erro: " & erro.ToString & vbCrLf & "Tente novamente mais tarde, se o erro presistir entre em contacto com o administrador", vbCritical, "Erro")
+                    Debug.WriteLine(erro)
+                End Try
+            End If
+        ElseIf Button11.Text = "Dar previlegios de admin" Then
+            If MsgBox("Tem certeza que deseja dar previlegios de admin a este funcionario?", vbYesNo, "Tem a certeza?") = MsgBoxResult.Yes Then
+                FuncionariosBindingSource.Current("Adm") = True
+                FuncionariosBindingSource.EndEdit()
+                FuncionariosTableAdapter.Update(Industries_DanDataSet)
+                SortLogins()
+                MsgBox("Os previlegios de admin foram concedidos com sucesso", vbInformation, "Previlegios concedidos")
+            End If
+        ElseIf Button11.Text = "Retirar previlegios de admin" Then
+            If MsgBox("Tem certeza que deseja retirar previlegios de admin a este funcionario?", vbYesNo, "Tem a certeza?") = MsgBoxResult.Yes Then
+                FuncionariosBindingSource.Current("Adm") = False
+                FuncionariosBindingSource.EndEdit()
+                FuncionariosTableAdapter.Update(Industries_DanDataSet)
+                SortLogins()
+                MsgBox("Os previlegios de admin foram revogados com sucesso", vbInformation, "Previlegios revogados")
+            End If
         End If
     End Sub
 
