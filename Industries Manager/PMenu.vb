@@ -19,6 +19,7 @@ Public Class PMenu
         ElseIf Hour(Now) >= 21 Or Hour(Now) < 5 Then
             IG = "Boa noite"
         End If
+
         Label1.Text = IG + ", " + InfoUser.UserName
 
         'For debug
@@ -201,15 +202,15 @@ Public Class PMenu
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Clientes.Show()
+        RedirecionarParaFormCorrespondente(Button1.Text)
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Departamentos.Show()
+        RedirecionarParaFormCorrespondente(Button2.Text)
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Fornecedores.Show()
+        RedirecionarParaFormCorrespondente(Button3.Text)
     End Sub
 
     Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
@@ -237,14 +238,30 @@ Public Class PMenu
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Funcionarios.Show()
+        RedirecionarParaFormCorrespondente(Button4.Text)
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        Produtos.Show()
+        RedirecionarParaFormCorrespondente(Button5.Text)
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        Profissões.Show()
+        RedirecionarParaFormCorrespondente(Button6.Text)
+    End Sub
+
+    Sub RedirecionarParaFormCorrespondente(TextOnButton As String)
+        If TextOnButton = "Clientes" Then
+            Clientes.Show()
+        ElseIf TextOnButton = "Departamentos" Then
+            Departamentos.Show()
+        ElseIf TextOnButton = "Fornecedores" Then
+            Fornecedores.Show()
+        ElseIf TextOnButton = "Funcionarios" Then
+            Funcionarios.Show()
+        ElseIf TextOnButton = "Produtos" Then
+            Produtos.Show()
+        ElseIf TextOnButton = "Profissões" Then
+            Profissões.Show()
+        End If
     End Sub
 End Class
