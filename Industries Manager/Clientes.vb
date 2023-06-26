@@ -23,7 +23,14 @@
         ButtonN = Button3
         ButtonL = Button4
 
+        Dim insercaoPermissoesCadaDep As New PermissoesDep
 
+        insercaoPermissoesCadaDep.NewAndEditDepIDs.Add(10)
+        insercaoPermissoesCadaDep.NewAndEditDepIDs.Add(5)
+
+        ' @TODO : ACABAR!
+
+        DepartamentosAndAcoesQuePodemRealizar(insercaoPermissoesCadaDep)
         CenterOnScreenForm()
     End Sub
 
