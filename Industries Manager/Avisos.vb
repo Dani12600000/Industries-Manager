@@ -92,7 +92,7 @@
 
             MsgBox("Crie um aviso primeiro", vbOKOnly)
             ' Abrir form para criar um aviso
-
+            NovoAviso.Show()
         End If
     End Sub
 
