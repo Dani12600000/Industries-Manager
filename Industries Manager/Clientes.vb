@@ -42,8 +42,6 @@
         insercaoPermissoesCadaDep.ButtonsNavegacaoExtra.Add(Button6)
         insercaoPermissoesCadaDep.ButtonsNavegacaoExtra.Add(Button5)
 
-
-
         insercaoPermissoesCadaDep.ComponentesAModificarTamanho.Add(VendasDataGridView)
         insercaoPermissoesCadaDep.ComponentesAModificarTamanho.Add(Venda_de_produtoDataGridView)
 

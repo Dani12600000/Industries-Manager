@@ -19,10 +19,12 @@
         Public Property ButtonRemoverExtraLocation As Point = New Point
         Public Property ButtonsNavegacaoExtra As List(Of Button) = New List(Of Button)()
         Public Property ButtonsNavegacaoExtraLocations As List(Of Point) = New List(Of Point)()
-        Public Property CamposVisiveisDependendoDepartHorizontal As List(Of Control) = New List(Of Control)()
-        Public Property CamposVisiveisDependendoDepartVeritical As List(Of Control) = New List(Of Control)()
-        Public Property DepartamentoComPermissaoCVDH As List(Of Integer()) = New List(Of Integer())()
-        Public Property DepartamentoComPermissaoCVDV As List(Of Integer()) = New List(Of Integer())()
+        Public Property DataGridsAoNivelDosButtonsPrincipais As List(Of DataGridView) = New List(Of DataGridView)()
+        ' Não cheguei a implementar
+        ' Public Property CamposVisiveisDependendoDepartHorizontal As List(Of Control) = New List(Of Control)()
+        ' Public Property CamposVisiveisDependendoDepartVeritical As List(Of Control) = New List(Of Control)()
+        ' Public Property DepartamentoComPermissaoCVDH As List(Of Integer()) = New List(Of Integer())()
+        ' Public Property DepartamentoComPermissaoCVDV As List(Of Integer()) = New List(Of Integer())()
     End Class
 
 
@@ -124,11 +126,10 @@
                 ButtonL.Visible = True
             End If
 
-            For i = 0 To permissoesDepComValores.CamposVisiveisDependendoDepartHorizontal.Count
-                If Not permissoesDepComValores.DepartamentoComPermissaoCVDH(i).Contains(InfoUser.UserDepID) Then
-                    ' @TODO : ACABAR!
-                End If
+            For i As Integer = 0 To permissoesDepComValores.DataGridsAoNivelDosButtonsPrincipais.Count - 1
+                permissoesDepComValores.DataGridsAoNivelDosButtonsPrincipais(i).Height = permissoesDepComValores.DataGridsAoNivelDosButtonsPrincipais(i).Height - ButtonF.Height
             Next
+
         End If
     End Sub
 
