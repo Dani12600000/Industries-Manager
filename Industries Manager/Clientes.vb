@@ -22,6 +22,7 @@
         ButtonP = Button2
         ButtonN = Button3
         ButtonL = Button4
+        ButtonE = Button13
 
         Dim insercaoPermissoesCadaDep As New PermissoesDep
 
@@ -30,6 +31,18 @@
         insercaoPermissoesCadaDep.OnlySeeDepIDs.Add(4)
         insercaoPermissoesCadaDep.NewAndEditDepIDs.Add(5)
         insercaoPermissoesCadaDep.NewAndEditDepIDs.Add(10)
+
+        insercaoPermissoesCadaDep.ButtonAddExtra = Button12
+        insercaoPermissoesCadaDep.ButtonAddExtraLocation = Button12.Location
+        insercaoPermissoesCadaDep.ButtonRemoverExtra = Button9
+        insercaoPermissoesCadaDep.ButtonRemoverExtraLocation = Button9.Location
+
+        insercaoPermissoesCadaDep.ButtonsNavegacaoExtra.Add(Button8)
+        insercaoPermissoesCadaDep.ButtonsNavegacaoExtra.Add(Button7)
+        insercaoPermissoesCadaDep.ButtonsNavegacaoExtra.Add(Button6)
+        insercaoPermissoesCadaDep.ButtonsNavegacaoExtra.Add(Button5)
+
+
 
         insercaoPermissoesCadaDep.ComponentesAModificarTamanho.Add(VendasDataGridView)
         insercaoPermissoesCadaDep.ComponentesAModificarTamanho.Add(Venda_de_produtoDataGridView)

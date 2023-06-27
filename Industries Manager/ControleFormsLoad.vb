@@ -10,10 +10,19 @@
         Public Property EverythingDepIDs As List(Of Integer) = New List(Of Integer)()
         Public Property RemoverNavegacaoDepIDs As List(Of Integer) = New List(Of Integer)()
         Public Property ComponentesAModificarTamanho As List(Of Control) = New List(Of Control)()
-        Public Property ButtonAddExtra As Button
-        Public Property ButtonEditExtra As Button
-        Public Property ButtonRemoverExtra As Button
+        Public Property ButtonsNavegacaoLocations As List(Of Point) = New List(Of Point)()
+        Public Property ButtonAddExtra As Button = New Button
+        Public Property ButtonAddExtraLocation As Point = New Point
+        Public Property ButtonEditExtra As Button = New Button
+        Public Property ButtonEditExtraLocation As Point = New Point
+        Public Property ButtonRemoverExtra As Button = New Button
+        Public Property ButtonRemoverExtraLocation As Point = New Point
         Public Property ButtonsNavegacaoExtra As List(Of Button) = New List(Of Button)()
+        Public Property ButtonsNavegacaoExtraLocations As List(Of Point) = New List(Of Point)()
+        Public Property CamposVisiveisDependendoDepartHorizontal As List(Of Control) = New List(Of Control)()
+        Public Property CamposVisiveisDependendoDepartVeritical As List(Of Control) = New List(Of Control)()
+        Public Property DepartamentoComPermissaoCVDH As List(Of Integer()) = New List(Of Integer())()
+        Public Property DepartamentoComPermissaoCVDV As List(Of Integer()) = New List(Of Integer())()
     End Class
 
 
@@ -40,8 +49,6 @@
             Dim AcoesDeCadaDepartamento As String = ""
             Dim RemoverNavegacao As Boolean = False
 
-
-
             If permissoesDepComValores.OnlySeeDepIDs IsNot Nothing AndAlso permissoesDepComValores.OnlySeeDepIDs.Contains(InfoUser.UserDepID) Then AcoesDeCadaDepartamento = "Apenas ver"
             If permissoesDepComValores.OnlyNewDepIDs IsNot Nothing AndAlso permissoesDepComValores.OnlyNewDepIDs.Contains(InfoUser.UserDepID) Then AcoesDeCadaDepartamento = "Apenas novo"
             If permissoesDepComValores.OnlyRemoveDepIDs IsNot Nothing AndAlso permissoesDepComValores.OnlyRemoveDepIDs.Contains(InfoUser.UserDepID) Then AcoesDeCadaDepartamento = "Apenas remover"
@@ -52,13 +59,44 @@
             If permissoesDepComValores.EverythingDepIDs IsNot Nothing AndAlso permissoesDepComValores.EverythingDepIDs.Contains(InfoUser.UserDepID) Then AcoesDeCadaDepartamento = "Tudo"
             If permissoesDepComValores.RemoverNavegacaoDepIDs IsNot Nothing AndAlso permissoesDepComValores.RemoverNavegacaoDepIDs.Contains(InfoUser.UserDepID) Then RemoverNavegacao = True
 
-
+            permissoesDepComValores.ButtonsNavegacaoLocations.Add(ButtonF.Location)
+            permissoesDepComValores.ButtonsNavegacaoLocations.Add(ButtonP.Location)
+            permissoesDepComValores.ButtonsNavegacaoLocations.Add(ButtonN.Location)
+            permissoesDepComValores.ButtonsNavegacaoLocations.Add(ButtonL.Location)
 
             If AcoesDeCadaDepartamento = "Apenas ver" Then
-                ' @TODO : COMEÇAR - TERMINAR
+                ' @TODO : TERMINAR
+
+                ButtonNandG.Visible = False
+                ButtonRorEandC.Visible = False
+                If ButtonE IsNot Nothing Then ButtonE.Visible = False
+
+                ButtonF.Location = New Point(ButtonNandG.Location)
+                ButtonP.Location = New Point(ButtonP.Location.X, ButtonF.Location.Y)
+                ButtonN.Location = New Point(ButtonN.Location.X, ButtonF.Location.Y)
+                ButtonL.Location = New Point(ButtonL.Location.X, ButtonF.Location.Y)
+
+                permissoesDepComValores.ButtonAddExtra.Visible = False
+                permissoesDepComValores.ButtonRemoverExtra.Visible = False
+                If permissoesDepComValores.ButtonEditExtra IsNot Nothing Then permissoesDepComValores.ButtonEditExtra.Visible = False
+
+                For i = 0 To permissoesDepComValores.ButtonsNavegacaoExtra.Count - 1
+                    permissoesDepComValores.ButtonsNavegacaoExtra(i).Location = New Point(permissoesDepComValores.ButtonsNavegacaoExtra(i).Location.X, permissoesDepComValores.ButtonAddExtra.Location.Y)
+                Next
 
             ElseIf AcoesDeCadaDepartamento = "Apenas novo" Then
                 ' @TODO : COMEÇAR - TERMINAR
+
+                ButtonNandG.Visible = True
+                ButtonRorEandC.Visible = False
+                If ButtonE IsNot Nothing Then ButtonE.Visible = False
+
+                permissoesDepComValores.ButtonAddExtra.Visible = True
+                permissoesDepComValores.ButtonRemoverExtra.Visible = False
+                If permissoesDepComValores.ButtonEditExtra IsNot Nothing Then permissoesDepComValores.ButtonEditExtra.Visible = False
+
+                ButtonNandG.Width += ButtonRorEandC.Width
+                ButtonNandG.Width += ButtonE.Width
 
             ElseIf AcoesDeCadaDepartamento = "Apenas remover" Then
                 ' @TODO : COMEÇAR - TERMINAR
@@ -85,6 +123,12 @@
                 ButtonN.Visible = True
                 ButtonL.Visible = True
             End If
+
+            For i = 0 To permissoesDepComValores.CamposVisiveisDependendoDepartHorizontal.Count
+                If Not permissoesDepComValores.DepartamentoComPermissaoCVDH(i).Contains(InfoUser.UserDepID) Then
+                    ' @TODO : ACABAR!
+                End If
+            Next
         End If
     End Sub
 
