@@ -22,16 +22,33 @@
         ButtonP = Button2
         ButtonN = Button3
         ButtonL = Button4
+        ButtonE = Button13
 
+        Dim insercaoPermissoesCadaDep As New PermissoesDep
+
+        insercaoPermissoesCadaDep.OnlySeeDepIDs.Add(1)
+        insercaoPermissoesCadaDep.OnlySeeDepIDs.Add(2)
+        insercaoPermissoesCadaDep.OnlySeeDepIDs.Add(4)
+        insercaoPermissoesCadaDep.NewAndEditDepIDs.Add(5)
+        insercaoPermissoesCadaDep.NewAndEditDepIDs.Add(10)
+
+        insercaoPermissoesCadaDep.ButtonAddExtra = Button12
+        insercaoPermissoesCadaDep.ButtonAddExtraLocation = Button12.Location
+        insercaoPermissoesCadaDep.ButtonRemoverExtra = Button9
+        insercaoPermissoesCadaDep.ButtonRemoverExtraLocation = Button9.Location
+
+        insercaoPermissoesCadaDep.ButtonsNavegacaoExtra.Add(Button8)
+        insercaoPermissoesCadaDep.ButtonsNavegacaoExtra.Add(Button7)
+        insercaoPermissoesCadaDep.ButtonsNavegacaoExtra.Add(Button6)
+        insercaoPermissoesCadaDep.ButtonsNavegacaoExtra.Add(Button5)
+
+        insercaoPermissoesCadaDep.ComponentesAModificarTamanho.Add(VendasDataGridView)
+        insercaoPermissoesCadaDep.ComponentesAModificarTamanho.Add(Venda_de_produtoDataGridView)
+
+        ' @TODO : ACABAR!
+
+        DepartamentosAndAcoesQuePodemRealizar(insercaoPermissoesCadaDep)
         CenterOnScreenForm()
-    End Sub
-
-    Private Sub SobrenomeLabel_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub SobrenomeTextBox_TextChanged(sender As Object, e As EventArgs) Handles SobrenomeTextBox.TextChanged
-
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -70,6 +87,7 @@
         If Button10.Text = "Novo" Then
             ClientesBindingSource.AddNew()
             iniciarAlteracoes()
+            NomeTextBox.Focus()
         ElseIf Button10.Text = "Guardar" Then
             Try
                 ClientesBindingSource.EndEdit()
@@ -123,5 +141,10 @@
 
     Private Sub Clientes_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         PMenu.Activate()
+    End Sub
+
+    Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
+        iniciarAlteracoes()
+        NomeTextBox.Focus()
     End Sub
 End Class

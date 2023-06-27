@@ -212,7 +212,7 @@ Public Class Login
                     End If
 
                     If CheckBox1.Checked And Not Memorizado Then
-                        GuardarDadosParaMemorizarAPalavraPasse()
+                        GuardarDadosParaMemorizarAPalavraPasse(Password)
                     End If
 
                     PMenu.Show()
@@ -251,10 +251,10 @@ Public Class Login
         End If
     End Sub
 
-    Private Sub GuardarDadosParaMemorizarAPalavraPasse()
+    Private Sub GuardarDadosParaMemorizarAPalavraPasse(password As String)
         Dim valores As New Dictionary(Of String, String) From {
             {"ID_Funcionario", InfoUser.UserID},
-            {"palavra_passe", TextBox2.Text},
+            {"palavra_passe", password},
             {"ip", strIPAddress}
         }
 

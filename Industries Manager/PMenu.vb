@@ -1,6 +1,12 @@
 ﻿Imports System.IO
 Public Class PMenu
+    Dim TextOfFormButtonsPermitidos As List(Of String) = New List(Of String)()
+
     Private Sub PMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CarragamentoInicialProprio()
+    End Sub
+
+    Sub CarragamentoInicialProprio()
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Leitura_de_avisos' table. You can move, or remove it, as needed.
         Me.Leitura_de_avisosTableAdapter.Fill(Me.Industries_DanDataSet.Leitura_de_avisos)
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Avisos' table. You can move, or remove it, as needed.
@@ -17,6 +23,7 @@ Public Class PMenu
         ElseIf Hour(Now) >= 21 Or Hour(Now) < 5 Then
             IG = "Boa noite"
         End If
+
         Label1.Text = IG + ", " + InfoUser.UserName
 
         'For debug
@@ -73,6 +80,109 @@ Public Class PMenu
 
         CenterOnScreenForm()
 
+        Dim DepartamentosComPermissao As List(Of Integer) = New List(Of Integer)()
+
+        ' depois fazer duas tabelas novas, uma que tenha todos os tipos de permissões existentes e outra que junte as permissões e os departamentos pois 1 departamento pode ter varias permissões e 1 permissão pode estar em varios departamentos 
+        ' devido a isso depois vou ter que alterar isto
+
+        Debug.WriteLine("")
+
+        ' Inserção destes valores na lista
+
+        ' Lista de departamentos com permissões para abrir
+        DepartamentosComPermissao = New List(Of Integer) From { ' Clientes
+            1, ' DSI
+            2, ' ADM
+            4, ' MKTG
+            5, ' CONT
+            10 ' VDS
+        }
+        Debug.WriteLine("ID_Departamentos permitidos para abrir o menu Clientes: " & String.Join(", ", DepartamentosComPermissao))
+
+        If DepartamentosComPermissao.Contains(InfoUser.UserDepID) OrElse InfoUser.UserAdm Then TextOfFormButtonsPermitidos.Add("Clientes")
+
+        ' Lista de departamentos com permissões para abrir
+        DepartamentosComPermissao = New List(Of Integer) From { ' Departamentos
+            1, ' DSI
+            2, ' ADM
+            3, ' RH
+            5 ' CONT
+        }
+        Debug.WriteLine("ID_Departamentos permitidos para abrir o menu Departamentos: " & String.Join(", ", DepartamentosComPermissao))
+
+        If DepartamentosComPermissao.Contains(InfoUser.UserDepID) OrElse InfoUser.UserAdm Then TextOfFormButtonsPermitidos.Add("Departamentos")
+
+        ' Lista de departamentos com permissões para abrir
+        DepartamentosComPermissao = New List(Of Integer) From { ' Fornecedores
+            5, ' CONT
+            9 ' COMP
+        }
+        Debug.WriteLine("ID_Departamentos permitidos para abrir o menu Fornecedores: " & String.Join(", ", DepartamentosComPermissao))
+
+        If DepartamentosComPermissao.Contains(InfoUser.UserDepID) OrElse InfoUser.UserAdm Then TextOfFormButtonsPermitidos.Add("Fornecedores")
+
+        ' Lista de departamentos com permissões para abrir
+        DepartamentosComPermissao = New List(Of Integer) From { ' Funcionarios
+            1, ' DSI
+            2, ' ADM
+            3, ' RH
+            5 ' CONT
+        }
+        Debug.WriteLine("ID_Departamentos permitidos para abrir o menu Funcionarios: " & String.Join(", ", DepartamentosComPermissao))
+
+        If DepartamentosComPermissao.Contains(InfoUser.UserDepID) OrElse InfoUser.UserAdm Then TextOfFormButtonsPermitidos.Add("Funcionarios")
+
+        ' Lista de departamentos com permissões para abrir
+        DepartamentosComPermissao = New List(Of Integer) From { ' Produtos
+            4, ' MKTG
+            8, ' DP
+            10 ' VDS
+        }
+        Debug.WriteLine("ID_Departamentos permitidos para abrir o menu Produtos: " & String.Join(", ", DepartamentosComPermissao))
+
+        If DepartamentosComPermissao.Contains(InfoUser.UserDepID) OrElse InfoUser.UserAdm Then TextOfFormButtonsPermitidos.Add("Produtos")
+
+        ' Lista de departamentos com permissões para abrir
+        DepartamentosComPermissao = New List(Of Integer) From { ' Profissões
+            3 ' RH
+        }
+        Debug.WriteLine("ID_Departamentos permitidos para abrir o menu Profissões: " & String.Join(", ", DepartamentosComPermissao))
+
+        If DepartamentosComPermissao.Contains(InfoUser.UserDepID) OrElse InfoUser.UserAdm Then TextOfFormButtonsPermitidos.Add("Profissões")
+
+        Debug.WriteLine("")
+
+        Debug.WriteLine("Menus a mostrar:")
+        Dim separador As String = Environment.NewLine
+        Debug.WriteLine(String.Join(separador, TextOfFormButtonsPermitidos))
+
+        Dim botoesNaoUsados As List(Of Button) = New List(Of Button)()
+
+        For i As Integer = 1 To 6
+            Dim buttonName As String = "Button" & i
+            Debug.WriteLine("Button name: " & buttonName)
+            Dim button As Button = Me.Controls.OfType(Of Button)().FirstOrDefault(Function(btn) btn.Name = buttonName)
+
+            If i <= TextOfFormButtonsPermitidos.Count Then
+                button.Text = TextOfFormButtonsPermitidos(i - 1)
+            Else
+                button.Visible = False
+                botoesNaoUsados.Add(button)
+            End If
+        Next
+
+        Dim espacoNaoNecessario As Integer
+
+        If botoesNaoUsados.Count > 0 Then
+            espacoNaoNecessario = botoesNaoUsados(botoesNaoUsados.Count - 1).Location.Y - botoesNaoUsados(0).Location.Y
+
+            Me.Height = Me.ClientSize.Height - espacoNaoNecessario
+
+            For Each button As Button In Me.Controls.OfType(Of Button)()
+                Desancorar(button, True, True, False, False)
+            Next
+        End If
+
     End Sub
 
     Private Sub VerAvisosMandados_Click(sender As Object, e As EventArgs)
@@ -96,15 +206,15 @@ Public Class PMenu
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Clientes.Show()
+        RedirecionarParaFormCorrespondente(Button1.Text)
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Departamentos.Show()
+        RedirecionarParaFormCorrespondente(Button2.Text)
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Fornecedores.Show()
+        RedirecionarParaFormCorrespondente(Button3.Text)
     End Sub
 
     Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
@@ -132,14 +242,30 @@ Public Class PMenu
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Funcionarios.Show()
+        RedirecionarParaFormCorrespondente(Button4.Text)
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        Produtos.Show()
+        RedirecionarParaFormCorrespondente(Button5.Text)
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        Profissões.Show()
+        RedirecionarParaFormCorrespondente(Button6.Text)
+    End Sub
+
+    Sub RedirecionarParaFormCorrespondente(TextOnButton As String)
+        If TextOnButton = "Clientes" Then
+            Clientes.Show()
+        ElseIf TextOnButton = "Departamentos" Then
+            Departamentos.Show()
+        ElseIf TextOnButton = "Fornecedores" Then
+            Fornecedores.Show()
+        ElseIf TextOnButton = "Funcionarios" Then
+            Funcionarios.Show()
+        ElseIf TextOnButton = "Produtos" Then
+            Produtos.Show()
+        ElseIf TextOnButton = "Profissões" Then
+            Profissões.Show()
+        End If
     End Sub
 End Class

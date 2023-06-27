@@ -420,7 +420,7 @@ Partial Class Funcionarios
         '
         'Button9
         '
-        Me.Button9.Location = New System.Drawing.Point(552, 649)
+        Me.Button9.Location = New System.Drawing.Point(598, 649)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(245, 57)
         Me.Button9.TabIndex = 33
@@ -429,7 +429,7 @@ Partial Class Funcionarios
         '
         'Button10
         '
-        Me.Button10.Location = New System.Drawing.Point(803, 649)
+        Me.Button10.Location = New System.Drawing.Point(849, 649)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(288, 57)
         Me.Button10.TabIndex = 34

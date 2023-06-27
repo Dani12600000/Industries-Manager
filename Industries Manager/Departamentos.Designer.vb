@@ -67,6 +67,7 @@ Partial Class Departamentos
         Me.ProfissõesTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProfissõesTableAdapter()
         Me.DDDTextBox = New System.Windows.Forms.TextBox()
         Me.ADDTextBox = New System.Windows.Forms.TextBox()
+        Me.Button10 = New System.Windows.Forms.Button()
         IDLabel = New System.Windows.Forms.Label()
         NDDLabel = New System.Windows.Forms.Label()
         DEDDLabel = New System.Windows.Forms.Label()
@@ -276,9 +277,9 @@ Partial Class Departamentos
         'Button8
         '
         Me.Button8.BackColor = System.Drawing.Color.IndianRed
-        Me.Button8.Location = New System.Drawing.Point(244, 358)
+        Me.Button8.Location = New System.Drawing.Point(297, 358)
         Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(166, 47)
+        Me.Button8.Size = New System.Drawing.Size(113, 47)
         Me.Button8.TabIndex = 18
         Me.Button8.Text = "Remover"
         Me.Button8.UseVisualStyleBackColor = False
@@ -287,7 +288,7 @@ Partial Class Departamentos
         '
         Me.Button9.Location = New System.Drawing.Point(72, 358)
         Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(166, 47)
+        Me.Button9.Size = New System.Drawing.Size(113, 47)
         Me.Button9.TabIndex = 19
         Me.Button9.Text = "Novo"
         Me.Button9.UseVisualStyleBackColor = True
@@ -457,11 +458,21 @@ Partial Class Departamentos
         Me.ADDTextBox.Size = New System.Drawing.Size(194, 26)
         Me.ADDTextBox.TabIndex = 29
         '
+        'Button10
+        '
+        Me.Button10.Location = New System.Drawing.Point(191, 358)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(100, 47)
+        Me.Button10.TabIndex = 31
+        Me.Button10.Text = "Editar"
+        Me.Button10.UseVisualStyleBackColor = True
+        '
         'Departamentos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1555, 500)
+        Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Label5)
         Me.Controls.Add(Me.ADDTextBox)
         Me.Controls.Add(Me.DDDTextBox)
@@ -546,4 +557,5 @@ Partial Class Departamentos
     Friend WithEvents Column1 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
+    Friend WithEvents Button10 As Button
 End Class
