@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class NovoAviso
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class DetalhesAviso
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class NovoAviso
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim TituloLabel As System.Windows.Forms.Label
@@ -30,19 +30,41 @@ Partial Class NovoAviso
         Me.AvisosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.AvisosTableAdapter()
         Me.TableAdapterManager = New Industries_Manager.Industries_DanDataSetTableAdapters.TableAdapterManager()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.NuncaRadioButton = New System.Windows.Forms.RadioButton()
+        Me.TodosLeramRadioButton = New System.Windows.Forms.RadioButton()
         Me.DataRadioButton = New System.Windows.Forms.RadioButton()
         Me.TituloTextBox = New System.Windows.Forms.TextBox()
         Me.AvisoTextBox = New System.Windows.Forms.TextBox()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.FuncionariosDiretoresComboBox = New System.Windows.Forms.ComboBox()
         TituloLabel = New System.Windows.Forms.Label()
         AvisoLabel = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AvisosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'TituloLabel
+        '
+        TituloLabel.AutoSize = True
+        TituloLabel.Location = New System.Drawing.Point(24, 30)
+        TituloLabel.Name = "TituloLabel"
+        TituloLabel.Size = New System.Drawing.Size(51, 20)
+        TituloLabel.TabIndex = 1
+        TituloLabel.Text = "Titulo:"
+        '
+        'AvisoLabel
+        '
+        AvisoLabel.AutoSize = True
+        AvisoLabel.Location = New System.Drawing.Point(24, 65)
+        AvisoLabel.Name = "AvisoLabel"
+        AvisoLabel.Size = New System.Drawing.Size(51, 20)
+        AvisoLabel.TabIndex = 3
+        AvisoLabel.Text = "Aviso:"
         '
         'Industries_DanDataSet
         '
@@ -78,57 +100,49 @@ Partial Class NovoAviso
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.RadioButton3)
-        Me.GroupBox1.Controls.Add(Me.RadioButton2)
+        Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
+        Me.GroupBox1.Controls.Add(Me.NuncaRadioButton)
+        Me.GroupBox1.Controls.Add(Me.TodosLeramRadioButton)
         Me.GroupBox1.Controls.Add(Me.DataRadioButton)
-        Me.GroupBox1.Location = New System.Drawing.Point(28, 237)
+        Me.GroupBox1.Location = New System.Drawing.Point(28, 301)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(253, 152)
+        Me.GroupBox1.Size = New System.Drawing.Size(565, 143)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Forma de fim de prazo"
         '
-        'RadioButton3
+        'NuncaRadioButton
         '
-        Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.Location = New System.Drawing.Point(17, 113)
-        Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.Size = New System.Drawing.Size(80, 24)
-        Me.RadioButton3.TabIndex = 4
-        Me.RadioButton3.TabStop = True
-        Me.RadioButton3.Text = "Nunca"
-        Me.RadioButton3.UseVisualStyleBackColor = True
+        Me.NuncaRadioButton.AutoSize = True
+        Me.NuncaRadioButton.Location = New System.Drawing.Point(17, 105)
+        Me.NuncaRadioButton.Name = "NuncaRadioButton"
+        Me.NuncaRadioButton.Size = New System.Drawing.Size(80, 24)
+        Me.NuncaRadioButton.TabIndex = 4
+        Me.NuncaRadioButton.TabStop = True
+        Me.NuncaRadioButton.Text = "Nunca"
+        Me.NuncaRadioButton.UseVisualStyleBackColor = True
         '
-        'RadioButton2
+        'TodosLeramRadioButton
         '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(17, 73)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(121, 24)
-        Me.RadioButton2.TabIndex = 3
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "Todos leram"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.TodosLeramRadioButton.AutoSize = True
+        Me.TodosLeramRadioButton.Location = New System.Drawing.Point(17, 69)
+        Me.TodosLeramRadioButton.Name = "TodosLeramRadioButton"
+        Me.TodosLeramRadioButton.Size = New System.Drawing.Size(121, 24)
+        Me.TodosLeramRadioButton.TabIndex = 3
+        Me.TodosLeramRadioButton.TabStop = True
+        Me.TodosLeramRadioButton.Text = "Todos leram"
+        Me.TodosLeramRadioButton.UseVisualStyleBackColor = True
         '
         'DataRadioButton
         '
         Me.DataRadioButton.AutoSize = True
         Me.DataRadioButton.Location = New System.Drawing.Point(17, 34)
         Me.DataRadioButton.Name = "DataRadioButton"
-        Me.DataRadioButton.Size = New System.Drawing.Size(69, 24)
+        Me.DataRadioButton.Size = New System.Drawing.Size(71, 24)
         Me.DataRadioButton.TabIndex = 2
         Me.DataRadioButton.TabStop = True
-        Me.DataRadioButton.Text = "Data"
+        Me.DataRadioButton.Text = "Dia - "
         Me.DataRadioButton.UseVisualStyleBackColor = True
-        '
-        'TituloLabel
-        '
-        TituloLabel.AutoSize = True
-        TituloLabel.Location = New System.Drawing.Point(24, 30)
-        TituloLabel.Name = "TituloLabel"
-        TituloLabel.Size = New System.Drawing.Size(51, 20)
-        TituloLabel.TabIndex = 1
-        TituloLabel.Text = "Titulo:"
         '
         'TituloTextBox
         '
@@ -137,15 +151,6 @@ Partial Class NovoAviso
         Me.TituloTextBox.Name = "TituloTextBox"
         Me.TituloTextBox.Size = New System.Drawing.Size(512, 26)
         Me.TituloTextBox.TabIndex = 2
-        '
-        'AvisoLabel
-        '
-        AvisoLabel.AutoSize = True
-        AvisoLabel.Location = New System.Drawing.Point(24, 65)
-        AvisoLabel.Name = "AvisoLabel"
-        AvisoLabel.Size = New System.Drawing.Size(51, 20)
-        AvisoLabel.TabIndex = 3
-        AvisoLabel.Text = "Aviso:"
         '
         'AvisoTextBox
         '
@@ -159,27 +164,65 @@ Partial Class NovoAviso
         'DateTimePicker1
         '
         Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(318, 296)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(83, 32)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(148, 26)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(140, 26)
         Me.DateTimePicker1.TabIndex = 5
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(314, 273)
+        Me.Label1.Location = New System.Drawing.Point(24, 213)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(88, 20)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Data limite:"
+        Me.Label1.Size = New System.Drawing.Size(97, 20)
+        Me.Label1.TabIndex = 5
+        Me.Label1.Text = "Enviar para: "
         '
-        'NovoAviso
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"Departamento", "Funcionário", "Diretor"})
+        Me.ComboBox1.Location = New System.Drawing.Point(127, 210)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(208, 28)
+        Me.ComboBox1.TabIndex = 6
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(467, 457)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(126, 38)
+        Me.Button1.TabIndex = 7
+        Me.Button1.Text = "Guardar"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(24, 251)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(148, 20)
+        Me.Label2.TabIndex = 8
+        Me.Label2.Text = "Funcionario/Diretor:"
+        '
+        'FuncionariosDiretoresComboBox
+        '
+        Me.FuncionariosDiretoresComboBox.FormattingEnabled = True
+        Me.FuncionariosDiretoresComboBox.Location = New System.Drawing.Point(178, 248)
+        Me.FuncionariosDiretoresComboBox.Name = "FuncionariosDiretoresComboBox"
+        Me.FuncionariosDiretoresComboBox.Size = New System.Drawing.Size(415, 28)
+        Me.FuncionariosDiretoresComboBox.TabIndex = 9
+        '
+        'DetalhesAviso
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(626, 469)
+        Me.ClientSize = New System.Drawing.Size(626, 507)
+        Me.Controls.Add(Me.FuncionariosDiretoresComboBox)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(AvisoLabel)
         Me.Controls.Add(Me.AvisoTextBox)
         Me.Controls.Add(TituloLabel)
@@ -187,7 +230,7 @@ Partial Class NovoAviso
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
-        Me.Name = "NovoAviso"
+        Me.Name = "DetalhesAviso"
         Me.Text = "Novo Aviso"
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AvisosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -203,11 +246,15 @@ Partial Class NovoAviso
     Friend WithEvents AvisosTableAdapter As Industries_DanDataSetTableAdapters.AvisosTableAdapter
     Friend WithEvents TableAdapterManager As Industries_DanDataSetTableAdapters.TableAdapterManager
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents RadioButton3 As RadioButton
-    Friend WithEvents RadioButton2 As RadioButton
+    Friend WithEvents NuncaRadioButton As RadioButton
+    Friend WithEvents TodosLeramRadioButton As RadioButton
     Friend WithEvents DataRadioButton As RadioButton
     Friend WithEvents TituloTextBox As TextBox
     Friend WithEvents AvisoTextBox As TextBox
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents Label1 As Label
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Label2 As Label
+    Friend WithEvents FuncionariosDiretoresComboBox As ComboBox
 End Class

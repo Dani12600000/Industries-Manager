@@ -154,10 +154,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="NovoAviso.Designer.vb">
-      <DependentUpon>NovoAviso.vb</DependentUpon>
+    <Compile Include="DetalhesAviso.Designer.vb">
+      <DependentUpon>DetalhesAviso.vb</DependentUpon>
     </Compile>
-    <Compile Include="NovoAviso.vb">
+    <Compile Include="DetalhesAviso.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PMenu.Designer.vb">
@@ -229,8 +229,8 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NovoAviso.resx">
-      <DependentUpon>NovoAviso.vb</DependentUpon>
+    <EmbeddedResource Include="DetalhesAviso.resx">
+      <DependentUpon>DetalhesAviso.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMenu.resx">
       <DependentUpon>PMenu.vb</DependentUpon>

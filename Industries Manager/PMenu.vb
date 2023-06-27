@@ -20,13 +20,12 @@ Public Class PMenu
                     e.Graphics.FillRectangle(Brushes.LightCoral, rc)
                     e.Graphics.DrawRectangle(Pens.Red, 0, 0, rc.Width - 1, rc.Height - 1)
                 Else
+                    MyBase.OnRenderMenuItemBackground(e)
                     ' @TODO : Depois escolher cores melhores
                     ' Define a cor de destaque para o LogoutToolStripMenuItem
                     ' e.Graphics.FillRectangle(Brushes.LightGray, rc)
                     ' e.Graphics.DrawRectangle(Pens.Gray, 0, 0, rc.Width - 1, rc.Height - 1)
                 End If
-            Else
-                MyBase.OnRenderMenuItemBackground(e)
             End If
         End Sub
     End Class
@@ -250,7 +249,8 @@ Public Class PMenu
     End Sub
 
     Private Sub NovoAviso_Click(sender As Object, e As EventArgs)
-
+        DetalhesAviso.Show()
+        DetalhesAviso.NovoAviso()
     End Sub
 
 
