@@ -90,8 +90,9 @@
             TextBox2.Text = ""
             TextBox3.Text = ""
 
-            MsgBox("Crie um aviso primeiro", vbOK)
+            MsgBox("Crie um aviso primeiro", vbOKOnly)
             ' Abrir form para criar um aviso
+
         End If
     End Sub
 
