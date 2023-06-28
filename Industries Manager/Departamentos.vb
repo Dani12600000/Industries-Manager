@@ -307,6 +307,7 @@
                 ElegerDiretor.Show()
                 ElegerDiretor.DepIDLoc = DepartamentosBindingSource.Current("ID")
             End If
+            Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
         End If
     End Sub
 

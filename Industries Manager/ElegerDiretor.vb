@@ -41,7 +41,7 @@
             FuncionariosBindingSource.Filter = "Aprovacao = True AND ID_Departamento = " & DepIDLoc & " AND NOT ID = " & InfoUser.UserID
         End If
 
-        Diretores_de_DepartamentosBindingSource.Filter = "ID_Departamento = " & InfoUser.UserDepID
+        Diretores_de_DepartamentosBindingSource.Filter = "ID_Departamento = " & DepIDLoc
 
         For Each row As DataRowView In Diretores_de_DepartamentosBindingSource
             Dim value As String = row("DDD").ToString()
