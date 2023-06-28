@@ -135,7 +135,7 @@ Partial Class DetalhesAviso
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(127, 210)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(208, 28)
+        Me.ComboBox1.Size = New System.Drawing.Size(288, 28)
         Me.ComboBox1.TabIndex = 6
         '
         'Button1

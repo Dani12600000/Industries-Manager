@@ -4,6 +4,10 @@ Imports System.Runtime.CompilerServices
 Public Class DetalhesAviso
     Dim locGroupBox, locLabel2 As Point
     Dim tamanhoGroupBox1, tamanhoLabel2, diferencatamanhos As Integer
+    Dim listaOpcoesParaQuemEnviar As List(Of String) = New List(Of String) From {
+        "Meu departamento",
+        "Funcionários do meu departamento",
+        "Diretores de outro departamento"}
 
 
     Private Sub AvisosBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
@@ -21,9 +25,9 @@ Public Class DetalhesAviso
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Avisos' table. You can move, or remove it, as needed.
         Me.AvisosTableAdapter.Fill(Me.Industries_DanDataSet.Avisos)
 
-        ComboBox1.Items.Add("Meu departamento")
-        ComboBox1.Items.Add("Funcionário do meu departamento")
-        ComboBox1.Items.Add("Diretor de outro departamento")
+        For i = 0 To listaOpcoesParaQuemEnviar.Count - 1
+            ComboBox1.Items.Add(listaOpcoesParaQuemEnviar(i))
+        Next
 
         DateTimePicker1.MinDate = Today
         AlterarCoisasAMostrarTamanhosAndLocations()
@@ -33,7 +37,7 @@ Public Class DetalhesAviso
         tamanhoGroupBox1 = GroupBox1.Height
         tamanhoLabel2 = Label2.Height
         diferencatamanhos = tamanhoGroupBox1 - tamanhoLabel2
-        Me.Height = Me.ClientSize.Height - 50
+        Me.Height = Me.ClientSize.Height + 7
     End Sub
 
     Public Sub NovoAviso()
@@ -87,7 +91,7 @@ Public Class DetalhesAviso
 
         Debug.WriteLine("ComboBox1: " & ComboBox1.Text)
 
-        If ComboBox1.Text = "Funcionário" Then
+        If ComboBox1.Text = listaOpcoesParaQuemEnviar(1) Then
             Label2.Visible = True
             FuncionariosDiretoresComboBox.Visible = True
             Label2.Text = "Funcionário" ' @TODO : ACABAR!
@@ -98,13 +102,13 @@ Public Class DetalhesAviso
                 ComboBox1.SelectedIndex = 0
             End If
 
-        ElseIf ComboBox1.Text = "Departamento" Then
+        ElseIf ComboBox1.Text = listaOpcoesParaQuemEnviar(0) Then
             Label2.Visible = False
             FuncionariosDiretoresComboBox.Visible = False
             GroupBox1.Visible = True
             FuncionariosBindingSource.RemoveFilter()
 
-        ElseIf ComboBox1.Text = "Diretor" Then
+        ElseIf ComboBox1.Text = listaOpcoesParaQuemEnviar(2) Then
             Label2.Visible = True
             FuncionariosDiretoresComboBox.Visible = True
             Label2.Text = ComboBox1.Text
@@ -158,9 +162,11 @@ Public Class DetalhesAviso
             AvisosBindingSource.Current("DLDM") = DateTimePicker1.Value
         End If
 
-        If ComboBox1.Text = "Funcionário" Then
+        If ComboBox1.Text = "Funcionário" Or ComboBox1.Text = "" Then
             AvisosBindingSource.Current("ID_Funcionario") = FuncionariosDiretoresComboBox.SelectedIndex
         End If
+
+        ' AvisosBindingSource.Current("FDFDP")
 
         If Not Avisos.Visible Then
             Avisos.Show()
