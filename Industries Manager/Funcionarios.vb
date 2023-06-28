@@ -274,7 +274,7 @@ Public Class Funcionarios
 
         If Button5.Text = "Contratar" Then
             If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") = vbYes Then
-                EnviarMensagemAutomaticaContratacao(InfoUser.UserName, EmailTextBox.Text, NomeTextBox.Text, SobrenomeTextBox.Text, ProfissõesBindingSource.Current("Profissao"), DepartamentosBindingSource.Current("NDD"), SINumericUpDown.Value)
+                EnviarMensagemAutomaticaContratacao(InfoUser.UserFirstName, InfoUser.UserLastName, EmailTextBox.Text, NomeTextBox.Text, SobrenomeTextBox.Text, ProfissõesBindingSource.Current("Profissao"), DepartamentosBindingSource.Current("NDD"), SINumericUpDown.Value)
             End If
 
             AtualizarBaseDadosContratarAndRecontratar()
@@ -284,7 +284,7 @@ Public Class Funcionarios
         ElseIf Button5.Text = "Despedir" Then
             If MsgBox("Tem certeza que deseja despedir o funcionario nº" & FuncionariosBindingSource.Current("ID") & "?", vbYesNo, "Confirmação") = vbYes Then
                 If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") = vbYes Then
-                    EnviarMensagemAutomaticaDespedimento(InfoUser.UserName, EmailTextBox.Text, NomeTextBox.Text, SobrenomeTextBox.Text, InputBox("Qual o motivo para o despedimento do mesmo? (opcional)"))
+                    EnviarMensagemAutomaticaDespedimento(InfoUser.UserName, InfoUser.UserSurname, EmailTextBox.Text, NomeTextBox.Text, SobrenomeTextBox.Text, InputBox("Qual o motivo para o despedimento do mesmo? (opcional)"))
                 End If
 
                 FuncionariosBindingSource.Current("Aprovacao") = False
@@ -302,7 +302,7 @@ Public Class Funcionarios
         ElseIf Button5.Text = "Recontratar" Then
 
             If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") = vbYes Then
-                EnviarMensagemAutomaticaRecontratacao(InfoUser.UserName, EmailTextBox.Text, ProfissõesBindingSource.Current("Profissao"), DepartamentosBindingSource.Current("NDD"), SINumericUpDown.Value)
+                EnviarMensagemAutomaticaRecontratacao(InfoUser.UserFirstName, InfoUser.UserLastName, EmailTextBox.Text, ProfissõesBindingSource.Current("Profissao"), DepartamentosBindingSource.Current("NDD"), SINumericUpDown.Value)
             End If
 
             AtualizarBaseDadosContratarAndRecontratar()
@@ -342,7 +342,7 @@ Public Class Funcionarios
             FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
 
             If MsgBox("Deseja enviar um e-mail a informa-lo?", vbYesNo, "Enviar e-mail") = vbYes Then
-                EnviarMensagemAutomaticaAtualizacaoSalario(InfoUser.UserName, FuncionariosBindingSource.Current("Email"), FuncionariosBindingSource.Current("Nome"), FuncionariosBindingSource.Current("Sobrenome"), SINumericUpDown.Value.ToString("#,##0.00€"))
+                EnviarMensagemAutomaticaAtualizacaoSalario(InfoUser.UserFirstName, InfoUser.UserLastName, FuncionariosBindingSource.Current("Email"), FuncionariosBindingSource.Current("Nome"), FuncionariosBindingSource.Current("Sobrenome"), SINumericUpDown.Value.ToString("#,##0.00€"))
             End If
 
             MsgBox("Salário atualizado", vbInformation, "Atualização")

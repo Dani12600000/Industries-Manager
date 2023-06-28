@@ -145,6 +145,7 @@ Public Class Login
                     InfoUser.UserID = FuncionariosBindingSource.Current("ID")
                     InfoUser.UserIp = strIPAddress
                     InfoUser.UserName = FuncionariosBindingSource.Current("Nome")
+                    InfoUser.UserSurname = FuncionariosBindingSource.Current("Sobrenome")
                     InfoUser.UserEmail = FuncionariosBindingSource.Current("Email")
                     InfoUser.UserAdm = FuncionariosBindingSource.Current("Adm")
                     InfoUser.UserDepID = DepartamentosBindingSource.Current("ID")
@@ -156,11 +157,16 @@ Public Class Login
                         InfoUser.UserDepDirectorYN = False
                     End If
 
+                    InfoUser.getUserFirstAndLastName()
+
                     'For debug
                     Debug.WriteLine("Login form" & vbCrLf & "---------")
                     Debug.WriteLine("ID : " & InfoUser.UserID)
                     Debug.WriteLine("Ip : " & InfoUser.UserIp)
                     Debug.WriteLine("Name : " & InfoUser.UserName)
+                    Debug.WriteLine("Surname : " & InfoUser.UserSurname)
+                    Debug.WriteLine("First Name : " & InfoUser.UserFirstName)
+                    Debug.WriteLine("Last Name : " & InfoUser.UserLastName)
                     Debug.WriteLine("Email : " & InfoUser.UserEmail)
                     Debug.WriteLine("Admin : " & InfoUser.UserAdm)
                     Debug.WriteLine("ID Departamento : " & InfoUser.UserDepID)
