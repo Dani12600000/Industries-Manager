@@ -305,6 +305,7 @@
             End If
             If MsgBox("Deseja eleger um subsituto para o seu cargo?", vbYesNo, "Eleger novo diretor") Then
                 ElegerDiretor.Show()
+                ElegerDiretor.DepIDLoc = DepartamentosBindingSource.Current("ID")
             End If
         End If
     End Sub
