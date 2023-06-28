@@ -186,18 +186,18 @@
 
             Debug.WriteLine("ultimoRegistro : " & ultimoRegistro("ID"))
 
-            FuncionariosBindingSource1.Find("ID", ultimoRegistro("ID_Funcionario"))
+            FuncionariosBindingSource1.Position = FuncionariosBindingSource1.Find("ID", ultimoRegistro("ID_Funcionario"))
 
             If FuncionariosBindingSource1.Position <> -1 Then
                 Debug.WriteLine("ID: " & FuncionariosBindingSource1.Current("ID"))
 
-                DDDTextBox.Text = Diretores_de_DepartamentosBindingSource.Current("DDD")
+                DDDTextBox.Text = ultimoRegistro("DDD")
                 NomeDiretorTextBox.Text = FuncionariosBindingSource1.Current("Nome") & " " & FuncionariosBindingSource1.Current("Sobrenome")
-                DDCDateTimePicker.Value = Date.Parse(Diretores_de_DepartamentosBindingSource.Current("DDC"))
+                DDCDateTimePicker.Value = Date.Parse(ultimoRegistro("DDC"))
 
 
                 Dim dataAtual As Date = Today()
-                Dim dataAnterior As Date = CDate(Diretores_de_DepartamentosBindingSource.Current("DDC"))
+                Dim dataAnterior As Date = CDate(ultimoRegistro("DDC"))
 
                 Dim noCargoJaHaDateInterval As TimeSpan = dataAtual - dataAnterior
 
@@ -251,13 +251,21 @@
                     End If
                 End If
 
-                TextBox1.Text = noCargoJaHaString
+                If noCargoJaHaString = "" Then
+                    TextBox1.Visible = False
+                    Label3.Visible = False
+                Else
+                    TextBox1.Text = noCargoJaHaString
+                    TextBox1.Visible = True
+                    Label3.Visible = True
+                End If
+
                 Debug.WriteLine("No cargo já há: " & noCargoJaHaString)
 
 
 
-            End If
-            cargoDiretorVazio = False
+                End If
+                cargoDiretorVazio = False
 
             Debug.WriteLine("Acabou")
         Else
@@ -279,7 +287,8 @@
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         If Button7.Text = "Eleger diretor" Then
-
+            ElegerDiretor.Show()
+            ElegerDiretor.DepIDLoc = DepartamentosBindingSource.Current("ID")
         ElseIf Button7.Text = "Despedir diretor" Then
             Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
             If MsgBox("Enviar email de despedimento?", vbYesNo, "Informar funcionário") = MsgBoxResult.Yes Then
@@ -327,5 +336,9 @@
 
     Private Sub Button10_Click_1(sender As Object, e As EventArgs) Handles Button10.Click
         iniciarAlteracoes()
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        HistoricoDiretoresDepartamentos.Show()
     End Sub
 End Class

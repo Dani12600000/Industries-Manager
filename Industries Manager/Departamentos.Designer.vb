@@ -258,11 +258,10 @@ Partial Class Departamentos
         '
         Me.Button6.Location = New System.Drawing.Point(1350, 63)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(157, 32)
+        Me.Button6.Size = New System.Drawing.Size(157, 41)
         Me.Button6.TabIndex = 16
         Me.Button6.Text = "Historico"
         Me.Button6.UseVisualStyleBackColor = True
-        Me.Button6.Visible = False
         '
         'Button7
         '

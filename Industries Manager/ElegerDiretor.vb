@@ -1,4 +1,6 @@
-﻿Public Class ElegerDiretor
+﻿Imports Industries_Manager.Industries_DanDataSetTableAdapters
+
+Public Class ElegerDiretor
     Public DepIDLoc As Integer
 
     Private Sub ElegerDiretor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -20,8 +22,8 @@
         Diretores_de_DepartamentosBindingSource.AddNew()
         Diretores_de_DepartamentosBindingSource.Current("ID_Departamento") = DepIDLoc
         Diretores_de_DepartamentosBindingSource.Current("DDD") = TextBox1.Text
-        Diretores_de_DepartamentosBindingSource.Current("ID_Funcionario") = DepIDLoc
-        Diretores_de_DepartamentosBindingSource.Current("Funcoes") = DepIDLoc
+        Diretores_de_DepartamentosBindingSource.Current("ID_Funcionario") = ComboBox1.SelectedValue
+        Diretores_de_DepartamentosBindingSource.Current("Funcoes") = TextBox2.Text
         Diretores_de_DepartamentosBindingSource.Current("DDC") = Today
         If CheckBox1.Checked Then
             Diretores_de_DepartamentosBindingSource.Current("DDF") = DateTimePicker1.Value
@@ -29,6 +31,12 @@
 
         Diretores_de_DepartamentosBindingSource.EndEdit()
         Diretores_de_DepartamentosTableAdapter.Update(Industries_DanDataSet.Diretores_de_Departamentos)
+
+
+        Dim departamentoAtual As Integer
+        departamentoAtual = Departamentos.DepartamentosBindingSource.Position
+        Departamentos.DepartamentosTableAdapter.Update(Industries_DanDataSet)
+        Departamentos.AtualizarInfosDiretor()
 
         Me.Close()
     End Sub
