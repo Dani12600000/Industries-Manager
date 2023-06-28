@@ -23,11 +23,29 @@
             Debug.WriteLine("value: " & value)
         Next
 
+        Diretores_de_DepartamentosBindingSource.RemoveFilter()
+
         DateTimePicker1.MinDate = Today.AddDays(7)
         DateTimePicker1.Value = Today.AddYears(1)
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
 
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Diretores_de_DepartamentosBindingSource.AddNew()
+        Diretores_de_DepartamentosBindingSource.Current("ID_Departamento") = DepIDLoc
+        Diretores_de_DepartamentosBindingSource.Current("DDD") = TextBox1.Text
+        Diretores_de_DepartamentosBindingSource.Current("ID_Funcionario") = DepIDLoc
+        Diretores_de_DepartamentosBindingSource.Current("Funcoes") = DepIDLoc
+        Diretores_de_DepartamentosBindingSource.Current("DDC") = Today
+        Diretores_de_DepartamentosBindingSource.Current("DDF") = 
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        If CheckBox1.Checked Then
+
+        End If
     End Sub
 End Class

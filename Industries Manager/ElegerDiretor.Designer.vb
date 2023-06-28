@@ -38,6 +38,8 @@ Partial Class ElegerDiretor
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -77,7 +79,7 @@ Partial Class ElegerDiretor
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(43, 83)
+        Me.Label2.Location = New System.Drawing.Point(116, 83)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(96, 20)
         Me.Label2.TabIndex = 4
@@ -86,7 +88,7 @@ Partial Class ElegerDiretor
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(41, 49)
+        Me.Label3.Location = New System.Drawing.Point(114, 49)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(98, 20)
         Me.Label3.TabIndex = 5
@@ -105,7 +107,7 @@ Partial Class ElegerDiretor
         '
         Me.TextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
         Me.TextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.TextBox1.Location = New System.Drawing.Point(145, 46)
+        Me.TextBox1.Location = New System.Drawing.Point(218, 46)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(141, 26)
         Me.TextBox1.TabIndex = 6
@@ -115,7 +117,7 @@ Partial Class ElegerDiretor
         Me.ComboBox1.DataSource = Me.FuncionariosBindingSource
         Me.ComboBox1.DisplayMember = "Nome"
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(145, 80)
+        Me.ComboBox1.Location = New System.Drawing.Point(218, 80)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(327, 28)
         Me.ComboBox1.TabIndex = 7
@@ -133,7 +135,7 @@ Partial Class ElegerDiretor
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(64, 119)
+        Me.Label4.Location = New System.Drawing.Point(137, 119)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(75, 20)
         Me.Label4.TabIndex = 8
@@ -143,7 +145,7 @@ Partial Class ElegerDiretor
         '
         Me.TextBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
         Me.TextBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.TextBox2.Location = New System.Drawing.Point(145, 119)
+        Me.TextBox2.Location = New System.Drawing.Point(218, 119)
         Me.TextBox2.Multiline = True
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(327, 110)
@@ -152,7 +154,7 @@ Partial Class ElegerDiretor
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(12, 244)
+        Me.Label5.Location = New System.Drawing.Point(85, 285)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(127, 20)
         Me.Label5.TabIndex = 10
@@ -161,16 +163,40 @@ Partial Class ElegerDiretor
         'DateTimePicker1
         '
         Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(145, 239)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(218, 280)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(147, 26)
         Me.DateTimePicker1.TabIndex = 11
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(443, 338)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(131, 44)
+        Me.Button1.TabIndex = 12
+        Me.Button1.Text = "Guardar"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.CheckBox1.Checked = True
+        Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBox1.Location = New System.Drawing.Point(12, 245)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(229, 24)
+        Me.CheckBox1.TabIndex = 13
+        Me.CheckBox1.Text = "Pretende terminar contrato:"
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'ElegerDiretor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(526, 305)
+        Me.ClientSize = New System.Drawing.Size(586, 394)
+        Me.Controls.Add(Me.CheckBox1)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.TextBox2)
@@ -205,4 +231,6 @@ Partial Class ElegerDiretor
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents Button1 As Button
+    Friend WithEvents CheckBox1 As CheckBox
 End Class
