@@ -120,10 +120,6 @@
 
     End Sub
 
-    Sub elegerDiretor()
-
-    End Sub
-
     Private Sub FillByToolStripButton_Click(sender As Object, e As EventArgs)
         Try
             Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
@@ -308,7 +304,7 @@
                 EnviarMensagemAutomaticaDemissao(InfoUser.UserFirstName, InfoUser.UserLastName, departamentosANotificar, partesNome(0), partesNome(partesNome.Length - 1))
             End If
             If MsgBox("Deseja eleger um subsituto para o seu cargo?", vbYesNo, "Eleger novo diretor") Then
-                '@TODO: Depois meter o codigo
+                ElegerDiretor.Show()
             End If
         End If
     End Sub

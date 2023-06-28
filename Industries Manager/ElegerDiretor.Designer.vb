@@ -30,8 +30,13 @@ Partial Class ElegerDiretor
         Me.TableAdapterManager = New Industries_Manager.Industries_DanDataSetTableAdapters.TableAdapterManager()
         Me.NomeComboBox = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Diretores_de_DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -79,25 +84,52 @@ Partial Class ElegerDiretor
         '
         Me.NomeComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FuncionariosBindingSource, "Nome", True))
         Me.NomeComboBox.FormattingEnabled = True
-        Me.NomeComboBox.Location = New System.Drawing.Point(83, 52)
+        Me.NomeComboBox.Location = New System.Drawing.Point(114, 78)
         Me.NomeComboBox.Name = "NomeComboBox"
-        Me.NomeComboBox.Size = New System.Drawing.Size(429, 28)
+        Me.NomeComboBox.Size = New System.Drawing.Size(327, 28)
         Me.NomeComboBox.TabIndex = 3
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 55)
+        Me.Label2.Location = New System.Drawing.Point(12, 81)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(57, 20)
+        Me.Label2.Size = New System.Drawing.Size(96, 20)
         Me.Label2.TabIndex = 4
-        Me.Label2.Text = "Label2"
+        Me.Label2.Text = "Funcionario:"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(10, 47)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(98, 20)
+        Me.Label3.TabIndex = 5
+        Me.Label3.Text = "Designação:"
+        '
+        'Diretores_de_DepartamentosBindingSource
+        '
+        Me.Diretores_de_DepartamentosBindingSource.DataMember = "Diretores de Departamentos"
+        Me.Diretores_de_DepartamentosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'Diretores_de_DepartamentosTableAdapter
+        '
+        Me.Diretores_de_DepartamentosTableAdapter.ClearBeforeFill = True
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(114, 44)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(141, 26)
+        Me.TextBox1.TabIndex = 6
         '
         'ElegerDiretor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(686, 220)
+        Me.ClientSize = New System.Drawing.Size(669, 220)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.NomeComboBox)
         Me.Controls.Add(Me.Label1)
@@ -105,6 +137,7 @@ Partial Class ElegerDiretor
         Me.Text = "Eleger Novo Diretor"
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -117,4 +150,8 @@ Partial Class ElegerDiretor
     Friend WithEvents TableAdapterManager As Industries_DanDataSetTableAdapters.TableAdapterManager
     Friend WithEvents NomeComboBox As ComboBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Diretores_de_DepartamentosBindingSource As BindingSource
+    Friend WithEvents Diretores_de_DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter
+    Friend WithEvents TextBox1 As TextBox
 End Class
