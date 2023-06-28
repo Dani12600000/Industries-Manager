@@ -23,7 +23,7 @@ Public Class DetalhesAviso
             ComboBox1.Items.Add(listaOpcoesParaQuemEnviar(i))
         Next
 
-        DateTimePicker1.MinDate = Today
+        DateTimePicker1.MinDate = Today.AddDays(1)
         AlterarCoisasAMostrarTamanhosAndLocations()
         locGroupBox = GroupBox1.Location
         locLabel2 = Label2.Location
