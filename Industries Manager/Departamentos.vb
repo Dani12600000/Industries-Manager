@@ -292,10 +292,17 @@
         ElseIf Button7.Text = "Demitir-me" Then 'Antenção este e o outro de cima são diferentes
             Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
 
-
+            For Each row As DataRowView In FuncionariosBindingSource.List
+                For Each column As DataColumn In Industries_DanDataSet.Funcionarios.Columns
+                    Dim columnName As String = column.ColumnName
+                    Dim columnValue As String = CStr(row(columnName))
+                    Debug.WriteLine($"{columnName}: {columnValue}")
+                Next
+                Debug.WriteLine("") ' Adicionar uma linha em branco entre cada registro
+            Next
 
             Dim idFuncionario As Integer = Diretores_de_DepartamentosBindingSource.Current("ID_Funcionario")
-            FuncionariosBindingSource2.Find("ID", idFuncionario)
+            FuncionariosBindingSource.Position = FuncionariosBindingSource.Find("ID", idFuncionario)
             Dim nomeCompleto As String = FuncionariosBindingSource1.Current("Nome") & " " & FuncionariosBindingSource1.Current("Sobrenome")
             Dim partesNome() As String = nomeCompleto.Split(" "c)
 
