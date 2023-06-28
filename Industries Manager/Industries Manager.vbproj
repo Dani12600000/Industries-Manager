@@ -142,7 +142,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Industries_DanDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="InfosEmpresa.vb" />
+    <Compile Include="InfoEnterprise.vb" />
     <Compile Include="Login.Designer.vb">
       <DependentUpon>Login.vb</DependentUpon>
     </Compile>

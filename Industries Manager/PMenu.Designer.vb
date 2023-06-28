@@ -41,11 +41,20 @@ Partial Class PMenu
         Me.AvisosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.AvisosTableAdapter()
         Me.Leitura_de_avisosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Leitura_de_avisosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Leitura_de_avisosTableAdapter()
+        Me.Diretores_de_DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
+        Me.DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.DepartamentosTableAdapter()
+        Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FuncionariosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FuncionariosTableAdapter()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AvisosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Leitura_de_avisosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -88,13 +97,12 @@ Partial Class PMenu
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogoutToolStripMenuItem, Me.AvisosToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.MenuStrip1.Size = New System.Drawing.Size(636, 38)
+        Me.MenuStrip1.Size = New System.Drawing.Size(636, 36)
         Me.MenuStrip1.TabIndex = 3
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -102,7 +110,7 @@ Partial Class PMenu
         '
         Me.LogoutToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(91, 34)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(91, 32)
         Me.LogoutToolStripMenuItem.Text = "Logout"
         '
         'AvisosToolStripMenuItem
@@ -110,7 +118,7 @@ Partial Class PMenu
         Me.AvisosToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.AvisosToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.AvisosToolStripMenuItem.Name = "AvisosToolStripMenuItem"
-        Me.AvisosToolStripMenuItem.Size = New System.Drawing.Size(84, 34)
+        Me.AvisosToolStripMenuItem.Size = New System.Drawing.Size(84, 32)
         Me.AvisosToolStripMenuItem.Text = "Avisos"
         '
         'Button3
@@ -215,6 +223,33 @@ Partial Class PMenu
         '
         Me.Leitura_de_avisosTableAdapter.ClearBeforeFill = True
         '
+        'Diretores_de_DepartamentosBindingSource
+        '
+        Me.Diretores_de_DepartamentosBindingSource.DataMember = "Diretores de Departamentos"
+        Me.Diretores_de_DepartamentosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'Diretores_de_DepartamentosTableAdapter
+        '
+        Me.Diretores_de_DepartamentosTableAdapter.ClearBeforeFill = True
+        '
+        'DepartamentosBindingSource
+        '
+        Me.DepartamentosBindingSource.DataMember = "Departamentos"
+        Me.DepartamentosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'DepartamentosTableAdapter
+        '
+        Me.DepartamentosTableAdapter.ClearBeforeFill = True
+        '
+        'FuncionariosBindingSource
+        '
+        Me.FuncionariosBindingSource.DataMember = "Funcionarios"
+        Me.FuncionariosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'FuncionariosTableAdapter
+        '
+        Me.FuncionariosTableAdapter.ClearBeforeFill = True
+        '
         'PMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -240,6 +275,9 @@ Partial Class PMenu
         CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AvisosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Leitura_de_avisosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -265,4 +303,10 @@ Partial Class PMenu
     Friend WithEvents AvisosTableAdapter As Industries_DanDataSetTableAdapters.AvisosTableAdapter
     Friend WithEvents Leitura_de_avisosBindingSource As BindingSource
     Friend WithEvents Leitura_de_avisosTableAdapter As Industries_DanDataSetTableAdapters.Leitura_de_avisosTableAdapter
+    Friend WithEvents Diretores_de_DepartamentosBindingSource As BindingSource
+    Friend WithEvents Diretores_de_DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter
+    Friend WithEvents DepartamentosBindingSource As BindingSource
+    Friend WithEvents DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.DepartamentosTableAdapter
+    Friend WithEvents FuncionariosBindingSource As BindingSource
+    Friend WithEvents FuncionariosTableAdapter As Industries_DanDataSetTableAdapters.FuncionariosTableAdapter
 End Class

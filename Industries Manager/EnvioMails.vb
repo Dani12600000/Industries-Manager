@@ -186,7 +186,7 @@
             For i = 0 To argumentosParaOutlook.Count - 1
                 argumentosParaOutlook &= destinatarios(i)
                 If i + 1 = argumentosParaOutlook.Count - 1 Then
-                    argumentosParaOutlook &= ", "
+                    argumentosParaOutlook &= ";"
                 End If
             Next
 
