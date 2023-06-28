@@ -118,6 +118,8 @@ Partial Class ElegerDiretor
         '
         'TextBox1
         '
+        Me.TextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+        Me.TextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.TextBox1.Location = New System.Drawing.Point(114, 44)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(141, 26)
