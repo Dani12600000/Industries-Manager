@@ -295,12 +295,17 @@
 
 
             Dim idFuncionario As Integer = Diretores_de_DepartamentosBindingSource.Current("ID_Funcionario")
-            FuncionariosBindingSource.Position = FuncionariosBindingSource.Find("ID", idFuncionario)
+            FuncionariosBindingSource1.Position = FuncionariosBindingSource1.Find("ID", idFuncionario)
             Dim nomeCompleto As String = FuncionariosBindingSource1.Current("Nome") & " " & FuncionariosBindingSource1.Current("Sobrenome")
             Dim partesNome() As String = nomeCompleto.Split(" "c)
 
             If MsgBox("Enviar email de demissão?", vbYesNo, "Informar empresa") = MsgBoxResult.Yes Then
-                EnviarMensagemAutomaticaDemissao(InfoUser.UserFirstName, InfoUser.UserLastName, FuncionariosBindingSource1.Current("Email"), partesNome(0), partesNome(partesNome.Length - 1))
+                Dim departamentosANotificar As List(Of String) = New List(Of String)
+
+                departamentosANotificar.Add(InfoEnterprise.EmailDiretorDepartamento(1)) ' Administração
+                departamentosANotificar.Add(InfoEnterprise.EmailDiretorDepartamento(2)) ' Recursos Humanos
+
+                EnviarMensagemAutomaticaDemissao(InfoUser.UserFirstName, InfoUser.UserLastName, departamentosANotificar, partesNome(0), partesNome(partesNome.Length - 1))
             End If
             If MsgBox("Deseja eleger um subsituto para o seu cargo?", vbYesNo, "Eleger novo diretor") Then
                 '@TODO: Depois meter o codigo

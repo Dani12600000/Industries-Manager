@@ -183,8 +183,9 @@
 
             argumentosParaOutlook = "/c ipm.note /m """
 
-            For i = 0 To argumentosParaOutlook.Count - 1
+            For i = 0 To destinatarios.Count - 1
                 argumentosParaOutlook &= destinatarios(i)
+                Debug.WriteLine("Mail(" & i & "): " & destinatarios(i))
                 If i + 1 = argumentosParaOutlook.Count - 1 Then
                     argumentosParaOutlook &= ";"
                 End If

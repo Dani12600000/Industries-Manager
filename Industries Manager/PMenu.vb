@@ -212,16 +212,24 @@ Public Class PMenu
 
                 FuncionariosBindingSource.Filter = "ID = " & Diretores_de_DepartamentosBindingSource.Current("ID_Funcionario")
 
-                InfoEnterprise.NomeCompletoDiretorDepartamento.Add(FuncionariosBindingSource.Current("Nome") & " " & FuncionariosBindingSource.Current("Sobrenome"))
-                NomeAsPartesDiretorDepartamento.Add(InfoEnterprise.NomeCompletoDiretorDepartamento(i).Split(" "c).ToList)
+                Dim nomeDiretorCompleto As String
+                nomeDiretorCompleto = FuncionariosBindingSource.Current("Nome") & " " & FuncionariosBindingSource.Current("Sobrenome")
 
-                InfoEnterprise.EmailDiretorDepartamento = FuncionariosBindingSource.Current("Email")
+                InfoEnterprise.NomeCompletoDiretorDepartamento.Add(nomeDiretorCompleto)
+                Dim nomeSeparado() As String = InfoEnterprise.NomeCompletoDiretorDepartamento(i).Split(" "c)
+                InfoEnterprise.PrimeiroNomeDiretorDepartamento.Add(nomeSeparado(0))
+                InfoEnterprise.UltimoNomeDiretorDepartamento.Add(nomeSeparado(nomeSeparado.Count - 1))
+
+                InfoEnterprise.EmailDiretorDepartamento.Add(FuncionariosBindingSource.Current("Email"))
 
 
             Else
 
                 InfoEnterprise.IDDiretorDepartamento.Add(0)
-
+                InfoEnterprise.NomeCompletoDiretorDepartamento.Add("")
+                InfoEnterprise.PrimeiroNomeDiretorDepartamento.Add("")
+                InfoEnterprise.UltimoNomeDiretorDepartamento.Add("")
+                InfoEnterprise.EmailDiretorDepartamento.Add("")
 
             End If
 
@@ -234,6 +242,11 @@ Public Class PMenu
 
             'Se houver diretor
             Debug.WriteLineIf(InfoEnterprise.IDDiretorDepartamento(i) > 0, "ID Diretor Departamento: " & InfoEnterprise.IDDiretorDepartamento(i))
+            Debug.WriteLineIf(InfoEnterprise.IDDiretorDepartamento(i) > 0, "Nome Completo Diretor Departamento: " & InfoEnterprise.NomeCompletoDiretorDepartamento(i))
+
+            Debug.WriteLineIf(InfoEnterprise.IDDiretorDepartamento(i) > 0, "Primeiro Nome Diretor Departamento: " & InfoEnterprise.PrimeiroNomeDiretorDepartamento(i))
+            Debug.WriteLineIf(InfoEnterprise.IDDiretorDepartamento(i) > 0, "Primeiro Nome Diretor Departamento: " & InfoEnterprise.UltimoNomeDiretorDepartamento(i))
+            Debug.WriteLineIf(InfoEnterprise.IDDiretorDepartamento(i) > 0, "Email Diretor Departamento: " & InfoEnterprise.EmailDiretorDepartamento(i))
 
 
             'Se não houver diretor
