@@ -303,11 +303,17 @@
 
                 EnviarMensagemAutomaticaDemissao(InfoUser.UserFirstName, InfoUser.UserLastName, departamentosANotificar, partesNome(0), partesNome(partesNome.Length - 1))
             End If
-            If MsgBox("Deseja eleger um subsituto para o seu cargo?", vbYesNo, "Eleger novo diretor") Then
+            If MsgBox("Deseja eleger um subsituto para o seu cargo?", vbYesNo, "Eleger novo diretor") = MsgBoxResult.Yes Then
                 ElegerDiretor.Show()
                 ElegerDiretor.DepIDLoc = DepartamentosBindingSource.Current("ID")
             End If
             Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
+            Diretores_de_DepartamentosBindingSource.EndEdit()
+
+            Dim departamentoAtual As Integer
+            departamentoAtual = DepartamentosBindingSource.Position
+            DepartamentosTableAdapter.Update(Industries_DanDataSet)
+            AtualizarInfosDiretor()
         End If
     End Sub
 
