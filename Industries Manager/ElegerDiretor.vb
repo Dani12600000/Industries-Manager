@@ -22,6 +22,9 @@
         If CheckBox1.Checked Then
             Diretores_de_DepartamentosBindingSource.Current("DDF") = DateTimePicker1.Value
         End If
+
+        Diretores_de_DepartamentosBindingSource.EndEdit()
+        Diretores_de_DepartamentosTableAdapter.Update(Industries_DanDataSet)
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
