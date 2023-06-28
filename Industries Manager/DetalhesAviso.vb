@@ -20,6 +20,11 @@ Public Class DetalhesAviso
         Me.Diretores_de_DepartamentosTableAdapter.Fill(Me.Industries_DanDataSet.Diretores_de_Departamentos)
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Avisos' table. You can move, or remove it, as needed.
         Me.AvisosTableAdapter.Fill(Me.Industries_DanDataSet.Avisos)
+
+        ComboBox1.Items.Add("Meu departamento")
+        ComboBox1.Items.Add("Funcionário do meu departamento")
+        ComboBox1.Items.Add("Diretor de outro departamento")
+
         DateTimePicker1.MinDate = Today
         AlterarCoisasAMostrarTamanhosAndLocations()
         locGroupBox = GroupBox1.Location
@@ -85,9 +90,13 @@ Public Class DetalhesAviso
         If ComboBox1.Text = "Funcionário" Then
             Label2.Visible = True
             FuncionariosDiretoresComboBox.Visible = True
-            Label2.Text = ComboBox1.Text
+            Label2.Text = "Funcionário" ' @TODO : ACABAR!
             GroupBox1.Visible = False
-            FuncionariosBindingSource.Filter = "ID_Departamento = " & InfoUser.UserDepID
+            FuncionariosBindingSource.Filter = "ID_Departamento = " & InfoUser.UserDepID & " AND NOT ID = " & InfoUser.UserID
+            If FuncionariosBindingSource.Count = 0 Then
+                MsgBox("Não existem funcionarios alem de sí no departamento" & vbCrLf & "Por favor selecione outra opção", vbInformation)
+                ComboBox1.SelectedIndex = 0
+            End If
 
         ElseIf ComboBox1.Text = "Departamento" Then
             Label2.Visible = False
