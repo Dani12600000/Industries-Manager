@@ -1,7 +1,9 @@
 ﻿Imports System.IO
+Imports System.Runtime.CompilerServices
 
 Public Class DetalhesAviso
     Dim locGroupBox, locLabel2 As Point
+    Dim tamanhoGroupBox1, tamanhoLabel2, diferencatamanhos As Integer
 
 
     Private Sub AvisosBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
@@ -11,15 +13,28 @@ Public Class DetalhesAviso
         Formulario = Me
     End Sub
 
-    Private Sub NovoAviso_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub DetalhesAviso_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Funcionarios' table. You can move, or remove it, as needed.
+        Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Diretores_de_Departamentos' table. You can move, or remove it, as needed.
+        Me.Diretores_de_DepartamentosTableAdapter.Fill(Me.Industries_DanDataSet.Diretores_de_Departamentos)
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Avisos' table. You can move, or remove it, as needed.
         Me.AvisosTableAdapter.Fill(Me.Industries_DanDataSet.Avisos)
         DateTimePicker1.MinDate = Today
+        AlterarCoisasAMostrarTamanhosAndLocations()
+        locGroupBox = GroupBox1.Location
+        locLabel2 = Label2.Location
+        GroupBox1.Location = locLabel2
+        tamanhoGroupBox1 = GroupBox1.Height
+        tamanhoLabel2 = Label2.Height
+        diferencatamanhos = tamanhoGroupBox1 - tamanhoLabel2
+        Me.Height = Me.ClientSize.Height - 50
     End Sub
 
     Public Sub NovoAviso()
         AvisosBindingSource.AddNew()
         ComboBox1.SelectedIndex = 0
+        AlterarCoisasAMostrarTamanhosAndLocations()
         Debug.WriteLine("NOVO!")
     End Sub
 
@@ -60,20 +75,83 @@ Public Class DetalhesAviso
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
-
+        AlterarCoisasAMostrarTamanhosAndLocations()
     End Sub
 
     Sub AlterarCoisasAMostrarTamanhosAndLocations()
-        If ComboBox1.SelectedItem.ToString = "Funcionário" Then
-            Label2.Text = ComboBox1.SelectedItem.ToString
-        ElseIf ComboBox1.SelectedItem.ToString = "Departamento" Then
 
-        ElseIf ComboBox1.SelectedItem.ToString = "Diretor" Then
-            Label2.Text = ComboBox1.SelectedItem.ToString
+        Debug.WriteLine("ComboBox1: " & ComboBox1.Text)
+
+        If ComboBox1.Text = "Funcionário" Then
+            Label2.Visible = True
+            FuncionariosDiretoresComboBox.Visible = True
+            Label2.Text = ComboBox1.Text
+            GroupBox1.Visible = False
+            FuncionariosBindingSource.Filter = "ID_Departamento = " & InfoUser.UserDepID
+
+        ElseIf ComboBox1.Text = "Departamento" Then
+            Label2.Visible = False
+            FuncionariosDiretoresComboBox.Visible = False
+            GroupBox1.Visible = True
+            FuncionariosBindingSource.RemoveFilter()
+
+        ElseIf ComboBox1.Text = "Diretor" Then
+            Label2.Visible = True
+            FuncionariosDiretoresComboBox.Visible = True
+            Label2.Text = ComboBox1.Text
+            GroupBox1.Visible = False
+
+
+            ' Aplica o filtro no Diretores_de_DepartamentosBindingSource
+            Diretores_de_DepartamentosBindingSource.Filter = "DDC <= #" & Date.Today.ToString("MM/dd/yyyy") & "# AND (DDF IS NULL OR DDF > #" & Date.Today.AddDays(1).ToString("MM/dd/yyyy") & "#) And NOT ID = " & InfoUser.UserDepDirectorID
+
+            ' Obtém os IDs de funcionários filtrados
+            Dim filteredIDs As New List(Of Integer)()
+            For Each row As DataRowView In Diretores_de_DepartamentosBindingSource.List
+                Dim idFuncionario As Integer = CInt(row("ID_Funcionario"))
+                filteredIDs.Add(idFuncionario)
+            Next
+
+            ' Verifica se há IDs filtrados
+            If filteredIDs.Count > 0 Then
+                ' Gera a expressão do filtro para a tabela Funcionarios
+                Dim filterExpression As String = "ID IN (" & String.Join(",", filteredIDs) & ")"
+
+                ' Aplica o filtro no FuncionariosBindingSource
+                FuncionariosBindingSource.Filter = filterExpression
+            Else
+                MsgBox("Não existem mais diretores" & vbCrLf & "Por favor selecione outra opção", vbInformation)
+                ComboBox1.SelectedIndex = 0
+            End If
+
+
         End If
+
+        If (ComboBox1.Text = "Funcionário" Or ComboBox1.Text = "Diretor") Then
+            Me.Height = Me.MinimumSize.Height
+        ElseIf ComboBox1.Text = "Departamento" And Not Me.ClientSize.Height >= Me.MinimumSize.Height + 75 Then
+            Me.Height = Me.MinimumSize.Height + 75
+        End If
+
+    End Sub
+
+    Private Sub FuncionariosDiretoresComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FuncionariosDiretoresComboBox.SelectedIndexChanged
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+        AvisosBindingSource.Current("DT") = Today
+
+        AvisosBindingSource.Current("ID_Diretor") = InfoUser.UserDepDirectorID
+
+        If AvisosBindingSource.Current("FDFDP") = "Data" Then
+            AvisosBindingSource.Current("DLDM") = DateTimePicker1.Value
+        End If
+
+        If ComboBox1.Text = "Funcionário" Then
+            AvisosBindingSource.Current("ID_Funcionario") = FuncionariosDiretoresComboBox.SelectedIndex
+        End If
 
         If Not Avisos.Visible Then
             Avisos.Show()
