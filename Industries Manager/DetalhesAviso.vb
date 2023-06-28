@@ -8,14 +8,8 @@ Public Class DetalhesAviso
         "Meu departamento",
         "Funcionários do meu departamento",
         "Diretores de outro departamento"}
-
-
-    Private Sub AvisosBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
-        Me.Validate()
-        Me.AvisosBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.Industries_DanDataSet)
-        Formulario = Me
-    End Sub
+    Dim carregado As Boolean = False
+    Dim FDFDP As String
 
     Private Sub DetalhesAviso_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Funcionarios' table. You can move, or remove it, as needed.
@@ -38,6 +32,10 @@ Public Class DetalhesAviso
         tamanhoLabel2 = Label2.Height
         diferencatamanhos = tamanhoGroupBox1 - tamanhoLabel2
         Me.Height = Me.ClientSize.Height + 7
+
+        Formulario = Me
+
+        CenterOnScreenForm()
     End Sub
 
     Public Sub NovoAviso()
@@ -48,24 +46,28 @@ Public Class DetalhesAviso
     End Sub
 
     Private Sub DataRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles DataRadioButton.CheckedChanged
-
+        AtualizarCoisasAAtualizar()
     End Sub
 
-    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles TodosLeramRadioButton.CheckedChanged
-
+    Private Sub TodosLeramRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles TodosLeramRadioButton.CheckedChanged
+        AtualizarCoisasAAtualizar()
     End Sub
 
-    Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles NuncaRadioButton.CheckedChanged
-
+    Private Sub NuncaRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles NuncaRadioButton.CheckedChanged
+        AtualizarCoisasAAtualizar()
     End Sub
 
     Sub AtualizarCoisasAAtualizar()
-        If DataRadioButton.Checked Then
-            AvisosBindingSource.Current("FDFDP") = "Data"
-        ElseIf TodosLeramRadioButton.Checked Then
-            AvisosBindingSource.Current("FDFDP") = "Todos leram"
-        ElseIf NuncaRadioButton.Checked Then
-            AvisosBindingSource.Current("FDFDP") = "Nunca"
+        If carregado Then
+            If AvisosBindingSource IsNot Nothing Then
+                If DataRadioButton.Checked Then
+                    FDFDP = "Data"
+                ElseIf TodosLeramRadioButton.Checked Then
+                    FDFDP = "Todos Leram"
+                ElseIf NuncaRadioButton.Checked Then
+                    FDFDP = "Nunca"
+                End If
+            End If
         End If
     End Sub
 
@@ -87,6 +89,10 @@ Public Class DetalhesAviso
         AlterarCoisasAMostrarTamanhosAndLocations()
     End Sub
 
+    Private Sub DetalhesAviso_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        carregado = True
+    End Sub
+
     Sub AlterarCoisasAMostrarTamanhosAndLocations()
 
         Debug.WriteLine("ComboBox1: " & ComboBox1.Text)
@@ -94,7 +100,7 @@ Public Class DetalhesAviso
         If ComboBox1.Text = listaOpcoesParaQuemEnviar(1) Then
             Label2.Visible = True
             FuncionariosDiretoresComboBox.Visible = True
-            Label2.Text = "Funcionário" ' @TODO : ACABAR!
+            Label2.Text = "Funcionário:"
             GroupBox1.Visible = False
             FuncionariosBindingSource.Filter = "ID_Departamento = " & InfoUser.UserDepID & " AND NOT ID = " & InfoUser.UserID
             If FuncionariosBindingSource.Count = 0 Then
@@ -111,7 +117,7 @@ Public Class DetalhesAviso
         ElseIf ComboBox1.Text = listaOpcoesParaQuemEnviar(2) Then
             Label2.Visible = True
             FuncionariosDiretoresComboBox.Visible = True
-            Label2.Text = ComboBox1.Text
+            Label2.Text = "Diretor:"
             GroupBox1.Visible = False
 
 
@@ -140,9 +146,9 @@ Public Class DetalhesAviso
 
         End If
 
-        If (ComboBox1.Text = "Funcionário" Or ComboBox1.Text = "Diretor") Then
+        If (ComboBox1.Text = listaOpcoesParaQuemEnviar(1) Or ComboBox1.Text = listaOpcoesParaQuemEnviar(2)) Then
             Me.Height = Me.MinimumSize.Height
-        ElseIf ComboBox1.Text = "Departamento" And Not Me.ClientSize.Height >= Me.MinimumSize.Height + 75 Then
+        ElseIf ComboBox1.Text = listaOpcoesParaQuemEnviar(0) And Not Me.ClientSize.Height >= Me.MinimumSize.Height + 75 Then
             Me.Height = Me.MinimumSize.Height + 75
         End If
 
@@ -157,16 +163,19 @@ Public Class DetalhesAviso
         AvisosBindingSource.Current("DT") = Today
 
         AvisosBindingSource.Current("ID_Diretor") = InfoUser.UserDepDirectorID
+        AvisosBindingSource.Current("FDFDP") = FDFDP
 
-        If AvisosBindingSource.Current("FDFDP") = "Data" Then
-            AvisosBindingSource.Current("DLDM") = DateTimePicker1.Value
+        If ComboBox1.Text = listaOpcoesParaQuemEnviar(0) Then
+            If FDFDP = "Data" Then
+                AvisosBindingSource.Current("DLDM") = DateTimePicker1.Value
+            ElseIf FDFDP = "Todos Leram" Then
+                AvisosBindingSource.Current("ID_Departamento") = InfoUser.UserDepID
+            End If
         End If
 
-        If ComboBox1.Text = "Funcionário" Or ComboBox1.Text = "" Then
+        If ComboBox1.Text = listaOpcoesParaQuemEnviar(1) Or ComboBox1.Text = listaOpcoesParaQuemEnviar(2) Then
             AvisosBindingSource.Current("ID_Funcionario") = FuncionariosDiretoresComboBox.SelectedIndex
         End If
-
-        ' AvisosBindingSource.Current("FDFDP")
 
         If Not Avisos.Visible Then
             Avisos.Show()

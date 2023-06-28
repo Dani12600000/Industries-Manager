@@ -36,6 +36,7 @@ Partial Class DetalhesAviso
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.FuncionariosDiretoresComboBox = New System.Windows.Forms.ComboBox()
+        Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DataRadioButton = New System.Windows.Forms.RadioButton()
         Me.TodosLeramRadioButton = New System.Windows.Forms.RadioButton()
         Me.NuncaRadioButton = New System.Windows.Forms.RadioButton()
@@ -43,15 +44,14 @@ Partial Class DetalhesAviso
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Diretores_de_DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
-        Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FuncionariosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FuncionariosTableAdapter()
         TituloLabel = New System.Windows.Forms.Label()
         AvisoLabel = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AvisosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TituloLabel
@@ -162,11 +162,16 @@ Partial Class DetalhesAviso
         Me.FuncionariosDiretoresComboBox.DataSource = Me.FuncionariosBindingSource
         Me.FuncionariosDiretoresComboBox.DisplayMember = "Nome"
         Me.FuncionariosDiretoresComboBox.FormattingEnabled = True
-        Me.FuncionariosDiretoresComboBox.Location = New System.Drawing.Point(178, 254)
+        Me.FuncionariosDiretoresComboBox.Location = New System.Drawing.Point(127, 254)
         Me.FuncionariosDiretoresComboBox.Name = "FuncionariosDiretoresComboBox"
-        Me.FuncionariosDiretoresComboBox.Size = New System.Drawing.Size(411, 28)
+        Me.FuncionariosDiretoresComboBox.Size = New System.Drawing.Size(288, 28)
         Me.FuncionariosDiretoresComboBox.TabIndex = 9
         Me.FuncionariosDiretoresComboBox.ValueMember = "ID_Funcionario"
+        '
+        'FuncionariosBindingSource
+        '
+        Me.FuncionariosBindingSource.DataMember = "Funcionarios"
+        Me.FuncionariosBindingSource.DataSource = Me.Industries_DanDataSet
         '
         'DataRadioButton
         '
@@ -231,11 +236,6 @@ Partial Class DetalhesAviso
         '
         Me.Diretores_de_DepartamentosTableAdapter.ClearBeforeFill = True
         '
-        'FuncionariosBindingSource
-        '
-        Me.FuncionariosBindingSource.DataMember = "Funcionarios"
-        Me.FuncionariosBindingSource.DataSource = Me.Industries_DanDataSet
-        '
         'FuncionariosTableAdapter
         '
         Me.FuncionariosTableAdapter.ClearBeforeFill = True
@@ -264,10 +264,10 @@ Partial Class DetalhesAviso
         Me.Text = "Novo Aviso"
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AvisosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
