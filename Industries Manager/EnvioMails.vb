@@ -91,7 +91,7 @@
                                         mensagemSalario & vbCrLf & vbCrLf &
                                         "Começa " & diaDaSemana & ", dia " & proximoDia.ToString("d") & "." & vbCrLf & vbCrLf &
                                         "Bem-vindo(a) de volta à nossa equipe!" & vbCrLf & vbCrLf &
-                                        "Atenciosamente," & vbCrLf & primeiroNomeRemetente
+                                        "Atenciosamente," & vbCrLf & primeiroNomeRemetente & " " & ultimoNomeRemetente
 
             ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
             outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & destinatario & "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
@@ -119,7 +119,7 @@
                                             "Gostaríamos de informar que seu salário foi atualizado." & vbCrLf &
                                             "O novo valor do seu salário é de " & novoSalario.ToString("#,##0.00") & " por mês." & vbCrLf & vbCrLf &
                                             "Se tiver alguma dúvida, por favor, entre em contato conosco." & vbCrLf & vbCrLf &
-                                            "Atenciosamente," & vbCrLf & primeiroNomeRemetente
+                                            "Atenciosamente," & vbCrLf & primeiroNomeRemetente & " " & ultimoNomeRemetente
 
             ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
             outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & destinatario & "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
@@ -150,7 +150,7 @@
                 mensagemPredefinida &= "Motivo: " & motivo & vbCrLf
             End If
 
-            mensagemPredefinida &= vbCrLf & vbCrLf & "Atenciosamente," & vbCrLf & primeiroNomeRemetente
+            mensagemPredefinida &= vbCrLf & vbCrLf & "Atenciosamente," & vbCrLf & primeiroNomeRemetente & " " & ultimoNomeRemetente
 
             ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
             outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & destinatario & "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
