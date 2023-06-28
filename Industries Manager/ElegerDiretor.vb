@@ -33,7 +33,7 @@
     End Sub
 
     Private Sub ElegerDiretor_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-        Label1.Text = "Escolha o novo Diretor do departamento de " & DepIDLoc
+        Label1.Text = "Escolha o novo Diretor do departamento de " & InfoEnterprise.NomeDepartamento(InfoEnterprise.IDDepartamento.IndexOf(DepIDLoc))
 
         If InfoUser.UserAdm Then
             FuncionariosBindingSource.Filter = "Aprovacao = True AND ID_Departamento = " & DepIDLoc
