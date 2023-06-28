@@ -1,5 +1,4 @@
 ﻿Public Class ElegerDiretor
-    Public ID_Departamento As Integer
 
     Private Sub FuncionariosBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
@@ -21,9 +20,14 @@
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Funcionarios' table. You can move, or remove it, as needed.
         Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
 
+        Diretores_de_DepartamentosBindingSource.Filter = "ID_Departamento = " & InfoUser.UserDepID
 
+        For Each row As DataRowView In Diretores_de_DepartamentosBindingSource
+            Dim value As String = row("DDD").ToString()
+            TextBox1.AutoCompleteCustomSource.Add(value)
+            Debug.WriteLine("value: " & value)
+        Next
 
-        TextBox1.AutoCompleteCustomSource = Diretores_de_DepartamentosBindingSource
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
