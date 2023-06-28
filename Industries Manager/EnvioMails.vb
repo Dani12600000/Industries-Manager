@@ -161,4 +161,43 @@
             Console.WriteLine("Erro ao abrir o Outlook: " & ex.Message)
         End Try
     End Sub
+
+    Sub EnviarMensagemAutomaticaDemissao(primeiroNomeRemetente As String, ultimoNomeRemetente As String, destinatarios As List(Of String), nomeDestinatario As String, sobrenomeDestinatario As String)
+        Try
+            Dim assunto As String = "Demissão das Industries Dan"
+
+            ' Criar uma instância do processo do Outlook
+            Dim outlookProcess As New Process()
+
+            ' Definir o nome do processo como "Outlook"
+            outlookProcess.StartInfo.FileName = "Outlook"
+
+            ' Formatar a mensagem pré-definida
+            Dim mensagemPredefinida As String = "Prezado(a) " & nomeDestinatario & " " & sobrenomeDestinatario & "," & vbCrLf & vbCrLf &
+                                            "É por este meio que o venho informar que estou a me despedir com efeito imediato" & vbCrLf
+
+            mensagemPredefinida &= vbCrLf & vbCrLf & "Atenciosamente," & vbCrLf & primeiroNomeRemetente & " " & ultimoNomeRemetente
+
+            ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
+            Dim argumentosParaOutlook As String
+
+            argumentosParaOutlook = "/c ipm.note /m """
+
+            For i = 0 To argumentosParaOutlook.Count - 1
+                argumentosParaOutlook &= destinatarios(i)
+                If i + 1 = argumentosParaOutlook.Count - 1 Then
+                    argumentosParaOutlook &= ", "
+                End If
+            Next
+
+            argumentosParaOutlook &= "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
+
+            outlookProcess.StartInfo.Arguments = argumentosParaOutlook
+
+            ' Iniciar o processo
+            outlookProcess.Start()
+        Catch ex As Exception
+            Console.WriteLine("Erro ao abrir o Outlook: " & ex.Message)
+        End Try
+    End Sub
 End Module

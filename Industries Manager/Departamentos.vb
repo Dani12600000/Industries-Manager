@@ -286,10 +286,21 @@
 
         ElseIf Button7.Text = "Despedir diretor" Then
             Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
+            If MsgBox("Enviar email de despedimento?", vbYesNo, "Informar funcionário") = MsgBoxResult.Yes Then
+                '@TODO: Depois meter o codigo
+            End If
         ElseIf Button7.Text = "Demitir-me" Then 'Antenção este e o outro de cima são diferentes
             Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
-            If MsgBox("Enviar aviso e email de demissão?", vbYesNo, "Informar empresa") = MsgBoxResult.Yes Then
-                '@TODO: Depois meter o codigo
+
+
+
+            Dim idFuncionario As Integer = Diretores_de_DepartamentosBindingSource.Current("ID_Funcionario")
+            FuncionariosBindingSource2.Find("ID", idFuncionario)
+            Dim nomeCompleto As String = FuncionariosBindingSource1.Current("Nome") & " " & FuncionariosBindingSource1.Current("Sobrenome")
+            Dim partesNome() As String = nomeCompleto.Split(" "c)
+
+            If MsgBox("Enviar email de demissão?", vbYesNo, "Informar empresa") = MsgBoxResult.Yes Then
+                EnviarMensagemAutomaticaDemissao(InfoUser.UserFirstName, InfoUser.UserLastName, FuncionariosBindingSource1.Current("Email"), partesNome(0), partesNome(partesNome.Length - 1))
             End If
             If MsgBox("Deseja eleger um subsituto para o seu cargo?", vbYesNo, "Eleger novo diretor") Then
                 '@TODO: Depois meter o codigo
