@@ -6,6 +6,10 @@
         Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Diretores_de_Departamentos' table. You can move, or remove it, as needed.
         Me.Diretores_de_DepartamentosTableAdapter.Fill(Me.Industries_DanDataSet.Diretores_de_Departamentos)
+
+        Formulario = Me
+
+        CenterOnScreenForm()
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
@@ -24,7 +28,9 @@
         End If
 
         Diretores_de_DepartamentosBindingSource.EndEdit()
-        Diretores_de_DepartamentosTableAdapter.Update(Industries_DanDataSet)
+        Diretores_de_DepartamentosTableAdapter.Update(Industries_DanDataSet.Diretores_de_Departamentos)
+
+        Me.Close()
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
