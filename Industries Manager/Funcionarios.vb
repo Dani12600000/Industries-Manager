@@ -229,10 +229,10 @@ Public Class Funcionarios
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        AbrirOutlook(EmailTextBox.Text, InfoUser.UserName)
+        AbrirOutlook(EmailTextBox.Text, InfoUser.UserFirstName, InfoUser.UserLastName)
     End Sub
 
-    Sub AbrirOutlook(destinatario As String, nomeRemetente As String)
+    Sub AbrirOutlook(destinatario As String, primeiroNomeRemetente As String, ultimoNomeRemetente As String)
         Try
             ' Criar uma instância do processo do Outlook
             Dim outlookProcess As New Process()
@@ -241,7 +241,7 @@ Public Class Funcionarios
             outlookProcess.StartInfo.FileName = "Outlook"
 
             ' Adicionar a assinatura ao corpo do e-mail
-            Dim assinatura As String = vbCrLf & vbCrLf & vbCrLf & "Atenciosamente," & vbCrLf & nomeRemetente
+            Dim assinatura As String = vbCrLf & vbCrLf & vbCrLf & "Atenciosamente," & vbCrLf & primeiroNomeRemetente & " " & ultimoNomeRemetente
 
             ' Adicionar o destinatário e a assinatura aos argumentos de linha de comando
             outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & destinatario & "?body=" & assinatura & """"
