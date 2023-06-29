@@ -1,11 +1,41 @@
 ﻿Imports System.IO
+Imports System.Windows.Forms.VisualStyles
+Imports System.Drawing.Drawing2D
 Public Class PMenu
     Dim TextOfFormButtonsPermitidos As List(Of String) = New List(Of String)()
+
+
+    Private Class LogoutRenderer : Inherits ToolStripProfessionalRenderer
+        Private ReadOnly logoutMenuItem As ToolStripMenuItem
+
+        Public Sub New(logoutMenuItem As ToolStripMenuItem)
+            Me.logoutMenuItem = logoutMenuItem
+        End Sub
+
+        Protected Overrides Sub OnRenderMenuItemBackground(ByVal e As ToolStripItemRenderEventArgs)
+            If e.Item.Selected Then
+                Dim rc As New Rectangle(Point.Empty, e.Item.Size)
+                If e.Item Is logoutMenuItem Then
+                    ' Define a cor de destaque para o LogoutToolStripMenuItem
+                    e.Graphics.FillRectangle(Brushes.LightCoral, rc)
+                    e.Graphics.DrawRectangle(Pens.Red, 0, 0, rc.Width - 1, rc.Height - 1)
+                Else
+                    MyBase.OnRenderMenuItemBackground(e)
+                    ' @TODO : Depois escolher cores melhores
+                    ' Define a cor de destaque para o LogoutToolStripMenuItem
+                    ' e.Graphics.FillRectangle(Brushes.LightGray, rc)
+                    ' e.Graphics.DrawRectangle(Pens.Gray, 0, 0, rc.Width - 1, rc.Height - 1)
+                End If
+            End If
+        End Sub
+    End Class
+
 
     Private Sub PMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Funcionarios' table. You can move, or remove it, as needed.
         Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
         CarragamentoInicialProprio()
+        MenuStrip1.Renderer = New LogoutRenderer(LogoutToolStripMenuItem)
     End Sub
 
     Sub CarragamentoInicialProprio()
@@ -76,13 +106,29 @@ Public Class PMenu
         ' Fazer loop para buscar todos os Avisos não lidos e lidos do Departamento
 
         Dim nenhumAvisoLabel As New ToolStripLabel("Nenhum aviso novo por agora") With {
-            .ForeColor = Color.DimGray
+            .ForeColor = Color.DimGray,
+            .AutoSize = False,
+            .Size = New Size(200, 30)
         }
         nenhumAvisoLabel.Font = New Font(nenhumAvisoLabel.Font, FontStyle.Italic)
 
+        Dim avisosRecentes As New List(Of ToolStripLabel)
 
+        If avisosRecentes.Count = 0 Then
+            AvisosToolStripMenuItem.DropDownItems.Insert(0, nenhumAvisoLabel)
+        Else
+            For Each label As ToolStripLabel In avisosRecentes
+                Dim novoLabel As New ToolStripLabel(label.Text)
+                novoLabel.BackColor = Color.LightGray
+                novoLabel.ForeColor = Color.Black
 
-        AvisosToolStripMenuItem.DropDownItems.Insert(0, nenhumAvisoLabel)
+                AddHandler novoLabel.MouseLeave, AddressOf avisosRecentes_MouseLeave
+                AddHandler novoLabel.Click, AddressOf avisosRecentes_Click
+
+                AvisosToolStripMenuItem.DropDownItems.Insert(0, novoLabel)
+            Next
+        End If
+
 
 
         Formulario = Me
@@ -256,12 +302,26 @@ Public Class PMenu
 
     End Sub
 
+    Private Sub avisosRecentes_MouseLeave(sender As Object, e As EventArgs)
+        Dim label As ToolStripLabel = DirectCast(sender, ToolStripLabel)
+        label.BackColor = SystemColors.Control
+        label.ForeColor = SystemColors.ControlText
+    End Sub
+
+    Private Sub avisosRecentes_Click(sender As Object, e As EventArgs)
+        Dim label As ToolStripLabel = DirectCast(sender, ToolStripLabel)
+        Debug.WriteLine("Clicou no item: " & label.Text)
+    End Sub
+
+
+
     Private Sub VerAvisosMandados_Click(sender As Object, e As EventArgs)
         Avisos.Show()
     End Sub
 
     Private Sub NovoAviso_Click(sender As Object, e As EventArgs)
-
+        DetalhesAviso.Show()
+        DetalhesAviso.NovoAviso()
     End Sub
 
 

@@ -2,6 +2,8 @@
 
     Private Sub Avisos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Avisos' table. You can move, or remove it, as needed.
+        Formulario = Me
+
         Me.AvisosTableAdapter.Fill(Me.Industries_DanDataSet.Avisos)
 
         Me.Width = Me.ClientSize.Width * 1.09
@@ -90,19 +92,40 @@
             TextBox2.Text = ""
             TextBox3.Text = ""
 
-            MsgBox("Crie um aviso primeiro", vbOK)
+            MsgBox("Crie um aviso primeiro", vbOKOnly)
             ' Abrir form para criar um aviso
+            DetalhesAviso.Show()
+
+            DetalhesAviso.NovoAviso()
+
+            Me.Close()
+
+            DetalhesAviso.Activate()
         End If
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        DLDMDateTimePicker.Value = Today
-        AvisosBindingSource.EndEdit()
-        AvisosTableAdapter.Update(Industries_DanDataSet)
-        AtualizarLabelsinTextBoxesAndButtons()
+        If Button1.Text = "Terminar agora" Then
+            DLDMDateTimePicker.Value = Today
+            AvisosBindingSource.EndEdit()
+            AvisosTableAdapter.Update(Industries_DanDataSet)
+            AtualizarLabelsinTextBoxesAndButtons()
+        End If
     End Sub
 
     Private Sub Avisos_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         PMenu.Activate()
+    End Sub
+
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        iniciarAlteracoes()
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+
     End Sub
 End Class

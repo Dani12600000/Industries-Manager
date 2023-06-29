@@ -134,7 +134,7 @@ Partial Class Avisos
         Me.AvisoTextBox.Multiline = True
         Me.AvisoTextBox.Name = "AvisoTextBox"
         Me.AvisoTextBox.ReadOnly = True
-        Me.AvisoTextBox.Size = New System.Drawing.Size(629, 143)
+        Me.AvisoTextBox.Size = New System.Drawing.Size(629, 140)
         Me.AvisoTextBox.TabIndex = 2
         '
         'IDTextBox
@@ -208,7 +208,7 @@ Partial Class Avisos
         'DTDateTimePicker
         '
         Me.DTDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.AvisosBindingSource, "DT", True))
-        Me.DTDateTimePicker.Location = New System.Drawing.Point(73, 271)
+        Me.DTDateTimePicker.Location = New System.Drawing.Point(73, 287)
         Me.DTDateTimePicker.Name = "DTDateTimePicker"
         Me.DTDateTimePicker.Size = New System.Drawing.Size(238, 26)
         Me.DTDateTimePicker.TabIndex = 8
@@ -216,7 +216,7 @@ Partial Class Avisos
         'DLDMDateTimePicker
         '
         Me.DLDMDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.AvisosBindingSource, "DLDM", True))
-        Me.DLDMDateTimePicker.Location = New System.Drawing.Point(73, 332)
+        Me.DLDMDateTimePicker.Location = New System.Drawing.Point(73, 348)
         Me.DLDMDateTimePicker.Name = "DLDMDateTimePicker"
         Me.DLDMDateTimePicker.Size = New System.Drawing.Size(238, 26)
         Me.DLDMDateTimePicker.TabIndex = 10
@@ -224,7 +224,7 @@ Partial Class Avisos
         'Button1
         '
         Me.Button1.Enabled = False
-        Me.Button1.Location = New System.Drawing.Point(641, 331)
+        Me.Button1.Location = New System.Drawing.Point(641, 347)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(148, 32)
         Me.Button1.TabIndex = 12
@@ -234,7 +234,7 @@ Partial Class Avisos
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(473, 247)
+        Me.Label3.Location = New System.Drawing.Point(473, 263)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(139, 20)
         Me.Label3.TabIndex = 13
@@ -242,7 +242,7 @@ Partial Class Avisos
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(477, 270)
+        Me.TextBox2.Location = New System.Drawing.Point(477, 286)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.ReadOnly = True
         Me.TextBox2.Size = New System.Drawing.Size(158, 26)
@@ -251,7 +251,7 @@ Partial Class Avisos
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(477, 331)
+        Me.TextBox3.Location = New System.Drawing.Point(477, 347)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.ReadOnly = True
         Me.TextBox3.Size = New System.Drawing.Size(158, 26)
@@ -261,7 +261,7 @@ Partial Class Avisos
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(473, 308)
+        Me.Label4.Location = New System.Drawing.Point(473, 324)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(126, 20)
         Me.Label4.TabIndex = 15
@@ -270,9 +270,9 @@ Partial Class Avisos
         'Button9
         '
         Me.Button9.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button9.Location = New System.Drawing.Point(186, 436)
+        Me.Button9.Location = New System.Drawing.Point(186, 402)
         Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(107, 38)
+        Me.Button9.Size = New System.Drawing.Size(107, 44)
         Me.Button9.TabIndex = 31
         Me.Button9.Text = "Novo"
         Me.Button9.UseVisualStyleBackColor = True
@@ -281,9 +281,9 @@ Partial Class Avisos
         '
         Me.Button8.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Button8.BackColor = System.Drawing.Color.White
-        Me.Button8.Location = New System.Drawing.Point(302, 436)
+        Me.Button8.Location = New System.Drawing.Point(302, 402)
         Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(107, 38)
+        Me.Button8.Size = New System.Drawing.Size(107, 44)
         Me.Button8.TabIndex = 30
         Me.Button8.Text = "Editar"
         Me.Button8.UseVisualStyleBackColor = False
@@ -291,9 +291,9 @@ Partial Class Avisos
         'Button4
         '
         Me.Button4.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button4.Location = New System.Drawing.Point(444, 480)
+        Me.Button4.Location = New System.Drawing.Point(444, 452)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(80, 34)
+        Me.Button4.Size = New System.Drawing.Size(80, 62)
         Me.Button4.TabIndex = 29
         Me.Button4.Text = ">|"
         Me.Button4.UseVisualStyleBackColor = True
@@ -301,9 +301,9 @@ Partial Class Avisos
         'Button3
         '
         Me.Button3.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button3.Location = New System.Drawing.Point(358, 480)
+        Me.Button3.Location = New System.Drawing.Point(358, 452)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(80, 34)
+        Me.Button3.Size = New System.Drawing.Size(80, 62)
         Me.Button3.TabIndex = 28
         Me.Button3.Text = ">"
         Me.Button3.UseVisualStyleBackColor = True
@@ -311,9 +311,9 @@ Partial Class Avisos
         'Button2
         '
         Me.Button2.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button2.Location = New System.Drawing.Point(272, 480)
+        Me.Button2.Location = New System.Drawing.Point(272, 452)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(80, 34)
+        Me.Button2.Size = New System.Drawing.Size(80, 62)
         Me.Button2.TabIndex = 27
         Me.Button2.Text = "<"
         Me.Button2.UseVisualStyleBackColor = True
@@ -321,9 +321,9 @@ Partial Class Avisos
         'Button5
         '
         Me.Button5.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button5.Location = New System.Drawing.Point(186, 480)
+        Me.Button5.Location = New System.Drawing.Point(186, 452)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(80, 34)
+        Me.Button5.Size = New System.Drawing.Size(80, 62)
         Me.Button5.TabIndex = 26
         Me.Button5.Text = "|<"
         Me.Button5.UseVisualStyleBackColor = True
@@ -331,9 +331,9 @@ Partial Class Avisos
         'Button6
         '
         Me.Button6.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button6.Location = New System.Drawing.Point(417, 436)
+        Me.Button6.Location = New System.Drawing.Point(417, 402)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(107, 38)
+        Me.Button6.Size = New System.Drawing.Size(107, 44)
         Me.Button6.TabIndex = 32
         Me.Button6.Text = "Reenviar"
         Me.Button6.UseVisualStyleBackColor = True
@@ -342,7 +342,7 @@ Partial Class Avisos
         '
         Me.Button7.Location = New System.Drawing.Point(708, 87)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(81, 141)
+        Me.Button7.Size = New System.Drawing.Size(81, 138)
         Me.Button7.TabIndex = 33
         Me.Button7.Text = "Copiar para a clipboard"
         Me.Button7.UseVisualStyleBackColor = True
@@ -350,7 +350,7 @@ Partial Class Avisos
         'Button10
         '
         Me.Button10.Enabled = False
-        Me.Button10.Location = New System.Drawing.Point(641, 267)
+        Me.Button10.Location = New System.Drawing.Point(641, 283)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(148, 32)
         Me.Button10.TabIndex = 34
@@ -359,7 +359,7 @@ Partial Class Avisos
         '
         'TextBox4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(313, 331)
+        Me.TextBox4.Location = New System.Drawing.Point(313, 347)
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.ReadOnly = True
         Me.TextBox4.Size = New System.Drawing.Size(158, 26)
@@ -369,7 +369,7 @@ Partial Class Avisos
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(309, 308)
+        Me.Label5.Location = New System.Drawing.Point(309, 324)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(58, 20)
         Me.Label5.TabIndex = 37
@@ -377,7 +377,7 @@ Partial Class Avisos
         '
         'TextBox5
         '
-        Me.TextBox5.Location = New System.Drawing.Point(313, 270)
+        Me.TextBox5.Location = New System.Drawing.Point(313, 286)
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.ReadOnly = True
         Me.TextBox5.Size = New System.Drawing.Size(158, 26)
@@ -387,7 +387,7 @@ Partial Class Avisos
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(309, 247)
+        Me.Label6.Location = New System.Drawing.Point(309, 263)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(113, 20)
         Me.Label6.TabIndex = 35
@@ -395,7 +395,7 @@ Partial Class Avisos
         '
         'DLDMAndFDFDPLabel
         '
-        Me.DLDMAndFDFDPLabel.Location = New System.Drawing.Point(69, 308)
+        Me.DLDMAndFDFDPLabel.Location = New System.Drawing.Point(69, 324)
         Me.DLDMAndFDFDPLabel.Name = "DLDMAndFDFDPLabel"
         Me.DLDMAndFDFDPLabel.Size = New System.Drawing.Size(234, 20)
         Me.DLDMAndFDFDPLabel.TabIndex = 0
@@ -404,7 +404,7 @@ Partial Class Avisos
         'DTLabel
         '
         Me.DTLabel.AutoSize = True
-        Me.DTLabel.Location = New System.Drawing.Point(69, 247)
+        Me.DTLabel.Location = New System.Drawing.Point(69, 263)
         Me.DTLabel.Name = "DTLabel"
         Me.DTLabel.Size = New System.Drawing.Size(222, 20)
         Me.DTLabel.TabIndex = 39
