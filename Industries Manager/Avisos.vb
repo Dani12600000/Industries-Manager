@@ -80,43 +80,50 @@ Public Class Avisos
                 TextBox4.Visible = True
                 Label5.Visible = True
 
-                If DLDMDateTimePicker.Value > Today Then
-                    Button1.Text = "Terminar agora"
-                    If DiferencaEntreHojeAndDataNumero(AvisosBindingSource.Current("DLDM")) > 0 Then
-                        Label5.Text = "Faltam"
-                    Else
-                        Label5.Text = "Falta"
-                    End If
-                    Label5.Visible = True
-                    TextBox4.Visible = True
-                    TextBox4.Text = FuncoesRepetitivas.DiferencaEntreHojeAndDataTexto(AvisosBindingSource.Current("DLDM"))
+                If Not IsDBNull(AvisosBindingSource.Current("DLDM")) Then
+                    Button1.Enabled = True
+                    If AvisosBindingSource.Current("DLDM") > Today Then
+                        Button1.Text = "Terminar agora"
+                        If DiferencaEntreHojeAndDataNumero(AvisosBindingSource.Current("DLDM")) > 0 Then
+                            Label5.Text = "Faltam"
+                        Else
+                            Label5.Text = "Falta"
+                        End If
+                        Label5.Visible = True
+                        TextBox4.Visible = True
+                        TextBox4.Text = FuncoesRepetitivas.DiferencaEntreHojeAndDataTexto(AvisosBindingSource.Current("DLDM"))
 
-                ElseIf DLDMDateTimePicker.Value = Today Then
+                    ElseIf AvisosBindingSource.Current("DLDM") = Today Then
                         Button1.Text = "Prolongar"
                         Label5.Visible = False
                         TextBox4.Visible = False
 
-                    ElseIf DLDMDateTimePicker.Value < Today Then
+                    ElseIf AvisosBindingSource.Current("DLDM") < Today Then
                         Button1.Text = "Prolongar"
-                    Label5.Text = "Passou"
-                    Label5.Visible = True
-                    TextBox4.Visible = True
-                    TextBox4.Text = FuncoesRepetitivas.DiferencaEntreDataAndHojeTexto(DLDMDateTimePicker.Value)
+                        Label5.Text = "Passou"
+                        Label5.Visible = True
+                        TextBox4.Visible = True
+                        TextBox4.Text = FuncoesRepetitivas.DiferencaEntreDataAndHojeTexto(DLDMDateTimePicker.Value)
 
+                    End If
+                Else
+                    Button1.Enabled = False
+                    Label5.Visible = False
+                    TextBox4.Visible = False
                 End If
             ElseIf FDFDP = "Todos leram" Then
 
-                DLDMAndFDFDPLabel.Visible = False
-                DLDMDateTimePicker.Visible = False
-                TextBox4.Visible = True
-                Label5.Visible = True
+                    DLDMAndFDFDPLabel.Visible = False
+                    DLDMDateTimePicker.Visible = False
+                    TextBox4.Visible = False
+                    Label5.Visible = False
 
 
 
-                Button1.Text = "Terminar agora"
-            ElseIf FDFDP = "Nunca" Then
+                    Button1.Text = "Terminar agora"
+                ElseIf FDFDP = "Nunca" Then
 
-                DLDMDateTimePicker.Visible = False
+                    DLDMDateTimePicker.Visible = False
                 TextBox4.Visible = False
                 Label5.Visible = False
 
@@ -201,5 +208,25 @@ Public Class Avisos
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
 
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        AvisosBindingSource.MoveFirst()
+        AtualizarLabelsinTextBoxesAndButtons()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        AvisosBindingSource.MovePrevious()
+        AtualizarLabelsinTextBoxesAndButtons()
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        AvisosBindingSource.MoveNext()
+        AtualizarLabelsinTextBoxesAndButtons()
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        AvisosBindingSource.MoveLast()
+        AtualizarLabelsinTextBoxesAndButtons()
     End Sub
 End Class

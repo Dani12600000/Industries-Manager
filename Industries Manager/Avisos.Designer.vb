@@ -170,6 +170,7 @@ Partial Class Avisos
         Me.AvisosDataGridView.DataSource = Me.AvisosBindingSource
         Me.AvisosDataGridView.Location = New System.Drawing.Point(817, 53)
         Me.AvisosDataGridView.Name = "AvisosDataGridView"
+        Me.AvisosDataGridView.ReadOnly = True
         Me.AvisosDataGridView.RowHeadersWidth = 62
         Me.AvisosDataGridView.RowTemplate.Height = 28
         Me.AvisosDataGridView.Size = New System.Drawing.Size(617, 461)

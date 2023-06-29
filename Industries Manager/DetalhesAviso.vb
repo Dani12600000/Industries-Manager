@@ -175,7 +175,7 @@ Public Class DetalhesAviso
         End If
 
         If ComboBox1.Text = listaOpcoesParaQuemEnviar(1) Or ComboBox1.Text = listaOpcoesParaQuemEnviar(2) Then
-            AvisosBindingSource.Current("ID_Funcionario") = FuncionariosDiretoresComboBox.SelectedIndex
+            AvisosBindingSource.Current("ID_Funcionario") = FuncionariosDiretoresComboBox.SelectedValue
         End If
 
         AvisosBindingSource.EndEdit()
