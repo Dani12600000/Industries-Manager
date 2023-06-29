@@ -340,5 +340,6 @@
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         HistoricoDiretoresDepartamentos.Show()
+        HistoricoDiretoresDepartamentos.DepIDLoc = DepartamentosBindingSource.Current("ID")
     End Sub
 End Class

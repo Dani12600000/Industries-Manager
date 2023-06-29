@@ -28,6 +28,8 @@ Partial Class HistoricoDiretoresDepartamentos
         Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
         Me.TableAdapterManager = New Industries_Manager.Industries_DanDataSetTableAdapters.TableAdapterManager()
         Me.Diretores_de_DepartamentosDataGridView = New System.Windows.Forms.DataGridView()
+        Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FuncionariosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FuncionariosTableAdapter()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ID_Funcionario = New System.Windows.Forms.DataGridViewComboBoxColumn()
@@ -38,6 +40,7 @@ Partial Class HistoricoDiretoresDepartamentos
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Diretores_de_DepartamentosDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Industries_DanDataSet
@@ -74,6 +77,8 @@ Partial Class HistoricoDiretoresDepartamentos
         '
         'Diretores_de_DepartamentosDataGridView
         '
+        Me.Diretores_de_DepartamentosDataGridView.AllowUserToAddRows = False
+        Me.Diretores_de_DepartamentosDataGridView.AllowUserToDeleteRows = False
         Me.Diretores_de_DepartamentosDataGridView.AutoGenerateColumns = False
         Me.Diretores_de_DepartamentosDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLight
         Me.Diretores_de_DepartamentosDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
@@ -84,8 +89,17 @@ Partial Class HistoricoDiretoresDepartamentos
         Me.Diretores_de_DepartamentosDataGridView.Name = "Diretores_de_DepartamentosDataGridView"
         Me.Diretores_de_DepartamentosDataGridView.RowHeadersWidth = 62
         Me.Diretores_de_DepartamentosDataGridView.RowTemplate.Height = 28
-        Me.Diretores_de_DepartamentosDataGridView.Size = New System.Drawing.Size(1401, 466)
+        Me.Diretores_de_DepartamentosDataGridView.Size = New System.Drawing.Size(1552, 466)
         Me.Diretores_de_DepartamentosDataGridView.TabIndex = 1
+        '
+        'FuncionariosBindingSource
+        '
+        Me.FuncionariosBindingSource.DataMember = "Funcionarios"
+        Me.FuncionariosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'FuncionariosTableAdapter
+        '
+        Me.FuncionariosTableAdapter.ClearBeforeFill = True
         '
         'DataGridViewTextBoxColumn1
         '
@@ -93,41 +107,52 @@ Partial Class HistoricoDiretoresDepartamentos
         Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Width = 45
         '
         'DataGridViewTextBoxColumn3
         '
         Me.DataGridViewTextBoxColumn3.DataPropertyName = "DDD"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "DDD"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Designação"
         Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Width = 65
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Width = 75
         '
         'ID_Funcionario
         '
         Me.ID_Funcionario.DataPropertyName = "ID_Funcionario"
+        Me.ID_Funcionario.DataSource = Me.FuncionariosBindingSource
+        Me.ID_Funcionario.DisplayMember = "Nome"
+        Me.ID_Funcionario.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.[Nothing]
         Me.ID_Funcionario.HeaderText = "Nome"
         Me.ID_Funcionario.MinimumWidth = 8
         Me.ID_Funcionario.Name = "ID_Funcionario"
         Me.ID_Funcionario.ReadOnly = True
-        Me.ID_Funcionario.Width = 150
+        Me.ID_Funcionario.ValueMember = "ID"
+        Me.ID_Funcionario.Width = 125
         '
         'DataGridViewComboBoxColumn1
         '
         Me.DataGridViewComboBoxColumn1.DataPropertyName = "ID_Funcionario"
+        Me.DataGridViewComboBoxColumn1.DataSource = Me.FuncionariosBindingSource
+        Me.DataGridViewComboBoxColumn1.DisplayMember = "Sobrenome"
+        Me.DataGridViewComboBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.[Nothing]
         Me.DataGridViewComboBoxColumn1.HeaderText = "Sobrenome"
         Me.DataGridViewComboBoxColumn1.MinimumWidth = 8
         Me.DataGridViewComboBoxColumn1.Name = "DataGridViewComboBoxColumn1"
         Me.DataGridViewComboBoxColumn1.ReadOnly = True
+        Me.DataGridViewComboBoxColumn1.ValueMember = "ID"
         Me.DataGridViewComboBoxColumn1.Width = 150
         '
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "Funcoes"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Funcoes"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Funções"
         Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.Width = 250
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.DataGridViewTextBoxColumn5.Width = 360
         '
         'DataGridViewTextBoxColumn6
         '
@@ -135,6 +160,8 @@ Partial Class HistoricoDiretoresDepartamentos
         Me.DataGridViewTextBoxColumn6.HeaderText = "Data de Começo"
         Me.DataGridViewTextBoxColumn6.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Width = 110
         '
         'DataGridViewTextBoxColumn7
         '
@@ -142,12 +169,14 @@ Partial Class HistoricoDiretoresDepartamentos
         Me.DataGridViewTextBoxColumn7.HeaderText = "Data de Fim"
         Me.DataGridViewTextBoxColumn7.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        Me.DataGridViewTextBoxColumn7.Width = 95
         '
         'HistoricoDiretoresDepartamentos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1425, 490)
+        Me.ClientSize = New System.Drawing.Size(1576, 490)
         Me.Controls.Add(Me.Diretores_de_DepartamentosDataGridView)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
@@ -156,6 +185,7 @@ Partial Class HistoricoDiretoresDepartamentos
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Diretores_de_DepartamentosDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -165,6 +195,8 @@ Partial Class HistoricoDiretoresDepartamentos
     Friend WithEvents Diretores_de_DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter
     Friend WithEvents TableAdapterManager As Industries_DanDataSetTableAdapters.TableAdapterManager
     Friend WithEvents Diretores_de_DepartamentosDataGridView As DataGridView
+    Friend WithEvents FuncionariosBindingSource As BindingSource
+    Friend WithEvents FuncionariosTableAdapter As Industries_DanDataSetTableAdapters.FuncionariosTableAdapter
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents ID_Funcionario As DataGridViewComboBoxColumn
