@@ -36,7 +36,6 @@
         IgnoreTextBoxs.Add(TextBox1)
         IgnoreDateTimePickers.Add(DDCDateTimePicker)
 
-        Debug.WriteLine("ID_Departamento : " & InfoUser.UserDepID)
         DepartamentosBindingSource.Position = DepartamentosBindingSource.Find("ID", InfoUser.UserDepID)
 
         MostrarSalariosOuNao()
@@ -74,10 +73,8 @@
     Sub AtualizarBotoesDiretor()
 
         If InfoUser.UserDepID = 2 OrElse InfoUser.UserDepID = 3 OrElse InfoUser.UserDepDirectorYN OrElse InfoUser.UserAdm Then
-            Debug.WriteLine("cargoDiretorVazio: " & cargoDiretorVazio)
             If registoDiretorSelecionado IsNot Nothing Then
                 Try
-                    Debug.WriteLine("IsDBNull(registoDiretorSelecionado(""DDF"")): " & IsDBNull(registoDiretorSelecionado("DDF")))
 
                     If cargoDiretorVazio Then
                         Button7.Text = "Eleger diretor"
@@ -94,6 +91,7 @@
                     Debug.WriteLine("UserDepDirectorID: " & InfoUser.UserDepDirectorID)
                     Debug.WriteLine("Diretores....Current(""ID""): " & Diretores_de_DepartamentosBindingSource.Current("ID"))
                     Debug.WriteLine("registoDiretorSelecionado(""ID""): " & registoDiretorSelecionado("ID"))
+                    Debug.WriteLine("")
 
                     If InfoUser.UserDepID = DepartamentosBindingSource.Current("ID") OrElse InfoUser.UserDepID = 3 OrElse InfoUser.UserAdm Then
                         Button7.Enabled = True
@@ -192,8 +190,18 @@
         Dim idDepartamento As Integer = CInt(DepartamentosBindingSource.Current("ID"))
 
         Dim ultimoRegistro As DataRowView = Nothing
+        Debug.WriteLine("")
 
         For Each item As DataRowView In Diretores_de_DepartamentosBindingSource
+
+            Debug.WriteLine("1: " & (CInt(item("ID_Departamento")) = idDepartamento))
+            Debug.WriteLine("2: " & (Not DBNull.Value.Equals(item("DDC")) AndAlso Date.Parse(item("DDC")) <= Now))
+            Debug.WriteLine("3: " & (Not DBNull.Value.Equals(item("DDF")) AndAlso Date.Parse(item("DDF")) > Now))
+            Debug.WriteLine("4: " & (DBNull.Value.Equals(item("DDF"))))
+            Debug.WriteLine("1 e 2: " & (CInt(item("ID_Departamento")) = idDepartamento And Not DBNull.Value.Equals(item("DDC")) AndAlso Date.Parse(item("DDC")) <= Now))
+            Debug.WriteLine("3 ou 4: " & (Not DBNull.Value.Equals(item("DDF")) AndAlso Date.Parse(item("DDF")) > Now Or DBNull.Value.Equals(item("DDF"))))
+            Debug.WriteLine("(1 e 2) e (3 ou 4): " & ((CInt(item("ID_Departamento")) = idDepartamento And Not DBNull.Value.Equals(item("DDC")) AndAlso Date.Parse(item("DDC")) <= Now) And (Not DBNull.Value.Equals(item("DDF")) AndAlso Date.Parse(item("DDF")) > Now Or DBNull.Value.Equals(item("DDF")))))
+            Debug.WriteLine("")
 
             If CInt(item("ID_Departamento")) = idDepartamento AndAlso
                 (Not DBNull.Value.Equals(item("DDC")) AndAlso Date.Parse(item("DDC")) <= Now) AndAlso
@@ -204,11 +212,6 @@
         Next
 
         If ultimoRegistro IsNot Nothing Then
-            ' O último registro encontrado que atende ao critério
-            Debug.WriteLine("ID do último registro: " & ultimoRegistro("ID"))
-            Debug.WriteLine("ID_Funcionario do último registro: " & ultimoRegistro("ID_Funcionario"))
-
-            Debug.WriteLine("ultimoRegistro : " & ultimoRegistro("ID"))
 
             FuncionariosBindingSource1.Position = FuncionariosBindingSource1.Find("ID", ultimoRegistro("ID_Funcionario"))
 
@@ -284,8 +287,6 @@
                     Label3.Visible = True
                 End If
 
-                Debug.WriteLine("No cargo já há: " & noCargoJaHaString)
-
 
 
             End If
@@ -293,7 +294,6 @@
 
             registoDiretorSelecionado = ultimoRegistro
 
-            Debug.WriteLine("Acabou")
         Else
             ' Nenhum registro encontrado que atenda ao critério
             Debug.WriteLine("Nenhum registro encontrado que atenda ao critério.")
@@ -339,22 +339,18 @@
                 Next
 
 
-#Disable Warning BC42104 ' Variable is used before it has been assigned a value
                 EnviarMensagemAutomaticaDespedimento(InfoUser.UserFirstName, InfoUser.UserLastName, registoDiretorFuncionarioDetalhesSelecionado("Email"), registoDiretorFuncionarioDetalhesSelecionado("Nome"), registoDiretorFuncionarioDetalhesSelecionado("Sobrenome"), motivo)
-#Enable Warning BC42104 ' Variable is used before it has been assigned a value
             End If
 
             FuncionariosBindingSource1.RemoveFilter()
             Diretores_de_DepartamentosBindingSource.Filter = "ID = " & registoDiretorSelecionado("ID")
-            Debug.WriteLine("ID_Diretor: " & registoDiretorSelecionado("ID"))
-            Debug.WriteLine("Diretores_de_Departamentos.Current(""ID""): " & Diretores_de_DepartamentosBindingSource.Current("ID"))
 
             Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
             Diretores_de_DepartamentosBindingSource.EndEdit()
-
-            Diretores_de_DepartamentosTableAdapter.Update(Industries_DanDataSet)
+            Diretores_de_DepartamentosBindingSource.RemoveFilter()
+            Me.Diretores_de_DepartamentosTableAdapter.Update(Me.Industries_DanDataSet)
             DepartamentosTableAdapter.Update(Industries_DanDataSet)
-            Diretores_de_DepartamentosBindingSource.Position = 0
+
             AtualizarInfosDiretor()
 
 
@@ -392,16 +388,16 @@
         End If
     End Sub
 
-    Private Sub Button10_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub Departamentos_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         PMenu.Activate()
     End Sub
 
     Private Sub Button10_Click_1(sender As Object, e As EventArgs) Handles Button10.Click
         iniciarAlteracoes()
+    End Sub
+
+    Private Sub Departamentos_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        PMenu.Activate()
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
