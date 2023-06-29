@@ -134,7 +134,7 @@ Public Class Login
                     Login_FuncionarioBindingSource.AddNew()
 
                     DepartamentosBindingSource.Filter = "ID = " & FuncionariosBindingSource.Current("ID_Departamento")
-                    Diretores_de_DepartamentosBindingSource.Filter = "ID_Funcionario = " & FuncionariosBindingSource.Current("ID")
+                    Diretores_de_DepartamentosBindingSource.Filter = "ID_Funcionario = " & FuncionariosBindingSource.Current("ID") & " AND DDF Is NULL Or DDF > #" & Today.ToString("MM/dd/yyyy") & "#"
                     Diretores_de_DepartamentosBindingSource.MoveLast()
 
                     Login_FuncionarioBindingSource.Current("ID_Funcionario") = FuncionariosBindingSource.Current("ID")

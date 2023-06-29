@@ -65,38 +65,38 @@
         End If
     End Sub
 
-    '@TODO: Acabar este sub
     Sub AtualizarBotoesDiretor()
 
         If InfoUser.UserDepID = 2 OrElse InfoUser.UserDepID = 3 OrElse InfoUser.UserDepDirectorYN Then
             Debug.WriteLine("cargoDiretorVazio: " & cargoDiretorVazio)
-            Debug.WriteLine("IsDBNull(registoDiretorSelecionado(""DDF"")): " & IsDBNull(registoDiretorSelecionado("DDF")))
+            If registoDiretorSelecionado IsNot Nothing Then
+                Debug.WriteLine("IsDBNull(registoDiretorSelecionado(""DDF"")): " & IsDBNull(registoDiretorSelecionado("DDF")))
 
-            If cargoDiretorVazio AndAlso registoDiretorSelecionado("DDC") <= Today Then
-                Button7.Text = "Eleger diretor"
-            ElseIf IsDBNull(registoDiretorSelecionado("DDF")) OrElse registoDiretorSelecionado("DDF") >= Today Then
-                Button7.Text = "Despedir diretor"
-            End If
+                If cargoDiretorVazio AndAlso registoDiretorSelecionado("DDC") <= Today Then
+                    Button7.Text = "Eleger diretor"
+                ElseIf IsDBNull(registoDiretorSelecionado("DDF")) OrElse registoDiretorSelecionado("DDF") >= Today Then
+                    Button7.Text = "Despedir diretor"
+                End If
 
-            Button7.Visible = True
+                Button7.Visible = True
 
-            If Not cargoDiretorVazio AndAlso InfoUser.UserDepDirectorID = registoDiretorSelecionado("ID") Then
-                Button7.Text = "Demitir-me"
-            End If
+                If Not cargoDiretorVazio AndAlso InfoUser.UserDepDirectorID = registoDiretorSelecionado("ID") Then
+                    Button7.Text = "Demitir-me"
+                End If
 
-            Debug.WriteLine("UserDepDirectorID: " & InfoUser.UserDepDirectorID)
-            Debug.WriteLine("Diretores....Current(""ID""): " & Diretores_de_DepartamentosBindingSource.Current("ID"))
-            Debug.WriteLine("registoDiretorSelecionado(""ID""): " & registoDiretorSelecionado("ID"))
+                Debug.WriteLine("UserDepDirectorID: " & InfoUser.UserDepDirectorID)
+                Debug.WriteLine("Diretores....Current(""ID""): " & Diretores_de_DepartamentosBindingSource.Current("ID"))
+                Debug.WriteLine("registoDiretorSelecionado(""ID""): " & registoDiretorSelecionado("ID"))
 
-            If InfoUser.UserDepID = DepartamentosBindingSource.Current("ID") OrElse InfoUser.UserDepID = 3 OrElse InfoUser.UserAdm Then
-                Button7.Enabled = True
+                If InfoUser.UserDepID = DepartamentosBindingSource.Current("ID") OrElse InfoUser.UserDepID = 3 OrElse InfoUser.UserAdm Then
+                    Button7.Enabled = True
+                Else
+                    Button7.Enabled = False
+                End If
             Else
-                Button7.Enabled = False
+
             End If
-        Else
-
         End If
-
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
