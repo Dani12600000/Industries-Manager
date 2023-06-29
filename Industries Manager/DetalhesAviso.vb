@@ -159,11 +159,12 @@ Public Class DetalhesAviso
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        AtualizarCoisasAAtualizar()
 
         AvisosBindingSource.Current("DT") = Today
 
         AvisosBindingSource.Current("ID_Diretor") = InfoUser.UserDepDirectorID
-        AvisosBindingSource.Current("FDFDP") = FDFDP ' Isto está a dar erro devido ao tipo de dados na base dados, ou seja tenho que mudar isso depois na base de dadso
+        AvisosBindingSource.Current("FDFDP") = FDFDP ' Isto está a dar erro devido ao tipo de dados na base dados, ou seja tenho que mudar isso depois na base de dados
 
         If ComboBox1.Text = listaOpcoesParaQuemEnviar(0) Then
             If FDFDP = "Data" Then
