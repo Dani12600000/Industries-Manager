@@ -256,13 +256,12 @@ Partial Class Departamentos
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(1350, 63)
+        Me.Button6.Location = New System.Drawing.Point(1281, 64)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(157, 32)
+        Me.Button6.Size = New System.Drawing.Size(97, 41)
         Me.Button6.TabIndex = 16
         Me.Button6.Text = "Historico"
         Me.Button6.UseVisualStyleBackColor = True
-        Me.Button6.Visible = False
         '
         'Button7
         '
@@ -338,7 +337,7 @@ Partial Class Departamentos
         Me.TextBox1.Location = New System.Drawing.Point(1118, 69)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(215, 26)
+        Me.TextBox1.Size = New System.Drawing.Size(147, 26)
         Me.TextBox1.TabIndex = 25
         '
         'Label4

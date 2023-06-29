@@ -32,6 +32,8 @@ Public Class PMenu
 
 
     Private Sub PMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Funcionarios' table. You can move, or remove it, as needed.
+        Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
         CarragamentoInicialProprio()
         MenuStrip1.Renderer = New LogoutRenderer(LogoutToolStripMenuItem)
     End Sub
@@ -43,6 +45,10 @@ Public Class PMenu
         Me.AvisosTableAdapter.Fill(Me.Industries_DanDataSet.Avisos)
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Login_Funcionario'. Você pode movê-la ou removê-la conforme necessário.
         Me.Login_FuncionarioTableAdapter.Fill(Me.Industries_DanDataSet.Login_Funcionario)
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Diretores_de_Departamentos' table. You can move, or remove it, as needed.
+        Me.Diretores_de_DepartamentosTableAdapter.Fill(Me.Industries_DanDataSet.Diretores_de_Departamentos)
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Departamentos' table. You can move, or remove it, as needed.
+        Me.DepartamentosTableAdapter.Fill(Me.Industries_DanDataSet.Departamentos)
 
 
         Dim IG As String = ""
@@ -61,6 +67,9 @@ Public Class PMenu
         Debug.WriteLine("ID : " & InfoUser.UserID)
         Debug.WriteLine("Ip : " & InfoUser.UserIp)
         Debug.WriteLine("Name : " & InfoUser.UserName)
+        Debug.WriteLine("Surname : " & InfoUser.UserSurname)
+        Debug.WriteLine("First Name : " & InfoUser.UserFirstName)
+        Debug.WriteLine("Last Name : " & InfoUser.UserLastName)
         Debug.WriteLine("Email : " & InfoUser.UserEmail)
         Debug.WriteLine("Admin : " & InfoUser.UserAdm)
         Debug.WriteLine("ID Departamento : " & InfoUser.UserDepID)
@@ -228,6 +237,68 @@ Public Class PMenu
                 Desancorar(button, True, True, False, False)
             Next
         End If
+
+        For i = 0 To DepartamentosBindingSource.Count - 1
+
+            DepartamentosBindingSource.Position = i
+
+            Debug.WriteLine(DepartamentosBindingSource.Current("ID"))
+
+            InfoEnterprise.IDDepartamento.Add(DepartamentosBindingSource.Current("ID"))
+            InfoEnterprise.AbreviaturaDepartamento.Add(DepartamentosBindingSource.Current("ADD"))
+            InfoEnterprise.NomeDepartamento.Add(DepartamentosBindingSource.Current("NDD"))
+
+            Diretores_de_DepartamentosBindingSource.Filter = "ID_Departamento = " & DepartamentosBindingSource.Current("ID") & " AND DDC <= #" & DateTime.Today.ToString("MM/dd/yyyy") & "# AND (DDF IS NULL OR DDF > #" & DateTime.Today.ToString("MM/dd/yyyy") & "#)"
+            Diretores_de_DepartamentosBindingSource.Sort = "DDC DESC"
+            Diretores_de_DepartamentosBindingSource.MoveFirst()
+
+            If Diretores_de_DepartamentosBindingSource.Current IsNot Nothing Then
+
+                InfoEnterprise.IDDiretorDepartamento.Add(Diretores_de_DepartamentosBindingSource.Current("ID_Funcionario"))
+
+                FuncionariosBindingSource.Filter = "ID = " & Diretores_de_DepartamentosBindingSource.Current("ID_Funcionario")
+
+                Dim nomeDiretorCompleto As String
+                nomeDiretorCompleto = FuncionariosBindingSource.Current("Nome") & " " & FuncionariosBindingSource.Current("Sobrenome")
+
+                InfoEnterprise.NomeCompletoDiretorDepartamento.Add(nomeDiretorCompleto)
+                Dim nomeSeparado() As String = InfoEnterprise.NomeCompletoDiretorDepartamento(i).Split(" "c)
+                InfoEnterprise.PrimeiroNomeDiretorDepartamento.Add(nomeSeparado(0))
+                InfoEnterprise.UltimoNomeDiretorDepartamento.Add(nomeSeparado(nomeSeparado.Count - 1))
+
+                InfoEnterprise.EmailDiretorDepartamento.Add(FuncionariosBindingSource.Current("Email"))
+
+
+            Else
+
+                InfoEnterprise.IDDiretorDepartamento.Add(0)
+                InfoEnterprise.NomeCompletoDiretorDepartamento.Add("")
+                InfoEnterprise.PrimeiroNomeDiretorDepartamento.Add("")
+                InfoEnterprise.UltimoNomeDiretorDepartamento.Add("")
+                InfoEnterprise.EmailDiretorDepartamento.Add("")
+
+            End If
+
+
+
+
+            Debug.WriteLine("ID Departamento: " & InfoEnterprise.IDDepartamento(i))
+            Debug.WriteLine("Abreviatura Departamento: " & InfoEnterprise.AbreviaturaDepartamento(i))
+            Debug.WriteLine("Nome Departamento: " & InfoEnterprise.NomeDepartamento(i))
+
+            'Se houver diretor
+            Debug.WriteLineIf(InfoEnterprise.IDDiretorDepartamento(i) > 0, "ID Diretor Departamento: " & InfoEnterprise.IDDiretorDepartamento(i))
+            Debug.WriteLineIf(InfoEnterprise.IDDiretorDepartamento(i) > 0, "Nome Completo Diretor Departamento: " & InfoEnterprise.NomeCompletoDiretorDepartamento(i))
+
+            Debug.WriteLineIf(InfoEnterprise.IDDiretorDepartamento(i) > 0, "Primeiro Nome Diretor Departamento: " & InfoEnterprise.PrimeiroNomeDiretorDepartamento(i))
+            Debug.WriteLineIf(InfoEnterprise.IDDiretorDepartamento(i) > 0, "Primeiro Nome Diretor Departamento: " & InfoEnterprise.UltimoNomeDiretorDepartamento(i))
+            Debug.WriteLineIf(InfoEnterprise.IDDiretorDepartamento(i) > 0, "Email Diretor Departamento: " & InfoEnterprise.EmailDiretorDepartamento(i))
+
+
+            'Se não houver diretor
+            Debug.WriteLineIf(InfoEnterprise.IDDiretorDepartamento(i) = 0, "Não existe diretor para este departamento")
+
+        Next
 
     End Sub
 
