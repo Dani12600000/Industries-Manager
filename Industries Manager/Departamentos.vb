@@ -187,6 +187,8 @@
     End Sub
 
     Sub AtualizarInfosDiretor()
+        Diretores_de_DepartamentosTableAdapter.Dispose()
+        Diretores_de_DepartamentosTableAdapter.Fill(Industries_DanDataSet.Diretores_de_Departamentos)
         Dim idDepartamento As Integer = CInt(DepartamentosBindingSource.Current("ID"))
 
         Dim ultimoRegistro As DataRowView = Nothing
