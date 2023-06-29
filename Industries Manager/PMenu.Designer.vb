@@ -94,7 +94,7 @@ Partial Class PMenu
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.MenuStrip1.Size = New System.Drawing.Size(636, 38)
+        Me.MenuStrip1.Size = New System.Drawing.Size(636, 36)
         Me.MenuStrip1.TabIndex = 3
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -102,7 +102,7 @@ Partial Class PMenu
         '
         Me.LogoutToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(91, 34)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(91, 32)
         Me.LogoutToolStripMenuItem.Text = "Logout"
         '
         'AvisosToolStripMenuItem
@@ -110,7 +110,7 @@ Partial Class PMenu
         Me.AvisosToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.AvisosToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.AvisosToolStripMenuItem.Name = "AvisosToolStripMenuItem"
-        Me.AvisosToolStripMenuItem.Size = New System.Drawing.Size(84, 34)
+        Me.AvisosToolStripMenuItem.Size = New System.Drawing.Size(84, 32)
         Me.AvisosToolStripMenuItem.Text = "Avisos"
         '
         'Button3
