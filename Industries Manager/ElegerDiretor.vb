@@ -35,7 +35,10 @@ Public Class ElegerDiretor
 
         Dim departamentoAtual As Integer
         departamentoAtual = Departamentos.DepartamentosBindingSource.Position
-        Departamentos.DepartamentosTableAdapter.Update(Industries_DanDataSet)
+        Departamentos.DepartamentosTableAdapter.Update(Departamentos.Industries_DanDataSet)
+        Departamentos.Diretores_de_DepartamentosTableAdapter.Fill(Departamentos.Industries_DanDataSet.Diretores_de_Departamentos)
+        Departamentos.DepartamentosTableAdapter.Fill(Departamentos.Industries_DanDataSet.Departamentos)
+        Departamentos.DepartamentosBindingSource.Position = departamentoAtual
         Departamentos.AtualizarInfosDiretor()
 
         Me.Close()
