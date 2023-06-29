@@ -64,10 +64,12 @@ Partial Class ElegerDiretor
         Me.TableAdapterManager.AvisosTableAdapter = Nothing
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.ClientesTableAdapter = Nothing
+        Me.TableAdapterManager.Connection = Nothing
         Me.TableAdapterManager.DepartamentosTableAdapter = Nothing
         Me.TableAdapterManager.Diretores_de_DepartamentosTableAdapter = Nothing
         Me.TableAdapterManager.FornecedoresTableAdapter = Nothing
         Me.TableAdapterManager.FornecimentosTableAdapter = Nothing
+        Me.TableAdapterManager.FuncionariosTableAdapter = Nothing
         Me.TableAdapterManager.Leitura_de_avisosTableAdapter = Nothing
         Me.TableAdapterManager.Login_FuncionarioTableAdapter = Nothing
         Me.TableAdapterManager.ProdutosTableAdapter = Nothing
@@ -105,7 +107,7 @@ Partial Class ElegerDiretor
         '
         'TextBox1
         '
-        Me.TextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+        Me.TextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.TextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.TextBox1.Location = New System.Drawing.Point(218, 46)
         Me.TextBox1.Name = "TextBox1"

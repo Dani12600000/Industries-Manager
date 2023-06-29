@@ -2,6 +2,7 @@
 
     Dim cargoDiretorVazio As Boolean
     Dim registoDiretorSelecionado As DataRowView = Nothing
+    Dim FuncionariosDataGridViewWidth, DepartamentosFormsWidth As Integer
 
     Private Sub Departamentos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Profissões' table. You can move, or remove it, as needed.
@@ -13,7 +14,10 @@
 
         Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
 
-        Me.Width = Me.ClientSize.Width * 1.24
+        Me.Width = Me.ClientSize.Width * 1.23
+
+        FuncionariosDataGridViewWidth = FuncionariosDataGridView.Width
+        DepartamentosFormsWidth = Me.Width
 
         FuncionariosDataGridView.Columns(4).DefaultCellStyle.Format = "#,##0.00€"
 
@@ -42,7 +46,7 @@
             ButtonP.Enabled = True
             ButtonN.Enabled = True
             ButtonL.Enabled = True
-
+            Button7.Visible = True
         Else
             ButtonF.Enabled = False
             ButtonP.Enabled = False
@@ -56,45 +60,51 @@
     End Sub
 
     Sub MostrarSalariosOuNao()
-        If InfoUser.UserDepDirectorYN OrElse {5, 3}.Contains(InfoUser.UserDepID) Then
+        If (InfoUser.UserDepDirectorYN AndAlso InfoUser.UserDepID = DepartamentosBindingSource.Current("ID")) OrElse {5, 3}.Contains(InfoUser.UserDepID) Then
             FuncionariosDataGridView.Columns(4).Visible = True
+            FuncionariosDataGridView.Width = FuncionariosDataGridViewWidth
+            Me.Width = DepartamentosFormsWidth
         Else
             FuncionariosDataGridView.Columns(4).Visible = False
-            FuncionariosDataGridView.Width = FuncionariosDataGridView.Width - 95
-            Me.Width = Me.ClientSize.Width - 95 + 10
+            FuncionariosDataGridView.Width = FuncionariosDataGridViewWidth - 95
+            Me.Width = DepartamentosFormsWidth - 95 + 10
         End If
     End Sub
 
     Sub AtualizarBotoesDiretor()
 
-        If InfoUser.UserDepID = 2 OrElse InfoUser.UserDepID = 3 OrElse InfoUser.UserDepDirectorYN Then
+        If InfoUser.UserDepID = 2 OrElse InfoUser.UserDepID = 3 OrElse InfoUser.UserDepDirectorYN OrElse InfoUser.UserAdm Then
             Debug.WriteLine("cargoDiretorVazio: " & cargoDiretorVazio)
             If registoDiretorSelecionado IsNot Nothing Then
-                Debug.WriteLine("IsDBNull(registoDiretorSelecionado(""DDF"")): " & IsDBNull(registoDiretorSelecionado("DDF")))
+                Try
+                    Debug.WriteLine("IsDBNull(registoDiretorSelecionado(""DDF"")): " & IsDBNull(registoDiretorSelecionado("DDF")))
 
-                If cargoDiretorVazio AndAlso registoDiretorSelecionado("DDC") <= Today Then
+                    If cargoDiretorVazio Then
+                        Button7.Text = "Eleger diretor"
+                    ElseIf IsDBNull(registoDiretorSelecionado("DDF")) OrElse registoDiretorSelecionado("DDF") >= Today Then
+                        Button7.Text = "Despedir diretor"
+                    End If
+
+                    Button7.Visible = True
+
+                    If InfoUser.UserDepDirectorYN And Not cargoDiretorVazio AndAlso InfoUser.UserDepID = DepartamentosBindingSource.Current("ID") Then
+                        Button7.Text = "Demitir-me"
+                    End If
+
+                    Debug.WriteLine("UserDepDirectorID: " & InfoUser.UserDepDirectorID)
+                    Debug.WriteLine("Diretores....Current(""ID""): " & Diretores_de_DepartamentosBindingSource.Current("ID"))
+                    Debug.WriteLine("registoDiretorSelecionado(""ID""): " & registoDiretorSelecionado("ID"))
+
+                    If InfoUser.UserDepID = DepartamentosBindingSource.Current("ID") OrElse InfoUser.UserDepID = 3 OrElse InfoUser.UserAdm Then
+                        Button7.Enabled = True
+                    Else
+                        Button7.Enabled = False
+                    End If
+                Catch
                     Button7.Text = "Eleger diretor"
-                ElseIf IsDBNull(registoDiretorSelecionado("DDF")) OrElse registoDiretorSelecionado("DDF") >= Today Then
-                    Button7.Text = "Despedir diretor"
-                End If
-
-                Button7.Visible = True
-
-                If Not cargoDiretorVazio AndAlso InfoUser.UserDepDirectorID = registoDiretorSelecionado("ID") Then
-                    Button7.Text = "Demitir-me"
-                End If
-
-                Debug.WriteLine("UserDepDirectorID: " & InfoUser.UserDepDirectorID)
-                Debug.WriteLine("Diretores....Current(""ID""): " & Diretores_de_DepartamentosBindingSource.Current("ID"))
-                Debug.WriteLine("registoDiretorSelecionado(""ID""): " & registoDiretorSelecionado("ID"))
-
-                If InfoUser.UserDepID = DepartamentosBindingSource.Current("ID") OrElse InfoUser.UserDepID = 3 OrElse InfoUser.UserAdm Then
-                    Button7.Enabled = True
-                Else
-                    Button7.Enabled = False
-                End If
+                End Try
             Else
-
+                Button7.Text = "Eleger diretor"
             End If
         End If
     End Sub
@@ -102,21 +112,25 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         DepartamentosBindingSource.MoveFirst()
         AtualizarInfosDiretor()
+        MostrarSalariosOuNao()
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         DepartamentosBindingSource.MovePrevious()
         AtualizarInfosDiretor()
+        MostrarSalariosOuNao()
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         DepartamentosBindingSource.MoveNext()
         AtualizarInfosDiretor()
+        MostrarSalariosOuNao()
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         DepartamentosBindingSource.MoveLast()
         AtualizarInfosDiretor()
+        MostrarSalariosOuNao()
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
@@ -181,13 +195,10 @@
 
         For Each item As DataRowView In Diretores_de_DepartamentosBindingSource
 
-
-
             If CInt(item("ID_Departamento")) = idDepartamento AndAlso
-            (Not DBNull.Value.Equals(item("DDC")) AndAlso Date.Parse(item("DDC")) <= Now) AndAlso
-            ((Not DBNull.Value.Equals(item("DDF")) AndAlso Date.Parse(item("DDF")) > Now) OrElse
-            (DBNull.Value.Equals(item("DDF")))) Then
-
+                (Not DBNull.Value.Equals(item("DDC")) AndAlso Date.Parse(item("DDC")) <= Now) AndAlso
+                ((Not DBNull.Value.Equals(item("DDF")) AndAlso Date.Parse(item("DDF")) > Now) OrElse
+                (DBNull.Value.Equals(item("DDF")))) Then
                 ultimoRegistro = item
             End If
         Next
@@ -277,7 +288,7 @@
 
 
 
-                End If
+            End If
             cargoDiretorVazio = False
 
             registoDiretorSelecionado = ultimoRegistro
@@ -333,18 +344,19 @@
 #Enable Warning BC42104 ' Variable is used before it has been assigned a value
             End If
 
-            Diretores_de_DepartamentosBindingSource.Position = Diretores_de_DepartamentosBindingSource.Find("ID", registoDiretorSelecionado("ID"))
+            FuncionariosBindingSource1.RemoveFilter()
+            Diretores_de_DepartamentosBindingSource.Filter = "ID = " & registoDiretorSelecionado("ID")
             Debug.WriteLine("ID_Diretor: " & registoDiretorSelecionado("ID"))
             Debug.WriteLine("Diretores_de_Departamentos.Current(""ID""): " & Diretores_de_DepartamentosBindingSource.Current("ID"))
 
             Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
             Diretores_de_DepartamentosBindingSource.EndEdit()
 
-            Dim departamentoAtual As Integer
-            departamentoAtual = DepartamentosBindingSource.Position
             Diretores_de_DepartamentosTableAdapter.Update(Industries_DanDataSet)
             DepartamentosTableAdapter.Update(Industries_DanDataSet)
+            Diretores_de_DepartamentosBindingSource.Position = 0
             AtualizarInfosDiretor()
+
 
         ElseIf Button7.Text = "Demitir-me" Then 'Antenção este e o outro de cima são diferentes
 
@@ -374,6 +386,8 @@
             departamentoAtual = DepartamentosBindingSource.Position
             Diretores_de_DepartamentosTableAdapter.Update(Industries_DanDataSet)
             DepartamentosTableAdapter.Update(Industries_DanDataSet)
+            InfoUser.UserDepDirectorYN = False
+            InfoUser.UserDepDirectorID = 0
             AtualizarInfosDiretor()
         End If
     End Sub

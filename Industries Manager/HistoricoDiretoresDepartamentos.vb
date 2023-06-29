@@ -16,6 +16,6 @@
 
     Private Sub HistoricoDiretoresDepartamentos_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         Diretores_de_DepartamentosBindingSource.Filter = "ID_Departamento = " & DepIDLoc
-        Diretores_de_DepartamentosDataGridView.Sort(Diretores_de_DepartamentosDataGridView.Columns(5), System.ComponentModel.ListSortDirection.Descending)
+        Diretores_de_DepartamentosBindingSource.Sort = "DDC DESC, ID DESC"
     End Sub
 End Class
