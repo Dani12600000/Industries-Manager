@@ -178,8 +178,12 @@ Public Class DetalhesAviso
             AvisosBindingSource.Current("ID_Funcionario") = FuncionariosDiretoresComboBox.SelectedIndex
         End If
 
+        AvisosBindingSource.EndEdit()
+        AvisosTableAdapter.Update(Industries_DanDataSet)
+
         If Not Avisos.Visible Then
             Avisos.Show()
         End If
+        Me.Close()
     End Sub
 End Class
