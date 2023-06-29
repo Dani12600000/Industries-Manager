@@ -1,7 +1,23 @@
 ﻿Module FuncoesRepetitivas
     Dim dataAtual As Date = Today()
 
-    Function DiferencaEntreDataAndHoje(primeiraData As Date) As String
+    Function DiferencaEntreDataAndHojeNumero(primeiraData As Date) As Integer
+        Dim DateInterval As TimeSpan
+
+        DateInterval = dataAtual - primeiraData
+
+        Return DateInterval.Days
+    End Function
+
+    Function DiferencaEntreHojeAndDataNumero(primeiraData As Date) As Integer
+        Dim DateInterval As TimeSpan
+
+        DateInterval = dataAtual - primeiraData
+
+        Return DateInterval.Days
+    End Function
+
+    Function DiferencaEntreDataAndHojeTexto(primeiraData As Date) As String
         Dim DateInterval As TimeSpan
 
         DateInterval = dataAtual - primeiraData
@@ -9,7 +25,7 @@
         Return DiferencaDatasStringProcessamento(DateInterval)
     End Function
 
-    Function DiferencaEntreHojeAndData(ultimaData As Date) As String
+    Function DiferencaEntreHojeAndDataTexto(ultimaData As Date) As String
         Dim DateInterval As TimeSpan
 
         DateInterval = ultimaData - dataAtual

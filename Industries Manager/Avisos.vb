@@ -82,17 +82,26 @@ Public Class Avisos
 
                 If DLDMDateTimePicker.Value > Today Then
                     Button1.Text = "Terminar agora"
-                    Label5.Text = "Faltam"
+                    If DiferencaEntreHojeAndDataNumero(AvisosBindingSource.Current("DLDM")) > 0 Then
+                        Label5.Text = "Faltam"
+                    Else
+                        Label5.Text = "Falta"
+                    End If
                     Label5.Visible = True
+                    TextBox4.Visible = True
+                    TextBox4.Text = FuncoesRepetitivas.DiferencaEntreHojeAndDataTexto(AvisosBindingSource.Current("DLDM"))
 
                 ElseIf DLDMDateTimePicker.Value = Today Then
-                    Button1.Text = "Prolongar"
-                    Label5.Visible = False
+                        Button1.Text = "Prolongar"
+                        Label5.Visible = False
+                        TextBox4.Visible = False
 
-                ElseIf DLDMDateTimePicker.Value < Today Then
-                    Button1.Text = "Prolongar"
+                    ElseIf DLDMDateTimePicker.Value < Today Then
+                        Button1.Text = "Prolongar"
                     Label5.Text = "Passou"
                     Label5.Visible = True
+                    TextBox4.Visible = True
+                    TextBox4.Text = FuncoesRepetitivas.DiferencaEntreDataAndHojeTexto(DLDMDateTimePicker.Value)
 
                 End If
             ElseIf FDFDP = "Todos leram" Then
@@ -126,7 +135,7 @@ Public Class Avisos
 
 
 
-                TextBox5.Text = DiferencaEntreDataAndHoje(dataTransmissao)
+                TextBox5.Text = DiferencaEntreDataAndHojeTexto(dataTransmissao)
             End If
 
             TextBox2.Text = "lido por "
