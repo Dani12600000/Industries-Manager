@@ -198,34 +198,43 @@ Public Class Avisos
             Dim data As Date
 
             While data = Nothing OrElse data < Today
-                While dataString = Nothing OrElse dataString.Length < 5
-                dataString = InputBox("Digite uma data no formato dd/MM ou dd/MM/yyyy:")
-                End While
+                Try
+                    While dataString = Nothing OrElse dataString.Length < 5
+                        dataString = InputBox("Digite uma data no formato dd/MM ou dd/MM/yyyy:")
+                    End While
 
-                ' Verifica se a data possui apenas dia e mês (dd/MM)
-                If dataString.Length = 5 Then
-                ' Obtém o dia e o mês atual
-                Dim diaAtual As Integer = Date.Now.Day
-                Dim mesAtual As Integer = Date.Now.Month
 
-                ' Obtém o dia e o mês da data fornecida
-                Dim dia As Integer = Integer.Parse(dataString.Substring(0, 2))
-                Dim mes As Integer = Integer.Parse(dataString.Substring(3, 2))
+                    ' Verifica se a data possui apenas dia e mês (dd/MM)
+                    If dataString.Length = 5 Then
+                        ' Obtém o dia e o mês atual
+                        Dim diaAtual As Integer = Date.Now.Day
+                        Dim mesAtual As Integer = Date.Now.Month
 
-                ' Verifica se a data fornecida é posterior à data atual
-                If mes > mesAtual OrElse (mes = mesAtual AndAlso dia >= diaAtual) Then
-                    ' Usa o ano atual
-                    data = New Date(Date.Now.Year, mes, dia)
-                Else
-                    ' Usa o próximo ano
-                    data = New Date(Date.Now.Year + 1, mes, dia)
-                End If
-            Else
-                ' A data possui dia, mês e ano (dd/MM/yyyy)
-                data = Date.ParseExact(dataString, "dd/MM/yyyy", Nothing)
-            End If
+                        ' Obtém o dia e o mês da data fornecida
+                        Dim dia As Integer = Integer.Parse(dataString.Substring(0, 2))
+                        Dim mes As Integer = Integer.Parse(dataString.Substring(3, 2))
 
-                Debug.WriteLine("Data: " & data)
+                        ' Verifica se a data fornecida é posterior à data atual
+                        If mes > mesAtual OrElse (mes = mesAtual AndAlso dia >= diaAtual) Then
+                            ' Usa o ano atual
+                            data = New Date(Date.Now.Year, mes, dia)
+                        Else
+                            ' Usa o próximo ano
+                            data = New Date(Date.Now.Year + 1, mes, dia)
+                        End If
+
+                    Else
+
+
+
+                        ' A data possui dia, mês e ano (dd/MM/yyyy)
+                        data = Date.ParseExact(dataString, "dd/MM/yyyy", Nothing)
+                    End If
+                Catch
+                    dataString = Nothing
+                End Try
+
+        Debug.WriteLine("Data: " & data)
             End While
 
             AvisosBindingSource.Current("DLDM") = data
