@@ -162,6 +162,8 @@ Partial Class Avisos
         '
         Me.AvisosDataGridView.AllowUserToAddRows = False
         Me.AvisosDataGridView.AllowUserToDeleteRows = False
+        Me.AvisosDataGridView.AllowUserToResizeColumns = False
+        Me.AvisosDataGridView.AllowUserToResizeRows = False
         Me.AvisosDataGridView.AutoGenerateColumns = False
         Me.AvisosDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLight
         Me.AvisosDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
@@ -224,7 +226,7 @@ Partial Class Avisos
         Me.Button1.Enabled = False
         Me.Button1.Location = New System.Drawing.Point(641, 347)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(148, 32)
+        Me.Button1.Size = New System.Drawing.Size(153, 32)
         Me.Button1.TabIndex = 12
         Me.Button1.Text = "Terminar agora"
         Me.Button1.UseVisualStyleBackColor = True
@@ -232,7 +234,7 @@ Partial Class Avisos
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(473, 263)
+        Me.Label3.Location = New System.Drawing.Point(482, 263)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(139, 20)
         Me.Label3.TabIndex = 13
@@ -240,26 +242,26 @@ Partial Class Avisos
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(477, 286)
+        Me.TextBox2.Location = New System.Drawing.Point(486, 286)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.ReadOnly = True
-        Me.TextBox2.Size = New System.Drawing.Size(158, 26)
+        Me.TextBox2.Size = New System.Drawing.Size(149, 26)
         Me.TextBox2.TabIndex = 14
         Me.TextBox2.Text = "lido por [todos/alguns/ninguem]"
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(477, 347)
+        Me.TextBox3.Location = New System.Drawing.Point(486, 347)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.ReadOnly = True
-        Me.TextBox3.Size = New System.Drawing.Size(158, 26)
+        Me.TextBox3.Size = New System.Drawing.Size(149, 26)
         Me.TextBox3.TabIndex = 16
         Me.TextBox3.Text = "[Transmitindo/Transmitido]"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(473, 324)
+        Me.Label4.Location = New System.Drawing.Point(482, 324)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(126, 20)
         Me.Label4.TabIndex = 15
@@ -340,7 +342,7 @@ Partial Class Avisos
         '
         Me.Button7.Location = New System.Drawing.Point(708, 93)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(81, 138)
+        Me.Button7.Size = New System.Drawing.Size(86, 138)
         Me.Button7.TabIndex = 33
         Me.Button7.Text = "Copiar para a clipboard"
         Me.Button7.UseVisualStyleBackColor = True
@@ -350,7 +352,7 @@ Partial Class Avisos
         Me.Button10.Enabled = False
         Me.Button10.Location = New System.Drawing.Point(641, 283)
         Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(148, 32)
+        Me.Button10.Size = New System.Drawing.Size(153, 32)
         Me.Button10.TabIndex = 34
         Me.Button10.Text = "Lista de quem lêu"
         Me.Button10.UseVisualStyleBackColor = True
@@ -360,7 +362,7 @@ Partial Class Avisos
         Me.TextBox4.Location = New System.Drawing.Point(313, 347)
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.ReadOnly = True
-        Me.TextBox4.Size = New System.Drawing.Size(158, 26)
+        Me.TextBox4.Size = New System.Drawing.Size(167, 26)
         Me.TextBox4.TabIndex = 38
         Me.TextBox4.Text = "[Transmitindo/Transmitido]"
         '
@@ -378,7 +380,7 @@ Partial Class Avisos
         Me.TextBox5.Location = New System.Drawing.Point(313, 286)
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.ReadOnly = True
-        Me.TextBox5.Size = New System.Drawing.Size(158, 26)
+        Me.TextBox5.Size = New System.Drawing.Size(167, 26)
         Me.TextBox5.TabIndex = 36
         Me.TextBox5.Text = "lido por [todos/alguns/ninguem]"
         '

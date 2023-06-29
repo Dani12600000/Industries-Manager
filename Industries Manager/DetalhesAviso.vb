@@ -108,11 +108,16 @@ Public Class DetalhesAviso
                 ComboBox1.SelectedIndex = 0
             End If
 
+            FDFDP = "Todos Leram"
+            carregado = False
+            Debug.WriteLine("Meu departamento")
+
         ElseIf ComboBox1.Text = listaOpcoesParaQuemEnviar(0) Then
             Label2.Visible = False
             FuncionariosDiretoresComboBox.Visible = False
             GroupBox1.Visible = True
             FuncionariosBindingSource.RemoveFilter()
+            carregado = True
 
         ElseIf ComboBox1.Text = listaOpcoesParaQuemEnviar(2) Then
             Label2.Visible = True
@@ -143,6 +148,7 @@ Public Class DetalhesAviso
                 ComboBox1.SelectedIndex = 0
             End If
 
+            carregado = False
 
         End If
 
@@ -164,7 +170,7 @@ Public Class DetalhesAviso
         AvisosBindingSource.Current("DT") = Today
 
         AvisosBindingSource.Current("ID_Diretor") = InfoUser.UserDepDirectorID
-        AvisosBindingSource.Current("FDFDP") = FDFDP ' Isto está a dar erro devido ao tipo de dados na base dados, ou seja tenho que mudar isso depois na base de dados
+        AvisosBindingSource.Current("FDFDP") = FDFDP
 
         If ComboBox1.Text = listaOpcoesParaQuemEnviar(0) Then
             If FDFDP = "Data" Then

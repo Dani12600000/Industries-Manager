@@ -1,6 +1,9 @@
 ﻿Imports System.IO
 Imports System.Windows.Forms.VisualStyles
 Imports System.Drawing.Drawing2D
+Imports Industries_Manager.Industries_DanDataSetTableAdapters
+Imports Industries_Manager.Industries_DanDataSet
+
 Public Class PMenu
     Dim TextOfFormButtonsPermitidos As List(Of String) = New List(Of String)()
 
@@ -104,6 +107,23 @@ Public Class PMenu
         nenhumAvisoLabel.Font = New Font(nenhumAvisoLabel.Font, FontStyle.Italic)
 
         Dim avisosRecentes As New List(Of ToolStripLabel)
+
+        AvisosBindingSource.Filter = "DLDM < #" & Today.ToString("MM/dd/yyyy") & "# AND ID_Departamento = " & InfoUser.UserDepID
+
+
+        For Each row As DataRowView In AvisosBindingSource
+            ' Obtenha os dados relevantes da linha
+            Dim titulo As String = row("Titulo").ToString()
+            Dim id As Integer = CInt(row("ID"))
+
+            ' Crie um ToolStripLabel para a linha
+            Dim label As New ToolStripLabel()
+            label.Text = titulo
+            label.Tag = id
+
+            ' Adicione o ToolStripLabel à lista
+            avisosRecentes.Add(label)
+        Next
 
         If avisosRecentes.Count = 0 Then
             AvisosToolStripMenuItem.DropDownItems.Insert(0, nenhumAvisoLabel)
