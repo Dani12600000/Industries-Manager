@@ -68,7 +68,7 @@
     '@TODO: Acabar este sub
     Sub AtualizarBotoesDiretor()
 
-        If InfoUser.UserDepID = 2 Or InfoUser.UserDepDirectorYN Then
+        If InfoUser.UserDepID = 2 OrElse InfoUser.UserDepID = 3 OrElse InfoUser.UserDepDirectorYN Then
             Debug.WriteLine("cargoDiretorVazio: " & cargoDiretorVazio)
             Debug.WriteLine("IsDBNull(registoDiretorSelecionado(""DDF"")): " & IsDBNull(registoDiretorSelecionado("DDF")))
 
@@ -336,6 +336,7 @@
             Diretores_de_DepartamentosBindingSource.Position = Diretores_de_DepartamentosBindingSource.Find("ID", registoDiretorSelecionado("ID"))
             Debug.WriteLine("ID_Diretor: " & registoDiretorSelecionado("ID"))
             Debug.WriteLine("Diretores_de_Departamentos.Current(""ID""): " & Diretores_de_DepartamentosBindingSource.Current("ID"))
+
             Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
             Diretores_de_DepartamentosBindingSource.EndEdit()
 
