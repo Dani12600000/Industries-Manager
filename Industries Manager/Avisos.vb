@@ -1,12 +1,16 @@
-﻿Public Class Avisos
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+
+Public Class Avisos
 
     Private Sub Avisos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Funcionarios' table. You can move, or remove it, as needed.
+        Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Avisos' table. You can move, or remove it, as needed.
-        Formulario = Me
-
         Me.AvisosTableAdapter.Fill(Me.Industries_DanDataSet.Avisos)
 
-        Me.Width = Me.ClientSize.Width * 1.09
+        Formulario = Me
+
+        Me.Width = Me.ClientSize.Width * 1.15
 
         Formulario = Me
         ButtonNandG = Button9
@@ -48,35 +52,96 @@
 
     Private Sub AtualizarLabelsinTextBoxesAndButtons()
 
+        Dim quantidadeGeralDeFuncionariosQueLeram As String
+        Dim dataAtual As Date = Today()
+
         If AvisosBindingSource.Position >= 0 Then
             'Caso haja um aviso
 
-            Dim FDFDP As String = "Data" ' Depois substituir isto com a variavel na base de dados
+            Dim FDFDP As String = AvisosBindingSource.Current("FDFDP") ' Forma de fim de prazo
+            Dim FDE As String ' Forma de envio
+
+            If Not IsDBNull(AvisosBindingSource.Current("ID_Funcionario")) Then
+                FuncionariosBindingSource.Filter = "ID = " & AvisosBindingSource.Current("ID_Funcionario")
+                If FuncionariosBindingSource.Current("ID_Departamento") = InfoUser.UserDepID Then
+                    FDE = "Funcionario"
+                Else
+                    FDE = "Diretor"
+                End If
+            Else
+                FDE = "Departamento"
+            End If
 
             Button1.Enabled = True
             If FDFDP = "Data" Then
 
-
+                DLDMAndFDFDPLabel.Visible = True
+                DLDMDateTimePicker.Visible = True
+                TextBox4.Visible = True
+                Label5.Visible = True
 
                 If DLDMDateTimePicker.Value > Today Then
                     Button1.Text = "Terminar agora"
-                Else
+                    Label5.Text = "Faltam"
+                    Label5.Visible = True
+
+                ElseIf DLDMDateTimePicker.Value = Today Then
                     Button1.Text = "Prolongar"
+                    Label5.Visible = False
+
+                ElseIf DLDMDateTimePicker.Value < Today Then
+                    Button1.Text = "Prolongar"
+                    Label5.Text = "Passou"
+                    Label5.Visible = True
+
                 End If
             ElseIf FDFDP = "Todos leram" Then
 
+                DLDMAndFDFDPLabel.Visible = False
                 DLDMDateTimePicker.Visible = False
-                TextBox4.Visible = False
-                Label5.Visible = False
+                TextBox4.Visible = True
+                Label5.Visible = True
 
 
 
                 Button1.Text = "Terminar agora"
             ElseIf FDFDP = "Nunca" Then
 
+                DLDMDateTimePicker.Visible = False
+                TextBox4.Visible = False
+                Label5.Visible = False
 
 
                 Button1.Text = "Terminar agora"
+            End If
+
+            Dim dataTransmissao As Date = CDate(AvisosBindingSource.Current("DT"))
+
+            If dataAtual = dataTransmissao Then
+                Label6.Text = "Transmitido"
+                TextBox5.Text = "Hoje"
+            Else
+
+                Label6.Text = "Transmitido há"
+
+
+
+                TextBox5.Text = DiferencaEntreDataAndHoje(dataTransmissao)
+            End If
+
+            TextBox2.Text = "lido por "
+
+            ' Depois fazer o codigo para mudar o que está aqui escrito dependo o numero de funcionarios que leram
+            quantidadeGeralDeFuncionariosQueLeram = "ninguem"
+
+
+
+            TextBox2.Text &= quantidadeGeralDeFuncionariosQueLeram
+
+            If Not quantidadeGeralDeFuncionariosQueLeram = "ninguem" OrElse FDFDP = "Funcionario" Then
+                Button10.Enabled = True
+            Else
+                Button10.Enabled = False
             End If
 
 

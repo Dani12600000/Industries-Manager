@@ -33,7 +33,6 @@ Partial Class Avisos
         Me.AvisoTextBox = New System.Windows.Forms.TextBox()
         Me.IDTextBox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.AvisosDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -60,18 +59,22 @@ Partial Class Avisos
         Me.Label6 = New System.Windows.Forms.Label()
         Me.DLDMAndFDFDPLabel = New System.Windows.Forms.Label()
         Me.DTLabel = New System.Windows.Forms.Label()
+        Me.TituloTextBox = New System.Windows.Forms.TextBox()
+        Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FuncionariosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FuncionariosTableAdapter()
         AvisoLabel = New System.Windows.Forms.Label()
         IDLabel = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AvisosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AvisosDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'AvisoLabel
         '
         AvisoLabel.AutoSize = True
-        AvisoLabel.Location = New System.Drawing.Point(16, 85)
+        AvisoLabel.Location = New System.Drawing.Point(16, 91)
         AvisoLabel.Name = "AvisoLabel"
         AvisoLabel.Size = New System.Drawing.Size(51, 20)
         AvisoLabel.TabIndex = 1
@@ -130,7 +133,7 @@ Partial Class Avisos
         'AvisoTextBox
         '
         Me.AvisoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AvisosBindingSource, "Aviso", True))
-        Me.AvisoTextBox.Location = New System.Drawing.Point(73, 85)
+        Me.AvisoTextBox.Location = New System.Drawing.Point(73, 91)
         Me.AvisoTextBox.Multiline = True
         Me.AvisoTextBox.Name = "AvisoTextBox"
         Me.AvisoTextBox.ReadOnly = True
@@ -149,25 +152,19 @@ Partial Class Avisos
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(16, 56)
+        Me.Label1.Location = New System.Drawing.Point(16, 59)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(51, 20)
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "Titulo:"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(73, 53)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(629, 26)
-        Me.TextBox1.TabIndex = 5
         '
         'AvisosDataGridView
         '
         Me.AvisosDataGridView.AllowUserToAddRows = False
         Me.AvisosDataGridView.AllowUserToDeleteRows = False
         Me.AvisosDataGridView.AutoGenerateColumns = False
+        Me.AvisosDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLight
+        Me.AvisosDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.AvisosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.AvisosDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn2})
         Me.AvisosDataGridView.DataSource = Me.AvisosBindingSource
@@ -270,7 +267,7 @@ Partial Class Avisos
         'Button9
         '
         Me.Button9.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button9.Location = New System.Drawing.Point(186, 402)
+        Me.Button9.Location = New System.Drawing.Point(186, 408)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(107, 44)
         Me.Button9.TabIndex = 31
@@ -281,7 +278,7 @@ Partial Class Avisos
         '
         Me.Button8.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Button8.BackColor = System.Drawing.Color.White
-        Me.Button8.Location = New System.Drawing.Point(302, 402)
+        Me.Button8.Location = New System.Drawing.Point(302, 408)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(107, 44)
         Me.Button8.TabIndex = 30
@@ -291,7 +288,7 @@ Partial Class Avisos
         'Button4
         '
         Me.Button4.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button4.Location = New System.Drawing.Point(444, 452)
+        Me.Button4.Location = New System.Drawing.Point(444, 458)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(80, 62)
         Me.Button4.TabIndex = 29
@@ -301,7 +298,7 @@ Partial Class Avisos
         'Button3
         '
         Me.Button3.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button3.Location = New System.Drawing.Point(358, 452)
+        Me.Button3.Location = New System.Drawing.Point(358, 458)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(80, 62)
         Me.Button3.TabIndex = 28
@@ -311,7 +308,7 @@ Partial Class Avisos
         'Button2
         '
         Me.Button2.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button2.Location = New System.Drawing.Point(272, 452)
+        Me.Button2.Location = New System.Drawing.Point(272, 458)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(80, 62)
         Me.Button2.TabIndex = 27
@@ -321,7 +318,7 @@ Partial Class Avisos
         'Button5
         '
         Me.Button5.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button5.Location = New System.Drawing.Point(186, 452)
+        Me.Button5.Location = New System.Drawing.Point(186, 458)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(80, 62)
         Me.Button5.TabIndex = 26
@@ -331,7 +328,7 @@ Partial Class Avisos
         'Button6
         '
         Me.Button6.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button6.Location = New System.Drawing.Point(417, 402)
+        Me.Button6.Location = New System.Drawing.Point(417, 408)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(107, 44)
         Me.Button6.TabIndex = 32
@@ -340,7 +337,7 @@ Partial Class Avisos
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(708, 87)
+        Me.Button7.Location = New System.Drawing.Point(708, 93)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(81, 138)
         Me.Button7.TabIndex = 33
@@ -410,11 +407,30 @@ Partial Class Avisos
         Me.DTLabel.TabIndex = 39
         Me.DTLabel.Text = "Data de transmissão do aviso:"
         '
+        'TituloTextBox
+        '
+        Me.TituloTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AvisosBindingSource, "Titulo", True))
+        Me.TituloTextBox.Location = New System.Drawing.Point(73, 56)
+        Me.TituloTextBox.Name = "TituloTextBox"
+        Me.TituloTextBox.ReadOnly = True
+        Me.TituloTextBox.Size = New System.Drawing.Size(629, 26)
+        Me.TituloTextBox.TabIndex = 40
+        '
+        'FuncionariosBindingSource
+        '
+        Me.FuncionariosBindingSource.DataMember = "Funcionarios"
+        Me.FuncionariosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'FuncionariosTableAdapter
+        '
+        Me.FuncionariosTableAdapter.ClearBeforeFill = True
+        '
         'Avisos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1446, 526)
+        Me.ClientSize = New System.Drawing.Size(1454, 538)
+        Me.Controls.Add(Me.TituloTextBox)
         Me.Controls.Add(Me.DTLabel)
         Me.Controls.Add(Me.DLDMAndFDFDPLabel)
         Me.Controls.Add(Me.TextBox4)
@@ -439,7 +455,6 @@ Partial Class Avisos
         Me.Controls.Add(Me.DLDMDateTimePicker)
         Me.Controls.Add(Me.DTDateTimePicker)
         Me.Controls.Add(Me.AvisosDataGridView)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(IDLabel)
         Me.Controls.Add(Me.IDTextBox)
@@ -452,6 +467,7 @@ Partial Class Avisos
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AvisosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AvisosDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -464,7 +480,6 @@ Partial Class Avisos
     Friend WithEvents AvisoTextBox As TextBox
     Friend WithEvents IDTextBox As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents AvisosDataGridView As DataGridView
     Friend WithEvents DTDateTimePicker As DateTimePicker
     Friend WithEvents DLDMDateTimePicker As DateTimePicker
@@ -491,4 +506,7 @@ Partial Class Avisos
     Friend WithEvents Label6 As Label
     Friend WithEvents DLDMAndFDFDPLabel As Label
     Friend WithEvents DTLabel As Label
+    Friend WithEvents TituloTextBox As TextBox
+    Friend WithEvents FuncionariosBindingSource As BindingSource
+    Friend WithEvents FuncionariosTableAdapter As Industries_DanDataSetTableAdapters.FuncionariosTableAdapter
 End Class
