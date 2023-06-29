@@ -1,6 +1,7 @@
 ﻿Public Class Departamentos
 
     Dim cargoDiretorVazio As Boolean
+    Dim registoDiretorSelecionado As DataRowView = Nothing
 
     Private Sub Departamentos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Profissões' table. You can move, or remove it, as needed.
@@ -36,16 +37,18 @@
 
         MostrarSalariosOuNao()
 
-        If InfoUser.UserDepID = 2 Then
+        If (InfoUser.UserDepID = 2) OrElse (InfoUser.UserDepID = 3) OrElse (InfoUser.UserAdm) Then
             ButtonF.Enabled = True
             ButtonP.Enabled = True
             ButtonN.Enabled = True
             ButtonL.Enabled = True
+
         Else
             ButtonF.Enabled = False
             ButtonP.Enabled = False
             ButtonN.Enabled = False
             ButtonL.Enabled = False
+            Button7.Visible = False
         End If
 
         AtualizarInfosDiretor()
@@ -67,19 +70,29 @@
 
         If InfoUser.UserDepID = 2 Or InfoUser.UserDepDirectorYN Then
             Debug.WriteLine("cargoDiretorVazio: " & cargoDiretorVazio)
+            Debug.WriteLine("IsDBNull(registoDiretorSelecionado(""DDF"")): " & IsDBNull(registoDiretorSelecionado("DDF")))
 
-            If cargoDiretorVazio OrElse Diretores_de_DepartamentosBindingSource.Current("DDC") <= Today Then
+            If cargoDiretorVazio AndAlso registoDiretorSelecionado("DDC") <= Today Then
                 Button7.Text = "Eleger diretor"
-            ElseIf Diretores_de_DepartamentosBindingSource.Current("DDF") <= Today Then
+            ElseIf IsDBNull(registoDiretorSelecionado("DDF")) OrElse registoDiretorSelecionado("DDF") >= Today Then
                 Button7.Text = "Despedir diretor"
             End If
 
             Button7.Visible = True
 
-            If Not cargoDiretorVazio AndAlso InfoUser.UserDepDirectorID = Diretores_de_DepartamentosBindingSource.Current("ID") Then
+            If Not cargoDiretorVazio AndAlso InfoUser.UserDepDirectorID = registoDiretorSelecionado("ID") Then
                 Button7.Text = "Demitir-me"
             End If
 
+            Debug.WriteLine("UserDepDirectorID: " & InfoUser.UserDepDirectorID)
+            Debug.WriteLine("Diretores....Current(""ID""): " & Diretores_de_DepartamentosBindingSource.Current("ID"))
+            Debug.WriteLine("registoDiretorSelecionado(""ID""): " & registoDiretorSelecionado("ID"))
+
+            If InfoUser.UserDepID = DepartamentosBindingSource.Current("ID") OrElse InfoUser.UserDepID = 3 OrElse InfoUser.UserAdm Then
+                Button7.Enabled = True
+            Else
+                Button7.Enabled = False
+            End If
         Else
 
         End If
@@ -265,7 +278,9 @@
 
 
                 End If
-                cargoDiretorVazio = False
+            cargoDiretorVazio = False
+
+            registoDiretorSelecionado = ultimoRegistro
 
             Debug.WriteLine("Acabou")
         Else
@@ -291,13 +306,46 @@
             ElegerDiretor.DepIDLoc = DepartamentosBindingSource.Current("ID")
         ElseIf Button7.Text = "Despedir diretor" Then
             Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
+
             If MsgBox("Enviar email de despedimento?", vbYesNo, "Informar funcionário") = MsgBoxResult.Yes Then
-                '@TODO: Depois meter o codigo
+                Dim motivo As String
+                If IsDBNull(registoDiretorSelecionado("DDF")) Then
+                    motivo = InputBox("Qual o motivo do despedimento do Diretor? (Opcional)")
+                Else
+                    motivo = InputBox("Qual o motivo do despedimento antecipado do Diretor? (Opcional)")
+                End If
+
+                Dim registoDiretorFuncionarioDetalhesSelecionado As DataRowView
+
+                For Each item In FuncionariosBindingSource1
+
+                    If item("ID") = registoDiretorSelecionado("ID_Funcionario") Then
+
+                        registoDiretorFuncionarioDetalhesSelecionado = item
+
+                    End If
+
+                Next
+
+
+#Disable Warning BC42104 ' Variable is used before it has been assigned a value
+                EnviarMensagemAutomaticaDespedimento(InfoUser.UserFirstName, InfoUser.UserLastName, registoDiretorFuncionarioDetalhesSelecionado("Email"), registoDiretorFuncionarioDetalhesSelecionado("Nome"), registoDiretorFuncionarioDetalhesSelecionado("Sobrenome"), motivo)
+#Enable Warning BC42104 ' Variable is used before it has been assigned a value
             End If
-        ElseIf Button7.Text = "Demitir-me" Then 'Antenção este e o outro de cima são diferentes
+
+            Diretores_de_DepartamentosBindingSource.Position = Diretores_de_DepartamentosBindingSource.Find("ID", registoDiretorSelecionado("ID"))
+            Debug.WriteLine("ID_Diretor: " & registoDiretorSelecionado("ID"))
+            Debug.WriteLine("Diretores_de_Departamentos.Current(""ID""): " & Diretores_de_DepartamentosBindingSource.Current("ID"))
             Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
+            Diretores_de_DepartamentosBindingSource.EndEdit()
 
+            Dim departamentoAtual As Integer
+            departamentoAtual = DepartamentosBindingSource.Position
+            Diretores_de_DepartamentosTableAdapter.Update(Industries_DanDataSet)
+            DepartamentosTableAdapter.Update(Industries_DanDataSet)
+            AtualizarInfosDiretor()
 
+        ElseIf Button7.Text = "Demitir-me" Then 'Antenção este e o outro de cima são diferentes
 
             Dim idFuncionario As Integer = Diretores_de_DepartamentosBindingSource.Current("ID_Funcionario")
             FuncionariosBindingSource1.Position = FuncionariosBindingSource1.Find("ID", idFuncionario)
@@ -316,11 +364,14 @@
                 ElegerDiretor.Show()
                 ElegerDiretor.DepIDLoc = DepartamentosBindingSource.Current("ID")
             End If
+
+            Diretores_de_DepartamentosBindingSource.Position = Diretores_de_DepartamentosBindingSource.Find("ID", registoDiretorSelecionado("ID"))
             Diretores_de_DepartamentosBindingSource.Current("DDF") = Today
             Diretores_de_DepartamentosBindingSource.EndEdit()
 
             Dim departamentoAtual As Integer
             departamentoAtual = DepartamentosBindingSource.Position
+            Diretores_de_DepartamentosTableAdapter.Update(Industries_DanDataSet)
             DepartamentosTableAdapter.Update(Industries_DanDataSet)
             AtualizarInfosDiretor()
         End If

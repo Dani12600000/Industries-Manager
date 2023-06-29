@@ -8,5 +8,5 @@
     Public UltimoNomeDiretorDepartamento As List(Of String) = New List(Of String)
     Public EmailDiretorDepartamento As List(Of String) = New List(Of String)
     ' Public FuncionariosDepartamento As List(Of List(Of String)) = New List(Of List(Of String))
-
+    ' Public PermissoesDepartamento As List(Of List(Of Integer)) = New List(Of List(Of Integer))
 End Module
