@@ -232,12 +232,12 @@ Partial Class Produtos
         Me.FornecimentosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.FornecimentosDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.ID_Fornecedor, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7})
         Me.FornecimentosDataGridView.DataSource = Me.FornecimentosBindingSource
-        Me.FornecimentosDataGridView.Location = New System.Drawing.Point(465, 63)
+        Me.FornecimentosDataGridView.Location = New System.Drawing.Point(455, 63)
         Me.FornecimentosDataGridView.Name = "FornecimentosDataGridView"
         Me.FornecimentosDataGridView.ReadOnly = True
         Me.FornecimentosDataGridView.RowHeadersWidth = 62
         Me.FornecimentosDataGridView.RowTemplate.Height = 28
-        Me.FornecimentosDataGridView.Size = New System.Drawing.Size(710, 289)
+        Me.FornecimentosDataGridView.Size = New System.Drawing.Size(725, 289)
         Me.FornecimentosDataGridView.TabIndex = 8
         '
         'DataGridViewTextBoxColumn1
@@ -482,9 +482,9 @@ Partial Class Produtos
         'Label2
         '
         Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label2.Location = New System.Drawing.Point(461, 37)
+        Me.Label2.Location = New System.Drawing.Point(451, 37)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(699, 23)
+        Me.Label2.Size = New System.Drawing.Size(729, 23)
         Me.Label2.TabIndex = 28
         Me.Label2.Text = "Fornecimentos"
         '
@@ -500,7 +500,7 @@ Partial Class Produtos
         'Button5
         '
         Me.Button5.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button5.Location = New System.Drawing.Point(620, 369)
+        Me.Button5.Location = New System.Drawing.Point(630, 369)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(368, 47)
         Me.Button5.TabIndex = 30
