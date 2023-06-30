@@ -269,7 +269,7 @@ Public Class PMenu
         }
         nenhumAvisoLabel.Font = New Font(nenhumAvisoLabel.Font, FontStyle.Italic)
 
-        Dim avisosRecentes As New List(Of ToolStripLabel)
+        Dim avisosRecentes, avisosLidos As New List(Of ToolStripLabel)
 
         AvisosBindingSource.Filter = "(DLDM IS NULL OR DLDM > #" & Today.ToString("MM/dd/yyyy") & "#) AND (ID_Departamento IS NULL OR ID_Departamento = " & InfoUser.UserDepID & ") AND (ID_Funcionario IS NULL OR ID_Funcionario = " & InfoUser.UserID & ")"
 
@@ -301,6 +301,8 @@ Public Class PMenu
 
                 ' Adicione o ToolStripLabel à lista
                 avisosRecentes.Add(label)
+            Else
+
             End If
         Next
 
