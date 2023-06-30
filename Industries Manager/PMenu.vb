@@ -209,6 +209,8 @@ Public Class PMenu
             Next
         End If
 
+        DepartamentosBindingSource.RemoveFilter()
+
         For i = 0 To DepartamentosBindingSource.Count - 1
 
             DepartamentosBindingSource.Position = i
