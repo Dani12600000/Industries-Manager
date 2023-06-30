@@ -6,13 +6,18 @@ Imports Industries_Manager.Industries_DanDataSet
 
 Public Class PMenu
     Dim TextOfFormButtonsPermitidos As List(Of String) = New List(Of String)()
+    Dim novosAvisosBooleanExterior As Boolean
 
 
-    Private Class LogoutRenderer : Inherits ToolStripProfessionalRenderer
+    Private Class LogoutAndAvisosRenderer : Inherits ToolStripProfessionalRenderer
         Private ReadOnly logoutMenuItem As ToolStripMenuItem
+        Private ReadOnly avisosMenuItem As ToolStripMenuItem
+        Public novosAvisos As Boolean
 
-        Public Sub New(logoutMenuItem As ToolStripMenuItem)
+        Public Sub New(logoutMenuItem As ToolStripMenuItem, avisosMenuItem As ToolStripMenuItem, novosAvisosBoolean As Boolean)
             Me.logoutMenuItem = logoutMenuItem
+            Me.avisosMenuItem = avisosMenuItem
+            novosAvisos = novosAvisosBoolean
         End Sub
 
         Protected Overrides Sub OnRenderMenuItemBackground(ByVal e As ToolStripItemRenderEventArgs)
@@ -25,9 +30,15 @@ Public Class PMenu
                 Else
                     MyBase.OnRenderMenuItemBackground(e)
                     ' @TODO : Depois escolher cores melhores
-                    ' Define a cor de destaque para o LogoutToolStripMenuItem
                     ' e.Graphics.FillRectangle(Brushes.LightGray, rc)
                     ' e.Graphics.DrawRectangle(Pens.Gray, 0, 0, rc.Width - 1, rc.Height - 1)
+                End If
+            ElseIf e.Item Is avisosMenuItem And novosAvisos Then
+                Dim rc As New Rectangle(Point.Empty, e.Item.Size)
+                If novosAvisos Then
+                    e.Graphics.FillRectangle(Brushes.IndianRed, rc)
+                Else
+                    MyBase.OnRenderMenuItemBackground(e)
                 End If
             End If
         End Sub
@@ -42,7 +53,7 @@ Public Class PMenu
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Funcionarios' table. You can move, or remove it, as needed.
         Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
         CarragamentoInicialProprio()
-        MenuStrip1.Renderer = New LogoutRenderer(LogoutToolStripMenuItem)
+        MenuStrip1.Renderer = New LogoutAndAvisosRenderer(LogoutToolStripMenuItem, AvisosToolStripMenuItem, novosAvisosBooleanExterior)
     End Sub
 
     Sub CarragamentoInicialProprio()
@@ -225,6 +236,25 @@ Public Class PMenu
         AtualizarInfosAvisos()
     End Sub
 
+    Private Sub avisosLidos_Click(sender As Object, e As EventArgs)
+        Dim label As ToolStripLabel = DirectCast(sender, ToolStripLabel)
+        DetalhesAviso.Show()
+
+        DetalhesAviso.GroupBox1.Visible = False
+        DetalhesAviso.Label1.Visible = False
+        DetalhesAviso.FuncionariosDiretoresComboBox.Visible = False
+        DetalhesAviso.Label2.Visible = False
+        DetalhesAviso.ComboBox1.Visible = False
+        DetalhesAviso.AvisoTextBox.Height = 170
+        DetalhesAviso.Button1.Visible = False
+        DetalhesAviso.AvisoTextBox.ReadOnly = True
+        DetalhesAviso.TituloTextBox.ReadOnly = True
+        DetalhesAviso.Text = "Detalhe Aviso"
+
+        DetalhesAviso.Height = 25
+        DetalhesAviso.AvisosBindingSource.Filter = "ID = " & label.Tag
+    End Sub
+
     Sub AtualizarInfosAvisos()
         AvisosToolStripMenuItem.DropDownItems.Clear()
         If InfoUser.UserDepDirectorYN Then
@@ -293,18 +323,44 @@ Public Class PMenu
 
             Dim id As Integer = CInt(row("ID"))
 
-            If Not listaIDAviso.Contains(id) Then
-                ' Crie um ToolStripLabel para a linha
-                Dim label As New ToolStripLabel()
-                label.Text = titulo
-                label.Tag = id
+            Dim label As New ToolStripLabel()
 
-                ' Adicione o ToolStripLabel à lista
+            label.Text = titulo
+            label.Tag = id
+
+            If Not listaIDAviso.Contains(id) Then
                 avisosRecentes.Add(label)
             Else
-
+                avisosLidos.Add(label)
             End If
         Next
+
+        Dim avisosNaoLidosLabel As New ToolStripLabel("Avisos não lidos")
+        avisosNaoLidosLabel.DisplayStyle = ToolStripItemDisplayStyle.Text
+        avisosNaoLidosLabel.Margin = New Padding(160, avisosNaoLidosLabel.Margin.Top, avisosNaoLidosLabel.Margin.Right, avisosNaoLidosLabel.Margin.Bottom)
+        avisosNaoLidosLabel.Size = New Size(250, 40)
+
+        Dim avisosLidosLabel As New ToolStripLabel("Avisos lidos recentemente")
+        avisosLidosLabel.DisplayStyle = ToolStripItemDisplayStyle.Text
+        avisosLidosLabel.Margin = New Padding(98, avisosLidosLabel.Margin.Top, avisosLidosLabel.Margin.Right, avisosLidosLabel.Margin.Bottom)
+        avisosLidosLabel.Size = New Size(250, 40)
+
+        If avisosLidos.Count <> 0 Then
+            For Each label As ToolStripLabel In avisosLidos
+                Dim novoLabel As New ToolStripLabel(label.Text)
+                novoLabel.Tag = label.Tag
+                novoLabel.BackColor = Color.LightGray
+                novoLabel.ForeColor = Color.Black
+                novoLabel.Size = New Size(200, 30)
+
+                AddHandler novoLabel.Click, AddressOf avisosLidos_Click
+
+                AvisosToolStripMenuItem.DropDownItems.Insert(0, novoLabel)
+            Next
+
+            novosAvisosBooleanExterior = True
+            AvisosToolStripMenuItem.DropDownItems.Insert(0, avisosLidosLabel)
+        End If
 
         If avisosRecentes.Count = 0 Then
             AvisosToolStripMenuItem.DropDownItems.Insert(0, nenhumAvisoLabel)
@@ -321,13 +377,21 @@ Public Class PMenu
 
                 AvisosToolStripMenuItem.DropDownItems.Insert(0, novoLabel)
             Next
-            Dim avisosNaoLidosLabel As New ToolStripLabel("Avisos não lidos")
-            avisosNaoLidosLabel.DisplayStyle = ToolStripItemDisplayStyle.Text
-            avisosNaoLidosLabel.Margin = New Padding(160, avisosNaoLidosLabel.Margin.Top, avisosNaoLidosLabel.Margin.Right, avisosNaoLidosLabel.Margin.Bottom)
-            avisosNaoLidosLabel.Size = New Size(250, 40)
 
             AvisosToolStripMenuItem.DropDownItems.Insert(0, avisosNaoLidosLabel)
         End If
+
+        If avisosLidos.Count <> 0 And avisosRecentes.Count = 0 Then
+            AvisosToolStripMenuItem.DropDownItems.Insert(0, avisosNaoLidosLabel)
+        End If
+
+        If avisosRecentes.Count > 0 Then
+            novosAvisosBooleanExterior = True
+        Else
+            novosAvisosBooleanExterior = False
+        End If
+
+        MenuStrip1.Renderer = New LogoutAndAvisosRenderer(LogoutToolStripMenuItem, AvisosToolStripMenuItem, novosAvisosBooleanExterior)
     End Sub
 
 
