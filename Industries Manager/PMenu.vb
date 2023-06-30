@@ -295,7 +295,7 @@ Public Class PMenu
         Dim nenhumAvisoLabel As New ToolStripLabel("Nenhum aviso novo por agora") With {
             .ForeColor = Color.DimGray,
             .AutoSize = False,
-            .Size = New Size(250, 40)
+            .Size = New Size(Me.Width / 2 + 30, 40)
         }
         nenhumAvisoLabel.Font = New Font(nenhumAvisoLabel.Font, FontStyle.Italic)
 
@@ -317,9 +317,9 @@ Public Class PMenu
 
             Dim titulo As String
 
-            titulo = "Do " & DesignacaoDiretor & " "
+            titulo = DesignacaoDiretor & " "
             If DesignacaoDiretor.ToLower = "diretor" Or DesignacaoDiretor.ToLower = "director" Then titulo &= "do departamento de " & NomeDepartamento
-            titulo &= NomeDiretor & vbCrLf & row("Titulo").ToString()
+            titulo &= NomeDiretor & ": " & row("Titulo").ToString()
 
             Dim id As Integer = CInt(row("ID"))
 
@@ -327,6 +327,7 @@ Public Class PMenu
 
             label.Text = titulo
             label.Tag = id
+            label.Alignment = ToolStripItemAlignment.Right
 
             If Not listaIDAviso.Contains(id) Then
                 avisosRecentes.Add(label)
@@ -337,13 +338,13 @@ Public Class PMenu
 
         Dim avisosNaoLidosLabel As New ToolStripLabel("Avisos não lidos")
         avisosNaoLidosLabel.DisplayStyle = ToolStripItemDisplayStyle.Text
-        avisosNaoLidosLabel.Margin = New Padding(160, avisosNaoLidosLabel.Margin.Top, avisosNaoLidosLabel.Margin.Right, avisosNaoLidosLabel.Margin.Bottom)
-        avisosNaoLidosLabel.Size = New Size(250, 40)
+        avisosNaoLidosLabel.Margin = New Padding(Me.Width / 2 - 55, avisosNaoLidosLabel.Margin.Top, avisosNaoLidosLabel.Margin.Right, avisosNaoLidosLabel.Margin.Bottom)
+        avisosNaoLidosLabel.Size = New Size(Me.Width / 2 + 30, 40)
 
         Dim avisosLidosLabel As New ToolStripLabel("Avisos lidos recentemente")
         avisosLidosLabel.DisplayStyle = ToolStripItemDisplayStyle.Text
-        avisosLidosLabel.Margin = New Padding(98, avisosLidosLabel.Margin.Top, avisosLidosLabel.Margin.Right, avisosLidosLabel.Margin.Bottom)
-        avisosLidosLabel.Size = New Size(250, 40)
+        avisosLidosLabel.Margin = New Padding(Me.Width / 2 - 62 - 55, avisosLidosLabel.Margin.Top, avisosLidosLabel.Margin.Right, avisosLidosLabel.Margin.Bottom)
+        avisosLidosLabel.Size = New Size(Me.Width / 2 + 30, 40)
 
         If avisosLidos.Count <> 0 Then
             For Each label As ToolStripLabel In avisosLidos
@@ -351,7 +352,7 @@ Public Class PMenu
                 novoLabel.Tag = label.Tag
                 novoLabel.BackColor = Color.LightGray
                 novoLabel.ForeColor = Color.Black
-                novoLabel.Size = New Size(250, 40)
+                novoLabel.Size = New Size(Me.Width / 2 + 30, 40)
 
                 AddHandler novoLabel.Click, AddressOf avisosLidos_Click
 
@@ -360,6 +361,7 @@ Public Class PMenu
 
             novosAvisosBooleanExterior = True
             AvisosToolStripMenuItem.DropDownItems.Insert(0, avisosLidosLabel)
+            AvisosToolStripMenuItem.DropDownItems.Insert(0, New ToolStripSeparator)
         End If
 
         If avisosRecentes.Count = 0 Then
@@ -370,7 +372,7 @@ Public Class PMenu
                 novoLabel.Tag = label.Tag
                 novoLabel.BackColor = Color.LightGray
                 novoLabel.ForeColor = Color.Black
-                novoLabel.Size = New Size(250, 40)
+                novoLabel.Size = New Size(Me.Width / 2 + 30, 40)
 
                 AddHandler novoLabel.MouseLeave, AddressOf avisosRecentes_MouseLeave
                 AddHandler novoLabel.Click, AddressOf avisosRecentes_Click
@@ -486,5 +488,9 @@ Public Class PMenu
         ElseIf TextOnButton = "Profissões" Then
             Profissões.Show()
         End If
+    End Sub
+
+    Private Sub PMenu_ClientSizeChanged(sender As Object, e As EventArgs) Handles MyBase.ClientSizeChanged
+        AtualizarInfosAvisos()
     End Sub
 End Class
