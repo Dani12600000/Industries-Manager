@@ -35,6 +35,12 @@ Public Class PMenu
 
 
     Private Sub PMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Departamentos' table. You can move, or remove it, as needed.
+        Me.DepartamentosTableAdapter.Fill(Me.Industries_DanDataSet.Departamentos)
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Diretores_de_Departamentos' table. You can move, or remove it, as needed.
+        Me.Diretores_de_DepartamentosTableAdapter.Fill(Me.Industries_DanDataSet.Diretores_de_Departamentos)
+        'TODO: This line of code loads data into the 'Industries_DanDataSet.Funcionarios' table. You can move, or remove it, as needed.
+        Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
         CarragamentoInicialProprio()
         MenuStrip1.Renderer = New LogoutRenderer(LogoutToolStripMenuItem)
     End Sub
@@ -74,78 +80,11 @@ Public Class PMenu
         Debug.WriteLineIf(InfoUser.UserDepDirectorYN, "ID Diretor : " & InfoUser.UserDepDirectorID)
         Debug.WriteLine("Estas são todas as infos do user carregadas")
 
-
-        If InfoUser.UserDepDirectorYN Then
-            AvisosToolStripMenuItem.DropDownItems.Add(New ToolStripSeparator)
-
-            Dim botaoVerAvisosMandados As New ToolStripButton("Ver Avisos Enviados")
-            Dim botaoNovoAviso As New ToolStripButton("Enviar Novo Aviso")
-
-            AddHandler botaoVerAvisosMandados.Click, AddressOf VerAvisosMandados_Click
-            AddHandler botaoNovoAviso.Click, AddressOf NovoAviso_Click
-
-            AvisosToolStripMenuItem.DropDownItems.Add(botaoVerAvisosMandados)
-            AvisosToolStripMenuItem.DropDownItems.Add(botaoNovoAviso)
-
-        End If
-
-
-
-        ' AvisosBindingSource.Filter = "ID_Funcionario = " & InfoUser.UserID
-
-        ' Fazer loop para buscar todos os Avisos não lidos e lidos pelo diretor do departamento
-
-        ' AvisosBindingSource.Filter = "ID_Departamento = " & InfoUser.UserDepID
-
-        ' Fazer loop para buscar todos os Avisos não lidos e lidos do Departamento
-
-        Dim nenhumAvisoLabel As New ToolStripLabel("Nenhum aviso novo por agora") With {
-            .ForeColor = Color.DimGray,
-            .AutoSize = False,
-            .Size = New Size(200, 30)
-        }
-        nenhumAvisoLabel.Font = New Font(nenhumAvisoLabel.Font, FontStyle.Italic)
-
-        Dim avisosRecentes As New List(Of ToolStripLabel)
-
-        AvisosBindingSource.Filter = "(DLDM IS NULL OR DLDM > #" & Today.ToString("MM/dd/yyyy") & "#) AND (ID_Departamento IS NULL OR ID_Departamento = " & InfoUser.UserDepID & ") AND (ID_Funcionario IS NULL OR ID_Funcionario = " & InfoUser.UserID & ")"
-
-
-        For Each row As DataRowView In AvisosBindingSource
-            ' Obtenha os dados relevantes da linha
-            Dim titulo As String = row("Titulo").ToString()
-            Dim id As Integer = CInt(row("ID"))
-
-            ' Crie um ToolStripLabel para a linha
-            Dim label As New ToolStripLabel()
-            label.Text = titulo
-            label.Tag = id
-
-            ' Adicione o ToolStripLabel à lista
-            avisosRecentes.Add(label)
-        Next
-
-        If avisosRecentes.Count = 0 Then
-            AvisosToolStripMenuItem.DropDownItems.Insert(0, nenhumAvisoLabel)
-        Else
-            For Each label As ToolStripLabel In avisosRecentes
-                Dim novoLabel As New ToolStripLabel(label.Text)
-                novoLabel.BackColor = Color.LightGray
-                novoLabel.ForeColor = Color.Black
-                novoLabel.Size = New Size(200, 30)
-
-                AddHandler novoLabel.MouseLeave, AddressOf avisosRecentes_MouseLeave
-                AddHandler novoLabel.Click, AddressOf avisosRecentes_Click
-
-                AvisosToolStripMenuItem.DropDownItems.Insert(0, novoLabel)
-            Next
-        End If
-
-
-
         Formulario = Me
 
         CenterOnScreenForm()
+
+        AtualizarInfosAvisos()
 
         Dim DepartamentosComPermissao As List(Of Integer) = New List(Of Integer)()
 
@@ -260,7 +199,133 @@ Public Class PMenu
 
     Private Sub avisosRecentes_Click(sender As Object, e As EventArgs)
         Dim label As ToolStripLabel = DirectCast(sender, ToolStripLabel)
-        Debug.WriteLine("Clicou no item: " & label.Text)
+        DetalhesAviso.Show()
+
+        DetalhesAviso.GroupBox1.Visible = False
+        DetalhesAviso.Label1.Visible = False
+        DetalhesAviso.FuncionariosDiretoresComboBox.Visible = False
+        DetalhesAviso.Label2.Visible = False
+        DetalhesAviso.ComboBox1.Visible = False
+        DetalhesAviso.AvisoTextBox.Height = 170
+        DetalhesAviso.Button1.Visible = False
+        DetalhesAviso.AvisoTextBox.ReadOnly = True
+        DetalhesAviso.TituloTextBox.ReadOnly = True
+        DetalhesAviso.Text = "Detalhe Aviso"
+
+        DetalhesAviso.Height = 25
+        DetalhesAviso.AvisosBindingSource.Filter = "ID = " & label.Tag
+
+        Leitura_de_avisosBindingSource.AddNew()
+        Leitura_de_avisosBindingSource.Current("ID_Aviso") = label.Tag
+        Leitura_de_avisosBindingSource.Current("DeH") = Now
+        Leitura_de_avisosBindingSource.Current("ID_Funcionarios") = InfoUser.UserID
+
+        Leitura_de_avisosBindingSource.EndEdit()
+        Leitura_de_avisosTableAdapter.Update(Industries_DanDataSet)
+        AtualizarInfosAvisos()
+    End Sub
+
+    Sub AtualizarInfosAvisos()
+        AvisosToolStripMenuItem.DropDownItems.Clear()
+        If InfoUser.UserDepDirectorYN Then
+            AvisosToolStripMenuItem.DropDownItems.Add(New ToolStripSeparator)
+
+            Dim botaoVerAvisosMandados As New ToolStripButton("Ver Avisos Enviados")
+            Dim botaoNovoAviso As New ToolStripButton("Enviar Novo Aviso")
+
+            AddHandler botaoVerAvisosMandados.Click, AddressOf VerAvisosMandados_Click
+            AddHandler botaoNovoAviso.Click, AddressOf NovoAviso_Click
+
+            AvisosToolStripMenuItem.DropDownItems.Add(botaoVerAvisosMandados)
+            AvisosToolStripMenuItem.DropDownItems.Add(botaoNovoAviso)
+
+        End If
+
+
+
+        Dim listaID As New List(Of Integer)()
+        Dim listaDeH As New List(Of DateTime)()
+        Dim listaIDAviso As New List(Of Integer)()
+        Dim listaIDFuncionarios As New List(Of Integer)()
+
+        For Each row As DataRowView In Leitura_de_avisosBindingSource
+            ' Obter os valores das colunas
+            Dim id As Integer = CInt(row("ID"))
+            Dim deh As DateTime = CDate(row("DeH"))
+            Dim idAviso As Integer = CInt(row("ID_Aviso"))
+            Dim idFuncionarios As Integer = CInt(row("ID_Funcionarios"))
+
+            ' Adicionar os valores às listas correspondentes
+            listaID.Add(id)
+            listaDeH.Add(deh)
+            listaIDAviso.Add(idAviso)
+            listaIDFuncionarios.Add(idFuncionarios)
+        Next
+
+        Dim nenhumAvisoLabel As New ToolStripLabel("Nenhum aviso novo por agora") With {
+            .ForeColor = Color.DimGray,
+            .AutoSize = False,
+            .Size = New Size(200, 30)
+        }
+        nenhumAvisoLabel.Font = New Font(nenhumAvisoLabel.Font, FontStyle.Italic)
+
+        Dim avisosRecentes As New List(Of ToolStripLabel)
+
+        AvisosBindingSource.Filter = "(DLDM IS NULL OR DLDM > #" & Today.ToString("MM/dd/yyyy") & "#) AND (ID_Departamento IS NULL OR ID_Departamento = " & InfoUser.UserDepID & ") AND (ID_Funcionario IS NULL OR ID_Funcionario = " & InfoUser.UserID & ")"
+
+        For Each row As DataRowView In AvisosBindingSource
+            ' Obtenha os dados relevantes da linha
+            Dim DesignacaoDiretor, NomeDiretor, NomeDepartamento As String
+
+            Diretores_de_DepartamentosBindingSource.Filter = "ID = " & AvisosBindingSource.Current("ID_Diretor")
+            FuncionariosBindingSource.Filter = "ID = " & Diretores_de_DepartamentosBindingSource.Current("ID_Funcionario")
+            DepartamentosBindingSource.Filter = "ID = " & Diretores_de_DepartamentosBindingSource.Current("ID_Departamento")
+
+            DesignacaoDiretor = Diretores_de_DepartamentosBindingSource.Current("DDD")
+            NomeDepartamento = DepartamentosBindingSource.Current("NDD")
+            NomeDiretor = FuncionariosBindingSource.Current("Nome")
+
+            Dim titulo As String
+
+            titulo = "Do " & DesignacaoDiretor & " "
+            If DesignacaoDiretor.ToLower = "diretor" Or DesignacaoDiretor.ToLower = "director" Then titulo &= "do departamento de " & NomeDepartamento
+            titulo &= NomeDiretor & vbCrLf & row("Titulo").ToString()
+
+            Dim id As Integer = CInt(row("ID"))
+
+            If Not listaIDAviso.Contains(id) Then
+                ' Crie um ToolStripLabel para a linha
+                Dim label As New ToolStripLabel()
+                label.Text = titulo
+                label.Tag = id
+
+                ' Adicione o ToolStripLabel à lista
+                avisosRecentes.Add(label)
+            End If
+        Next
+
+        If avisosRecentes.Count = 0 Then
+            AvisosToolStripMenuItem.DropDownItems.Insert(0, nenhumAvisoLabel)
+        Else
+            For Each label As ToolStripLabel In avisosRecentes
+                Dim novoLabel As New ToolStripLabel(label.Text)
+                novoLabel.Tag = label.Tag
+                novoLabel.BackColor = Color.LightGray
+                novoLabel.ForeColor = Color.Black
+                novoLabel.Size = New Size(200, 30)
+
+                AddHandler novoLabel.MouseLeave, AddressOf avisosRecentes_MouseLeave
+                AddHandler novoLabel.Click, AddressOf avisosRecentes_Click
+
+                AvisosToolStripMenuItem.DropDownItems.Insert(0, novoLabel)
+            Next
+            Dim avisosNaoLidosLabel As New ToolStripLabel("Avisos não lidos")
+            avisosNaoLidosLabel.DisplayStyle = ToolStripItemDisplayStyle.Text
+            avisosNaoLidosLabel.Margin = New Padding(160, avisosNaoLidosLabel.Margin.Top, avisosNaoLidosLabel.Margin.Right, avisosNaoLidosLabel.Margin.Bottom)
+            avisosNaoLidosLabel.Size = New Size(250, 40)
+
+            AvisosToolStripMenuItem.DropDownItems.Insert(0, avisosNaoLidosLabel)
+        End If
     End Sub
 
 
