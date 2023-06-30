@@ -16,6 +16,9 @@ Public Class Vendas
 
         Formulario = Me
 
+        PCTextBox.Text = ""
+        SubtotalTextBox.Text = ""
+
         CenterOnScreenForm()
     End Sub
     Sub Nova_Venda(email As String)
@@ -85,7 +88,7 @@ Public Class Vendas
         Clientes.VendasTableAdapter.Fill(Clientes.Industries_DanDataSet.Vendas)
         Clientes.Venda_de_produtoTableAdapter.Fill(Clientes.Industries_DanDataSet.Venda_de_produto)
 
-        PMenu.Activate()
+        Clientes.Activate()
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click

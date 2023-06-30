@@ -38,9 +38,6 @@ Partial Class Clientes
         Me.SobrenomeTextBox = New System.Windows.Forms.TextBox()
         Me.VendasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VendasDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -62,15 +59,18 @@ Partial Class Clientes
         Me.IndustriesDanDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ProdutosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProdutosTableAdapter()
         Me.Venda_de_produtoDataGridView = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PC = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Subtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button11 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button12 = New System.Windows.Forms.Button()
         Me.Button13 = New System.Windows.Forms.Button()
+        Me.Column1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PC = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Subtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         MailLabel = New System.Windows.Forms.Label()
         NIFLabel = New System.Windows.Forms.Label()
         NIBLabel = New System.Windows.Forms.Label()
@@ -225,40 +225,13 @@ Partial Class Clientes
         Me.VendasDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.VendasDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3, Me.Total})
         Me.VendasDataGridView.DataSource = Me.VendasBindingSource
-        Me.VendasDataGridView.Location = New System.Drawing.Point(542, 55)
+        Me.VendasDataGridView.Location = New System.Drawing.Point(499, 55)
         Me.VendasDataGridView.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.VendasDataGridView.Name = "VendasDataGridView"
         Me.VendasDataGridView.ReadOnly = True
         Me.VendasDataGridView.RowHeadersWidth = 62
-        Me.VendasDataGridView.Size = New System.Drawing.Size(446, 335)
+        Me.VendasDataGridView.Size = New System.Drawing.Size(458, 335)
         Me.VendasDataGridView.TabIndex = 13
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 50
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "DDC"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Data da compra"
-        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 95
-        '
-        'Total
-        '
-        Me.Total.DataPropertyName = "Total"
-        Me.Total.HeaderText = "Total"
-        Me.Total.MinimumWidth = 8
-        Me.Total.Name = "Total"
-        Me.Total.ReadOnly = True
-        Me.Total.Width = 85
         '
         'Button1
         '
@@ -302,10 +275,10 @@ Partial Class Clientes
         '
         'Label1
         '
-        Me.Label1.Location = New System.Drawing.Point(537, 26)
+        Me.Label1.Location = New System.Drawing.Point(494, 26)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(450, 25)
+        Me.Label1.Size = New System.Drawing.Size(463, 25)
         Me.Label1.TabIndex = 18
         Me.Label1.Text = "Compras realizadas"
         '
@@ -346,10 +319,10 @@ Partial Class Clientes
         '
         'Label2
         '
-        Me.Label2.Location = New System.Drawing.Point(990, 26)
+        Me.Label2.Location = New System.Drawing.Point(970, 26)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(551, 25)
+        Me.Label2.Size = New System.Drawing.Size(571, 25)
         Me.Label2.TabIndex = 19
         Me.Label2.Text = "Produtos na compra"
         '
@@ -360,7 +333,7 @@ Partial Class Clientes
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(848, 456)
+        Me.Button5.Location = New System.Drawing.Point(807, 456)
         Me.Button5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(68, 63)
@@ -370,7 +343,7 @@ Partial Class Clientes
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(772, 456)
+        Me.Button6.Location = New System.Drawing.Point(731, 456)
         Me.Button6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(68, 63)
@@ -380,7 +353,7 @@ Partial Class Clientes
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(696, 456)
+        Me.Button7.Location = New System.Drawing.Point(655, 456)
         Me.Button7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(68, 63)
@@ -390,7 +363,7 @@ Partial Class Clientes
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(619, 456)
+        Me.Button8.Location = New System.Drawing.Point(578, 456)
         Me.Button8.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(68, 63)
@@ -434,13 +407,60 @@ Partial Class Clientes
         Me.Venda_de_produtoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Venda_de_produtoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.DataGridViewTextBoxColumn6, Me.PC, Me.Subtotal})
         Me.Venda_de_produtoDataGridView.DataSource = Me.Venda_de_produtoBindingSource1
-        Me.Venda_de_produtoDataGridView.Location = New System.Drawing.Point(994, 55)
+        Me.Venda_de_produtoDataGridView.Location = New System.Drawing.Point(974, 55)
         Me.Venda_de_produtoDataGridView.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Venda_de_produtoDataGridView.Name = "Venda_de_produtoDataGridView"
         Me.Venda_de_produtoDataGridView.RowHeadersVisible = False
         Me.Venda_de_produtoDataGridView.RowHeadersWidth = 62
-        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(547, 464)
+        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(567, 464)
         Me.Venda_de_produtoDataGridView.TabIndex = 24
+        '
+        'Button10
+        '
+        Me.Button10.Location = New System.Drawing.Point(86, 401)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(100, 47)
+        Me.Button10.TabIndex = 26
+        Me.Button10.Text = "Novo"
+        Me.Button10.UseVisualStyleBackColor = True
+        '
+        'Button11
+        '
+        Me.Button11.BackColor = System.Drawing.Color.IndianRed
+        Me.Button11.Location = New System.Drawing.Point(284, 401)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(100, 47)
+        Me.Button11.TabIndex = 27
+        Me.Button11.Text = "Remover"
+        Me.Button11.UseVisualStyleBackColor = False
+        '
+        'Button9
+        '
+        Me.Button9.BackColor = System.Drawing.Color.IndianRed
+        Me.Button9.Location = New System.Drawing.Point(732, 401)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(144, 47)
+        Me.Button9.TabIndex = 29
+        Me.Button9.Text = "Remover"
+        Me.Button9.UseVisualStyleBackColor = False
+        '
+        'Button12
+        '
+        Me.Button12.Location = New System.Drawing.Point(578, 401)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(145, 47)
+        Me.Button12.TabIndex = 28
+        Me.Button12.Text = "Novo"
+        Me.Button12.UseVisualStyleBackColor = True
+        '
+        'Button13
+        '
+        Me.Button13.Location = New System.Drawing.Point(192, 401)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(86, 47)
+        Me.Button13.TabIndex = 30
+        Me.Button13.Text = "Editar"
+        Me.Button13.UseVisualStyleBackColor = True
         '
         'Column1
         '
@@ -467,7 +487,7 @@ Partial Class Clientes
         'PC
         '
         Me.PC.DataPropertyName = "PC"
-        Me.PC.HeaderText = "Preço cada"
+        Me.PC.HeaderText = "Preço un."
         Me.PC.MinimumWidth = 8
         Me.PC.Name = "PC"
         Me.PC.ReadOnly = True
@@ -482,52 +502,32 @@ Partial Class Clientes
         Me.Subtotal.ReadOnly = True
         Me.Subtotal.Width = 85
         '
-        'Button10
+        'DataGridViewTextBoxColumn1
         '
-        Me.Button10.Location = New System.Drawing.Point(86, 401)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(100, 47)
-        Me.Button10.TabIndex = 26
-        Me.Button10.Text = "Novo"
-        Me.Button10.UseVisualStyleBackColor = True
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 50
         '
-        'Button11
+        'DataGridViewTextBoxColumn3
         '
-        Me.Button11.BackColor = System.Drawing.Color.IndianRed
-        Me.Button11.Location = New System.Drawing.Point(284, 401)
-        Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(100, 47)
-        Me.Button11.TabIndex = 27
-        Me.Button11.Text = "Remover"
-        Me.Button11.UseVisualStyleBackColor = False
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "DDC"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Data compra"
+        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Width = 93
         '
-        'Button9
+        'Total
         '
-        Me.Button9.BackColor = System.Drawing.Color.IndianRed
-        Me.Button9.Location = New System.Drawing.Point(773, 401)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(144, 47)
-        Me.Button9.TabIndex = 29
-        Me.Button9.Text = "Remover"
-        Me.Button9.UseVisualStyleBackColor = False
-        '
-        'Button12
-        '
-        Me.Button12.Location = New System.Drawing.Point(619, 401)
-        Me.Button12.Name = "Button12"
-        Me.Button12.Size = New System.Drawing.Size(145, 47)
-        Me.Button12.TabIndex = 28
-        Me.Button12.Text = "Novo"
-        Me.Button12.UseVisualStyleBackColor = True
-        '
-        'Button13
-        '
-        Me.Button13.Location = New System.Drawing.Point(192, 401)
-        Me.Button13.Name = "Button13"
-        Me.Button13.Size = New System.Drawing.Size(86, 47)
-        Me.Button13.TabIndex = 30
-        Me.Button13.Text = "Editar"
-        Me.Button13.UseVisualStyleBackColor = True
+        Me.Total.DataPropertyName = "Total"
+        Me.Total.HeaderText = "Total"
+        Me.Total.MinimumWidth = 8
+        Me.Total.Name = "Total"
+        Me.Total.ReadOnly = True
+        Me.Total.Width = 95
         '
         'Clientes
         '
@@ -616,14 +616,14 @@ Partial Class Clientes
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
     Friend WithEvents Button10 As Button
     Friend WithEvents Button11 As Button
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents Total As DataGridViewTextBoxColumn
     Friend WithEvents Button9 As Button
     Friend WithEvents Button12 As Button
+    Friend WithEvents Button13 As Button
     Friend WithEvents Column1 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents PC As DataGridViewTextBoxColumn
     Friend WithEvents Subtotal As DataGridViewTextBoxColumn
-    Friend WithEvents Button13 As Button
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents Total As DataGridViewTextBoxColumn
 End Class
