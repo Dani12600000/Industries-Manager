@@ -108,7 +108,7 @@ Public Class PMenu
 
         Dim avisosRecentes As New List(Of ToolStripLabel)
 
-        AvisosBindingSource.Filter = "DLDM < #" & Today.ToString("MM/dd/yyyy") & "# AND ID_Departamento = " & InfoUser.UserDepID
+        AvisosBindingSource.Filter = "(DLDM IS NULL OR DLDM > #" & Today.ToString("MM/dd/yyyy") & "#) AND (ID_Departamento IS NULL OR ID_Departamento = " & InfoUser.UserDepID & ") AND (ID_Funcionario IS NULL OR ID_Funcionario = " & InfoUser.UserID & ")"
 
 
         For Each row As DataRowView In AvisosBindingSource
@@ -132,6 +132,7 @@ Public Class PMenu
                 Dim novoLabel As New ToolStripLabel(label.Text)
                 novoLabel.BackColor = Color.LightGray
                 novoLabel.ForeColor = Color.Black
+                novoLabel.Size = New Size(200, 30)
 
                 AddHandler novoLabel.MouseLeave, AddressOf avisosRecentes_MouseLeave
                 AddHandler novoLabel.Click, AddressOf avisosRecentes_Click
