@@ -295,7 +295,7 @@ Public Class PMenu
         Dim nenhumAvisoLabel As New ToolStripLabel("Nenhum aviso novo por agora") With {
             .ForeColor = Color.DimGray,
             .AutoSize = False,
-            .Size = New Size(200, 30)
+            .Size = New Size(250, 40)
         }
         nenhumAvisoLabel.Font = New Font(nenhumAvisoLabel.Font, FontStyle.Italic)
 
@@ -351,7 +351,7 @@ Public Class PMenu
                 novoLabel.Tag = label.Tag
                 novoLabel.BackColor = Color.LightGray
                 novoLabel.ForeColor = Color.Black
-                novoLabel.Size = New Size(200, 30)
+                novoLabel.Size = New Size(250, 40)
 
                 AddHandler novoLabel.Click, AddressOf avisosLidos_Click
 
@@ -370,7 +370,7 @@ Public Class PMenu
                 novoLabel.Tag = label.Tag
                 novoLabel.BackColor = Color.LightGray
                 novoLabel.ForeColor = Color.Black
-                novoLabel.Size = New Size(200, 30)
+                novoLabel.Size = New Size(250, 40)
 
                 AddHandler novoLabel.MouseLeave, AddressOf avisosRecentes_MouseLeave
                 AddHandler novoLabel.Click, AddressOf avisosRecentes_Click
@@ -390,6 +390,13 @@ Public Class PMenu
         Else
             novosAvisosBooleanExterior = False
         End If
+
+        MenuStrip1.AutoSize = False
+
+        MenuStrip1.Invalidate()
+        MenuStrip1.PerformLayout()
+
+
 
         MenuStrip1.Renderer = New LogoutAndAvisosRenderer(LogoutToolStripMenuItem, AvisosToolStripMenuItem, novosAvisosBooleanExterior)
     End Sub
