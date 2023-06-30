@@ -41,8 +41,10 @@ Partial Class PMenu
         Me.AvisosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.AvisosTableAdapter()
         Me.Leitura_de_avisosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Leitura_de_avisosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Leitura_de_avisosTableAdapter()
+
         Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FuncionariosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FuncionariosTableAdapter()
+
         Me.Diretores_de_DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
         Me.DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -55,6 +57,7 @@ Partial Class PMenu
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+
         Me.SuspendLayout()
         '
         'Label1
@@ -97,7 +100,9 @@ Partial Class PMenu
         '
         'MenuStrip1
         '
+
         Me.MenuStrip1.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 4)
+
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogoutToolStripMenuItem, Me.AvisosToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
@@ -224,6 +229,7 @@ Partial Class PMenu
         '
         Me.Leitura_de_avisosTableAdapter.ClearBeforeFill = True
         '
+
         'FuncionariosBindingSource
         '
         Me.FuncionariosBindingSource.DataMember = "Funcionarios"
@@ -233,6 +239,7 @@ Partial Class PMenu
         '
         Me.FuncionariosTableAdapter.ClearBeforeFill = True
         '
+
         'Diretores_de_DepartamentosBindingSource
         '
         Me.Diretores_de_DepartamentosBindingSource.DataMember = "Diretores de Departamentos"
@@ -276,6 +283,7 @@ Partial Class PMenu
         CType(Me.Login_FuncionarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AvisosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Leitura_de_avisosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -306,8 +314,10 @@ Partial Class PMenu
     Friend WithEvents Leitura_de_avisosTableAdapter As Industries_DanDataSetTableAdapters.Leitura_de_avisosTableAdapter
     Friend WithEvents FuncionariosBindingSource As BindingSource
     Friend WithEvents FuncionariosTableAdapter As Industries_DanDataSetTableAdapters.FuncionariosTableAdapter
+
     Friend WithEvents Diretores_de_DepartamentosBindingSource As BindingSource
     Friend WithEvents Diretores_de_DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter
     Friend WithEvents DepartamentosBindingSource As BindingSource
     Friend WithEvents DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.DepartamentosTableAdapter
+
 End Class

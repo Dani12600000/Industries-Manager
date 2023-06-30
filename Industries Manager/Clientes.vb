@@ -45,8 +45,6 @@
         insercaoPermissoesCadaDep.ComponentesAModificarTamanho.Add(VendasDataGridView)
         insercaoPermissoesCadaDep.ComponentesAModificarTamanho.Add(Venda_de_produtoDataGridView)
 
-        ' @TODO : ACABAR!
-
         DepartamentosAndAcoesQuePodemRealizar(insercaoPermissoesCadaDep)
         CenterOnScreenForm()
     End Sub

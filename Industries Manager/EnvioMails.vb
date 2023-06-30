@@ -1,5 +1,5 @@
 ﻿Module EnvioMails
-    Sub EnviarMensagemAutomaticaContratacao(nomeRemetente As String, emailDestinatario As String, nomeDestinatario As String, sobrenomeDestinario As String, cargo As String, departamento As String, salario As Double)
+    Sub EnviarMensagemAutomaticaContratacao(primeiroNomeRemetente As String, ultimoNomeRemetente As String, emailDestinatario As String, nomeDestinatario As String, sobrenomeDestinario As String, cargo As String, departamento As String, salario As Double)
         Try
             Dim assunto As String = "Contratação nas Industries Dan"
 
@@ -39,7 +39,7 @@
                                         mensagemSalario & vbCrLf & vbCrLf &
                                         "Começa " & diaDaSemana & ", dia " & proximoDia.ToString("d") & "." & vbCrLf & vbCrLf &
                                         "Estamos ansiosos para tê-lo(a) em nossa equipe!" & vbCrLf & vbCrLf &
-                                        "Atenciosamente," & vbCrLf & nomeRemetente
+                                        "Atenciosamente," & vbCrLf & primeiroNomeRemetente
 
             ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
             outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & emailDestinatario & "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
@@ -51,7 +51,7 @@
         End Try
     End Sub
 
-    Sub EnviarMensagemAutomaticaRecontratacao(nomeRemetente As String, destinatario As String, cargo As String, departamento As String, salario As Double)
+    Sub EnviarMensagemAutomaticaRecontratacao(primeiroNomeRemetente As String, ultimoNomeRemetente As String, destinatario As String, cargo As String, departamento As String, salario As Double)
         Try
             Dim assunto As String = "Recontratação nas Industries Dan"
 
@@ -91,7 +91,7 @@
                                         mensagemSalario & vbCrLf & vbCrLf &
                                         "Começa " & diaDaSemana & ", dia " & proximoDia.ToString("d") & "." & vbCrLf & vbCrLf &
                                         "Bem-vindo(a) de volta à nossa equipe!" & vbCrLf & vbCrLf &
-                                        "Atenciosamente," & vbCrLf & nomeRemetente
+                                        "Atenciosamente," & vbCrLf & primeiroNomeRemetente & " " & ultimoNomeRemetente
 
             ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
             outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & destinatario & "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
@@ -103,7 +103,7 @@
         End Try
     End Sub
 
-    Sub EnviarMensagemAutomaticaAtualizacaoSalario(nomeRemetente As String, destinatario As String, nomeDestinatario As String, sobrenomeDestinatario As String, novoSalario As Double)
+    Sub EnviarMensagemAutomaticaAtualizacaoSalario(primeiroNomeRemetente As String, ultimoNomeRemetente As String, destinatario As String, nomeDestinatario As String, sobrenomeDestinatario As String, novoSalario As Double)
         Try
 
             Dim assunto As String = "Alteração salarial"
@@ -119,7 +119,7 @@
                                             "Gostaríamos de informar que seu salário foi atualizado." & vbCrLf &
                                             "O novo valor do seu salário é de " & novoSalario.ToString("#,##0.00") & " por mês." & vbCrLf & vbCrLf &
                                             "Se tiver alguma dúvida, por favor, entre em contato conosco." & vbCrLf & vbCrLf &
-                                            "Atenciosamente," & vbCrLf & nomeRemetente
+                                            "Atenciosamente," & vbCrLf & primeiroNomeRemetente & " " & ultimoNomeRemetente
 
             ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
             outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & destinatario & "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
@@ -131,7 +131,7 @@
         End Try
     End Sub
 
-    Sub EnviarMensagemAutomaticaDespedimento(nomeRemetente As String, destinatario As String, nomeDestinatario As String, sobrenomeDestinatario As String, motivo As String)
+    Sub EnviarMensagemAutomaticaDespedimento(primeiroNomeRemetente As String, ultimoNomeRemetente As String, destinatario As String, nomeDestinatario As String, sobrenomeDestinatario As String, motivo As String)
         Try
             Dim assunto As String = "Despedimento das Industries Dan"
 
@@ -150,10 +150,50 @@
                 mensagemPredefinida &= "Motivo: " & motivo & vbCrLf
             End If
 
-            mensagemPredefinida &= vbCrLf & vbCrLf & "Atenciosamente," & vbCrLf & nomeRemetente
+            mensagemPredefinida &= vbCrLf & vbCrLf & "Atenciosamente," & vbCrLf & primeiroNomeRemetente & " " & ultimoNomeRemetente
 
             ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
             outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & destinatario & "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
+
+            ' Iniciar o processo
+            outlookProcess.Start()
+        Catch ex As Exception
+            Console.WriteLine("Erro ao abrir o Outlook: " & ex.Message)
+        End Try
+    End Sub
+
+    Sub EnviarMensagemAutomaticaDemissao(primeiroNomeRemetente As String, ultimoNomeRemetente As String, destinatarios As List(Of String), nomeDestinatario As String, sobrenomeDestinatario As String)
+        Try
+            Dim assunto As String = "Demissão das Industries Dan"
+
+            ' Criar uma instância do processo do Outlook
+            Dim outlookProcess As New Process()
+
+            ' Definir o nome do processo como "Outlook"
+            outlookProcess.StartInfo.FileName = "Outlook"
+
+            ' Formatar a mensagem pré-definida
+            Dim mensagemPredefinida As String = "Prezado(a) " & nomeDestinatario & " " & sobrenomeDestinatario & "," & vbCrLf & vbCrLf &
+                                            "É por este meio que o venho informar que estou a me despedir com efeito imediato" & vbCrLf
+
+            mensagemPredefinida &= vbCrLf & vbCrLf & "Atenciosamente," & vbCrLf & primeiroNomeRemetente & " " & ultimoNomeRemetente
+
+            ' Adicionar o destinatário, assunto e mensagem pré-definida aos argumentos de linha de comando
+            Dim argumentosParaOutlook As String
+
+            argumentosParaOutlook = "/c ipm.note /m """
+
+            For i = 0 To destinatarios.Count - 1
+                argumentosParaOutlook &= destinatarios(i)
+                Debug.WriteLine("Mail(" & i & "): " & destinatarios(i))
+                If i + 1 = argumentosParaOutlook.Count - 1 Then
+                    argumentosParaOutlook &= ";"
+                End If
+            Next
+
+            argumentosParaOutlook &= "?subject=" & assunto & "&body=" & mensagemPredefinida & """"
+
+            outlookProcess.StartInfo.Arguments = argumentosParaOutlook
 
             ' Iniciar o processo
             outlookProcess.Start()
