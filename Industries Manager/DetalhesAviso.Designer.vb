@@ -166,7 +166,7 @@ Partial Class DetalhesAviso
         Me.FuncionariosDiretoresComboBox.Name = "FuncionariosDiretoresComboBox"
         Me.FuncionariosDiretoresComboBox.Size = New System.Drawing.Size(288, 28)
         Me.FuncionariosDiretoresComboBox.TabIndex = 9
-        Me.FuncionariosDiretoresComboBox.ValueMember = "ID_Funcionario"
+        Me.FuncionariosDiretoresComboBox.ValueMember = "ID"
         '
         'FuncionariosBindingSource
         '

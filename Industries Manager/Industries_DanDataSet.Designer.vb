@@ -940,7 +940,7 @@ Partial Public Class Industries_DanDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddAvisosRow(ByVal DT As Date, ByVal DLDM As Date, ByVal parentDiretores_de_DepartamentosRowByDiretores_de_DepartamentosMensagens As Diretores_de_DepartamentosRow, ByVal Titulo As String, ByVal Aviso As String, ByVal parentFuncionariosRowByFuncionariosAvisos As FuncionariosRow, ByVal parentDepartamentosRowByDepartamentosAvisos As DepartamentosRow, ByVal FDFDP As Date) As AvisosRow
+        Public Overloads Function AddAvisosRow(ByVal DT As Date, ByVal DLDM As Date, ByVal parentDiretores_de_DepartamentosRowByDiretores_de_DepartamentosMensagens As Diretores_de_DepartamentosRow, ByVal Titulo As String, ByVal Aviso As String, ByVal parentFuncionariosRowByFuncionariosAvisos As FuncionariosRow, ByVal parentDepartamentosRowByDepartamentosAvisos As DepartamentosRow, ByVal FDFDP As String) As AvisosRow
             Dim rowAvisosRow As AvisosRow = CType(Me.NewRow,AvisosRow)
             Dim columnValuesArray() As Object = New Object() {Nothing, DT, DLDM, Nothing, Titulo, Aviso, Nothing, Nothing, FDFDP}
             If (Not (parentDiretores_de_DepartamentosRowByDiretores_de_DepartamentosMensagens) Is Nothing) Then
@@ -1010,7 +1010,7 @@ Partial Public Class Industries_DanDataSet
             MyBase.Columns.Add(Me.columnID_Funcionario)
             Me.columnID_Departamento = New Global.System.Data.DataColumn("ID_Departamento", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnID_Departamento)
-            Me.columnFDFDP = New Global.System.Data.DataColumn("FDFDP", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnFDFDP = New Global.System.Data.DataColumn("FDFDP", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFDFDP)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
@@ -1020,6 +1020,7 @@ Partial Public Class Industries_DanDataSet
             Me.columnID.Unique = true
             Me.columnTitulo.MaxLength = 255
             Me.columnAviso.MaxLength = 255
+            Me.columnFDFDP.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5247,10 +5248,10 @@ Partial Public Class Industries_DanDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property FDFDP() As Date
+        Public Property FDFDP() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableAvisos.FDFDPColumn),Date)
+                    Return CType(Me(Me.tableAvisos.FDFDPColumn),String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("O valor da coluna 'FDFDP' na tabela 'Avisos' é DBNull.", e)
                 End Try
@@ -8171,7 +8172,7 @@ Namespace Industries_DanDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ID_Departamento", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Departamento", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ID_Departamento", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Departamento", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_FDFDP", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FDFDP", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_FDFDP", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FDFDP", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_FDFDP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FDFDP", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.InsertCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `Avisos` (`DT`, `DLDM`, `ID_Diretor`, `Titulo`, `Aviso`, `ID_Funciona"& _ 
@@ -8184,7 +8185,7 @@ Namespace Industries_DanDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Aviso", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Aviso", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_Funcionario", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Funcionario", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_Departamento", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Departamento", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FDFDP", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FDFDP", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FDFDP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FDFDP", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `Avisos` SET `DT` = ?, `DLDM` = ?, `ID_Diretor` = ?, `Titulo` = ?, `Aviso`"& _ 
@@ -8203,7 +8204,7 @@ Namespace Industries_DanDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Aviso", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Aviso", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_Funcionario", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Funcionario", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_Departamento", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Departamento", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FDFDP", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FDFDP", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FDFDP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FDFDP", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ID", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_DT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DT", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_DT", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DT", Global.System.Data.DataRowVersion.Original, false, Nothing))
@@ -8220,7 +8221,7 @@ Namespace Industries_DanDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ID_Departamento", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Departamento", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ID_Departamento", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_Departamento", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_FDFDP", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FDFDP", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_FDFDP", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FDFDP", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_FDFDP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FDFDP", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8297,7 +8298,7 @@ Namespace Industries_DanDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer, ByVal Original_DT As Global.System.Nullable(Of Date), ByVal Original_DLDM As Global.System.Nullable(Of Date), ByVal Original_ID_Diretor As Global.System.Nullable(Of Integer), ByVal Original_Titulo As String, ByVal Original_Aviso As String, ByVal Original_ID_Funcionario As Global.System.Nullable(Of Integer), ByVal Original_ID_Departamento As Global.System.Nullable(Of Integer), ByVal Original_FDFDP As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer, ByVal Original_DT As Global.System.Nullable(Of Date), ByVal Original_DLDM As Global.System.Nullable(Of Date), ByVal Original_ID_Diretor As Global.System.Nullable(Of Integer), ByVal Original_Titulo As String, ByVal Original_Aviso As String, ByVal Original_ID_Funcionario As Global.System.Nullable(Of Integer), ByVal Original_ID_Departamento As Global.System.Nullable(Of Integer), ByVal Original_FDFDP As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
             If (Original_DT.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
@@ -8348,12 +8349,12 @@ Namespace Industries_DanDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
             End If
-            If (Original_FDFDP.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_FDFDP.Value,Date)
-            Else
+            If (Original_FDFDP Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_FDFDP,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -8374,7 +8375,7 @@ Namespace Industries_DanDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal DT As Global.System.Nullable(Of Date), ByVal DLDM As Global.System.Nullable(Of Date), ByVal ID_Diretor As Global.System.Nullable(Of Integer), ByVal Titulo As String, ByVal Aviso As String, ByVal ID_Funcionario As Global.System.Nullable(Of Integer), ByVal ID_Departamento As Global.System.Nullable(Of Integer), ByVal FDFDP As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Insert(ByVal DT As Global.System.Nullable(Of Date), ByVal DLDM As Global.System.Nullable(Of Date), ByVal ID_Diretor As Global.System.Nullable(Of Integer), ByVal Titulo As String, ByVal Aviso As String, ByVal ID_Funcionario As Global.System.Nullable(Of Integer), ByVal ID_Departamento As Global.System.Nullable(Of Integer), ByVal FDFDP As String) As Integer
             If (DT.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(DT.Value,Date)
             Else
@@ -8410,10 +8411,10 @@ Namespace Industries_DanDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
-            If (FDFDP.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(FDFDP.Value,Date)
-            Else
+            If (FDFDP Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(FDFDP,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -8442,7 +8443,7 @@ Namespace Industries_DanDataSetTableAdapters
                     ByVal Aviso As String,  _
                     ByVal ID_Funcionario As Global.System.Nullable(Of Integer),  _
                     ByVal ID_Departamento As Global.System.Nullable(Of Integer),  _
-                    ByVal FDFDP As Global.System.Nullable(Of Date),  _
+                    ByVal FDFDP As String,  _
                     ByVal Original_ID As Integer,  _
                     ByVal Original_DT As Global.System.Nullable(Of Date),  _
                     ByVal Original_DLDM As Global.System.Nullable(Of Date),  _
@@ -8451,7 +8452,7 @@ Namespace Industries_DanDataSetTableAdapters
                     ByVal Original_Aviso As String,  _
                     ByVal Original_ID_Funcionario As Global.System.Nullable(Of Integer),  _
                     ByVal Original_ID_Departamento As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_FDFDP As Global.System.Nullable(Of Date)) As Integer
+                    ByVal Original_FDFDP As String) As Integer
             If (DT.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = CType(DT.Value,Date)
             Else
@@ -8487,10 +8488,10 @@ Namespace Industries_DanDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
-            If (FDFDP.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(FDFDP.Value,Date)
-            Else
+            If (FDFDP Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(FDFDP,String)
             End If
             Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_ID,Integer)
             If (Original_DT.HasValue = true) Then
@@ -8542,12 +8543,12 @@ Namespace Industries_DanDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
             End If
-            If (Original_FDFDP.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_FDFDP.Value,Date)
-            Else
+            If (Original_FDFDP Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_FDFDP,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _

@@ -166,6 +166,9 @@
             Dim CComboBoxAltUnic As ComboBox = DirectCast(componenteAltUnicTemp, ComboBox)
             CComboBoxAltUnic.Enabled = Not TorF
             CComboBoxAltUnic.SelectionLength = 0
+        ElseIf TypeOf componenteAltUnicTemp Is DateTimePicker Then
+            Dim CComboBoxAltUnic As DateTimePicker = DirectCast(componenteAltUnicTemp, DateTimePicker)
+            CComboBoxAltUnic.Enabled = Not TorF
         End If
 
         If ButtonNandG IsNot Nothing Then
