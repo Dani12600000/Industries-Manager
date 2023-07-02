@@ -164,6 +164,12 @@
     <Compile Include="Inicializador.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Instalador.Designer.vb">
+      <DependentUpon>Instalador.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Instalador.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Login.Designer.vb">
       <DependentUpon>Login.vb</DependentUpon>
     </Compile>
@@ -257,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inicializador.resx">
       <DependentUpon>Inicializador.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Instalador.resx">
+      <DependentUpon>Instalador.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
