@@ -50,8 +50,8 @@ Module ControleFormsLoad
             {GetType(ProgressBar), ObterCorPeloNumero(5)},
             {GetType(Panel), ObterCorPeloNumero(4)},
             {GetType(Label), ObterCorPeloNumero(2)},
-            {GetType(MenuStrip), ObterCorPeloNumero(2)},
-            {GetType(ToolStrip), ObterCorPeloNumero(2)}
+            {GetType(MenuStrip), ObterCorPeloNumero(3)},
+            {GetType(ToolStrip), ObterCorPeloNumero(3)}
         }
 
 

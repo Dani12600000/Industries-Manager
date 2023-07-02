@@ -35,13 +35,7 @@ Public Class Login
 
         Debug.WriteLine("IP : " & strIPAddress)
 
-        If FuncionariosBindingSource.Count = 0 Then
-            ReqConta.Show()
-            ReqConta.Alpha = True
-            Me.Close()
-        Else
-            LerDadosMemorizadosEIniciarSessao()
-        End If
+        LerDadosMemorizadosEIniciarSessao()
 
         CarregarPaletaDeCores()
         Button3.BackColor = cores(Label1.GetType)
@@ -82,10 +76,10 @@ Public Class Login
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        VericarSeContaExisteEFazerLogin(TextBox1.Text, TextBox2.Text, False, 0, "")
+        VerificarSeContaExisteEFazerLogin(TextBox1.Text, TextBox2.Text, False, 0, "")
     End Sub
 
-    Private Sub VericarSeContaExisteEFazerLogin(Email As String, Password As String, Memorizado As Boolean, Last_ID_Funcionario_Memorizado As Integer, Last_IP_Memorizado As String)
+    Public Sub VerificarSeContaExisteEFazerLogin(Email As String, Password As String, Memorizado As Boolean, Last_ID_Funcionario_Memorizado As Integer, Last_IP_Memorizado As String)
 
         FuncionariosTableAdapter.Fill(Industries_DanDataSet.Funcionarios)
 
@@ -116,8 +110,10 @@ Public Class Login
                 End If
                 Login_FuncionarioBindingSource.RemoveFilter()
             Else
-                MsgBox("A conta que está memorizada não tem acessos guardados ou foi apagada, por favor dê login novamente" & vbCrLf & "Se não conseguir entrar entre em contacto com o departamento de desenvolvimento", vbInformation, "Não foi possivel usar os dados memorizados")
-                Return
+                If FuncionariosBindingSource.Count > 1 Then
+                    MsgBox("A conta que está memorizada não tem acessos guardados ou foi apagada, por favor dê login novamente" & vbCrLf & "Se não conseguir entrar entre em contacto com o departamento de desenvolvimento", vbInformation, "Não foi possivel usar os dados memorizados")
+                    Return
+                End If
             End If
         End If
 
@@ -320,11 +316,13 @@ Public Class Login
                 Debug.WriteLine("ID_Funcionario: " & valores.ID_Funcionario)
                 Debug.WriteLine("IP: " & valores.ip)
 
-                VericarSeContaExisteEFazerLogin("", valores.palavra_passe, True, valores.ID_Funcionario, valores.ip)
+                If Not ReqConta.Alpha Then
+                    VerificarSeContaExisteEFazerLogin("", valores.palavra_passe, True, valores.ID_Funcionario, valores.ip)
+                End If
 
                 Debug.WriteLine("Valores lidos do arquivo com sucesso!")
-                Else
-                    Debug.WriteLine("Arquivo não encontrado.")
+            Else
+                Debug.WriteLine("Arquivo não encontrado.")
             End If
         Catch ex As FileNotFoundException
             Debug.WriteLine("Arquivo não encontrado.")

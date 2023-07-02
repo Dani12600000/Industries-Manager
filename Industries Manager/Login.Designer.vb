@@ -64,6 +64,17 @@ Partial Class Login
         EmailLabel.TabIndex = 1
         EmailLabel.Text = "E-mail"
         '
+        'PassLabel
+        '
+        PassLabel.AutoSize = True
+        PassLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        PassLabel.Location = New System.Drawing.Point(71, 128)
+        PassLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        PassLabel.Name = "PassLabel"
+        PassLabel.Size = New System.Drawing.Size(127, 22)
+        PassLabel.TabIndex = 13
+        PassLabel.Text = "Palavra-Passe"
+        '
         'Industries_DanDataSet
         '
         Me.Industries_DanDataSet.DataSetName = "Industries_DanDataSet"
@@ -102,7 +113,7 @@ Partial Class Login
         Me.Button1.Location = New System.Drawing.Point(75, 253)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(422, 35)
+        Me.Button1.Size = New System.Drawing.Size(422, 43)
         Me.Button1.TabIndex = 4
         Me.Button1.Text = "Login"
         Me.Button1.UseVisualStyleBackColor = True
@@ -111,7 +122,7 @@ Partial Class Login
         '
         Me.LinkLabel1.AutoSize = True
         Me.LinkLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.LinkLabel1.Location = New System.Drawing.Point(279, 384)
+        Me.LinkLabel1.Location = New System.Drawing.Point(279, 392)
         Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(218, 22)
@@ -193,7 +204,7 @@ Partial Class Login
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(73, 386)
+        Me.Label1.Location = New System.Drawing.Point(73, 394)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(200, 20)
         Me.Label1.TabIndex = 11
@@ -203,7 +214,7 @@ Partial Class Login
         '
         Me.LinkLabel2.AutoSize = True
         Me.LinkLabel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.LinkLabel2.Location = New System.Drawing.Point(138, 296)
+        Me.LinkLabel2.Location = New System.Drawing.Point(138, 304)
         Me.LinkLabel2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LinkLabel2.Name = "LinkLabel2"
         Me.LinkLabel2.Size = New System.Drawing.Size(300, 22)
@@ -212,22 +223,11 @@ Partial Class Login
         Me.LinkLabel2.Text = "Esqueci-me da minha palavra-passe"
         Me.LinkLabel2.Visible = False
         '
-        'PassLabel
-        '
-        PassLabel.AutoSize = True
-        PassLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        PassLabel.Location = New System.Drawing.Point(71, 128)
-        PassLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        PassLabel.Name = "PassLabel"
-        PassLabel.Size = New System.Drawing.Size(127, 22)
-        PassLabel.TabIndex = 13
-        PassLabel.Text = "Palavra-Passe"
-        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(579, 465)
+        Me.ClientSize = New System.Drawing.Size(579, 475)
         Me.Controls.Add(PassLabel)
         Me.Controls.Add(Me.LinkLabel2)
         Me.Controls.Add(Me.Label1)

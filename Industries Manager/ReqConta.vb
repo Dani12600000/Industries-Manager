@@ -7,6 +7,8 @@ Public Class ReqConta
     Public Alpha As Boolean ' Isto depois vou ter que testar apagando todos os utilizadores (O nome Alpha é referencia a Alpha do anime The Eminence in Shadow, pois ela foi a primeira)
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Departamentos'. Você pode movê-la ou removê-la conforme necessário.
+        Me.DepartamentosTableAdapter.Fill(Me.Industries_DanDataSet.Departamentos)
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Profissões' table. You can move, or remove it, as needed.
         Me.ProfissõesTableAdapter.Fill(Me.Industries_DanDataSet.Profissões)
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Funcionarios'. Você pode movê-la ou removê-la conforme necessário.
@@ -20,13 +22,6 @@ Public Class ReqConta
         CarregarPaletaDeCores()
 
         DefaultColor = NomeTextBox.BackColor
-
-        If Alpha Then
-            Me.Text = "Criar primeira conta"
-            Button2.Text = "Criar"
-            Label1.Visible = False
-            LinkLabel1.Visible = False
-        End If
 
     End Sub
 
@@ -86,18 +81,22 @@ Public Class ReqConta
                     Me.FuncionariosBindingSource.Current("ID_Profissão") = Me.ProfissõesBindingSource.Current("ID")
                     Me.FuncionariosBindingSource.Current("SI") = SINumericUpDown.Value
                     If Alpha Then
+                        Me.FuncionariosBindingSource.Current("Adm") = True
                         Me.FuncionariosBindingSource.Current("Aprovacao") = True
                         Me.FuncionariosBindingSource.Current("DDEDE") = Today
+                        Me.FuncionariosBindingSource.Current("ID_Departamento") = DepartamentoComboBox.SelectedValue
                     End If
                     Me.Validate()
                     Me.FuncionariosBindingSource.EndEdit()
                     Me.TableAdapterManager.UpdateAll(Me.Industries_DanDataSet)
                     If Alpha Then
                         MsgBox("Conta criada com sucesso!", vbInformation, "Sucesso")
+                        Debug.WriteLine("Nova conta feita")
                     Else
                         MsgBox("Conta requesitada com sucesso!" & vbCrLf & "Espere para ser aceito", vbInformation, "Sucesso")
+                        Debug.WriteLine("Nova requesição feita")
                     End If
-                    Debug.WriteLine("Nova requesição feita")
+
 
                 Else
                     MsgBox("Tem que preencher os campos obrigatorios" & vbCrLf & "(Os que se encontram agora a vermelho)", vbCritical, "Campos não preenchidos")
@@ -114,12 +113,13 @@ Public Class ReqConta
             MsgBox("Houve um erro a fazer a requesição da sua conta por favor tente mais tarde ou entre em contacto com o suporte", vbCritical, "Erro")
             Debug.WriteLine("Erro ao fazer a requesição")
         Finally
-            If Alpha Then
-                Login.Show()
-                Login.TextBox1.Text = EmailTextBox.Text
-                Login.TextBox2.Text = PassTextBox.Text
-            End If
             If deuErro Or todosCamposObrigatoriosPreenchidos Then
+                If Alpha Then
+                    Login.Show()
+                    Login.TextBox1.Text = EmailTextBox.Text
+                    Login.TextBox2.Text = PassTextBox.Text
+                    Login.VerificarSeContaExisteEFazerLogin(EmailTextBox.Text, PassTextBox.Text, False, 0, "")
+                End If
                 Me.Close()
             End If
         End Try
@@ -153,6 +153,25 @@ Public Class ReqConta
     End Sub
 
     Private Sub ReqConta_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+
+        If Alpha Then
+            Me.Text = "Criar primeira conta"
+            Button2.Text = "Criar"
+            SILabel.Text = "Seu salário"
+            DepartamentoComboBox.Visible = True
+            DepartamentoLabel.Visible = True
+
+            Dim distanciaEntreLocs As Integer
+            distanciaEntreLocs = Button2.Location.Y - SINumericUpDown.Location.Y
+            SINumericUpDown.Location = New Point(SINumericUpDown.Location.X, Button2.Location.Y)
+            SILabel.Location = New Point(SILabel.Location.X, SILabel.Location.Y + distanciaEntreLocs)
+            Label8.Location = New Point(Label8.Location.X, Label8.Location.Y + distanciaEntreLocs)
+
+            Button2.Location = New Point(Button2.Location.X, Label1.Location.Y)
+            Label1.Visible = False
+            LinkLabel1.Visible = False
+        End If
+
         ProfissãoComboBox.SelectedIndex = -1
         Debug.WriteLine("Profissão position: " & ProfissõesBindingSource.Position)
         Debug.WriteLine("Profissão combobox: " & ProfissãoComboBox.SelectedIndex)

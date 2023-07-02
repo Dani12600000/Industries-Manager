@@ -158,6 +158,12 @@
       <DependentUpon>Industries_DanDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="InfoEnterprise.vb" />
+    <Compile Include="Inicializador.Designer.vb">
+      <DependentUpon>Inicializador.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inicializador.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Login.Designer.vb">
       <DependentUpon>Login.vb</DependentUpon>
     </Compile>
@@ -248,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HistoricoDiretoresDepartamentos.resx">
       <DependentUpon>HistoricoDiretoresDepartamentos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inicializador.resx">
+      <DependentUpon>Inicializador.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>

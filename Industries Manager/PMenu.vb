@@ -56,8 +56,13 @@ Public Class PMenu
         Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
         CarragamentoInicialProprio()
         MenuStrip1.Renderer = New LogoutAndAvisosRenderer(LogoutToolStripMenuItem, AvisosToolStripMenuItem, novosAvisosBooleanExterior)
+
+        ControlesProtegidos.Add(Label1)
+
         CarregarPaletaDeCores()
-        Label1.BackColor = cores(MenuStrip1.GetType())
+
+
+        Label1.BackColor = ObterCorPeloNumero(3)
     End Sub
 
     Sub CarragamentoInicialProprio()
@@ -398,6 +403,9 @@ Public Class PMenu
 
             Dim id As Integer = CInt(row("ID"))
 
+            Leitura_de_avisosBindingSource.Filter = "ID_Aviso = " & row("ID") & " AND ID_Funcionarios = " & InfoUser.UserID & " AND DeH >= #" & Now.AddHours(-2).ToString("yyyy-MM-dd HH:mm:ss") & "# AND DeH <= #" & Now.ToString("yyyy-MM-dd HH:mm:ss") & "#"
+            Leitura_de_avisosBindingSource.Sort = "DeH DESC"
+
             Dim label As New ToolStripLabel()
 
             label.Text = titulo
@@ -406,7 +414,7 @@ Public Class PMenu
 
             If Not listaIDAviso.Contains(id) Then
                 avisosRecentes.Add(label)
-            Else
+            ElseIf Leitura_de_avisosBindingSource.Count >= 1 And Not avisosLidos.Count >= 5 Then
                 avisosLidos.Add(label)
             End If
         Next

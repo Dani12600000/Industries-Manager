@@ -28,7 +28,6 @@ Partial Class ReqConta
         Dim FotoLabel As System.Windows.Forms.Label
         Dim EmailLabel As System.Windows.Forms.Label
         Dim PassLabel As System.Windows.Forms.Label
-        Dim SILabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ReqConta))
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
         Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -50,17 +49,22 @@ Partial Class ReqConta
         Me.Label8 = New System.Windows.Forms.Label()
         Me.SINumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.SILabel = New System.Windows.Forms.Label()
+        Me.DepartamentoComboBox = New System.Windows.Forms.ComboBox()
+        Me.DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.DepartamentosTableAdapter()
+        Me.DepartamentoLabel = New System.Windows.Forms.Label()
         NomeLabel = New System.Windows.Forms.Label()
         SobrenomeLabel = New System.Windows.Forms.Label()
         FotoLabel = New System.Windows.Forms.Label()
         EmailLabel = New System.Windows.Forms.Label()
         PassLabel = New System.Windows.Forms.Label()
-        SILabel = New System.Windows.Forms.Label()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FotoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProfissõesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SINumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NomeLabel
@@ -112,15 +116,6 @@ Partial Class ReqConta
         PassLabel.Size = New System.Drawing.Size(48, 20)
         PassLabel.TabIndex = 8
         PassLabel.Text = "Pass:"
-        '
-        'SILabel
-        '
-        SILabel.AutoSize = True
-        SILabel.Location = New System.Drawing.Point(40, 511)
-        SILabel.Name = "SILabel"
-        SILabel.Size = New System.Drawing.Size(142, 20)
-        SILabel.TabIndex = 30
-        SILabel.Text = "Salário pretendido:"
         '
         'Industries_DanDataSet
         '
@@ -296,15 +291,57 @@ Partial Class ReqConta
         Me.Label1.TabIndex = 34
         Me.Label1.Text = "Já tem uma conta?"
         '
+        'SILabel
+        '
+        Me.SILabel.AutoSize = True
+        Me.SILabel.Location = New System.Drawing.Point(36, 511)
+        Me.SILabel.Name = "SILabel"
+        Me.SILabel.Size = New System.Drawing.Size(142, 20)
+        Me.SILabel.TabIndex = 35
+        Me.SILabel.Text = "Salário pretendido:"
+        '
+        'DepartamentoComboBox
+        '
+        Me.DepartamentoComboBox.DataSource = Me.DepartamentosBindingSource
+        Me.DepartamentoComboBox.DisplayMember = "NDD"
+        Me.DepartamentoComboBox.FormattingEnabled = True
+        Me.DepartamentoComboBox.Location = New System.Drawing.Point(183, 507)
+        Me.DepartamentoComboBox.Name = "DepartamentoComboBox"
+        Me.DepartamentoComboBox.Size = New System.Drawing.Size(230, 28)
+        Me.DepartamentoComboBox.TabIndex = 36
+        Me.DepartamentoComboBox.ValueMember = "ID"
+        Me.DepartamentoComboBox.Visible = False
+        '
+        'DepartamentosBindingSource
+        '
+        Me.DepartamentosBindingSource.DataMember = "Departamentos"
+        Me.DepartamentosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'DepartamentosTableAdapter
+        '
+        Me.DepartamentosTableAdapter.ClearBeforeFill = True
+        '
+        'DepartamentoLabel
+        '
+        Me.DepartamentoLabel.AutoSize = True
+        Me.DepartamentoLabel.Location = New System.Drawing.Point(56, 511)
+        Me.DepartamentoLabel.Name = "DepartamentoLabel"
+        Me.DepartamentoLabel.Size = New System.Drawing.Size(116, 20)
+        Me.DepartamentoLabel.TabIndex = 37
+        Me.DepartamentoLabel.Text = "Departamento:"
+        Me.DepartamentoLabel.Visible = False
+        '
         'ReqConta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(608, 658)
+        Me.Controls.Add(Me.DepartamentoLabel)
+        Me.Controls.Add(Me.DepartamentoComboBox)
+        Me.Controls.Add(Me.SILabel)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.SINumericUpDown)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(SILabel)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ProfissãoComboBox)
         Me.Controls.Add(Me.LinkLabel1)
@@ -330,6 +367,7 @@ Partial Class ReqConta
         CType(Me.FotoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ProfissõesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SINumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -355,4 +393,9 @@ Partial Class ReqConta
     Friend WithEvents Label8 As Label
     Friend WithEvents SINumericUpDown As NumericUpDown
     Friend WithEvents Label1 As Label
+    Friend WithEvents SILabel As Label
+    Friend WithEvents DepartamentoComboBox As ComboBox
+    Friend WithEvents DepartamentosBindingSource As BindingSource
+    Friend WithEvents DepartamentosTableAdapter As Industries_DanDataSetTableAdapters.DepartamentosTableAdapter
+    Friend WithEvents DepartamentoLabel As Label
 End Class
