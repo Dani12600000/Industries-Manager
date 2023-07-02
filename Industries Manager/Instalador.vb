@@ -1,16 +1,24 @@
 ﻿Imports System.IO
 Imports System.Net
 Imports System.Net.Http
+Imports System.Threading
 
 Public Class Instalador
-    Dim vezesNecessariasAumentarProgressBar As Integer = 10
-    Dim valorASubir As Integer = 100 / vezesNecessariasAumentarProgressBar
+    Dim vezesNecessariasAumentarProgressBar As Integer = 13
+    Dim valorASubir As Double = 100 / vezesNecessariasAumentarProgressBar
     Dim NumeroDeFicheirosTransferidos As Integer
+    Dim colocarAtalhoNoAmbienteTrabalho As Boolean
+    Dim subtituirPorAtalhoAqui As Boolean
 
     Private Sub Instalador_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Inicializador.Close()
-        Dim colocarAtalhoNoAmbienteTrabalho As Boolean = MsgBox("Deseja inserir um atalho no ambiente de trabalho?", vbYesNo, "Atalho no ambiente de trabalho") = MsgBoxResult.Yes
-        Dim subtituirPorAtalhoAqui As Boolean = MsgBox("Deseja manter o aplicativo aqui?", vbYesNo, "Manter aqui") = MsgBoxResult.Yes
+        colocarAtalhoNoAmbienteTrabalho = MsgBox("Deseja inserir um atalho no ambiente de trabalho?", vbYesNo, "Atalho no ambiente de trabalho") = MsgBoxResult.Yes
+
+        If colocarAtalhoNoAmbienteTrabalho = False Then
+            subtituirPorAtalhoAqui = True
+        Else
+            subtituirPorAtalhoAqui = MsgBox("Deseja manter o aplicativo aqui?", vbYesNo, "Manter aqui") = MsgBoxResult.Yes
+        End If
     End Sub
 
     Private Async Sub Instalador_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
@@ -37,20 +45,16 @@ Public Class Instalador
         httpClient.Dispose()
         AumentarProgressBarAndAlterarLabels("Terminado com sucesso!", False)
 
-        'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Funcionarios'. Você pode movê-la ou removê-la conforme necessário.
-        Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
-
-        If FuncionariosBindingSource.Count = 0 Then
-            ReqConta.Show()
-            ReqConta.Alpha = True
-        Else
-            Login.Show()
-        End If
-        Me.Close()
+        CriarAtalhoDoExecutavelAndMove(destino)
     End Sub
 
     Sub AumentarProgressBarAndAlterarLabels(TarefaAExecutar As String, AumentarNumeroDeFicheirosTransferidos As Boolean)
-        ProgressBar1.Value += valorASubir
+        If ProgressBar1.Value + valorASubir > 100 Then
+            ProgressBar1.Value = 100
+        Else
+            ProgressBar1.Value += valorASubir
+        End If
+
         Label1.Text = TarefaAExecutar
         If AumentarNumeroDeFicheirosTransferidos Then NumeroDeFicheirosTransferidos += 1
         Label2.Text = "Transferidos " & NumeroDeFicheirosTransferidos & " de 3 ficheiros"
@@ -88,5 +92,36 @@ Public Class Instalador
     Private Sub WebClient_DownloadProgressChanged(sender As Object, e As DownloadProgressChangedEventArgs)
         ' Atualize o valor da ProgressBar com base no progresso do download
         ProgressBar1.Value = e.ProgressPercentage
+    End Sub
+
+    Private Sub CriarAtalhoDoExecutavelAndMove(destino As String)
+        Dim caminhoExecutavel As String = System.Reflection.Assembly.GetExecutingAssembly().Location
+        Dim novoCaminhoExecutavel As String = Path.Combine(destino, Path.GetFileName(caminhoExecutavel))
+
+        ' Mover o executável para o novo destino
+        File.Move(caminhoExecutavel, novoCaminhoExecutavel)
+
+        AumentarProgressBarAndAlterarLabels("Criando atalho(s)...", False)
+
+        If colocarAtalhoNoAmbienteTrabalho Then
+            ' Criação do atalho na área de trabalho
+            Dim atalhoDesktop As Object = CreateObject("WScript.Shell").CreateShortcut(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Industries Manager.lnk"))
+            atalhoDesktop.TargetPath = novoCaminhoExecutavel
+            atalhoDesktop.Save()
+        End If
+
+        If subtituirPorAtalhoAqui Then
+            ' Criação do atalho na antiga localização do executável
+            Dim atalhoAntigo As Object = CreateObject("WScript.Shell").CreateShortcut(Path.Combine(Path.GetDirectoryName(caminhoExecutavel), "Industries Manager.lnk"))
+            atalhoAntigo.TargetPath = novoCaminhoExecutavel
+            atalhoAntigo.Save()
+        End If
+
+        AumentarProgressBarAndAlterarLabels("Atalho(s) criado(s) com sucesso!", False)
+
+        Process.Start(novoCaminhoExecutavel)
+
+        AumentarProgressBarAndAlterarLabels("Reiniciando o aplicativo", False)
+        Process.GetCurrentProcess().Kill()
     End Sub
 End Class
