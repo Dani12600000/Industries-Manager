@@ -25,6 +25,7 @@ Partial Class Profissões
         Me.components = New System.ComponentModel.Container()
         Dim IDLabel As System.Windows.Forms.Label
         Dim ProfissaoLabel As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Profissões))
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
         Me.ProfissõesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ProfissõesTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.ProfissõesTableAdapter()
@@ -373,6 +374,7 @@ Partial Class Profissões
         Me.Controls.Add(Me.ProfissaoTextBox)
         Me.Controls.Add(IDLabel)
         Me.Controls.Add(Me.IDTextBox)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Profissões"
         Me.Text = "Profissões"
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()

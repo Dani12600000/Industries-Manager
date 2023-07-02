@@ -26,6 +26,7 @@
         FornecimentosDataGridView.Columns(5).DefaultCellStyle.Format = "#,##0.00€"
         Venda_de_produtoDataGridView.Columns(3).DefaultCellStyle.Format = "#,##0.00€"
         Venda_de_produtoDataGridView.Columns(4).DefaultCellStyle.Format = "#,##0.00€"
+        CarregarPaletaDeCores()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)

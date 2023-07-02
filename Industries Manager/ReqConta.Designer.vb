@@ -29,6 +29,7 @@ Partial Class ReqConta
         Dim EmailLabel As System.Windows.Forms.Label
         Dim PassLabel As System.Windows.Forms.Label
         Dim SILabel As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ReqConta))
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
         Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FuncionariosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FuncionariosTableAdapter()
@@ -227,7 +228,7 @@ Partial Class ReqConta
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(331, 616)
+        Me.LinkLabel1.Location = New System.Drawing.Point(331, 619)
         Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(82, 20)
@@ -289,7 +290,7 @@ Partial Class ReqConta
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(179, 616)
+        Me.Label1.Location = New System.Drawing.Point(179, 619)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(145, 20)
         Me.Label1.TabIndex = 34
@@ -299,7 +300,7 @@ Partial Class ReqConta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(611, 645)
+        Me.ClientSize = New System.Drawing.Size(608, 658)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.SINumericUpDown)
         Me.Controls.Add(Me.Label8)
@@ -320,6 +321,7 @@ Partial Class ReqConta
         Me.Controls.Add(NomeLabel)
         Me.Controls.Add(Me.NomeTextBox)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "ReqConta"
         Me.Text = "Requesitar Conta"

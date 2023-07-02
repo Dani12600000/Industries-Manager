@@ -21,6 +21,7 @@
         ButtonL = Button4
 
         CenterOnScreenForm()
+        CarregarPaletaDeCores()
 
         ButtonsQPrecisamSerGuardados.Add(Button5)
         ButtonsQPrecisamSerGuardados.Add(Button6)

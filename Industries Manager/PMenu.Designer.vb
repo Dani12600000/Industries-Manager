@@ -23,6 +23,7 @@ Partial Class PMenu
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PMenu))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -98,7 +99,7 @@ Partial Class PMenu
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.GripMargin = New System.Windows.Forms.Padding(0, 0, 0, 145)
+        Me.MenuStrip1.GripMargin = New System.Windows.Forms.Padding(0)
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogoutToolStripMenuItem, Me.AvisosToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
@@ -112,7 +113,7 @@ Partial Class PMenu
         '
         Me.LogoutToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(91, 34)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(91, 32)
         Me.LogoutToolStripMenuItem.Text = "Logout"
         Me.LogoutToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
@@ -121,7 +122,7 @@ Partial Class PMenu
         Me.AvisosToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.AvisosToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.AvisosToolStripMenuItem.Name = "AvisosToolStripMenuItem"
-        Me.AvisosToolStripMenuItem.Size = New System.Drawing.Size(84, 34)
+        Me.AvisosToolStripMenuItem.Size = New System.Drawing.Size(84, 32)
         Me.AvisosToolStripMenuItem.Text = "Avisos"
         Me.AvisosToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
@@ -268,6 +269,7 @@ Partial Class PMenu
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "PMenu"

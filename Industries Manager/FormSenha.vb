@@ -32,6 +32,7 @@ Public Class FormSenha
             TextBoxSenha.BackColor = corTextBox
             Debug.WriteLine("Cinzento")
         End If
+        CarregarPaletaDeCores()
     End Sub
 
     Private Sub TextBoxSenha_TextChanged(sender As Object, e As EventArgs) Handles TextBoxSenha.TextChanged

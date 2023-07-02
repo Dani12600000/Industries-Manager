@@ -36,6 +36,7 @@ Public Class DetalhesAviso
         Formulario = Me
 
         CenterOnScreenForm()
+        CarregarPaletaDeCores()
     End Sub
 
     Public Sub NovoAviso()

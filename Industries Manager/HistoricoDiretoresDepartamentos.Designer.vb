@@ -23,20 +23,21 @@ Partial Class HistoricoDiretoresDepartamentos
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(HistoricoDiretoresDepartamentos))
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
         Me.Diretores_de_DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Diretores_de_DepartamentosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Diretores_de_DepartamentosTableAdapter()
         Me.TableAdapterManager = New Industries_Manager.Industries_DanDataSetTableAdapters.TableAdapterManager()
         Me.Diretores_de_DepartamentosDataGridView = New System.Windows.Forms.DataGridView()
-        Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.FuncionariosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FuncionariosTableAdapter()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ID_Funcionario = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DataGridViewComboBoxColumn1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FuncionariosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FuncionariosTableAdapter()
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Diretores_de_DepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Diretores_de_DepartamentosDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -92,15 +93,6 @@ Partial Class HistoricoDiretoresDepartamentos
         Me.Diretores_de_DepartamentosDataGridView.Size = New System.Drawing.Size(1552, 466)
         Me.Diretores_de_DepartamentosDataGridView.TabIndex = 1
         '
-        'FuncionariosBindingSource
-        '
-        Me.FuncionariosBindingSource.DataMember = "Funcionarios"
-        Me.FuncionariosBindingSource.DataSource = Me.Industries_DanDataSet
-        '
-        'FuncionariosTableAdapter
-        '
-        Me.FuncionariosTableAdapter.ClearBeforeFill = True
-        '
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
@@ -131,6 +123,11 @@ Partial Class HistoricoDiretoresDepartamentos
         Me.ID_Funcionario.ReadOnly = True
         Me.ID_Funcionario.ValueMember = "ID"
         Me.ID_Funcionario.Width = 125
+        '
+        'FuncionariosBindingSource
+        '
+        Me.FuncionariosBindingSource.DataMember = "Funcionarios"
+        Me.FuncionariosBindingSource.DataSource = Me.Industries_DanDataSet
         '
         'DataGridViewComboBoxColumn1
         '
@@ -172,6 +169,10 @@ Partial Class HistoricoDiretoresDepartamentos
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
         Me.DataGridViewTextBoxColumn7.Width = 95
         '
+        'FuncionariosTableAdapter
+        '
+        Me.FuncionariosTableAdapter.ClearBeforeFill = True
+        '
         'HistoricoDiretoresDepartamentos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -179,6 +180,7 @@ Partial Class HistoricoDiretoresDepartamentos
         Me.ClientSize = New System.Drawing.Size(1576, 490)
         Me.Controls.Add(Me.Diretores_de_DepartamentosDataGridView)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "HistoricoDiretoresDepartamentos"
         Me.Text = "Historico de Diretores do Departamento"

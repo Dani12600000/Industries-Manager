@@ -17,12 +17,15 @@ Public Class ReqConta
         Formulario = Me
 
         CenterOnScreenForm()
+        CarregarPaletaDeCores()
 
         DefaultColor = NomeTextBox.BackColor
 
         If Alpha Then
             Me.Text = "Criar primeira conta"
             Button2.Text = "Criar"
+            Label1.Visible = False
+            LinkLabel1.Visible = False
         End If
 
     End Sub

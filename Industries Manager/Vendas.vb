@@ -20,6 +20,7 @@ Public Class Vendas
         SubtotalTextBox.Text = ""
 
         CenterOnScreenForm()
+        CarregarPaletaDeCores()
     End Sub
     Sub Nova_Venda(email As String)
         Debug.WriteLine("Executando Nova_venda")

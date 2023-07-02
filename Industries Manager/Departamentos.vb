@@ -56,6 +56,7 @@
 
         AtualizarInfosDiretor()
         CenterOnScreenForm()
+        CarregarPaletaDeCores()
     End Sub
 
     Sub MostrarSalariosOuNao()

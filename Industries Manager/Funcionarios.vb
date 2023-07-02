@@ -45,8 +45,13 @@ Public Class Funcionarios
         tamanhoProfissoesID = ID_ProfissãoComboBox.Width
         tamanhoEmailTextBox = EmailTextBox.Width
 
+        ControlesProtegidos.Add(Button5)
+        ControlesProtegidos.Add(Button11)
+        ControlesProtegidos.Add(Button6)
+
         GestaoButtonsAndLabelsShown()
         CenterOnScreenForm()
+        CarregarPaletaDeCores()
     End Sub
 
     Sub GestaoButtonsAndLabelsShown()

@@ -33,6 +33,7 @@ Public Class Avisos
         AtualizarLabelsinTextBoxesAndButtons()
 
         CenterOnScreenForm()
+        CarregarPaletaDeCores()
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click

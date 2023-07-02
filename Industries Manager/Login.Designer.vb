@@ -25,6 +25,7 @@ Partial Class Login
         Me.components = New System.ComponentModel.Container()
         Dim EmailLabel As System.Windows.Forms.Label
         Dim PassLabel As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Login))
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
         Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FuncionariosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FuncionariosTableAdapter()
@@ -62,17 +63,6 @@ Partial Class Login
         EmailLabel.Size = New System.Drawing.Size(60, 22)
         EmailLabel.TabIndex = 1
         EmailLabel.Text = "E-mail"
-        '
-        'PassLabel
-        '
-        PassLabel.AutoSize = True
-        PassLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        PassLabel.Location = New System.Drawing.Point(71, 128)
-        PassLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        PassLabel.Name = "PassLabel"
-        PassLabel.Size = New System.Drawing.Size(127, 22)
-        PassLabel.TabIndex = 2
-        PassLabel.Text = "Palavra-Passe"
         '
         'Industries_DanDataSet
         '
@@ -222,11 +212,23 @@ Partial Class Login
         Me.LinkLabel2.Text = "Esqueci-me da minha palavra-passe"
         Me.LinkLabel2.Visible = False
         '
+        'PassLabel
+        '
+        PassLabel.AutoSize = True
+        PassLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        PassLabel.Location = New System.Drawing.Point(71, 128)
+        PassLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        PassLabel.Name = "PassLabel"
+        PassLabel.Size = New System.Drawing.Size(127, 22)
+        PassLabel.TabIndex = 13
+        PassLabel.Text = "Palavra-Passe"
+        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(579, 465)
+        Me.Controls.Add(PassLabel)
         Me.Controls.Add(Me.LinkLabel2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CheckBox1)
@@ -235,9 +237,9 @@ Partial Class Login
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(PassLabel)
         Me.Controls.Add(EmailLabel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "Login"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

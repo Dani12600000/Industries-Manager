@@ -29,6 +29,7 @@ Partial Class Vendas
         Dim QuantidadeLabel As System.Windows.Forms.Label
         Dim PCLabel As System.Windows.Forms.Label
         Dim SubtotalLabel As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Vendas))
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
         Me.VendasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VendasTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.VendasTableAdapter()
@@ -424,6 +425,7 @@ Partial Class Vendas
         Me.Controls.Add(Mail_ClienteLabel)
         Me.Controls.Add(Me.Mail_ClienteTextBox)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "Vendas"
         Me.Text = "Vendas"

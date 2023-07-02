@@ -43,6 +43,8 @@ Public Class Login
             LerDadosMemorizadosEIniciarSessao()
         End If
 
+        CarregarPaletaDeCores()
+        Button3.BackColor = cores(Label1.GetType)
     End Sub
 
     Private Sub Form1_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint

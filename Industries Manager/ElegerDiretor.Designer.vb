@@ -23,6 +23,7 @@ Partial Class ElegerDiretor
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ElegerDiretor))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
         Me.TableAdapterManager = New Industries_Manager.Industries_DanDataSetTableAdapters.TableAdapterManager()
@@ -208,6 +209,8 @@ Partial Class ElegerDiretor
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ElegerDiretor"
         Me.Text = "Eleger Novo Diretor"
         CType(Me.Industries_DanDataSet, System.ComponentModel.ISupportInitialize).EndInit()

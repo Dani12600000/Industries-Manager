@@ -29,6 +29,7 @@ Partial Class Fornecedores
         Dim TDPLabel As System.Windows.Forms.Label
         Dim HQALabel As System.Windows.Forms.Label
         Dim HQFLabel As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Fornecedores))
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
         Me.FornecedoresBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FornecedoresTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FornecedoresTableAdapter()
@@ -73,7 +74,7 @@ Partial Class Fornecedores
         'NDELabel
         '
         NDELabel.AutoSize = True
-        NDELabel.Location = New System.Drawing.Point(41, 64)
+        NDELabel.Location = New System.Drawing.Point(41, 69)
         NDELabel.Name = "NDELabel"
         NDELabel.Size = New System.Drawing.Size(143, 20)
         NDELabel.TabIndex = 1
@@ -91,7 +92,7 @@ Partial Class Fornecedores
         'NDILabel
         '
         NDILabel.AutoSize = True
-        NDILabel.Location = New System.Drawing.Point(12, 96)
+        NDILabel.Location = New System.Drawing.Point(12, 106)
         NDILabel.Name = "NDILabel"
         NDILabel.Size = New System.Drawing.Size(172, 20)
         NDILabel.TabIndex = 4
@@ -100,7 +101,7 @@ Partial Class Fornecedores
         'TDPLabel
         '
         TDPLabel.AutoSize = True
-        TDPLabel.Location = New System.Drawing.Point(186, 128)
+        TDPLabel.Location = New System.Drawing.Point(186, 143)
         TDPLabel.Name = "TDPLabel"
         TDPLabel.Size = New System.Drawing.Size(210, 20)
         TDPLabel.TabIndex = 6
@@ -109,7 +110,7 @@ Partial Class Fornecedores
         'HQALabel
         '
         HQALabel.AutoSize = True
-        HQALabel.Location = New System.Drawing.Point(69, 280)
+        HQALabel.Location = New System.Drawing.Point(69, 295)
         HQALabel.Name = "HQALabel"
         HQALabel.Size = New System.Drawing.Size(115, 20)
         HQALabel.TabIndex = 8
@@ -118,7 +119,7 @@ Partial Class Fornecedores
         'HQFLabel
         '
         HQFLabel.AutoSize = True
-        HQFLabel.Location = New System.Drawing.Point(61, 313)
+        HQFLabel.Location = New System.Drawing.Point(61, 330)
         HQFLabel.Name = "HQFLabel"
         HQFLabel.Size = New System.Drawing.Size(123, 20)
         HQFLabel.TabIndex = 10
@@ -159,7 +160,7 @@ Partial Class Fornecedores
         'NDETextBox
         '
         Me.NDETextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FornecedoresBindingSource, "NDE", True))
-        Me.NDETextBox.Location = New System.Drawing.Point(190, 61)
+        Me.NDETextBox.Location = New System.Drawing.Point(190, 66)
         Me.NDETextBox.Name = "NDETextBox"
         Me.NDETextBox.ReadOnly = True
         Me.NDETextBox.Size = New System.Drawing.Size(293, 26)
@@ -178,7 +179,7 @@ Partial Class Fornecedores
         'NDITextBox
         '
         Me.NDITextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FornecedoresBindingSource, "NDI", True))
-        Me.NDITextBox.Location = New System.Drawing.Point(190, 93)
+        Me.NDITextBox.Location = New System.Drawing.Point(190, 103)
         Me.NDITextBox.Name = "NDITextBox"
         Me.NDITextBox.ReadOnly = True
         Me.NDITextBox.Size = New System.Drawing.Size(293, 26)
@@ -187,7 +188,7 @@ Partial Class Fornecedores
         'TDPTextBox
         '
         Me.TDPTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FornecedoresBindingSource, "TDP", True))
-        Me.TDPTextBox.Location = New System.Drawing.Point(190, 151)
+        Me.TDPTextBox.Location = New System.Drawing.Point(190, 166)
         Me.TDPTextBox.Multiline = True
         Me.TDPTextBox.Name = "TDPTextBox"
         Me.TDPTextBox.ReadOnly = True
@@ -199,7 +200,7 @@ Partial Class Fornecedores
         Me.HQADateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FornecedoresBindingSource, "HQA", True))
         Me.HQADateTimePicker.Enabled = False
         Me.HQADateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.HQADateTimePicker.Location = New System.Drawing.Point(190, 275)
+        Me.HQADateTimePicker.Location = New System.Drawing.Point(190, 290)
         Me.HQADateTimePicker.Name = "HQADateTimePicker"
         Me.HQADateTimePicker.Size = New System.Drawing.Size(100, 26)
         Me.HQADateTimePicker.TabIndex = 9
@@ -209,7 +210,7 @@ Partial Class Fornecedores
         Me.HQFDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FornecedoresBindingSource, "HQF", True))
         Me.HQFDateTimePicker.Enabled = False
         Me.HQFDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.HQFDateTimePicker.Location = New System.Drawing.Point(190, 307)
+        Me.HQFDateTimePicker.Location = New System.Drawing.Point(190, 324)
         Me.HQFDateTimePicker.Name = "HQFDateTimePicker"
         Me.HQFDateTimePicker.Size = New System.Drawing.Size(100, 26)
         Me.HQFDateTimePicker.TabIndex = 11
@@ -239,7 +240,7 @@ Partial Class Fornecedores
         Me.FornecimentosDataGridView.Name = "FornecimentosDataGridView"
         Me.FornecimentosDataGridView.RowHeadersWidth = 62
         Me.FornecimentosDataGridView.RowTemplate.Height = 28
-        Me.FornecimentosDataGridView.Size = New System.Drawing.Size(807, 404)
+        Me.FornecimentosDataGridView.Size = New System.Drawing.Size(807, 422)
         Me.FornecimentosDataGridView.TabIndex = 12
         '
         'DataGridViewTextBoxColumn1
@@ -313,7 +314,7 @@ Partial Class Fornecedores
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(96, 408)
+        Me.Button1.Location = New System.Drawing.Point(97, 426)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(59, 57)
         Me.Button1.TabIndex = 13
@@ -322,7 +323,7 @@ Partial Class Fornecedores
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(161, 408)
+        Me.Button2.Location = New System.Drawing.Point(162, 426)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(59, 57)
         Me.Button2.TabIndex = 14
@@ -331,7 +332,7 @@ Partial Class Fornecedores
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(226, 408)
+        Me.Button3.Location = New System.Drawing.Point(227, 426)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(59, 57)
         Me.Button3.TabIndex = 15
@@ -340,7 +341,7 @@ Partial Class Fornecedores
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(291, 408)
+        Me.Button4.Location = New System.Drawing.Point(292, 426)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(59, 57)
         Me.Button4.TabIndex = 16
@@ -359,7 +360,7 @@ Partial Class Fornecedores
         'Button5
         '
         Me.Button5.BackColor = System.Drawing.Color.White
-        Me.Button5.Location = New System.Drawing.Point(226, 355)
+        Me.Button5.Location = New System.Drawing.Point(227, 373)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(124, 47)
         Me.Button5.TabIndex = 18
@@ -368,7 +369,7 @@ Partial Class Fornecedores
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(96, 355)
+        Me.Button6.Location = New System.Drawing.Point(97, 373)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(124, 47)
         Me.Button6.TabIndex = 19
@@ -379,7 +380,7 @@ Partial Class Fornecedores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1322, 477)
+        Me.ClientSize = New System.Drawing.Size(1322, 495)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Label1)
@@ -401,6 +402,7 @@ Partial Class Fornecedores
         Me.Controls.Add(NDELabel)
         Me.Controls.Add(Me.NDETextBox)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "Fornecedores"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

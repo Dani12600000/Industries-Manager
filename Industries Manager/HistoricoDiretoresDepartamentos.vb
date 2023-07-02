@@ -11,7 +11,7 @@
         Formulario.Width = Formulario.ClientSize.Width + 210
 
         CenterOnScreenForm()
-
+        CarregarPaletaDeCores()
     End Sub
 
     Private Sub HistoricoDiretoresDepartamentos_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown

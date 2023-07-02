@@ -10,6 +10,7 @@
         Formulario = Me
 
         CenterOnScreenForm()
+        CarregarPaletaDeCores()
     End Sub
 
     Private Sub PCPNumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles PCPNumericUpDown.ValueChanged

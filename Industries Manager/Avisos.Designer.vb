@@ -26,6 +26,7 @@ Partial Class Avisos
         Dim AvisoLabel As System.Windows.Forms.Label
         Dim IDLabel As System.Windows.Forms.Label
         Dim Label2 As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Avisos))
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
         Me.AvisosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AvisosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.AvisosTableAdapter()
@@ -464,6 +465,7 @@ Partial Class Avisos
         Me.Controls.Add(AvisoLabel)
         Me.Controls.Add(Me.AvisoTextBox)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "Avisos"
         Me.Text = "Avisos"

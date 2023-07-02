@@ -1,4 +1,5 @@
-﻿Module ControleFormsLoad
+﻿Imports System.Linq
+Module ControleFormsLoad
     Public Class PermissoesDep
         Public Property OnlySeeDepIDs As List(Of Integer) = New List(Of Integer)()
         Public Property OnlyNewDepIDs As List(Of Integer) = New List(Of Integer)()
@@ -27,12 +28,39 @@
         ' Public Property DepartamentoComPermissaoCVDV As List(Of Integer()) = New List(Of Integer())()
     End Class
 
+    Public coresTemplate As (Integer, String, Color)() = {
+        (1, "Laranja Claro", ColorTranslator.FromHtml("#DF9A4A")),
+        (2, "Bege claro", ColorTranslator.FromHtml("#F1D2A4")),
+        (3, "Bege claro + Laranja claro", ColorTranslator.FromHtml("#E9B07E")),
+        (4, "Cinza claro", ColorTranslator.FromHtml("#F5F5F4")),
+        (5, "Castanho escuro", ColorTranslator.FromHtml("#54392A")),
+        (6, "Laranja escuro", ColorTranslator.FromHtml("#A55721"))
+    }
+
+
+    Public cores As Dictionary(Of Type, Color) = New Dictionary(Of Type, Color) From {
+            {GetType(Button), ObterCorPeloNumero(1)},
+            {GetType(TextBox), ObterCorPeloNumero(4)},
+            {GetType(NumericUpDown), ObterCorPeloNumero(4)},
+            {GetType(DataGridView), ObterCorPeloNumero(3)},
+            {GetType(ComboBox), ObterCorPeloNumero(4)},
+            {GetType(CheckBox), ObterCorPeloNumero(2)},
+            {GetType(RadioButton), ObterCorPeloNumero(6)},
+            {GetType(ListBox), ObterCorPeloNumero(4)},
+            {GetType(ProgressBar), ObterCorPeloNumero(5)},
+            {GetType(Panel), ObterCorPeloNumero(4)},
+            {GetType(Label), ObterCorPeloNumero(2)},
+            {GetType(MenuStrip), ObterCorPeloNumero(2)},
+            {GetType(ToolStrip), ObterCorPeloNumero(2)}
+        }
+
 
     Public Formulario As Form
     Public tamanhobuttonadd As Integer
     Public tamanhobuttonedit As Integer
     Public somaTamanhosButtonFPAndSpaceBetween As Integer
     Public Locationbuttonadd, Locationbuttonedit As Point
+    Public ControlesProtegidos As List(Of Control) = New List(Of Control)
 
     Sub CenterOnScreenForm()
         Formulario.StartPosition = FormStartPosition.Manual
@@ -144,4 +172,34 @@
             Desancorar(controle, esquerda, direita, cima, baixo)
         Next
     End Sub
+
+    Sub CarregarPaletaDeCores()
+        Formulario.BackColor = cores(GetType(Label))
+
+        Dim toolStripGuardar As ToolStrip
+
+        For Each control As Control In Formulario.Controls
+            If Not ControlesProtegidos.Contains(control) AndAlso cores.ContainsKey(control.GetType()) AndAlso Not (TypeOf control Is Button And control.Text.ToLower.Contains("remover")) Then
+                If TypeOf control Is DataGridView Then
+                    Dim DataGridViewSelecionada As DataGridView = DirectCast(control, DataGridView)
+                    DataGridViewSelecionada.BackgroundColor = cores(control.GetType())
+                    Debug.WriteLine("Passou")
+                Else
+                    control.BackColor = cores(control.GetType())
+                End If
+
+                control.ForeColor = Color.Black ' Define a cor do texto para preto em todos os controles
+            End If
+        Next
+    End Sub
+
+    Public Function ObterCorPeloNome(nomeCor As String) As Color
+        Dim corSelecionada As Color = coresTemplate.FirstOrDefault(Function(c) c.Item2 = nomeCor).Item3
+        Return corSelecionada
+    End Function
+    Public Function ObterCorPeloNumero(numeroCor As Integer) As Color
+        Dim corSelecionada As Color = coresTemplate.FirstOrDefault(Function(c) c.Item1 = numeroCor).Item3
+        Return corSelecionada
+    End Function
+
 End Module

@@ -56,6 +56,8 @@ Public Class PMenu
         Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
         CarragamentoInicialProprio()
         MenuStrip1.Renderer = New LogoutAndAvisosRenderer(LogoutToolStripMenuItem, AvisosToolStripMenuItem, novosAvisosBooleanExterior)
+        CarregarPaletaDeCores()
+        Label1.BackColor = cores(MenuStrip1.GetType())
     End Sub
 
     Sub CarragamentoInicialProprio()

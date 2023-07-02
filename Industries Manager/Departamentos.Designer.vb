@@ -28,6 +28,7 @@ Partial Class Departamentos
         Dim DEDDLabel As System.Windows.Forms.Label
         Dim Label1 As System.Windows.Forms.Label
         Dim Label5 As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Departamentos))
         Me.IDTextBox = New System.Windows.Forms.TextBox()
         Me.DepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Industries_DanDataSet = New Industries_Manager.Industries_DanDataSet()
@@ -499,6 +500,7 @@ Partial Class Departamentos
         Me.Controls.Add(Me.IDTextBox)
         Me.Controls.Add(Me.NomeDiretorTextBox)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "Departamentos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
