@@ -24,9 +24,11 @@ Public Class Instalador
         AumentarProgressBarAndAlterarLabels("Iniciando transferencia da base de dados...", False)
         Await DownloadArquivoAsync("https://github.com/Dani12600000/Industries-Manager/raw/master/Industries%20Dan.mdb", destino & "Industries Dan.mdb")
         AumentarProgressBarAndAlterarLabels("Transferido com sucesso a base de dados!", True)
+
         AumentarProgressBarAndAlterarLabels("Iniciando transferencia do ficheiro Newtonsoft.Json.dll...", False)
         Await DownloadArquivoAsync("https://github.com/Dani12600000/Industries-Manager/raw/master/Newtonsoft.Json.dll", destino & "Newtonsoft.Json.dll")
         AumentarProgressBarAndAlterarLabels("Transferido com sucesso o ficheiro Newtonsoft.Json.dll!", True)
+
         AumentarProgressBarAndAlterarLabels("Iniciando transferencia do ficheiro Newtonsoft.Json.xml...", False)
         Await DownloadArquivoAsync("https://github.com/Dani12600000/Industries-Manager/raw/master/Newtonsoft.Json.xml", destino & "Newtonsoft.Json.xml")
         AumentarProgressBarAndAlterarLabels("Transferido com sucesso o ficheiro Newtonsoft.Json.xml!", True)
@@ -45,11 +47,9 @@ Public Class Instalador
             Login.Show()
         End If
         Me.Close()
-
     End Sub
 
     Sub AumentarProgressBarAndAlterarLabels(TarefaAExecutar As String, AumentarNumeroDeFicheirosTransferidos As Boolean)
-
         ProgressBar1.Value += valorASubir
         Label1.Text = TarefaAExecutar
         If AumentarNumeroDeFicheirosTransferidos Then NumeroDeFicheirosTransferidos += 1
@@ -88,12 +88,5 @@ Public Class Instalador
     Private Sub WebClient_DownloadProgressChanged(sender As Object, e As DownloadProgressChangedEventArgs)
         ' Atualize o valor da ProgressBar com base no progresso do download
         ProgressBar1.Value = e.ProgressPercentage
-    End Sub
-
-    Private Sub FuncionariosBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
-        Me.Validate()
-        Me.FuncionariosBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.Industries_DanDataSet)
-
     End Sub
 End Class
