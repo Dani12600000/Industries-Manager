@@ -313,6 +313,16 @@ Public Class PMenu
 
         Leitura_de_avisosBindingSource.EndEdit()
         Leitura_de_avisosTableAdapter.Update(Industries_DanDataSet)
+
+        AvisosBindingSource.Filter = "ID = " & label.Tag
+        Leitura_de_avisosBindingSource.Filter = "ID_Aviso = " & label.Tag
+        FuncionariosBindingSource.Filter = "ID_Departamento = " & InfoUser.UserDepID
+
+        If AvisosBindingSource.Current("FDFDP") = "Todos Leram" And FuncionariosBindingSource.Count - Leitura_de_avisosBindingSource.Count <= 1 Then
+            AvisosBindingSource.Current("DLDM") = Today
+            AvisosBindingSource.EndEdit()
+            AvisosTableAdapter.Update(Industries_DanDataSet.Avisos)
+        End If
         AtualizarInfosAvisos()
     End Sub
 

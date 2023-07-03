@@ -39,6 +39,24 @@ Public Class DetalhesAviso
         CarregarPaletaDeCores()
     End Sub
 
+    Public Sub CarregarAvisoParaReenviar(ID_FuncionarioText As String, ID_DepartamentoText As String, FDFDPL As String)
+
+        Debug.WriteLine("ID_FuncionarioText:" & ID_DepartamentoText)
+        If ID_FuncionarioText IsNot Nothing Then
+            FuncionariosBindingSource.Filter = "ID = " & Val(ID_FuncionarioText)
+            If FuncionariosBindingSource.Current("ID_Departamento") <> InfoUser.UserDepID Then
+                ComboBox1.Text = listaOpcoesParaQuemEnviar(2)
+            Else
+                ComboBox1.Text = listaOpcoesParaQuemEnviar(1)
+            End If
+        Else
+            ComboBox1.Text = listaOpcoesParaQuemEnviar(0)
+            FDFDP = FDFDPL
+            carregado = True
+            AtualizarCoisasAAtualizar()
+        End If
+    End Sub
+
     Public Sub NovoAviso()
         AvisosBindingSource.AddNew()
         ComboBox1.SelectedIndex = 0
@@ -190,6 +208,8 @@ Public Class DetalhesAviso
 
         If Not Avisos.Visible Then
             Avisos.Show()
+        Else
+            Avisos.AvisosTableAdapter.Fill(Industries_DanDataSet.Avisos)
         End If
         Me.Close()
     End Sub

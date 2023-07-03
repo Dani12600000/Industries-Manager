@@ -43,7 +43,8 @@ Public Class Avisos
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
         If Button9.Text = "Novo" Then
-            ' Vou abrir outro form
+            DetalhesAviso.Show()
+            DetalhesAviso.NovoAviso()
         ElseIf Button9.Text = "Guardar" Then
             acabarAlteracoes()
 
@@ -251,7 +252,7 @@ Public Class Avisos
     End Sub
 
     Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
-
+        ' Futuro Update
     End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
@@ -259,6 +260,17 @@ Public Class Avisos
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        DetalhesAviso.Show()
+        DetalhesAviso.NovoAviso()
+        DetalhesAviso.TituloTextBox.Text = TituloTextBox.Text
+        DetalhesAviso.AvisoTextBox.Text = AvisoTextBox.Text
+        Dim ID_FuncionarioLoc As String
+        Dim ID_DepartamentoLoc As String
+
+        If Not IsDBNull(AvisosBindingSource.Current("ID_Funcionario")) Then ID_FuncionarioLoc = AvisosBindingSource.Current("ID_Funcionario")
+        If Not IsDBNull(AvisosBindingSource.Current("ID_Departamento")) Then ID_DepartamentoLoc = AvisosBindingSource.Current("ID_Departamento")
+
+        DetalhesAviso.CarregarAvisoParaReenviar(ID_FuncionarioLoc, ID_DepartamentoLoc, AvisosBindingSource.Current("FDFDP"))
 
     End Sub
 

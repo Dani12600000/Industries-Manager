@@ -91,6 +91,7 @@ Partial Class Inicializador
         Me.ClientSize = New System.Drawing.Size(545, 238)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "Inicializador"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Inicializador"
