@@ -7,12 +7,6 @@ Public Class Login
     Dim ID As Integer
     Dim strHostName As String
     Dim strIPAddress As String
-    Private Sub FuncionariosBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
-        Me.Validate()
-        Me.FuncionariosBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.Industries_DanDataSet)
-
-    End Sub
 
     <Obsolete>
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
