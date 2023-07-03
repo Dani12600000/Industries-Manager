@@ -2,7 +2,7 @@
 Imports Newtonsoft.Json
 
 Public Class Login
-    Public Nome As String
+    Dim Nome As String
     Dim ID As Integer
     Dim strHostName As String
     Dim strIPAddress As String
