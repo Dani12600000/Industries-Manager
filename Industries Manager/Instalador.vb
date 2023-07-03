@@ -27,7 +27,19 @@ Public Class Instalador
         Dim httpClient As New HttpClient()
         AumentarProgressBarAndAlterarLabels("Conectado com sucesso!", False)
 
+
+        AumentarProgressBarAndAlterarLabels("Verificando se a pasta existe", False)
         Dim destino As String = "C:\Industries Dan_PAP\"
+
+
+        ' Verifica se a pasta não existe antes de criá-la
+        If Not Directory.Exists(destino) Then
+            AumentarProgressBarAndAlterarLabels("Criando pasta...", False)
+            Directory.CreateDirectory(destino)
+            AumentarProgressBarAndAlterarLabels("Pasta criada com sucesso", False)
+        Else
+            AumentarProgressBarAndAlterarLabels("Pasta já existe", False)
+        End If
 
         AumentarProgressBarAndAlterarLabels("Iniciando transferencia da base de dados...", False)
         Await DownloadArquivoAsync("https://github.com/Dani12600000/Industries-Manager/raw/master/Industries%20Dan.mdb", destino & "Industries Dan.mdb")
@@ -47,6 +59,7 @@ Public Class Instalador
 
         CriarAtalhoDoExecutavelAndMove(destino)
     End Sub
+
 
     Sub AumentarProgressBarAndAlterarLabels(TarefaAExecutar As String, AumentarNumeroDeFicheirosTransferidos As Boolean)
         If ProgressBar1.Value + valorASubir > 100 Then
