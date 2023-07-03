@@ -323,6 +323,10 @@ Public Class PMenu
             AvisosBindingSource.EndEdit()
             AvisosTableAdapter.Update(Industries_DanDataSet.Avisos)
         End If
+
+        AvisosBindingSource.RemoveFilter()
+        Leitura_de_avisosBindingSource.RemoveFilter()
+        FuncionariosBindingSource.RemoveFilter()
         AtualizarInfosAvisos()
     End Sub
 

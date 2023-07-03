@@ -184,7 +184,6 @@ Public Class DetalhesAviso
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        AtualizarCoisasAAtualizar()
 
         AvisosBindingSource.Current("DT") = Today
 
@@ -209,8 +208,10 @@ Public Class DetalhesAviso
         If Not Avisos.Visible Then
             Avisos.Show()
         Else
-            Avisos.AvisosTableAdapter.Fill(Industries_DanDataSet.Avisos)
+            Avisos.AvisosTableAdapter.Fill(Avisos.Industries_DanDataSet.Avisos)
+            Avisos.AvisosDataGridView.Update()
         End If
+
         Me.Close()
     End Sub
 End Class

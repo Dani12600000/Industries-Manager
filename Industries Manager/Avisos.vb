@@ -3,6 +3,8 @@
 Public Class Avisos
 
     Private Sub Avisos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Leitura_de_avisos'. Você pode movê-la ou removê-la conforme necessário.
+        Me.Leitura_de_avisosTableAdapter.Fill(Me.Industries_DanDataSet.Leitura_de_avisos)
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Funcionarios' table. You can move, or remove it, as needed.
         Me.FuncionariosTableAdapter.Fill(Me.Industries_DanDataSet.Funcionarios)
         'TODO: This line of code loads data into the 'Industries_DanDataSet.Avisos' table. You can move, or remove it, as needed.
@@ -30,7 +32,6 @@ Public Class Avisos
 
         AvisosBindingSource.Filter = "ID_Diretor = " & InfoUser.UserDepDirectorID
         AvisosDataGridView.Sort(AvisosDataGridView.Columns(0), System.ComponentModel.ListSortDirection.Descending)
-        AtualizarLabelsinTextBoxesAndButtons()
 
         CenterOnScreenForm()
         CarregarPaletaDeCores()
@@ -96,24 +97,43 @@ Public Class Avisos
                     TextBox4.Visible = True
                     TextBox4.Text = FuncoesRepetitivas.DiferencaEntreHojeAndDataTexto(AvisosBindingSource.Current("DLDM"))
                 End If
+                Button10.Visible = False
             ElseIf FDFDP = "Todos leram" Then
 
-                    DLDMAndFDFDPLabel.Visible = False
-                    DLDMDateTimePicker.Visible = False
-                    TextBox4.Visible = False
-                    Label5.Visible = False
+                DLDMAndFDFDPLabel.Visible = False
+                DLDMDateTimePicker.Visible = False
+                TextBox4.Visible = True
+                Label5.Visible = True
+                Button10.Enabled = False
 
+                Leitura_de_avisosBindingSource.Filter = "ID_Aviso = " & IDTextBox.Text
+                FuncionariosBindingSource.Filter = "ID_Departamento = " & InfoUser.UserDepID
 
+                Dim numeroDeFuncionariosQueFaltamLerParaFechar As Integer = FuncionariosBindingSource.Count - Leitura_de_avisosBindingSource.Count - 1
 
-                    Button1.Text = "Terminar agora"
-                ElseIf FDFDP = "Nunca" Then
+                Label5.Text = "Falta"
+                TextBox4.Text = numeroDeFuncionariosQueFaltamLerParaFechar
 
-                    DLDMDateTimePicker.Visible = False
+                TextBox4.Text &= " "
+                If numeroDeFuncionariosQueFaltamLerParaFechar > 1 Then
+                    TextBox4.Text &= "funcionários"
+                Else
+                    TextBox4.Text &= "funcionário"
+                End If
+
+                Button1.Text = "Terminar agora"
+                Button10.Visible = True
+                Button10.Enabled = True
+            ElseIf FDFDP = "Nunca" Then
+
+                DLDMDateTimePicker.Visible = False
                 TextBox4.Visible = False
                 Label5.Visible = False
 
 
                 Button1.Text = "Terminar agora"
+                Button10.Visible = False
+                Button10.Enabled = True
             End If
 
             Dim dataTransmissao As Date = CDate(AvisosBindingSource.Current("DT"))
@@ -122,12 +142,9 @@ Public Class Avisos
                 Label6.Text = "Transmitido"
                 TextBox5.Text = "Hoje"
             Else
-
                 Label6.Text = "Transmitido há"
-
-
-
                 TextBox5.Text = DiferencaEntreDataAndHojeTexto(dataTransmissao)
+                TextBox3.Text = "Transmitindo"
             End If
 
             TextBox2.Text = "lido por "
@@ -139,7 +156,7 @@ Public Class Avisos
 
             TextBox2.Text &= quantidadeGeralDeFuncionariosQueLeram
 
-            If Not quantidadeGeralDeFuncionariosQueLeram = "ninguem" OrElse FDFDP = "Funcionario" Then
+            If Not quantidadeGeralDeFuncionariosQueLeram = "ninguem" OrElse FDFDP = "Departamento" Then
                 Button10.Enabled = True
             Else
                 Button10.Enabled = False
@@ -151,6 +168,7 @@ Public Class Avisos
                 Label5.Visible = True
                 TextBox4.Visible = True
                 TextBox4.Text = "Hoje"
+                TextBox3.Text = "Transmitido"
                 DLDMDateTimePicker.Visible = True
                 DLDMAndFDFDPLabel.Visible = True
 
@@ -160,6 +178,7 @@ Public Class Avisos
                 Label5.Visible = True
                 TextBox4.Visible = True
                 TextBox4.Text = FuncoesRepetitivas.DiferencaEntreDataAndHojeTexto(DLDMDateTimePicker.Value)
+                TextBox3.Text = "Transmitido"
                 DLDMDateTimePicker.Visible = True
                 DLDMAndFDFDPLabel.Visible = True
 
@@ -252,7 +271,8 @@ Public Class Avisos
     End Sub
 
     Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
-        ' Futuro Update
+        ' Update Futuro
+        MsgBox("Será implementado num futuro update")
     End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
@@ -294,7 +314,7 @@ Public Class Avisos
         AtualizarLabelsinTextBoxesAndButtons()
     End Sub
 
-    Private Sub AvisosBindingSource_Change() Handles AvisosDataGridView.SelectionChanged
+    Private Sub Avisos_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         AtualizarLabelsinTextBoxesAndButtons()
     End Sub
 End Class

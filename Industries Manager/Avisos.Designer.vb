@@ -63,6 +63,8 @@ Partial Class Avisos
         Me.TituloTextBox = New System.Windows.Forms.TextBox()
         Me.FuncionariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FuncionariosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.FuncionariosTableAdapter()
+        Me.Leitura_de_avisosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Leitura_de_avisosTableAdapter = New Industries_Manager.Industries_DanDataSetTableAdapters.Leitura_de_avisosTableAdapter()
         AvisoLabel = New System.Windows.Forms.Label()
         IDLabel = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
@@ -70,6 +72,7 @@ Partial Class Avisos
         CType(Me.AvisosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AvisosDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Leitura_de_avisosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'AvisoLabel
@@ -138,7 +141,7 @@ Partial Class Avisos
         Me.AvisoTextBox.Multiline = True
         Me.AvisoTextBox.Name = "AvisoTextBox"
         Me.AvisoTextBox.ReadOnly = True
-        Me.AvisoTextBox.Size = New System.Drawing.Size(629, 140)
+        Me.AvisoTextBox.Size = New System.Drawing.Size(622, 140)
         Me.AvisoTextBox.TabIndex = 2
         '
         'IDTextBox
@@ -209,9 +212,9 @@ Partial Class Avisos
         'DTDateTimePicker
         '
         Me.DTDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.AvisosBindingSource, "DT", True))
-        Me.DTDateTimePicker.Location = New System.Drawing.Point(73, 287)
+        Me.DTDateTimePicker.Location = New System.Drawing.Point(73, 286)
         Me.DTDateTimePicker.Name = "DTDateTimePicker"
-        Me.DTDateTimePicker.Size = New System.Drawing.Size(238, 26)
+        Me.DTDateTimePicker.Size = New System.Drawing.Size(234, 26)
         Me.DTDateTimePicker.TabIndex = 8
         '
         'DLDMDateTimePicker
@@ -219,7 +222,7 @@ Partial Class Avisos
         Me.DLDMDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.AvisosBindingSource, "DLDM", True))
         Me.DLDMDateTimePicker.Location = New System.Drawing.Point(73, 348)
         Me.DLDMDateTimePicker.Name = "DLDMDateTimePicker"
-        Me.DLDMDateTimePicker.Size = New System.Drawing.Size(238, 26)
+        Me.DLDMDateTimePicker.Size = New System.Drawing.Size(234, 26)
         Me.DLDMDateTimePicker.TabIndex = 10
         '
         'Button1
@@ -271,7 +274,7 @@ Partial Class Avisos
         'Button9
         '
         Me.Button9.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button9.Location = New System.Drawing.Point(186, 408)
+        Me.Button9.Location = New System.Drawing.Point(186, 409)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(107, 44)
         Me.Button9.TabIndex = 31
@@ -282,7 +285,7 @@ Partial Class Avisos
         '
         Me.Button8.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Button8.BackColor = System.Drawing.Color.White
-        Me.Button8.Location = New System.Drawing.Point(302, 408)
+        Me.Button8.Location = New System.Drawing.Point(302, 409)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(107, 44)
         Me.Button8.TabIndex = 30
@@ -292,7 +295,7 @@ Partial Class Avisos
         'Button4
         '
         Me.Button4.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button4.Location = New System.Drawing.Point(444, 458)
+        Me.Button4.Location = New System.Drawing.Point(444, 459)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(80, 62)
         Me.Button4.TabIndex = 29
@@ -302,7 +305,7 @@ Partial Class Avisos
         'Button3
         '
         Me.Button3.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button3.Location = New System.Drawing.Point(358, 458)
+        Me.Button3.Location = New System.Drawing.Point(358, 459)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(80, 62)
         Me.Button3.TabIndex = 28
@@ -312,7 +315,7 @@ Partial Class Avisos
         'Button2
         '
         Me.Button2.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button2.Location = New System.Drawing.Point(272, 458)
+        Me.Button2.Location = New System.Drawing.Point(272, 459)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(80, 62)
         Me.Button2.TabIndex = 27
@@ -322,7 +325,7 @@ Partial Class Avisos
         'Button5
         '
         Me.Button5.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button5.Location = New System.Drawing.Point(186, 458)
+        Me.Button5.Location = New System.Drawing.Point(186, 459)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(80, 62)
         Me.Button5.TabIndex = 26
@@ -332,7 +335,7 @@ Partial Class Avisos
         'Button6
         '
         Me.Button6.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button6.Location = New System.Drawing.Point(417, 408)
+        Me.Button6.Location = New System.Drawing.Point(417, 409)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(107, 44)
         Me.Button6.TabIndex = 32
@@ -341,9 +344,9 @@ Partial Class Avisos
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(708, 93)
+        Me.Button7.Location = New System.Drawing.Point(701, 93)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(86, 138)
+        Me.Button7.Size = New System.Drawing.Size(93, 138)
         Me.Button7.TabIndex = 33
         Me.Button7.Text = "Copiar para a clipboard"
         Me.Button7.UseVisualStyleBackColor = True
@@ -405,7 +408,7 @@ Partial Class Avisos
         'DTLabel
         '
         Me.DTLabel.AutoSize = True
-        Me.DTLabel.Location = New System.Drawing.Point(69, 263)
+        Me.DTLabel.Location = New System.Drawing.Point(69, 262)
         Me.DTLabel.Name = "DTLabel"
         Me.DTLabel.Size = New System.Drawing.Size(222, 20)
         Me.DTLabel.TabIndex = 39
@@ -429,11 +432,20 @@ Partial Class Avisos
         '
         Me.FuncionariosTableAdapter.ClearBeforeFill = True
         '
+        'Leitura_de_avisosBindingSource
+        '
+        Me.Leitura_de_avisosBindingSource.DataMember = "Leitura de avisos"
+        Me.Leitura_de_avisosBindingSource.DataSource = Me.Industries_DanDataSet
+        '
+        'Leitura_de_avisosTableAdapter
+        '
+        Me.Leitura_de_avisosTableAdapter.ClearBeforeFill = True
+        '
         'Avisos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1454, 538)
+        Me.ClientSize = New System.Drawing.Size(1454, 540)
         Me.Controls.Add(Me.TituloTextBox)
         Me.Controls.Add(Me.DTLabel)
         Me.Controls.Add(Me.DLDMAndFDFDPLabel)
@@ -473,6 +485,7 @@ Partial Class Avisos
         CType(Me.AvisosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AvisosDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FuncionariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Leitura_de_avisosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -514,4 +527,6 @@ Partial Class Avisos
     Friend WithEvents TituloTextBox As TextBox
     Friend WithEvents FuncionariosBindingSource As BindingSource
     Friend WithEvents FuncionariosTableAdapter As Industries_DanDataSetTableAdapters.FuncionariosTableAdapter
+    Friend WithEvents Leitura_de_avisosBindingSource As BindingSource
+    Friend WithEvents Leitura_de_avisosTableAdapter As Industries_DanDataSetTableAdapters.Leitura_de_avisosTableAdapter
 End Class
