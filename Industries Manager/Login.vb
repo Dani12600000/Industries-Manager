@@ -6,6 +6,12 @@ Public Class Login
     Dim ID As Integer
     Dim strHostName As String
     Dim strIPAddress As String
+    Public Class Valores
+        Public Property palavra_passe As String
+        Public Property ID_Funcionario As String
+        Public Property ip As String
+    End Class
+
 
     <Obsolete>
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -292,12 +298,6 @@ Public Class Login
             MessageBox.Show("Ocorreu um erro ao salvar/atualizar os valores no arquivo: " & ex.Message)
         End Try
     End Sub
-
-    Public Class Valores
-        Public Property palavra_passe As String
-        Public Property ID_Funcionario As String
-        Public Property ip As String
-    End Class
 
     Private Sub LerDadosMemorizadosEIniciarSessao()
         Dim caminhoArquivo As String = "C:\Industries Dan_PAP\DadosMemorizados.json"
