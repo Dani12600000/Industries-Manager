@@ -1,5 +1,4 @@
-﻿Imports System.Linq
-Module ControleFormsLoad
+﻿Module ControleFormsLoad
     Public Class PermissoesDep
         Public Property OnlySeeDepIDs As List(Of Integer) = New List(Of Integer)()
         Public Property OnlyNewDepIDs As List(Of Integer) = New List(Of Integer)()
