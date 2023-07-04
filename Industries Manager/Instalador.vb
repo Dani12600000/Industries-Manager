@@ -1,7 +1,6 @@
 ﻿Imports System.IO
 Imports System.Net
 Imports System.Net.Http
-Imports System.Threading
 
 Public Class Instalador
     Dim vezesNecessariasAumentarProgressBar As Integer = 13
