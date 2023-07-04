@@ -236,27 +236,6 @@ Public Class Funcionarios
         AbrirOutlook(EmailTextBox.Text, InfoUser.UserFirstName, InfoUser.UserLastName)
     End Sub
 
-    Sub AbrirOutlook(destinatario As String, primeiroNomeRemetente As String, ultimoNomeRemetente As String)
-        Try
-            ' Criar uma instância do processo do Outlook
-            Dim outlookProcess As New Process()
-
-            ' Definir o nome do processo como "Outlook"
-            outlookProcess.StartInfo.FileName = "Outlook"
-
-            ' Adicionar a assinatura ao corpo do e-mail
-            Dim assinatura As String = vbCrLf & vbCrLf & vbCrLf & "Atenciosamente," & vbCrLf & primeiroNomeRemetente & " " & ultimoNomeRemetente
-
-            ' Adicionar o destinatário e a assinatura aos argumentos de linha de comando
-            outlookProcess.StartInfo.Arguments = "/c ipm.note /m """ & destinatario & "?body=" & assinatura & """"
-
-            ' Iniciar o processo
-            outlookProcess.Start()
-        Catch ex As Exception
-            Console.WriteLine("Erro ao abrir o Outlook: " & ex.Message)
-        End Try
-    End Sub
-
     Sub AtualizarBaseDadosContratarAndRecontratar()
         FuncionariosBindingSource.Current("ID_Profissão") = ProfissõesBindingSource.Current("ID")
         Debug.WriteLine("ID_DepartamentoComboBox.ValueMember: " & ID_DepartamentoComboBox.ValueMember)
