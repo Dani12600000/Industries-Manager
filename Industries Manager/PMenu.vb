@@ -547,13 +547,6 @@ Public Class PMenu
         End If
     End Sub
 
-    Private Sub Login_FuncionarioBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
-        Me.Validate()
-        Me.Login_FuncionarioBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.Industries_DanDataSet)
-
-    End Sub
-
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         RedirecionarParaFormCorrespondente(Button4.Text)
     End Sub
