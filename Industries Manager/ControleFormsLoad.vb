@@ -66,12 +66,6 @@
         Formulario.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Formulario.Width) \ 2, (Screen.PrimaryScreen.Bounds.Height - Formulario.Height) \ 2)
     End Sub
 
-    Sub CarregamentoInicial()
-        tamanhobuttonadd = ButtonNandG.Width
-        tamanhobuttonedit = ButtonE.Width
-        somaTamanhosButtonFPAndSpaceBetween = ButtonF.Width + ButtonP.Width + (ButtonP.Location.X - ButtonF.Location.X + ButtonF.Width)
-    End Sub
-
     Sub DepartamentosAndAcoesQuePodemRealizar(permissoesDepComValores As PermissoesDep)
 
         If Not InfoUser.UserAdm Then
