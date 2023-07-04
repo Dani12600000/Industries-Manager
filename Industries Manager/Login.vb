@@ -83,7 +83,7 @@ Public Class Login
         FuncionariosTableAdapter.Fill(Industries_DanDataSet.Funcionarios)
 
         If Memorizado Then
-            Login_FuncionarioBindingSource.Filter = "ID_Funcionario = " & Last_ID_Funcionario_Memorizado
+            Login_FuncionarioBindingSource.Filter = "ID_Funcionario = " & Last_ID_Funcionario_Memorizado & " AND (LiOuLo = ""Login"" Or LiOuLo = ""Logout"""
             Login_FuncionarioBindingSource.Sort = "DEH DESC"
             Login_FuncionarioBindingSource.MoveFirst()
 
