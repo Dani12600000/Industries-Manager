@@ -1,7 +1,4 @@
-﻿Imports System.IO
-Imports System.Runtime.CompilerServices
-
-Public Class DetalhesAviso
+﻿Public Class DetalhesAviso
     Dim locGroupBox, locLabel2 As Point
     Dim tamanhoGroupBox1, tamanhoLabel2, diferencatamanhos As Integer
     Dim listaOpcoesParaQuemEnviar As List(Of String) = New List(Of String) From {
