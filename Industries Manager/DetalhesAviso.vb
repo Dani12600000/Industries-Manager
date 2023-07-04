@@ -92,13 +92,10 @@
         currentPosition = Avisos.AvisosBindingSource.Position
         Avisos.AvisosTableAdapter.Fill(Industries_DanDataSet.Avisos)
         Avisos.AvisosBindingSource.Position = currentPosition
-
     End Sub
 
     Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
         DataRadioButton.Checked = True
-
-
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
@@ -173,10 +170,6 @@
         ElseIf ComboBox1.Text = listaOpcoesParaQuemEnviar(0) And Not Me.ClientSize.Height >= Me.MinimumSize.Height + 75 Then
             Me.Height = Me.MinimumSize.Height + 75
         End If
-
-    End Sub
-
-    Private Sub FuncionariosDiretoresComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FuncionariosDiretoresComboBox.SelectedIndexChanged
 
     End Sub
 
