@@ -12,24 +12,6 @@
     Dim buttonAltUnicTemp As Button
     Dim componenteAltUnicTemp As Control
 
-    ' Para usar este metodo tenho que declarar as seguintes variaveis primeiro:
-    ' ButtonNandG - Botão para Salar e Guardar
-    ' ButtonRorEandC - Botão para Remover ou Editar e Cancelar 
-    ' ButtonF - Botão First/Primeiro
-    ' ButtonP - Botão Previous/Prévio
-    ' ButtonN - Botão Next/Proximo
-    ' ButtonL - Botão Last/Ultimo
-    ' ButtonE - Botão Editar
-    ' 
-    ' Depois de definir todos os botões ás respetivas variaveis pode usar nos varios formularios os seguintes procedimentos
-    ' iniciarAlteracoes() - Quando chamado utiliza as variaveis para defenir a propriedade Enabled dos botões de navegação como false, a propriedade ReadOnly das TextBox's tambem como false, o Enabled dos NumericUpDown como true e guarda os atributos Text's dos botões ButtonNG, ButtonRC e ButtonEC nas respetivas variaveis TextButNG, TextButRC e TextButEC fazendo depois alteração do texto nas propriades Text dos mesmo botões.
-    ' acabarAlteracoes() - Quando chamado utiliza as variaveis para defenir o contrario do iniciar e depois buscar o texto guardado nas variaveis TextButNG, TextButRC e TextButEC para as colocar nas respetivas propriedades Text dos botões ButtonNG, ButtonRC, ButtonEC
-    ' iniciarAlteracaoUnica(button, componente) - Quando chamado utiliza as duas unicas variaveis dele para dar acesso ao utilizador para fazer as alterações num campo especifico 
-    ' acabarAlteracaoUnica() - Quando chamado utiliza as duas unicas variaveis dele para retirar o acesso ao utilizador para fazer as alterações num campo especifico
-    ' 
-    ' Procedimentos internos
-    ' trocarBooleansParaAlteracoes() - Este procedimento visa auxiliar o iniciarAlterações e o acabarAlterações a colocar as propriedade Enabled e ReadOnly em todos os botões e TextBox's respetivamente como verdadeiro/falso
-
     Sub iniciarAlteracoes()
         TorF = False
         Debug.WriteLine("iniciando alterações - começo")
