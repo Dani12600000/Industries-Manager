@@ -586,8 +586,4 @@ Public Class PMenu
             Profissões.Show()
         End If
     End Sub
-
-    Private Sub PMenu_ClientSizeChanged(sender As Object, e As EventArgs) Handles MyBase.ClientSizeChanged
-        AtualizarInfosAvisos()
-    End Sub
 End Class
