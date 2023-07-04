@@ -19,6 +19,8 @@ Public Class Vendas
         PCTextBox.Text = ""
         SubtotalTextBox.Text = ""
 
+        Me.Width = Me.Width * 1.025
+
         CenterOnScreenForm()
         CarregarPaletaDeCores()
     End Sub

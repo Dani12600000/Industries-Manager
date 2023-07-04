@@ -204,7 +204,7 @@ Partial Class Vendas
         Me.Venda_de_produtoDataGridView.Name = "Venda_de_produtoDataGridView"
         Me.Venda_de_produtoDataGridView.RowHeadersWidth = 62
         Me.Venda_de_produtoDataGridView.RowTemplate.Height = 28
-        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(876, 293)
+        Me.Venda_de_produtoDataGridView.Size = New System.Drawing.Size(818, 293)
         Me.Venda_de_produtoDataGridView.TabIndex = 6
         '
         'ID_Produto
@@ -350,7 +350,7 @@ Partial Class Vendas
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(382, 51)
+        Me.Label2.Location = New System.Drawing.Point(385, 51)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(18, 20)
         Me.Label2.TabIndex = 17
@@ -409,7 +409,7 @@ Partial Class Vendas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1305, 416)
+        Me.ClientSize = New System.Drawing.Size(1330, 416)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
