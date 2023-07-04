@@ -313,10 +313,6 @@
         AtualizarBotoesDiretor()
     End Sub
 
-    Sub ElegerNovoDiretorDeNovoImediatamente()
-
-    End Sub
-
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         If Button7.Text = "Eleger diretor" Then
             ElegerDiretor.Show()
