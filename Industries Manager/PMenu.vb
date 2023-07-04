@@ -29,7 +29,6 @@ Public Class PMenu
                     e.Graphics.DrawRectangle(Pens.Red, 0, 0, rc.Width - 1, rc.Height - 1)
                 Else
                     MyBase.OnRenderMenuItemBackground(e)
-                    ' @TODO : Depois escolher cores melhores
                     ' e.Graphics.FillRectangle(Brushes.LightGray, rc)
                     ' e.Graphics.DrawRectangle(Pens.Gray, 0, 0, rc.Width - 1, rc.Height - 1)
                 End If
