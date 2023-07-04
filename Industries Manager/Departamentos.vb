@@ -400,10 +400,6 @@
         iniciarAlteracoes()
     End Sub
 
-    Private Sub Departamentos_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
-        PMenu.Activate()
-    End Sub
-
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         HistoricoDiretoresDepartamentos.Show()
         HistoricoDiretoresDepartamentos.DepIDLoc = DepartamentosBindingSource.Current("ID")
