@@ -2,7 +2,7 @@
 
 Public Class ReqConta
     Dim DefaultColor As Color
-    Public Alpha As Boolean ' Isto depois vou ter que testar apagando todos os utilizadores (O nome Alpha é referencia a Alpha do anime The Eminence in Shadow, pois ela foi a primeira)
+    Public Alpha As Boolean       ' (O nome Alpha é referencia à Alpha do anime "The Eminence in Shadow", pois ela como está variável é a primeira a se juntar a organização)
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: esta linha de código carrega dados na tabela 'Industries_DanDataSet.Departamentos'. Você pode movê-la ou removê-la conforme necessário.
