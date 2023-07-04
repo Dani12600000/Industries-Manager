@@ -168,7 +168,7 @@ Public Class Vendas
         End If
     End Sub
 
-    Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Venda_de_produtoBindingSource.RemoveCurrent()
         Venda_de_produtoTableAdapter.Update(Industries_DanDataSet.Venda_de_produto)
 
