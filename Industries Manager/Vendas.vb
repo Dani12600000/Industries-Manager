@@ -1,5 +1,4 @@
-﻿Imports System.ComponentModel
-Imports System.Globalization
+﻿Imports System.Globalization
 Imports Industries_Manager.Industries_DanDataSetTableAdapters
 Public Class Vendas
 
