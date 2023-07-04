@@ -1,6 +1,4 @@
-﻿Imports System.Net.Mail
-Imports System.Text.RegularExpressions
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+﻿Imports System.Text.RegularExpressions
 
 Public Class ReqConta
     Dim DefaultColor As Color
