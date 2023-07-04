@@ -1,5 +1,4 @@
 ﻿Imports System.Globalization
-Imports System.Reflection
 Imports Industries_Manager.Industries_DanDataSetTableAdapters
 
 Public Class Funcionarios
