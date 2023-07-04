@@ -396,7 +396,7 @@
         PMenu.Activate()
     End Sub
 
-    Private Sub Button10_Click_1(sender As Object, e As EventArgs) Handles Button10.Click
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
         iniciarAlteracoes()
     End Sub
 
