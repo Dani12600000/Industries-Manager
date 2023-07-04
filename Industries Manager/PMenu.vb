@@ -1,8 +1,4 @@
 ﻿Imports System.IO
-Imports System.Windows.Forms.VisualStyles
-Imports System.Drawing.Drawing2D
-Imports Industries_Manager.Industries_DanDataSetTableAdapters
-Imports Industries_Manager.Industries_DanDataSet
 
 Public Class PMenu
     Dim TextOfFormButtonsPermitidos As List(Of String) = New List(Of String)()
