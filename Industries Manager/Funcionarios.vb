@@ -143,12 +143,14 @@ Public Class Funcionarios
             Button8.Enabled = False
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Despedir"
-            If FuncionariosBindingSource.Current("Adm") Then
-                Button11.Text = "Retirar previlegios de admin"
-                Button5.Enabled = False
-            Else
-                Button11.Text = "Dar previlegios de admin"
-                Button5.Enabled = True
+            If InfoUser.UserAdm Then
+                If FuncionariosBindingSource.Current("Adm") Then
+                    Button11.Text = "Retirar previlegios de admin"
+                    Button5.Enabled = False
+                Else
+                    Button11.Text = "Dar previlegios de admin"
+                    Button5.Enabled = True
+                End If
             End If
             Button5.BackColor = DespColor
             SILabel.Text = "Salário Atual:"
@@ -189,7 +191,11 @@ Public Class Funcionarios
             ID_ProfissãoComboBox.Width = tamanhoProfissoesID - 64
             Button12.Visible = True
         Else
-            Button11.Enabled = True
+            If FuncionariosBindingSource.Current("Adm") Then
+                Button11.Enabled = False
+            Else
+                Button11.Enabled = True
+            End If
             Button7.Visible = True
             EmailTextBox.Width = tamanhoEmailTextBox - 74
 
