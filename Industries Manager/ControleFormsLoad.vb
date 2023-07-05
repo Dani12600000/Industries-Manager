@@ -108,7 +108,7 @@
                 Next
 
             ElseIf AcoesDeCadaDepartamento = "Apenas novo" Then
-                ' @TODO : COMEÇAR - TERMINAR
+                ' @TODO : TERMINAR
 
                 ButtonNandG.Visible = True
                 ButtonRorEandC.Visible = False
