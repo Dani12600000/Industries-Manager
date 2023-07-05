@@ -197,6 +197,7 @@
 
         If Not Avisos.Visible Then
             Avisos.Show()
+            Avisos.AtualizarLabelsinTextBoxesAndButtons()
         Else
             Avisos.AvisosTableAdapter.Fill(Avisos.Industries_DanDataSet.Avisos)
             Avisos.AvisosDataGridView.Update()

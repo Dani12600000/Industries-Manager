@@ -55,7 +55,7 @@ Public Class Avisos
         End If
     End Sub
 
-    Private Sub AtualizarLabelsinTextBoxesAndButtons()
+    Public Sub AtualizarLabelsinTextBoxesAndButtons()
 
         Dim quantidadeGeralDeFuncionariosQueLeram As String
         Dim dataAtual As Date = Today()
@@ -152,6 +152,21 @@ Public Class Avisos
             ' Depois fazer o codigo para mudar o que está aqui escrito dependo o numero de funcionarios que leram
             quantidadeGeralDeFuncionariosQueLeram = "ninguem"
 
+            Dim funcionariosQuePodemLer As Integer
+
+            If Not IsDBNull(AvisosBindingSource.Current("ID_Departamento")) Then
+                funcionariosQuePodemLer = FuncionariosBindingSource.Count - 1
+            End If
+
+            If Not IsDBNull(AvisosBindingSource.Current("ID_Funcionario")) Then
+                funcionariosQuePodemLer = 1
+            End If
+
+            If funcionariosQuePodemLer > Leitura_de_avisosBindingSource.Count And Not funcionariosQuePodemLer = Leitura_de_avisosBindingSource.Count Then
+                quantidadeGeralDeFuncionariosQueLeram = "alguns"
+            ElseIf funcionariosQuePodemLer = Leitura_de_avisosBindingSource.Count Then
+                quantidadeGeralDeFuncionariosQueLeram = "todos"
+            End If
 
 
             TextBox2.Text &= quantidadeGeralDeFuncionariosQueLeram
