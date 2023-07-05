@@ -102,7 +102,7 @@ Public Class Instalador
     End Function
 
     Private Sub WebClient_DownloadProgressChanged(sender As Object, e As DownloadProgressChangedEventArgs)
-        ' Atualize o valor da ProgressBar com base no progresso do download
+        ' Atualiza o valor da ProgressBar com base no progresso do download
         ProgressBar1.Value = e.ProgressPercentage
     End Sub
 
