@@ -144,10 +144,10 @@ Public Class Funcionarios
         ElseIf Not FuncionariosBindingSource.Current("DDEDE").ToString.Equals("") And FuncionariosBindingSource.Current("DDSDE").ToString.Equals("") Then
             Button5.Text = "Despedir"
             If FuncionariosBindingSource.Current("Adm") Then
-                Button11.Text = "Retirar previlegios de admin"
+                Button11.Text = "Retirar privilégios de admin"
                 Button5.Enabled = False
             Else
-                Button11.Text = "Dar previlegios de admin"
+                Button11.Text = "Dar privilégios de admin"
                 Button5.Enabled = True
             End If
             Button5.BackColor = DespColor
@@ -181,20 +181,25 @@ Public Class Funcionarios
             DDSDELabel.Visible = True
         End If
 
-        If FuncionariosBindingSource.Current("ID") = InfoUser.UserID Then
+        If FuncionariosBindingSource.Current("ID") = InfoUser.UserID And InfoUser.UserAdm Then
             Button11.Enabled = False
             Button7.Visible = False
             EmailTextBox.Width = tamanhoEmailTextBox
 
             ID_ProfissãoComboBox.Width = tamanhoProfissoesID - 64
             Button12.Visible = True
-        Else
+        ElseIf InfoUser.UserAdm Then
             Button11.Enabled = True
             Button7.Visible = True
             EmailTextBox.Width = tamanhoEmailTextBox - 74
 
             ID_ProfissãoComboBox.Width = tamanhoProfissoesID
             Button12.Visible = False
+
+        ElseIf Button11.Text = "Apagar conta" And {1}.Contains(InfoUser.UserDepID) Then
+            Button11.Enabled = True
+        Else
+            Button11.Enabled = False
         End If
 
         ID_ProfissãoComboBox.SelectionLength = 0
@@ -443,25 +448,25 @@ Public Class Funcionarios
                     FuncionariosTableAdapter.Update(Industries_DanDataSet.Funcionarios)
                     MsgBox("A conta foi apagada com sucesso!", vbInformation, "Apagado com sucesso")
                 Catch erro As Exception
-                    MsgBox("Ocorreu o erro: " & erro.ToString & vbCrLf & "Tente novamente mais tarde, se o erro presistir entre em contacto com o administrador", vbCritical, "Erro")
+                    MsgBox("Ocorreu o erro: " & erro.ToString & vbCrLf & "Tente novamente mais tarde, se o erro persistir entre em contacto com o administrador", vbCritical, "Erro")
                     Debug.WriteLine(erro)
                 End Try
             End If
-        ElseIf Button11.Text = "Dar previlegios de admin" Then
-            If MsgBox("Tem certeza que deseja dar previlegios de admin a este funcionario?", vbYesNo, "Tem a certeza?") = MsgBoxResult.Yes Then
+        ElseIf Button11.Text = "Dar privilégios de admin" Then
+            If MsgBox("Tem certeza que deseja dar privilégios de admin a este funcionário?", vbYesNo, "Tem a certeza?") = MsgBoxResult.Yes Then
                 FuncionariosBindingSource.Current("Adm") = True
                 FuncionariosBindingSource.EndEdit()
                 FuncionariosTableAdapter.Update(Industries_DanDataSet)
                 SortLogins()
-                MsgBox("Os previlegios de admin foram concedidos com sucesso", vbInformation, "Previlegios concedidos")
+                MsgBox("Os privilégios de admin foram concedidos com sucesso", vbInformation, "Privilégios concedidos")
             End If
-        ElseIf Button11.Text = "Retirar previlegios de admin" Then
-            If MsgBox("Tem certeza que deseja retirar previlegios de admin a este funcionario?", vbYesNo, "Tem a certeza?") = MsgBoxResult.Yes Then
+        ElseIf Button11.Text = "Retirar privilégios de admin" Then
+            If MsgBox("Tem certeza que deseja retirar privilégios de admin a este funcionário?", vbYesNo, "Tem a certeza?") = MsgBoxResult.Yes Then
                 FuncionariosBindingSource.Current("Adm") = False
                 FuncionariosBindingSource.EndEdit()
                 FuncionariosTableAdapter.Update(Industries_DanDataSet)
                 SortLogins()
-                MsgBox("Os previlegios de admin foram revogados com sucesso", vbInformation, "Previlegios revogados")
+                MsgBox("Os privilégios de admin foram revogados com sucesso", vbInformation, "Privilégios revogados")
             End If
         End If
     End Sub
